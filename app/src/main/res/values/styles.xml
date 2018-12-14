@@ -1,8 +1,72 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="BaseTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:listDivider">@drawable/my_divider</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/bg_primary</item>
+        <item name="android:windowActionBarOverlay">true</item>
     </style>
+
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="BaseTheme">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <!--切换activity时屏幕不变暗-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--窗口的背景设置成透明 ,这样的话在我们每个界面的根布局都要设置background,要不然就是透明的-->
+        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
+    </style>
+
+    <style name="AppTheme.normal" parent="BaseTheme">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="text_18_pri">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_color_pri</item>
+    </style>
+
+    <style name="text_18_sec">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_color_sec</item>
+    </style>
+
+    <style name="text_16_sec">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_color_sec</item>
+    </style>
+
+    <style name="text_16_pri">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_color_pri</item>
+    </style>
+
+    <style name="text_14_sec">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_color_sec</item>
+    </style>
+
+    <style name="text_14_pri">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_color_pri</item>
+    </style>
+
+    <style name="text_12_sec">
+    <item name="android:textSize">12sp</item>
+    <item name="android:textColor">@color/text_color_sec</item>
+    </style>
+
+    <style name="text_12_pri">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_color_pri</item>
+    </style>
+
 
 </resources>

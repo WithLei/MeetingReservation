@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen_16">16dp</dimen>
+    <dimen name="dimen_8">8dp</dimen>
+    <dimen name="dimen_4">4dp</dimen>
+    <dimen name="Card">2dp</dimen>
+
+    <dimen name="toolbarHeight">52dp</dimen>
+    <dimen name="bottombarHeight">52dp</dimen>
+    <dimen name="scheduleSectionHeight">56dp</dimen>
+    <dimen name="scheduleCourseHeight">106dp</dimen>
+    <dimen name="spinnerMaxHeight">200dp</dimen>
+    <dimen name="scheduleCourseMargin">3dp</dimen>
+    <dimen name="scheduleCoursePadding">3dp</dimen>
+</resources>

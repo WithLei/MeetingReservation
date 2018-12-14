@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#7bb736</color>
+    <color name="colorPrimaryDark">#16c24b</color>
+    <color name="colorAccent">#7bb736</color>
+    <color name="colorDivider">#fff5f5f5</color>
+
+    <color name="text_color_pri">#ff050505</color>
+    <color name="text_color_sec">#ff5f5f5f</color>
+
+    <color name="bg_primary">#ffffffff</color>
+    <color name="bg_secondary">#fff5f5f5</color>
+
+    <color name="colorAuthor">#529ECC</color>
+    <color name="white">#ffffff</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="red_light">#ffff4444</color>
+    <color name="green_light">#ff99cc00</color>
+    <color name="blue_light">#ff33b5e5</color>
+    <color name="orange_light">#ffffbb33</color>
+
+    <!--自定义主题-->
+    <color name="main_color_2">#f44836</color>
+    <color name="main_color_3">#f2821e</color>
+    <color name="main_color_4">#d12121</color>
+    <color name="main_color_5">#16c24b</color>
+    <color name="main_color_6">#16a8c2</color>
+    <color name="main_color_7">#2b86e3</color>
+    <color name="main_color_8">#3f51b5</color>
+    <color name="main_color_9">#9c27b0</color>
+    <color name="main_color_10">#cc268f</color>
+    <color name="main_color_11">#39c5bb</color>
 </resources>
