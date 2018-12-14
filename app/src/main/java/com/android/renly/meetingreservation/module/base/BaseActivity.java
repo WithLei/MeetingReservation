@@ -149,11 +149,11 @@ public abstract class BaseActivity extends FragmentActivity {
     protected void initToolBar(boolean isshowBack, String text) {
         View toolbar = findViewById(R.id.myToolBar);
         if (toolbar != null) {
-            ((TextView) toolbar.findViewById(R.id.tv_toolbar_title)).setText(text);
+            ((TextView) toolbar.findViewById(R.id.title)).setText(text);
             if (isshowBack) {
-                findViewById(R.id.iv_toolbar_back).setOnClickListener(view -> finishActivity());
+                findViewById(R.id.back).setOnClickListener(view -> finishActivity());
             } else {
-                findViewById(R.id.iv_toolbar_back).setVisibility(View.GONE);
+                findViewById(R.id.back).setVisibility(View.GONE);
             }
         }
     }
@@ -167,7 +167,7 @@ public abstract class BaseActivity extends FragmentActivity {
     protected ImageView addToolbarMenu(int resid) {
         View toolbar = findViewById(R.id.myToolBar);
         if (toolbar != null) {
-            ImageView i = toolbar.findViewById(R.id.iv_toolbar_menu);
+            ImageView i = toolbar.findViewById(R.id.menu);
             i.setImageResource(resid);
             i.setVisibility(View.VISIBLE);
             return i;

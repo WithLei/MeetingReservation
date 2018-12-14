@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#16c24b</color>
     <color name="colorAccent">#7bb736</color>
     <color name="colorDivider">#fff5f5f5</color>
+    <color name="colorDisableHintIcon">#86000000</color>
 
     <color name="text_color_pri">#ff050505</color>
     <color name="text_color_sec">#ff5f5f5f</color>

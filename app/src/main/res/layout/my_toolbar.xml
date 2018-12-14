@@ -7,7 +7,7 @@
     android:elevation="4dp">
 
     <ImageView
-        android:id="@+id/iv_toolbar_back"
+        android:id="@+id/back"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="?attr/selectableItemBackgroundBorderless"
@@ -17,7 +17,7 @@
         android:src="@drawable/ic_arraw_back_white" />
 
     <TextView
-        android:id="@+id/tv_toolbar_title"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center"
@@ -29,7 +29,7 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/iv_toolbar_menu"
+        android:id="@+id/menu"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="end"
