@@ -33,8 +33,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_meeting" />
+                            <entry key="outputName" value="ic_person_black_24dp" />
                             <entry key="sourceFile" value="C:\Users\asus\Downloads\meeting.svg" />
                           </map>
                         </option>

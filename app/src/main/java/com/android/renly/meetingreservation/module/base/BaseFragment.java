@@ -73,6 +73,8 @@ public abstract class BaseFragment extends Fragment {
 
     }
 
+    public abstract void ScrollToTop();
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
