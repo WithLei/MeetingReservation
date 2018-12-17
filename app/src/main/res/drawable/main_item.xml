@@ -3,7 +3,7 @@
     android:shape="rectangle" >
 
     <!-- 表示shape的四个角的角度。只适用于矩形shape，这里的角度是指圆角的程度 -->
-    <corners android:radius="50dp" />
+    <corners android:radius="20dp" />
 
     <!-- 这个标签表示纯色填充，通过android:color即可指定shape中填充的颜色 -->
     <solid android:color="@color/bg_secondary" />
