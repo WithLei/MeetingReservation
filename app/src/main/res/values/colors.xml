@@ -8,6 +8,7 @@
 
     <color name="text_color_pri">#ff050505</color>
     <color name="text_color_sec">#ff5f5f5f</color>
+    <color name="text_color_thi">#ffffffff</color>
 
     <color name="bg_primary">#ffffffff</color>
     <color name="bg_secondary">#fff5f5f5</color>

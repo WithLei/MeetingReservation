@@ -7,6 +7,11 @@ import com.android.renly.meetingreservation.module.base.BaseFragment;
 
 public class BookingFrag extends BaseFragment {
     @Override
+    protected void initInjector() {
+
+    }
+
+    @Override
     public int getLayoutid() {
         return R.layout.frag_booking;
     }

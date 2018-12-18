@@ -17,6 +17,11 @@ public class HomeFrag extends BaseFragment {
     SearchView searchview;
 
     @Override
+    protected void initInjector() {
+
+    }
+
+    @Override
     public int getLayoutid() {
         return R.layout.frag_home;
     }

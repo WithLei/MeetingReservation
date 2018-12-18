@@ -20,7 +20,7 @@
         <!--切换activity时屏幕不变暗-->
         <item name="android:windowIsTranslucent">true</item>
         <!--窗口的背景设置成透明 ,这样的话在我们每个界面的根布局都要设置background,要不然就是透明的-->
-        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
     <style name="AppTheme.normal" parent="BaseTheme">
@@ -38,6 +38,11 @@
         <item name="android:textColor">@color/text_color_sec</item>
     </style>
 
+    <style name="text_18_thi">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_color_thi</item>
+    </style>
+
     <style name="text_16_sec">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/text_color_sec</item>
@@ -46,6 +51,11 @@
     <style name="text_16_pri">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/text_color_pri</item>
+    </style>
+
+    <style name="text_16_thi">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_color_thi</item>
     </style>
 
     <style name="text_14_sec">

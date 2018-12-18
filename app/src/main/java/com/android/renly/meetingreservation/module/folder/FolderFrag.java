@@ -7,6 +7,11 @@ import com.android.renly.meetingreservation.module.base.BaseFragment;
 
 public class FolderFrag extends BaseFragment {
     @Override
+    protected void initInjector() {
+
+    }
+
+    @Override
     public int getLayoutid() {
         return R.layout.frag_folder;
     }

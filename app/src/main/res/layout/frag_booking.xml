@@ -52,27 +52,128 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="@color/green_light"/>
+        android:background="@drawable/bg01"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="wrap_content"
         android:background="@color/red_light"
         android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/bg_primary"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="175dp"
+            android:elevation="5dp"
+            android:background="?android:attr/colorPrimary"
             android:orientation="horizontal">
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_qr_96dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/text_16_thi"
+                    android:layout_marginTop="10dp"
+                    android:text="扫码预定"/>
+            </LinearLayout>
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/bg_primary" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
+
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/green_light"/>
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/green_light"/>
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_book_white_96dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/text_16_thi"
+                    android:layout_marginTop="10dp"
+                    android:text="会室预定"/>
+            </LinearLayout>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/bg_primary"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+            android:elevation="5dp"
+            android:orientation="horizontal"
+            android:background="?android:attr/colorPrimary">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+            <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_lightning"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/text_16_thi"
+                    android:layout_marginTop="10dp"
+                    android:text="快速预定"/>
+            </LinearLayout>
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/bg_primary" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+            <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_group_white_96dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/text_16_thi"
+                    android:layout_marginTop="10dp"
+                    android:text="为他人预定"/>
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/bg_primary"/>
     </LinearLayout>
 
 </LinearLayout>

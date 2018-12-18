@@ -39,7 +39,7 @@
             android:lines="1"
             android:textColor="@color/white"
             android:textSize="16sp"
-            tools:text="点击头像登陆"
+            android:text="点击头像登陆"
             android:textStyle="bold" />
 
         <TextView
@@ -50,7 +50,7 @@
             android:layout_toEndOf="@id/avatar"
             android:layout_marginStart="30dp"
             android:layout_marginTop="6dp"
-            tools:text="12345678@qq.com"
+            android:text="12345678@qq.com"
             android:textColor="@color/white"
             android:textSize="14sp" />
     </RelativeLayout>
@@ -76,7 +76,7 @@
             android:padding="8dp">
 
             <TextView
-                tools:text="25"
+                android:text="25"
                 style="@style/mine_btn_num"/>
 
             <TextView
@@ -101,7 +101,7 @@
             android:padding="8dp">
 
             <TextView
-                tools:text="6"
+                android:text="6"
                 style="@style/mine_btn_num"/>
 
             <TextView
@@ -126,7 +126,7 @@
             android:padding="8dp">
 
             <TextView
-                tools:text="44"
+                android:text="44"
                 style="@style/mine_btn_num"/>
 
             <TextView
@@ -151,7 +151,7 @@
             android:padding="8dp">
 
             <TextView
-                tools:text="63"
+                android:text="63"
                 style="@style/mine_btn_num"/>
 
             <TextView

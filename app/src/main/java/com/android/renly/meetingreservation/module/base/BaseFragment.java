@@ -41,9 +41,12 @@ public abstract class BaseFragment extends Fragment {
         return mRootView;
     }
 
+    protected abstract void initInjector();
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initInjector();
         initData(mContent);
     }
 
