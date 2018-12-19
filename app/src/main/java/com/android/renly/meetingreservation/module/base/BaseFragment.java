@@ -70,7 +70,7 @@ public abstract class BaseFragment extends Fragment {
      * 打开targetActivity
      * @param targetActivity
      */
-    public void gotoActivity(Class<?> targetActivity){
+    public void jumpToActivity(Class<?> targetActivity){
         startActivity(new Intent(getActivity(),targetActivity));
         getActivity().overridePendingTransition(R.anim.translate_in,R.anim.translate_out);
 

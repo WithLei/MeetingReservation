@@ -51,10 +51,10 @@
         android:id="@+id/fl_searchview"
         android:layout_width="match_parent"
         android:layout_height="35dp"
+        android:layout_below="@id/myToolBar"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:background="#00000000"
-        android:layout_below="@id/myToolBar"
         android:elevation="2dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp">
@@ -86,8 +86,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="92dp"
-                android:background="@color/bg_primary">
-            </LinearLayout>
+                android:background="@color/bg_primary"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -203,80 +202,88 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@drawable/main_item"
-                android:orientation="vertical"
-                android:paddingLeft="10dp"
-                android:paddingTop="5dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp">
+                android:orientation="vertical">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        style="@style/text_16_pri"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:text="正在进行会议" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:src="@drawable/ic_chevron_right_black_24dp" />
-                </RelativeLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/green_light" />
-
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp">
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/meeting_title"
-                        style="@style/text_14_sec"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/ic_title_24dp"
-                        android:text=" 关于新产品的售价" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/meeting_time"
-                        style="@style/text_14_sec"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/meeting_title"
-                        android:layout_marginTop="2dp"
-                        android:drawableLeft="@drawable/ic_access_time_black_24dp"
-                        android:text=" 09:30 - 11:30" />
+                        <TextView
+                            style="@style/text_16_pri"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:text="正在进行会议" />
 
-                    <TextView
-                        android:id="@+id/meeting_address"
-                        style="@style/text_14_sec"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/meeting_time"
-                        android:layout_marginTop="2dp"
-                        android:drawableLeft="@drawable/ic_location_on_black_24dp"
-                        android:text=" B楼308会议室" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/ic_chevron_right_black_24dp" />
+                    </RelativeLayout>
 
-                    <TextView
-                        android:id="@+id/meeting_worker"
-                        style="@style/text_14_sec"
-                        android:layout_width="wrap_content"
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="?android:attr/colorPrimary" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@id/meeting_address"
-                        android:layout_alignParentEnd="true"
-                        android:drawableLeft="@drawable/ic_person_black_24dp"
-                        android:text=" 市场部" />
-                </RelativeLayout>
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/meeting_title"
+                            style="@style/text_14_sec"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_title_24dp"
+                            android:text=" 关于新产品的售价" />
+
+                        <TextView
+                            android:id="@+id/meeting_time"
+                            style="@style/text_14_sec"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/meeting_title"
+                            android:layout_marginTop="2dp"
+                            android:drawableLeft="@drawable/ic_access_time_black_24dp"
+                            android:text=" 09:30 - 11:30" />
+
+                        <TextView
+                            android:id="@+id/meeting_address"
+                            style="@style/text_14_sec"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/meeting_time"
+                            android:layout_marginTop="2dp"
+                            android:drawableLeft="@drawable/ic_location_on_black_24dp"
+                            android:text=" B楼308会议室" />
+
+                        <TextView
+                            android:id="@+id/meeting_worker"
+                            style="@style/text_14_sec"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBaseline="@id/meeting_address"
+                            android:layout_alignParentEnd="true"
+                            android:drawableLeft="@drawable/ic_person_black_24dp"
+                            android:text=" 市场部" />
+                    </RelativeLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -284,80 +291,88 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@drawable/main_item"
-                android:orientation="vertical"
-                android:paddingLeft="10dp"
-                android:paddingTop="5dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp">
+                android:orientation="vertical">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        style="@style/text_16_pri"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:text="我的会议" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:src="@drawable/ic_chevron_right_black_24dp" />
-                </RelativeLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/green_light" />
-
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp">
+                    android:clickable="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/mymeeting_title"
-                        style="@style/text_14_sec"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/ic_title_24dp"
-                        android:text=" 关于新产品的售价" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/mymeeting_time"
-                        style="@style/text_14_sec"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/mymeeting_title"
-                        android:layout_marginTop="2dp"
-                        android:drawableLeft="@drawable/ic_access_time_black_24dp"
-                        android:text=" 09:30 - 11:30" />
+                        <TextView
+                            style="@style/text_16_pri"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:text="我的会议" />
 
-                    <TextView
-                        android:id="@+id/mymeeting_address"
-                        style="@style/text_14_sec"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/mymeeting_time"
-                        android:layout_marginTop="2dp"
-                        android:drawableLeft="@drawable/ic_location_on_black_24dp"
-                        android:text=" B楼308会议室" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/ic_chevron_right_black_24dp" />
+                    </RelativeLayout>
 
-                    <TextView
-                        android:id="@+id/mymeeting_worker"
-                        style="@style/text_14_sec"
-                        android:layout_width="wrap_content"
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="?android:attr/colorPrimary" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@id/mymeeting_address"
-                        android:layout_alignParentEnd="true"
-                        android:drawableLeft="@drawable/ic_person_black_24dp"
-                        android:text=" 市场部" />
-                </RelativeLayout>
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/mymeeting_title"
+                            style="@style/text_14_sec"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_title_24dp"
+                            android:text=" 关于新产品的售价" />
+
+                        <TextView
+                            android:id="@+id/mymeeting_time"
+                            style="@style/text_14_sec"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/mymeeting_title"
+                            android:layout_marginTop="2dp"
+                            android:drawableLeft="@drawable/ic_access_time_black_24dp"
+                            android:text=" 09:30 - 11:30" />
+
+                        <TextView
+                            android:id="@+id/mymeeting_address"
+                            style="@style/text_14_sec"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/mymeeting_time"
+                            android:layout_marginTop="2dp"
+                            android:drawableLeft="@drawable/ic_location_on_black_24dp"
+                            android:text=" B楼308会议室" />
+
+                        <TextView
+                            android:id="@+id/mymeeting_worker"
+                            style="@style/text_14_sec"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBaseline="@id/mymeeting_address"
+                            android:layout_alignParentEnd="true"
+                            android:drawableLeft="@drawable/ic_person_black_24dp"
+                            android:text=" 市场部" />
+                    </RelativeLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout

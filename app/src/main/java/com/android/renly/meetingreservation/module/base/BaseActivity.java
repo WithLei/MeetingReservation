@@ -135,7 +135,7 @@ public abstract class BaseActivity extends FragmentActivity {
      *
      * @param targetActivity
      */
-    public void gotoActivity(Class<?> targetActivity) {
+    public void jumpToActivity(Class<?> targetActivity) {
         startActivity(new Intent(this, targetActivity));
         overridePendingTransition(R.anim.translate_in, R.anim.translate_out);
     }

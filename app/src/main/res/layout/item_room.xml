@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@color/bg_primary"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/room04" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:elevation="1dp"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            style="@style/text_16_pri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B2楼4037 · 多功能会议室" />
+
+        <TextView
+            style="@style/text_14_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="拥有先进及齐全的多媒体设备，可容纳258人。可承接各类学术会议、报告、讲座、演讲、典礼仪式以及文艺演等。" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg_secondary" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_review" />
+
+        <TextView
+            style="@style/text_14_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="需要进行审核，预定该会议室请提前操作" />
+    </LinearLayout>
+</LinearLayout>

@@ -98,7 +98,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>

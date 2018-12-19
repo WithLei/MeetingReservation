@@ -1,20 +1,27 @@
 package com.android.renly.meetingreservation.module.home.fullscreen;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
-
-import java.lang.reflect.Field;
+import com.android.renly.meetingreservation.module.booking.quickBooking.QuickBookingActivity;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 
 public class HomeFrag extends BaseFragment {
     @BindView(R.id.searchview)
     SearchView searchview;
+    @BindView(R.id.btn01)
+    LinearLayout btn01;
 
     @Override
     protected void initInjector() {
@@ -57,5 +64,20 @@ public class HomeFrag extends BaseFragment {
     @Override
     public void ScrollToTop() {
 
+    }
+
+    @OnClick({R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn01:
+                jumpToActivity(QuickBookingActivity.class);
+                break;
+            case R.id.btn02:
+                break;
+            case R.id.btn03:
+                break;
+            case R.id.btn04:
+                break;
+        }
     }
 }

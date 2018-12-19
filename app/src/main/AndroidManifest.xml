@@ -21,7 +21,7 @@
         tools:replace="android:icon"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".module.home.HomeActivity"
-            android:theme="@style/AppTheme"
+            android:theme="@style/AppTheme.normal"
             android:windowSoftInputMode="adjustPan|stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +29,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".module.booking.quickBooking.QuickBookingActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".module.booking.roomList.RoomListActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>

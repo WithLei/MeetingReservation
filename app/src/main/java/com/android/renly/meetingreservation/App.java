@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import com.android.renly.meetingreservation.injector.components.ApplicationComponent;
 import com.android.renly.meetingreservation.injector.components.DaggerApplicationComponent;
 import com.android.renly.meetingreservation.injector.modules.ApplicationModule;
+import com.android.renly.meetingreservation.utils.toast.ToastUtils;
 
 public class App extends Application {
     private static Context context;
@@ -22,7 +23,7 @@ public class App extends Application {
     }
 
     private void initConfig() {
-
+        ToastUtils.init(getContext());
     }
 
     /**
