@@ -86,4 +86,8 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="evaluate_theme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/selector_evaluate</item>
+    </style>
+
 </resources>

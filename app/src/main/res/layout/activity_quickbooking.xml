@@ -25,13 +25,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <TextView
+            <EditText
                 android:id="@+id/start_time"
                 style="@style/text_18_sec"
+                android:background="@null"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="开始时间" />
+                android:hint="开始时间" />
 
             <View
                 android:layout_width="match_parent"
@@ -54,10 +55,11 @@
             <TextView
                 android:id="@+id/end_time"
                 style="@style/text_18_sec"
+                android:background="@null"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="结束时间" />
+                android:hint="结束时间" />
 
             <View
                 android:layout_width="match_parent"

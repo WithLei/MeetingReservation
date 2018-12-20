@@ -16,7 +16,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/meetinglogo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/meetinglogo_round"
         android:supportsRtl="true"
         tools:replace="android:icon"
         tools:ignore="GoogleAppIndexingWarning">

@@ -2,21 +2,39 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:background="@color/bg_primary"
+    android:clickable="true"
+    android:background="?android:attr/selectableItemBackground"
     android:orientation="vertical">
 
-    <ImageView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/room04" />
+        android:layout_height="170dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_primary"
+            android:scaleType="fitXY"
+            android:src="@drawable/room04" />
+
+        <CheckBox
+            style="@style/evaluate_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="105dp"
+        android:background="@color/bg_primary"
         android:elevation="1dp"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp">
 
         <TextView
             style="@style/text_16_pri"
@@ -32,14 +50,45 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:text="拥有先进及齐全的多媒体设备，可容纳258人。可承接各类学术会议、报告、讲座、演讲、典礼仪式以及文艺演等。" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:baselineAligned="true"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_14_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="推荐时间:" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="14:00 - 17:20"
+                android:textColor="?android:attr/colorPrimaryDark"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/ic_event_note_24dp" />
+        </LinearLayout>
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/bg_secondary" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/bg_primary"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="10dp">

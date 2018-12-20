@@ -52,7 +52,9 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="@drawable/bg01"/>
+        android:background="@color/bg_primary"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg01"/>
 
     <LinearLayout
         android:layout_width="match_parent"
