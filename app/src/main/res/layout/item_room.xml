@@ -2,8 +2,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:clickable="true"
-    android:background="?android:attr/selectableItemBackground"
+    android:background="@color/bg_primary"
+    android:elevation="4dp"
+    android:id="@+id/item"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -28,81 +29,88 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="105dp"
-        android:background="@color/bg_primary"
-        android:elevation="1dp"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
         android:orientation="vertical"
-        android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="20dp">
-
-        <TextView
-            style="@style/text_16_pri"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="B2楼4037 · 多功能会议室" />
-
-        <TextView
-            style="@style/text_14_sec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:text="拥有先进及齐全的多媒体设备，可容纳258人。可承接各类学术会议、报告、讲座、演讲、典礼仪式以及文艺演等。" />
+        android:focusable="true">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:baselineAligned="true"
-            android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="105dp"
+            android:elevation="1dp"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp">
+
+            <TextView
+                style="@style/text_16_pri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="B2楼4037 · 多功能会议室" />
 
             <TextView
                 style="@style/text_14_sec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="推荐时间:" />
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="拥有先进及齐全的多媒体设备，可容纳258人。可承接各类学术会议、报告、讲座、演讲、典礼仪式以及文艺演等。" />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="14:00 - 17:20"
-                android:textColor="?android:attr/colorPrimaryDark"
-                android:textSize="16sp" />
+                android:layout_marginTop="5dp"
+                android:baselineAligned="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_14_sec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="推荐时间:" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="14:00 - 17:20"
+                    android:textColor="?android:attr/colorPrimaryDark"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/ic_event_note_24dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_secondary" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
 
             <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_review" />
+
+            <TextView
+                style="@style/text_14_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:src="@drawable/ic_event_note_24dp" />
+                android:text="需要进行审核，预定该会议室请提前操作" />
         </LinearLayout>
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/bg_secondary" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bg_primary"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_review" />
-
-        <TextView
-            style="@style/text_14_sec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="需要进行审核，预定该会议室请提前操作" />
     </LinearLayout>
 </LinearLayout>

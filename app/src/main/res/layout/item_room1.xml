@@ -1,10 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clickable="true"
+    android:layout_margin="10dp"
     android:background="?android:attr/selectableItemBackground"
-    android:orientation="vertical"
-    android:layout_margin="10dp">
+    android:clickable="true"
+    android:elevation="10dp"
+    android:focusable="true"
+    android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="170dp">
@@ -24,47 +27,54 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp" />
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:orientation="vertical"
         android:background="@color/bg_primary"
         android:elevation="1dp"
+        android:orientation="vertical"
         android:padding="20dp">
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             style="@style/text_16_pri"
-            android:text="B2楼4037 · 多功能会议室"/>
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="B2楼4037 · 多功能会议室" />
+
+        <TextView
             style="@style/text_14_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:maxLines="2"
             android:ellipsize="end"
-            android:text="拥有先进及齐全的多媒体设备，可容纳258人。可承接各类学术会议、报告、讲座、演讲、典礼仪式以及文艺演等。"/>
+            android:maxLines="2"
+            android:text="拥有先进及齐全的多媒体设备，可容纳258人。可承接各类学术会议、报告、讲座、演讲、典礼仪式以及文艺演等。" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/bg_secondary" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/bg_primary"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:background="@color/bg_primary"
         android:padding="10dp">
+
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/ic_quick"/>
+            android:src="@drawable/ic_quick" />
+
         <TextView
+            style="@style/text_14_sec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            style="@style/text_14_sec"
-            android:text="无需审核，闪电预定"/>
+            android:text="无需审核，闪电预定" />
     </LinearLayout>
 </LinearLayout>

@@ -2,8 +2,12 @@ package com.android.renly.meetingreservation.module.booking.roomList;
 
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
+import com.android.renly.meetingreservation.module.booking.room.BookingRoomActivity;
+
+import butterknife.OnClick;
 
 public class RoomListActivity extends BaseActivity {
+
     @Override
     protected int getLayoutID() {
         return R.layout.activity_rooomlist;
@@ -18,5 +22,10 @@ public class RoomListActivity extends BaseActivity {
     protected void initView() {
         initToolBar(true, "选择会室");
         initSlidr();
+    }
+
+    @OnClick(R.id.item)
+    public void onViewClicked() {
+        jumpToActivity(BookingRoomActivity.class);
     }
 }

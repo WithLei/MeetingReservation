@@ -107,9 +107,9 @@
                     android:orientation="vertical"
                     android:padding="8dp">
 
-                    <com.android.renly.meetingreservation.widget.CircleImageView
+                    <ImageView
                         style="@style/mine_btn_num"
-                        android:src="@color/blue_light" />
+                        android:src="@drawable/ic_quick" />
 
                     <TextView
                         style="@style/text_14_sec"
@@ -132,9 +132,9 @@
                     android:orientation="vertical"
                     android:padding="8dp">
 
-                    <com.android.renly.meetingreservation.widget.CircleImageView
+                    <ImageView
                         style="@style/mine_btn_num"
-                        android:src="@color/blue_light" />
+                        android:src="@drawable/ic_meetinglist" />
 
                     <TextView
                         style="@style/text_14_sec"
@@ -142,7 +142,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="6dp"
                         android:gravity="center"
-                        android:text="小服务"
+                        android:text="会室列表"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -157,9 +157,9 @@
                     android:orientation="vertical"
                     android:padding="8dp">
 
-                    <com.android.renly.meetingreservation.widget.CircleImageView
+                    <ImageView
                         style="@style/mine_btn_num"
-                        android:src="@color/blue_light" />
+                        android:src="@drawable/ic_myroom" />
 
                     <TextView
                         style="@style/text_14_sec"
@@ -182,9 +182,9 @@
                     android:orientation="vertical"
                     android:padding="8dp">
 
-                    <com.android.renly.meetingreservation.widget.CircleImageView
+                    <ImageView
                         style="@style/mine_btn_num"
-                        android:src="@color/blue_light" />
+                        android:src="@drawable/ic_service" />
 
                     <TextView
                         style="@style/text_14_sec"
@@ -192,7 +192,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="6dp"
                         android:gravity="center"
-                        android:text="最近浏览"
+                        android:text="小服务"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
@@ -202,6 +202,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@drawable/main_item"
+                android:elevation="2dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -225,8 +226,8 @@
                             style="@style/text_16_pri"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
                             android:layout_alignParentStart="true"
+                            android:layout_marginStart="5dp"
                             android:text="正在进行会议" />
 
                         <ImageView
@@ -239,7 +240,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="?android:attr/colorPrimary" />
+                        android:background="@color/colorDivider" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -292,6 +293,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@drawable/main_item"
+                android:elevation="2dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -315,8 +317,8 @@
                             style="@style/text_16_pri"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
                             android:layout_alignParentStart="true"
+                            android:layout_marginStart="5dp"
                             android:text="我的会议" />
 
                         <ImageView
@@ -329,7 +331,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="?android:attr/colorPrimary" />
+                        android:background="@color/colorDivider" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"

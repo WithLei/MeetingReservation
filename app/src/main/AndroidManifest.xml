@@ -32,7 +32,12 @@
         <activity android:name=".module.booking.quickBooking.QuickBookingActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
+
         <activity android:name=".module.booking.roomList.RoomListActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".module.booking.room.BookingRoomActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
     </application>

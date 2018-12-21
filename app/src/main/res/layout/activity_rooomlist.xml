@@ -20,9 +20,9 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
+            android:background="?android:attr/selectableItemBackground"
             android:baselineAligned="true"
             android:clickable="true"
-            android:background="?android:attr/selectableItemBackground"
             android:orientation="horizontal">
 
             <ImageView
@@ -57,9 +57,9 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="5dp"
+            android:background="?android:attr/selectableItemBackground"
             android:baselineAligned="true"
             android:clickable="true"
-            android:background="?android:attr/selectableItemBackground"
             android:orientation="horizontal">
 
             <TextView
@@ -75,28 +75,34 @@
                 android:src="@drawable/ic_chevron_right_white_24dp" />
         </LinearLayout>
     </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
         android:background="#FFFFCC"
+        android:paddingStart="10dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="5dp"
         android:singleLine="true"
-        android:text="以下为智能调度的结果，可能与您选择的时间有稍许偏差。"/>
+        android:text="以下为智能调度的结果，可能与您选择的时间有稍许偏差。" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <include layout="@layout/item_room" />
+
             <include layout="@layout/item_room1" />
+
             <include layout="@layout/item_room" />
+
             <include layout="@layout/item_room1" />
         </LinearLayout>
     </ScrollView>

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_secondary"
+    android:background="@color/bg_primary"
     android:orientation="vertical">
 
     <include layout="@layout/my_toolbar" />
@@ -39,7 +39,7 @@
                 android:layout_height="1dp"
                 android:layout_alignParentBottom="true"
                 android:layout_marginEnd="@dimen/dimen_16"
-                android:background="@color/colorDividerDark" />
+                android:background="@color/colorDivider" />
         </RelativeLayout>
 
         <ImageView
@@ -66,7 +66,7 @@
                 android:layout_height="1dp"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="@dimen/dimen_16"
-                android:background="@color/colorDividerDark" />
+                android:background="@color/colorDivider" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -77,7 +77,7 @@
         android:layout_marginEnd="5dp">
 
         <TextView
-            style="@style/text_16_pri"
+            style="@style/text_16_sec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -99,7 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_alignParentBottom="true"
-            android:background="@color/colorDividerDark" />
+            android:background="@color/colorDivider" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -109,7 +109,7 @@
         android:layout_marginEnd="5dp">
 
         <TextView
-            style="@style/text_16_pri"
+            style="@style/text_16_sec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -130,7 +130,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_alignParentBottom="true"
-            android:background="@color/colorDividerDark" />
+            android:background="@color/colorDivider" />
     </RelativeLayout>
 
     <Button
