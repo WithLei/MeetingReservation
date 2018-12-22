@@ -19,7 +19,7 @@ public class MineFragPresenter implements BasePresenter {
 
     private static final String[] titles = new String[]{
             "设置",
-            "分享Plus客户端",
+            "分享客户端",
             "关于本程序",
     };
 

@@ -35,12 +35,13 @@ public class QuickBookingActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
     }
 
     @OnClick(R.id.btn_confirm)
     public void onViewClicked() {
-        jumpToActivity(RoomListActivity.class);
+//        jumpToActivity(RoomListActivity.class);
+        ToastShort("预约成功，可以在 我的预定 中查看预定结果");
+        finishActivity();
     }
 }

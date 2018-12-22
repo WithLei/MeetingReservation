@@ -39,7 +39,8 @@
             android:lines="1"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:text="点击头像登陆"
+            android:text="测试账号"
+            tools:text="点击头像登陆"
             android:textStyle="bold" />
 
         <TextView

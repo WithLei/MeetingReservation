@@ -11,6 +11,7 @@ import android.widget.SearchView;
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
 import com.android.renly.meetingreservation.module.booking.quickBooking.QuickBookingActivity;
+import com.android.renly.meetingreservation.module.booking.roomList.RoomListActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -73,6 +74,7 @@ public class HomeFrag extends BaseFragment {
                 jumpToActivity(QuickBookingActivity.class);
                 break;
             case R.id.btn02:
+                jumpToActivity(RoomListActivity.class);
                 break;
             case R.id.btn03:
                 break;

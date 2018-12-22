@@ -17,9 +17,9 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"
-            android:visibility="gone"
             android:padding="13dp"
-            android:src="@drawable/ic_arraw_back_white" />
+            android:src="@drawable/ic_arraw_back_white"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/title"
@@ -38,14 +38,14 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_gravity="end"
-            android:gravity="center"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"
+            android:gravity="center"
             android:padding="13dp"
-            android:textSize="16sp"
-            android:textColor="@color/white"
             android:text="预定记录"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:visibility="visible" />
     </FrameLayout>
 
@@ -54,128 +54,145 @@
         android:layout_height="120dp"
         android:background="@color/bg_primary"
         android:scaleType="fitXY"
-        android:src="@drawable/bg01"/>
+        android:src="@drawable/bg01" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/red_light"
         android:orientation="vertical">
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/bg_primary"/>
+            android:background="@color/bg_primary" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="175dp"
-            android:elevation="5dp"
             android:background="?android:attr/colorPrimary"
+            android:elevation="5dp"
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/qrbooking"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
+                android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:background="?android:attr/selectableItemBackground">
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/ic_qr_96dp"/>
+                    android:src="@drawable/ic_qr_96dp" />
+
                 <TextView
+                    style="@style/text_16_thi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/text_16_thi"
                     android:layout_marginTop="10dp"
-                    android:text="扫码预定"/>
+                    android:text="扫码预定" />
             </LinearLayout>
+
             <View
                 android:layout_width="2dp"
                 android:layout_height="match_parent"
                 android:background="@color/bg_primary" />
+
             <LinearLayout
+                android:id="@+id/bookingroom"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
+                android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:background="?android:attr/selectableItemBackground">
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <ImageView
+                <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/ic_book_white_96dp"/>
+                    android:src="@drawable/ic_book_white_96dp" />
+
                 <TextView
+                    style="@style/text_16_thi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/text_16_thi"
                     android:layout_marginTop="10dp"
-                    android:text="会室预定"/>
+                    android:text="会室预定" />
             </LinearLayout>
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/bg_primary"/>
+            android:background="@color/bg_primary" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="175dp"
+            android:background="?android:attr/colorPrimary"
             android:elevation="5dp"
-            android:orientation="horizontal"
-            android:background="?android:attr/colorPrimary">
+            android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/quickbooking"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
+                android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:background="?android:attr/selectableItemBackground">
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <ImageView
+                <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/ic_lightning"/>
+                    android:src="@drawable/ic_lightning" />
+
                 <TextView
+                    style="@style/text_16_thi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/text_16_thi"
                     android:layout_marginTop="10dp"
-                    android:text="快速预定"/>
+                    android:text="快速预定" />
             </LinearLayout>
+
             <View
                 android:layout_width="2dp"
                 android:layout_height="match_parent"
                 android:background="@color/bg_primary" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
+                android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:background="?android:attr/selectableItemBackground">
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <ImageView
+                <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/ic_group_white_96dp"/>
+                    android:src="@drawable/ic_group_white_96dp" />
+
                 <TextView
+                    style="@style/text_16_thi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/text_16_thi"
                     android:layout_marginTop="10dp"
-                    android:text="为他人预定"/>
+                    android:text="为他人预定" />
             </LinearLayout>
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/bg_primary"/>
+            android:background="@color/bg_primary" />
     </LinearLayout>
 
 </LinearLayout>

@@ -10,13 +10,15 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@color/green_light" />
+        android:background="@color/bg_secondary"
+        android:scaleType="fitXY"
+        android:src="@drawable/room05" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
         android:gravity="center">
 
@@ -28,10 +30,10 @@
             <EditText
                 android:id="@+id/start_time"
                 style="@style/text_18_sec"
-                android:background="@null"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:background="@null"
                 android:hint="开始时间" />
 
             <View
@@ -43,8 +45,8 @@
         </RelativeLayout>
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@drawable/ic_lefttoright" />
 
         <RelativeLayout
@@ -55,10 +57,10 @@
             <TextView
                 android:id="@+id/end_time"
                 style="@style/text_18_sec"
-                android:background="@null"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:background="@null"
                 android:hint="结束时间" />
 
             <View
@@ -139,10 +141,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
         android:enabled="false"
-        android:text="开 始 搜 索"
+        android:text="确 认 预 约"
         android:textColor="@color/text_btn" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="@dimen/dimen_4"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp">
+
+        <TextView
+            style="@style/booking_tip"
+            android:text="9:00 → 11:00" />
+
+        <TextView
+            style="@style/booking_tip"
+            android:layout_marginLeft="5dp"
+            android:text="13:30 → 16:00" />
+
+        <TextView
+            style="@style/booking_tip"
+            android:layout_marginLeft="5dp"
+            android:text="14:30 → 17:10" />
+    </LinearLayout>
 </LinearLayout>
