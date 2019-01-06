@@ -58,8 +58,10 @@ dependencies {
     // lots of UI
     // 左滑样式
     implementation 'com.r0adkll:slidableactivity:2.0.6'
-
+    // 轮播图
     implementation 'com.youth.banner:banner:1.4.10'
-
+    // 二维码识别简单实现
     implementation 'com.acker:simplezxing:1.5'
+    // 日历样式
+    implementation 'com.haibin:calendarview:3.4.8'
 }
