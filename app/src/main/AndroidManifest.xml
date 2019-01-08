@@ -26,14 +26,16 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".module.home.HomeActivity"
             android:theme="@style/AppTheme.normal"
-            android:windowSoftInputMode="adjustPan|stateHidden" >
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".module.booking.quickBooking.QuickBookingActivity"
+        <activity android:name=".module.booking.search.SearchActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 

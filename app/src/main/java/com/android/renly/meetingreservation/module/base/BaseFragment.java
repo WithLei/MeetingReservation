@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.renly.meetingreservation.R;
+import com.android.renly.meetingreservation.utils.LogUtils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

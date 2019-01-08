@@ -40,6 +40,7 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        doBeforeSetContent();
         setContentView(getLayoutID());
         unbinder = ButterKnife.bind(this);
         // 初始化状态栏
@@ -55,6 +56,8 @@ public abstract class BaseActivity extends FragmentActivity {
     protected abstract void initData();
 
     protected abstract void initView();
+
+    protected void doBeforeSetContent() {}
 
     public void ToastLong(String msg) {
         MyToast.showText(this, msg, Toast.LENGTH_LONG);

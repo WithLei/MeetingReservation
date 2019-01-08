@@ -12,4 +12,5 @@
     <dimen name="spinnerMaxHeight">200dp</dimen>
     <dimen name="scheduleCourseMargin">3dp</dimen>
     <dimen name="scheduleCoursePadding">3dp</dimen>
+    <dimen name="releaseDemandConditionHeight">40dp</dimen>
 </resources>

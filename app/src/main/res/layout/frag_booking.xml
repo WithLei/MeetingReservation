@@ -28,9 +28,9 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:maxEms="10"
-            android:text="预定"
+            android:text="发布场地需求"
             android:textColor="@color/white"
-            android:textSize="17sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
@@ -43,156 +43,344 @@
             android:focusable="true"
             android:gravity="center"
             android:padding="13dp"
-            android:text="预定记录"
+            android:text="联系顾问"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:visibility="visible" />
     </FrameLayout>
 
-    <ImageView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:background="@color/bg_primary"
-        android:scaleType="fitXY"
-        android:src="@drawable/bg01" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/red_light"
+        android:layout_height="match_parent"
+        android:background="@color/bg_secondary"
+        android:fitsSystemWindows="true"
+        android:scrollbars="none"
         android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/bg_primary" />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="175dp"
-            android:background="?android:attr/colorPrimary"
-            android:elevation="5dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/qrbooking"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/bg_primary"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/ic_qr_96dp" />
-
-                <TextView
-                    style="@style/text_16_thi"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="扫码预定" />
-            </LinearLayout>
+                    android:orientation="horizontal">
 
-            <View
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:background="@color/bg_primary" />
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/releaseDemandConditionHeight"
+                        android:layout_weight="1"
+                        android:textAlignment="viewStart" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/dimen_4"
+                        android:background="@color/colorDivider" />
+
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/releaseDemandConditionHeight"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/releaseDemandConditionHeight"
+                        android:layout_weight="1" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/dimen_4"
+                        android:background="@color/colorDivider" />
+
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/releaseDemandConditionHeight"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/releaseDemandConditionHeight">
+
+                    <TextView
+                        style="@style/text_16_sec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/dimen_8"
+                        android:text="可改期" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/dimen_8" />
+                </RelativeLayout>
+
+            </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/bookingroom"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/bg_primary"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/ic_book_white_96dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/releaseDemandConditionHeight"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <TextView
-                    style="@style/text_16_thi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="会室预定" />
+                    <TextView
+                        style="@style/text_16_sec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_8"
+                        android:text="活动人数" />
+
+                    <android.support.design.widget.TextInputEditText
+                        style="@style/text_16_pri"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="必填"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textAlignment="center"
+                        android:typeface="normal" />
+
+                    <TextView
+                        style="@style/text_16_sec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/dimen_8"
+                        android:text="人" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/releaseDemandConditionHeight"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/text_16_sec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_8"
+                        android:text="活动预算" />
+
+                    <android.support.design.widget.TextInputEditText
+                        style="@style/text_16_pri"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="非必填"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textAlignment="center"
+                        android:typeface="normal" />
+
+                    <TextView
+                        style="@style/text_16_sec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/dimen_8"
+                        android:text="元" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/releaseDemandConditionHeight"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/text_16_sec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_8"
+                        android:text="联系人/公司" />
+
+                    <android.support.design.widget.TextInputEditText
+                        style="@style/text_16_pri"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="必填"
+                        android:inputType="text"
+                        android:singleLine="true"
+                        android:textAlignment="center"
+                        android:typeface="normal" />
+
+                    <TextView
+                        style="@style/text_16_sec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/dimen_8"
+                        android:text="人"
+                        android:visibility="invisible" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/releaseDemandConditionHeight"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/text_16_sec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_8"
+                        android:text="联系手机" />
+
+                    <android.support.design.widget.TextInputEditText
+                        style="@style/text_16_pri"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="必填"
+                        android:inputType="phone"
+                        android:singleLine="true"
+                        android:textAlignment="center"
+                        android:typeface="normal" />
+
+                    <TextView
+                        style="@style/text_16_sec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/dimen_8"
+                        android:text="人"
+                        android:visibility="invisible" />
+
+                </LinearLayout>
+
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/bg_primary"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/releaseDemandConditionHeight"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/text_16_sec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_8"
+                        android:layout_marginEnd="24dp"
+                        android:text="其他需求" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider" />
+
+                <EditText
+                    style="@style/text_16_sec"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="可以描述您使用该地的设备、预算和地理位置要求，以及您需要的附加服务，如茶歇、清洁等......"
+                    android:inputType="textMultiLine"
+                    android:lines="5"
+                    android:paddingStart="@dimen/dimen_8"
+                    android:paddingTop="@dimen/dimen_16"
+                    android:paddingEnd="@dimen/dimen_8"
+                    android:paddingBottom="@dimen/dimen_16" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_login"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="20dp"
+                android:enabled="false"
+                android:text="登   陆"
+                android:textColor="@color/text_login_btn" />
         </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/bg_primary" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="175dp"
-            android:background="?android:attr/colorPrimary"
-            android:elevation="5dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:id="@+id/quickbooking"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/ic_lightning" />
-
-                <TextView
-                    style="@style/text_16_thi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="快速预定" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:background="@color/bg_primary" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/ic_group_white_96dp" />
-
-                <TextView
-                    style="@style/text_16_thi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="为他人预定" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/bg_primary" />
-    </LinearLayout>
-
+    </ScrollView>
 </LinearLayout>

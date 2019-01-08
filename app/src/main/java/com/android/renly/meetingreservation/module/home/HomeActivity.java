@@ -3,6 +3,9 @@ package com.android.renly.meetingreservation.module.home;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.renly.meetingreservation.R;
@@ -13,6 +16,7 @@ import com.android.renly.meetingreservation.module.booking.BookingFrag;
 import com.android.renly.meetingreservation.module.folder.FolderFrag;
 import com.android.renly.meetingreservation.module.home.fullscreen.HomeFrag;
 import com.android.renly.meetingreservation.module.mine.MineFrag;
+import com.android.renly.meetingreservation.utils.SoftKeyboardStateHelper;
 import com.android.renly.meetingreservation.utils.toast.MyToast;
 import com.android.renly.meetingreservation.utils.toast.ToastUtils;
 import com.android.renly.meetingreservation.widget.MyBottomTab;
@@ -24,7 +28,8 @@ import butterknife.BindView;
 
 public class HomeActivity extends BaseActivity
         implements ViewPager.OnPageChangeListener {
-
+    @BindView(R.id.root)
+    LinearLayout root;
     @BindView(R.id.bottom_bar)
     MyBottomTab bottomBar;
     private ViewPager viewPager;
@@ -45,6 +50,7 @@ public class HomeActivity extends BaseActivity
     @Override
     protected void initView() {
         bottomBar.setOnTabChangeListener((v, position, isChange) -> setSelect(position, isChange));
+        setKeyBoardListener();
     }
 
     private void setSelect(int position, boolean isChange) {
@@ -52,6 +58,10 @@ public class HomeActivity extends BaseActivity
             viewPager.setCurrentItem(position, false);
         else
             fragments.get(position).ScrollToTop();
+    }
+
+    @Override
+    protected void doBeforeSetContent() {
     }
 
     @Override
@@ -103,9 +113,32 @@ public class HomeActivity extends BaseActivity
         }
     }
 
+    public void hideBottomBar(){
+        bottomBar.setVisibility(View.GONE);
+    }
+
+    public void showBottomBar(){
+        bottomBar.setVisibility(View.VISIBLE);
+    }
+
+    private void setKeyBoardListener() {
+        // 监听软键盘弹起落下事件，确保底部栏不弹起
+        SoftKeyboardStateHelper softKeyboardStateHelper = new SoftKeyboardStateHelper(root);
+        softKeyboardStateHelper.addSoftKeyboardStateListener(new SoftKeyboardStateHelper.SoftKeyboardStateListener() {
+            @Override
+            public void onSoftKeyboardOpened(int keyboardHeightInPx) {
+                hideBottomBar();
+            }
+
+            @Override
+            public void onSoftKeyboardClosed() {
+                showBottomBar();
+            }
+        });
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
-        hideKeyBoard();
     }
 }

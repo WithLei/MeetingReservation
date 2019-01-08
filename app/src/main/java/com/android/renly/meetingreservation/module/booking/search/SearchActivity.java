@@ -1,4 +1,4 @@
-package com.android.renly.meetingreservation.module.booking.quickBooking;
+package com.android.renly.meetingreservation.module.booking.search;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -11,13 +11,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class QuickBookingActivity extends BaseActivity {
+public class SearchActivity extends BaseActivity {
     @BindView(R.id.btn_confirm)
     Button btn;
 
     @Override
     protected int getLayoutID() {
-        return R.layout.activity_quickbooking;
+        return R.layout.activity_search;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class QuickBookingActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        initToolBar(true, "快速预定");
+        initToolBar(true, "搜索");
         initSlidr();
         btn.setEnabled(true);
     }
@@ -40,8 +40,6 @@ public class QuickBookingActivity extends BaseActivity {
 
     @OnClick(R.id.btn_confirm)
     public void onViewClicked() {
-//        jumpToActivity(RoomListActivity.class);
-        ToastShort("预约成功，可以在 我的预定 中查看预定结果");
-        finishActivity();
+        jumpToActivity(RoomListActivity.class);
     }
 }
