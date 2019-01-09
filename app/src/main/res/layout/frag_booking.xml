@@ -138,7 +138,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dimen_8"
+                        android:layout_marginStart="@dimen/dimen_16"
                         android:text="可改期" />
 
                     <Switch
@@ -146,7 +146,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginEnd="@dimen/dimen_8" />
+                        android:layout_marginEnd="@dimen/dimen_16" />
                 </RelativeLayout>
 
             </LinearLayout>
@@ -170,7 +170,7 @@
                         style="@style/text_16_sec"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dimen_8"
+                        android:layout_marginStart="@dimen/dimen_16"
                         android:text="活动人数" />
 
                     <android.support.design.widget.TextInputEditText
@@ -191,7 +191,7 @@
                         style="@style/text_16_sec"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/dimen_8"
+                        android:layout_marginRight="@dimen/dimen_16"
                         android:text="人" />
 
                 </LinearLayout>
@@ -211,7 +211,7 @@
                         style="@style/text_16_sec"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dimen_8"
+                        android:layout_marginStart="@dimen/dimen_16"
                         android:text="活动预算" />
 
                     <android.support.design.widget.TextInputEditText
@@ -232,7 +232,7 @@
                         style="@style/text_16_sec"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/dimen_8"
+                        android:layout_marginRight="@dimen/dimen_16"
                         android:text="元" />
 
                 </LinearLayout>
@@ -252,7 +252,7 @@
                         style="@style/text_16_sec"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dimen_8"
+                        android:layout_marginStart="@dimen/dimen_16"
                         android:text="联系人/公司" />
 
                     <android.support.design.widget.TextInputEditText
@@ -273,7 +273,7 @@
                         style="@style/text_16_sec"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/dimen_8"
+                        android:layout_marginRight="@dimen/dimen_16"
                         android:text="人"
                         android:visibility="invisible" />
 
@@ -294,7 +294,7 @@
                         style="@style/text_16_sec"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dimen_8"
+                        android:layout_marginStart="@dimen/dimen_16"
                         android:text="联系手机" />
 
                     <android.support.design.widget.TextInputEditText
@@ -315,7 +315,7 @@
                         style="@style/text_16_sec"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/dimen_8"
+                        android:layout_marginRight="@dimen/dimen_16"
                         android:text="人"
                         android:visibility="invisible" />
 
@@ -342,7 +342,7 @@
                         style="@style/text_16_sec"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dimen_8"
+                        android:layout_marginStart="@dimen/dimen_16"
                         android:layout_marginEnd="24dp"
                         android:text="其他需求" />
 
@@ -362,9 +362,9 @@
                     android:hint="可以描述您使用该地的设备、预算和地理位置要求，以及您需要的附加服务，如茶歇、清洁等......"
                     android:inputType="textMultiLine"
                     android:lines="5"
-                    android:paddingStart="@dimen/dimen_8"
+                    android:paddingStart="@dimen/dimen_16"
                     android:paddingTop="@dimen/dimen_16"
-                    android:paddingEnd="@dimen/dimen_8"
+                    android:paddingEnd="@dimen/dimen_16"
                     android:paddingBottom="@dimen/dimen_16" />
 
             </LinearLayout>
@@ -379,7 +379,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="20dp"
                 android:enabled="false"
-                android:text="登   陆"
+                android:text="发 布 需 求"
                 android:textColor="@color/text_login_btn" />
         </LinearLayout>
     </ScrollView>

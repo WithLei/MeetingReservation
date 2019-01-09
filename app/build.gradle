@@ -64,4 +64,6 @@ dependencies {
     implementation 'com.acker:simplezxing:1.5'
     // 日历样式
     implementation 'com.haibin:calendarview:3.4.8'
+    // 筛选框样式
+    implementation 'com.github.dongjunkun:DropDownMenu:1.0.4'
 }

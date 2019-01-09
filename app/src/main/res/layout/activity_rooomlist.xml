@@ -2,108 +2,113 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bg_secondary"
     android:orientation="vertical">
 
-    <include layout="@layout/my_toolbar" />
-
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/toolbarHeight"
         android:background="?android:attr/colorPrimary"
-        android:orientation="horizontal">
+        android:elevation="4dp">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="13dp"
+            android:src="@drawable/ic_arraw_back_white" />
 
         <LinearLayout
-            android:id="@+id/btn_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:baselineAligned="true"
-            android:clickable="true"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/sec_item"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_chevron_left_white_24dp" />
-
-            <TextView
-                style="@style/text_16_thi"
+            <LinearLayout
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_event_note_24dp"
+                    android:tint="?android:attr/colorPrimary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="选日期"
+                    android:textColor="?android:attr/colorPrimary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="前一天" />
+                android:layout_marginStart="@dimen/dimen_8"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="@dimen/dimen_8"
+                android:layout_marginBottom="5dp"
+                android:background="@color/colorDividerDark" />
+
+            <LinearLayout
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_search_white_24dp"
+                    android:tint="@color/colorDividerDark" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="用途/地标/名称等"
+                    android:textColor="@color/colorDividerDark"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </LinearLayout>
 
-        <TextView
-            style="@style/text_14_sec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@drawable/main_item"
-            android:paddingStart="10dp"
-            android:paddingTop="5dp"
-            android:paddingEnd="10dp"
-            android:paddingBottom="5dp"
-            android:text="12月20日 周四" />
-
-        <LinearLayout
-            android:id="@+id/btn_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="5dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:baselineAligned="true"
+        <ImageView
+            android:id="@+id/location"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
-            android:orientation="horizontal">
+            android:focusable="true"
+            android:padding="13dp"
+            android:src="@drawable/ic_location_on_black_24dp"
+            android:tint="@color/white" />
+    </FrameLayout>
 
-            <TextView
-                style="@style/text_16_thi"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="后一天" />
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_chevron_right_white_24dp" />
-        </LinearLayout>
-    </RelativeLayout>
-
-    <TextView
+    <com.yyydjk.library.DropDownMenu
+        android:id="@+id/dropDownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFCC"
-        android:paddingStart="10dp"
-        android:paddingTop="5dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="5dp"
-        android:singleLine="true"
-        android:text="以下为智能调度的结果，可能与您选择的时间有稍许偏差。" />
+        app:ddmenuTextSize="14sp"
+        app:ddtextUnselectedColor="@color/drop_down_unselected"
+        app:ddtextSelectedColor="@color/drop_down_selected"
+        app:dddividerColor="@color/colorDivider"
+        app:ddunderlineColor="@color/gray"
+        app:ddmenuSelectedIcon="@drawable/ic_keyboard_arrow_up_24dp"
+        app:ddmenuUnselectedIcon="@drawable/ic_keyboard_arrow_down_24dp"
+        app:ddmaskColor="@color/mask_color"
+        app:ddmenuBackgroundColor="@color/bg_primary"
+        app:ddmenuMenuHeightPercent="0.5"/>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include layout="@layout/item_room" />
-
-            <include layout="@layout/item_room1" />
-
-            <include layout="@layout/item_room" />
-
-            <include layout="@layout/item_room1" />
-        </LinearLayout>
-    </ScrollView>
 </LinearLayout>

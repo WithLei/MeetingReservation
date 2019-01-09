@@ -27,7 +27,7 @@ public class SearchActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        initToolBar(true, "搜索");
+        initToolBar(true, "搜索场地");
         initSlidr();
         btn.setEnabled(true);
     }

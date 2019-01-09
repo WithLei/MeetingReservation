@@ -31,8 +31,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 public class HomeFrag extends BaseFragment implements
         CalendarView.OnCalendarSelectListener,
         CalendarView.OnYearChangeListener{
-    @BindView(R.id.searchview)
-    SearchView searchview;
     @BindView(R.id.btn01)
     LinearLayout btn01;
     @BindView(R.id.tv_month_day)

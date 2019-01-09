@@ -33,4 +33,9 @@
     <color name="main_color_9">#9c27b0</color>
     <color name="main_color_10">#cc268f</color>
     <color name="main_color_11">#39c5bb</color>
+
+    <color name="drop_down_unselected">@color/text_color_sec</color>
+    <color name="drop_down_selected">@color/colorPrimary</color>
+    <color name="mask_color">#88888888</color>
+
 </resources>

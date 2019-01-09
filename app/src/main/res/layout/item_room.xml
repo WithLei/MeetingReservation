@@ -1,10 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:background="@color/bg_primary"
     android:elevation="4dp"
-    android:id="@+id/item"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -18,22 +18,49 @@
             android:scaleType="fitXY"
             android:src="@drawable/room04" />
 
-        <CheckBox
-            style="@style/evaluate_theme"
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:gravity="center">
+
+            <CheckBox
+                style="@style/evaluate_theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp" />
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginBottom="@dimen/dimen_8"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/list_tip"
+                android:text="研讨会"/>
+
+            <TextView
+                style="@style/list_tip"
+                android:text="商务"
+                android:layout_marginStart="@dimen/dimen_8"/>
+
+            <TextView
+                style="@style/list_tip"
+                android:text="推介会"
+                android:layout_marginStart="@dimen/dimen_8"/>
+
+        </LinearLayout>
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"
-        android:clickable="true"
-        android:orientation="vertical"
-        android:focusable="true">
+        android:focusable="true"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,7 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="14:00 - 17:20"
+                    android:text="2019/1/9"
                     android:textColor="?android:attr/colorPrimaryDark"
                     android:textSize="16sp" />
 

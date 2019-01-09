@@ -99,5 +99,17 @@
         <item name="android:paddingEnd">10dp</item>
         <item name="android:background">@drawable/main_item</item>
     </style>
+    
+    <style name="list_tip">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:background">#CC000000</item>
+        <item name="android:textColor">#CCFFFFFF</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 
 </resources>
