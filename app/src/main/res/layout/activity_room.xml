@@ -290,7 +290,7 @@
                     android:textSize="14sp"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/green_light"
-                    android:text="查看此会室的安排详情"/>
+                    android:text="查看此会室的安排档期"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

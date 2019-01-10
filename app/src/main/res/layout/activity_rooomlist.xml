@@ -103,7 +103,7 @@
         app:ddtextUnselectedColor="@color/drop_down_unselected"
         app:ddtextSelectedColor="@color/drop_down_selected"
         app:dddividerColor="@color/colorDivider"
-        app:ddunderlineColor="@color/gray"
+        app:ddunderlineColor="@color/colorDivider"
         app:ddmenuSelectedIcon="@drawable/ic_keyboard_arrow_up_24dp"
         app:ddmenuUnselectedIcon="@drawable/ic_keyboard_arrow_down_24dp"
         app:ddmaskColor="@color/mask_color"

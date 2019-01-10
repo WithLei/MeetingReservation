@@ -20,7 +20,7 @@ public class BookingRoomActivity extends BaseActivity {
 
     @Override
     protected int getLayoutID() {
-        return R.layout.activity_book_room;
+        return R.layout.activity_room;
     }
 
     @Override

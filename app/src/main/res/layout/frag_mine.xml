@@ -25,7 +25,7 @@
             android:layout_height="80dp"
             android:layout_marginStart="20dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/image_placeholder"
+            android:src="@mipmap/image_placeholder"
             app:civ_border_color="@android:color/white"
             app:civ_border_width="2dp" />
 

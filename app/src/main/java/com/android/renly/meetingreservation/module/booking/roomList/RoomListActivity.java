@@ -33,15 +33,15 @@ public class RoomListActivity extends BaseActivity {
     private String headers[] = {"区域", "时段", "排序", "筛选"};
     private List<View> popupViews = new ArrayList<>();
 
-    private GirdDropDownAdapter cityAdapter;
-    private ListDropDownAdapter ageAdapter;
-    private ListDropDownAdapter sexAdapter;
+    private GirdDropDownAdapter placeAdapter;
+    private ListDropDownAdapter timeAdapter;
+    private ListDropDownAdapter sortAdapter;
     private ConstellationAdapter constellationAdapter;
 
-    private String citys[] = {"不限", "武汉", "北京", "上海", "成都", "广州", "深圳", "重庆", "天津", "西安", "南京", "杭州"};
-    private String ages[] = {"不限", "18岁以下", "18-22岁", "23-26岁", "27-35岁", "35岁以上"};
-    private String sexs[] = {"不限", "男", "女"};
-    private String constellations[] = {"不限", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座", "水瓶座", "双鱼座"};
+    private String places[] = {"不限", "国际创意园-1幢", "国际创意园-3B幢", "电商产业园1号楼", "电商产业园2-1号楼", "电子科技技术大厦", "青年创业社区5号楼", "网络科技园主C楼", "商务产业园C3幢", "商务产业园2幢"};
+    private String times[] = {"不限", "今日", "未来三天", "未来一周", "未来一月内", "未来半年内"};
+    private String sorts[] = {"不限", "推荐排序", "热度最高", "点赞最高", "价格最低", "价格最高"};
+    private String constellations[] = {"不限", "30人以下", "31-50人", "51-100人", "101-200\n人", "200人\n以上 ", "无需审核\n", "场地认证\n", "立即确认", "投影仪", "电子屏", "演讲台", "同声传译\n", "200-400平米", "400-600平米", "600-800平米","800-1000平米","1000平米以上"};
 
     private int constellationPosition = 0;
 
@@ -60,23 +60,23 @@ public class RoomListActivity extends BaseActivity {
         initSlidr();
         findViewById(R.id.back).setOnClickListener(view -> finishActivity());
 
-        //init city menu
-        final ListView cityView = new ListView(this);
-        cityAdapter = new GirdDropDownAdapter(this, Arrays.asList(citys));
-        cityView.setDividerHeight(0);
-        cityView.setAdapter(cityAdapter);
+        //init place menu
+        final ListView placeView = new ListView(this);
+        placeAdapter = new GirdDropDownAdapter(this, Arrays.asList(places));
+        placeView.setDividerHeight(0);
+        placeView.setAdapter(placeAdapter);
 
-        //init age menu
-        final ListView ageView = new ListView(this);
-        ageView.setDividerHeight(0);
-        ageAdapter = new ListDropDownAdapter(this, Arrays.asList(ages));
-        ageView.setAdapter(ageAdapter);
+        //init time menu
+        final ListView timeView = new ListView(this);
+        timeView.setDividerHeight(0);
+        timeAdapter = new ListDropDownAdapter(this, Arrays.asList(times));
+        timeView.setAdapter(timeAdapter);
 
-        //init sex menu
-        final ListView sexView = new ListView(this);
-        sexView.setDividerHeight(0);
-        sexAdapter = new ListDropDownAdapter(this, Arrays.asList(sexs));
-        sexView.setAdapter(sexAdapter);
+        //init sort menu
+        final ListView sortView = new ListView(this);
+        sortView.setDividerHeight(0);
+        sortAdapter = new ListDropDownAdapter(this, Arrays.asList(sorts));
+        sortView.setAdapter(sortAdapter);
 
         //init constellation
         final View constellationView = getLayoutInflater().inflate(R.layout.custom_layout, null);
@@ -93,35 +93,35 @@ public class RoomListActivity extends BaseActivity {
         });
 
         //init popupViews
-        popupViews.add(cityView);
-        popupViews.add(ageView);
-        popupViews.add(sexView);
+        popupViews.add(placeView);
+        popupViews.add(timeView);
+        popupViews.add(sortView);
         popupViews.add(constellationView);
 
         //add item click event
-        cityView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        placeView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                cityAdapter.setCheckItem(position);
-                mDropDownMenu.setTabText(position == 0 ? headers[0] : citys[position]);
+                placeAdapter.setCheckItem(position);
+                mDropDownMenu.setTabText(position == 0 ? headers[0] : places[position]);
                 mDropDownMenu.closeMenu();
             }
         });
 
-        ageView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        timeView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ageAdapter.setCheckItem(position);
-                mDropDownMenu.setTabText(position == 0 ? headers[1] : ages[position]);
+                timeAdapter.setCheckItem(position);
+                mDropDownMenu.setTabText(position == 0 ? headers[1] : times[position]);
                 mDropDownMenu.closeMenu();
             }
         });
 
-        sexView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        sortView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                sexAdapter.setCheckItem(position);
-                mDropDownMenu.setTabText(position == 0 ? headers[2] : sexs[position]);
+                sortAdapter.setCheckItem(position);
+                mDropDownMenu.setTabText(position == 0 ? headers[2] : sorts[position]);
                 mDropDownMenu.closeMenu();
             }
         });

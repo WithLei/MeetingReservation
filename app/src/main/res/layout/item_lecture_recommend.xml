@@ -16,7 +16,7 @@
         <ImageView
             android:layout_width="70dp"
             android:layout_height="80dp"
-            android:background="@drawable/speaker01" />
+            android:background="@mipmap/speaker01" />
 
         <RelativeLayout
             android:layout_width="match_parent"

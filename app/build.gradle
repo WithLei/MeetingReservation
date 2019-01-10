@@ -66,4 +66,6 @@ dependencies {
     implementation 'com.haibin:calendarview:3.4.8'
     // 筛选框样式
     implementation 'com.github.dongjunkun:DropDownMenu:1.0.4'
+    // 下拉刷新样式
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-18'
 }

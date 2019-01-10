@@ -174,6 +174,7 @@
                         style="@style/text_14_sec"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="bottom"
                         android:drawableLeft="@drawable/ic_title_24dp"
                         android:text=" 关于新产品的售价" />
 
@@ -184,6 +185,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/meeting_title"
                         android:layout_marginTop="2dp"
+                        android:gravity="bottom"
                         android:drawableLeft="@drawable/ic_access_time_black_24dp"
                         android:text=" 2019/01/08 09:30 - 11:30" />
 
@@ -194,6 +196,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/meeting_time"
                         android:layout_marginTop="2dp"
+                        android:gravity="bottom"
                         android:drawableLeft="@drawable/ic_location_on_black_24dp"
                         android:text=" B楼308会议室" />
 
@@ -204,6 +207,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignBaseline="@id/meeting_address"
                         android:layout_alignParentEnd="true"
+                        android:gravity="bottom"
                         android:drawableLeft="@drawable/ic_person_black_24dp"
                         android:text=" 市场部" />
                 </RelativeLayout>
@@ -265,6 +269,7 @@
                         style="@style/text_14_sec"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="bottom"
                         android:drawableLeft="@drawable/ic_title_24dp"
                         android:text=" 公司管理制度的优化和漏洞" />
 
@@ -274,6 +279,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/mymeeting_title"
+                        android:gravity="bottom"
                         android:layout_marginTop="2dp"
                         android:drawableLeft="@drawable/ic_access_time_black_24dp"
                         android:text=" 2019/01/23 09:30 - 11:30" />
@@ -284,6 +290,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/mymeeting_time"
+                        android:gravity="bottom"
                         android:layout_marginTop="2dp"
                         android:drawableLeft="@drawable/ic_location_on_black_24dp"
                         android:text=" A楼308会议室" />
@@ -294,6 +301,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignBaseline="@id/mymeeting_address"
+                        android:gravity="bottom"
                         android:layout_alignParentEnd="true"
                         android:drawableLeft="@drawable/ic_person_black_24dp"
                         android:text=" 外交部" />

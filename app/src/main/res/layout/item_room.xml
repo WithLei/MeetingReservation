@@ -64,7 +64,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="105dp"
+            android:layout_height="95dp"
             android:elevation="1dp"
             android:orientation="vertical"
             android:paddingStart="20dp"
@@ -77,15 +77,42 @@
                 android:layout_height="wrap_content"
                 android:text="B2楼4037 · 多功能会议室" />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+            <TextView
+                style="@style/text_16_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:text="4.5" />
             <TextView
                 style="@style/text_14_sec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:text="拥有先进及齐全的多媒体设备，可容纳258人。可承接各类学术会议、报告、讲座、演讲、典礼仪式以及文艺演等。" />
-
+                android:text="分"/>
+                <TextView
+                    style="@style/text_16_sec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:text="热度："/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_hot"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_hot"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_hot"/>
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -104,13 +131,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:text="2019/1/9"
-                    android:textColor="?android:attr/colorPrimaryDark"
+                    android:textColor="@color/green_light"
                     android:textSize="16sp" />
 
                 <ImageView
                     android:layout_width="22dp"
                     android:layout_height="22dp"
                     android:layout_marginStart="5dp"
+                    android:tint="@color/green_light"
                     android:src="@drawable/ic_event_note_24dp" />
             </LinearLayout>
         </LinearLayout>
