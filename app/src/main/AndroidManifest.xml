@@ -46,6 +46,9 @@
         <activity android:name=".module.booking.room.BookingRoomActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".module.booking.success.BookingSuccessActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>

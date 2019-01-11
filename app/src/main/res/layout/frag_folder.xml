@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bg_secondary"
     android:orientation="vertical">
 
@@ -29,7 +29,8 @@
                 android:src="@drawable/ic_file_upload_white_24dp" />
 
             <TextView
-                style="@style/text_16_thi"
+                android:textSize="16sp"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -58,7 +59,8 @@
                 android:src="@drawable/ic_cloud_download_white_24dp" />
 
             <TextView
-                style="@style/text_16_thi"
+                android:textSize="16sp"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -71,43 +73,52 @@
         android:id="@+id/fl_searchview"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:background="#FFFFFFFF"
         android:layout_below="@id/toolbar"
-        android:background="#00000000"
-        android:gravity="center_vertical"
-        android:elevation="1dp">
+        android:padding="4dp">
 
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="@dimen/dimen_16"
-            android:tint="@color/colorDividerDark"
-            android:src="@drawable/ic_search_white_24dp"/>
-
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_8"
-            android:layout_marginEnd="@dimen/dimen_8"
-            android:hint="查找文件夹/文件"
-            style="@style/text_16_sec"
-            android:background="@null"/>
+            android:layout_height="match_parent"
+            android:background="#F5F5F5"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:src="@drawable/ic_search_white_24dp"
+                android:tint="@color/colorDividerDark" />
+
+            <EditText
+                style="@style/text_16_sec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8"
+                android:layout_marginEnd="@dimen/dimen_8"
+                android:background="@null"
+                android:hint="查找文件夹/文件" />
+        </LinearLayout>
     </LinearLayout>
+
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/fl_searchview"
-        android:background="@color/bg_primary"/>
+        android:background="@color/colorDivider" />
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
         android:layout_marginTop="41dp"
-        app:srlEnablePreviewInEditMode="true"
-        android:layout_below="@id/toolbar">
+        app:srlEnablePreviewInEditMode="true">
+
         <com.scwang.smartrefresh.layout.header.ClassicsHeader
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -142,9 +153,10 @@
 
             </LinearLayout>
         </ScrollView>
+
         <com.scwang.smartrefresh.layout.footer.ClassicsFooter
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 </RelativeLayout>

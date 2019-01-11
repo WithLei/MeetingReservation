@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_secondary"
+    android:orientation="vertical">
+
+    <include layout="@layout/my_toolbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/bg_primary">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/bg_primary"
+                android:src="@drawable/ic_success" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:text="发布成功"
+                android:textColor="@color/green_dark"
+                android:textSize="16sp" />
+
+            <TextView
+                style="@style/text_14_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:text="我们将会为您尽快安排，确定后将以消息方式提醒" />
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:background="@color/bg_primary"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dimen_8"
+            android:gravity="center_vertical"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="6dp"
+                android:layout_height="24dp"
+                android:background="@color/green_dark" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/text_16_sec"
+                android:layout_marginStart="@dimen/dimen_8"
+                android:text="需求详情"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:paddingStart="@dimen/dimen_16"
+            android:orientation="vertical">
+            <TextView
+                style="@style/text_14_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_8"
+                android:text="需求编号： 4R1Q5Q"/>
+
+            <TextView
+                style="@style/text_14_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_8"
+                android:text="区域： 国际创业园"/>
+
+            <TextView
+                style="@style/text_14_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_8"
+                android:text="活动类型： 商务会议"/>
+
+            <TextView
+                style="@style/text_14_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_8"
+                android:text="时间： 2019/1/23 13:00-17:00"/>
+
+            <TextView
+                style="@style/text_14_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_8"
+                android:text="活动人数： 57人"/>
+
+            <TextView
+                style="@style/text_14_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_8"
+                android:text="活动预算： -"/>
+
+            <TextView
+                style="@style/text_14_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_8"
+                android:text="联系人/公司： AK科技王先生"/>
+
+            <TextView
+                style="@style/text_14_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_8"
+                android:text="联系方式： 17812345678"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

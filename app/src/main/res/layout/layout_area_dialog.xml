@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/bg_secondary"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:text="取消"
+            android:textColor="@color/text_color_sec"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/text_16_pri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="区域" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:text="确认"
+            android:textColor="@color/orange_light"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/text_16_sec"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/bg_primary"
+                android:gravity="center"
+                android:text="国际创意园-1幢" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDivider" />
+
+            <TextView
+                style="@style/text_16_sec"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/bg_primary"
+                android:gravity="center"
+                android:text="国际创意园-3B幢" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDivider" />
+
+            <TextView
+                style="@style/text_16_sec"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/bg_primary"
+                android:gravity="center"
+                android:text="电商产业园1号楼" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDivider" />
+
+            <TextView
+                style="@style/text_16_sec"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/bg_primary"
+                android:gravity="center"
+                android:text="电商产业园2-1号楼" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDivider" />
+
+            <TextView
+                style="@style/text_16_sec"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/bg_primary"
+                android:gravity="center"
+                android:text="电子科技技术大厦" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDivider" />
+
+            <TextView
+                style="@style/text_16_sec"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/bg_primary"
+                android:gravity="center"
+                android:text="青年创业社区5号楼" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDivider" />
+
+            <TextView
+                style="@style/text_16_sec"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/bg_primary"
+                android:gravity="center"
+                android:text="网络科技园主C楼" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDivider" />
+
+            <TextView
+                style="@style/text_16_sec"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/bg_primary"
+                android:gravity="center"
+                android:text="商业产业园C3幢" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDivider" />
+
+            <TextView
+                style="@style/text_16_sec"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/bg_primary"
+                android:gravity="center"
+                android:text="商业产业园2幢" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

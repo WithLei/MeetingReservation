@@ -34,7 +34,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/menu"
+            android:id="@+id/contact"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_gravity="end"
@@ -54,8 +54,8 @@
         android:layout_height="match_parent"
         android:background="@color/bg_secondary"
         android:fitsSystemWindows="true"
-        android:scrollbars="none"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,11 +76,28 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <android.support.v7.widget.AppCompatSpinner
+                    <RelativeLayout
+                        android:id="@+id/area"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/releaseDemandConditionHeight"
                         android:layout_weight="1"
-                        android:textAlignment="viewStart" />
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/text_16_thi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_16"
+                            android:text="区域" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/dimen_16"
+                            android:src="@drawable/ic_chevron_right_black_24dp"
+                            android:tint="@color/colorDividerDark" />
+                    </RelativeLayout>
 
                     <View
                         android:layout_width="1dp"
@@ -88,10 +105,28 @@
                         android:layout_margin="@dimen/dimen_4"
                         android:background="@color/colorDivider" />
 
-                    <android.support.v7.widget.AppCompatSpinner
+                    <RelativeLayout
+                        android:id="@+id/type"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/releaseDemandConditionHeight"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/text_16_thi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_16"
+                            android:text="活动类型" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/dimen_16"
+                            android:src="@drawable/ic_chevron_right_black_24dp"
+                            android:tint="@color/colorDividerDark" />
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -105,10 +140,29 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <android.support.v7.widget.AppCompatSpinner
+                    <RelativeLayout
+                        android:id="@+id/date"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/releaseDemandConditionHeight"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/tv_date"
+                            style="@style/text_16_thi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_16"
+                            android:text="日期" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/dimen_16"
+                            android:src="@drawable/ic_chevron_right_black_24dp"
+                            android:tint="@color/colorDividerDark" />
+                    </RelativeLayout>
 
                     <View
                         android:layout_width="1dp"
@@ -116,10 +170,29 @@
                         android:layout_margin="@dimen/dimen_4"
                         android:background="@color/colorDivider" />
 
-                    <android.support.v7.widget.AppCompatSpinner
+                    <RelativeLayout
+                        android:id="@+id/time"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/releaseDemandConditionHeight"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/tv_time"
+                            style="@style/text_16_thi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_16"
+                            android:text="具体时间" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/dimen_16"
+                            android:src="@drawable/ic_chevron_right_black_24dp"
+                            android:tint="@color/colorDividerDark" />
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -142,6 +215,7 @@
                         android:text="可改期" />
 
                     <Switch
+                        android:id="@+id/isRescheduled"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
@@ -174,6 +248,7 @@
                         android:text="活动人数" />
 
                     <android.support.design.widget.TextInputEditText
+                        android:id="@+id/people"
                         style="@style/text_16_pri"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -215,6 +290,7 @@
                         android:text="活动预算" />
 
                     <android.support.design.widget.TextInputEditText
+                        android:id="@+id/budget"
                         style="@style/text_16_pri"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -256,6 +332,7 @@
                         android:text="联系人/公司" />
 
                     <android.support.design.widget.TextInputEditText
+                        android:id="@+id/company"
                         style="@style/text_16_pri"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -298,6 +375,7 @@
                         android:text="联系手机" />
 
                     <android.support.design.widget.TextInputEditText
+                        android:id="@+id/phone"
                         style="@style/text_16_pri"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -354,6 +432,7 @@
                     android:background="@color/colorDivider" />
 
                 <EditText
+                    android:id="@+id/demand"
                     style="@style/text_16_sec"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
@@ -370,7 +449,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/btn_login"
+                android:id="@+id/btn"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -9,7 +9,7 @@
 
     <color name="text_color_pri">#ff050505</color>
     <color name="text_color_sec">#ff5f5f5f</color>
-    <color name="text_color_thi">#ffffffff</color>
+    <color name="text_color_thi">#ff9f9f9f</color>
 
     <color name="bg_primary">#ffffffff</color>
     <color name="bg_secondary">#fff5f5f5</color>
@@ -19,6 +19,7 @@
     <color name="transparent">#00ffffff</color>
     <color name="red_light">#ffff4444</color>
     <color name="green_light">#ff99cc00</color>
+    <color name="green_dark">#43b14d</color>
     <color name="blue_light">#ff33b5e5</color>
     <color name="orange_light">#ffffbb33</color>
 

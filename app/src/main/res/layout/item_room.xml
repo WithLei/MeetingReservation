@@ -131,14 +131,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:text="2019/1/9"
-                    android:textColor="@color/green_light"
+                    android:textColor="@color/orange_light"
                     android:textSize="16sp" />
 
                 <ImageView
                     android:layout_width="22dp"
                     android:layout_height="22dp"
                     android:layout_marginStart="5dp"
-                    android:tint="@color/green_light"
+                    android:tint="@color/orange_light"
                     android:src="@drawable/ic_event_note_24dp" />
             </LinearLayout>
         </LinearLayout>
