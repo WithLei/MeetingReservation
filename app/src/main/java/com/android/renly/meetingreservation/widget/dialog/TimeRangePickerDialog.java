@@ -7,14 +7,18 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TimePicker;
 
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.utils.CommonUtils;
+import com.android.renly.meetingreservation.utils.LogUtils;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -156,11 +160,14 @@ public class TimeRangePickerDialog extends Dialog {
 
     private void setTimePickerDividerColor(TimePicker timePicker) {
         LinearLayout llFirst = (LinearLayout) timePicker.getChildAt(0);
-        LinearLayout mSpinners = (LinearLayout) llFirst.getChildAt(1);
+        FrameLayout mSpinners = (FrameLayout) llFirst.getChildAt(0);
+        LogUtils.printLog("mSpinners2 " + mSpinners.getChildAt(1).getClass());
         for (int i = 0; i < mSpinners.getChildCount(); i++) {
             if (mSpinners.getChildAt(i) instanceof NumberPicker) {
+                LogUtils.printLog("i" + i + "is numberpicker");
                 Field[] pickerFields = NumberPicker.class.getDeclaredFields();
                 setPickerMargin((NumberPicker) mSpinners.getChildAt(i));
+                setNumberPickerTextSize((NumberPicker) mSpinners.getChildAt(i));
                 for (Field pf : pickerFields) {
                     if (pf.getName().equals("mSelectionDivider")) {
                         pf.setAccessible(true);
@@ -176,8 +183,38 @@ public class TimeRangePickerDialog extends Dialog {
                         break;
                     }
                 }
+            } else
+                LogUtils.printLog("i" + i + "is not numberpicker");
+        }
+    }
+
+    /**
+     * 设置picker的字体大小
+     */
+    private void setNumberPickerTextSize(NumberPicker np) {
+        LogUtils.printLog("setNumPicker");
+        EditText et = findEditText(np);
+        et.setFocusable(false);
+        et.setGravity(Gravity.CENTER);
+        et.setTextSize(10);
+        LogUtils.printLog("设置picker");
+    }
+
+    private EditText findEditText(NumberPicker np) {
+        if (null != np)
+        {
+            for (int i = 0; i < np.getChildCount(); i++)
+            {
+                View child = np.getChildAt(i);
+
+                if (child instanceof EditText)
+                {
+                    return (EditText)child;
+                }
             }
         }
+
+        return null;
     }
 
     /**
