@@ -22,7 +22,6 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@color/bg_primary"
                 android:src="@drawable/ic_success" />
 
             <TextView

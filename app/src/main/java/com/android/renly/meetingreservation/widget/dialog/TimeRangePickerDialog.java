@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.android.renly.meetingreservation.R;
@@ -161,7 +162,8 @@ public class TimeRangePickerDialog extends Dialog {
     private void setTimePickerDividerColor(TimePicker timePicker) {
         LinearLayout llFirst = (LinearLayout) timePicker.getChildAt(0);
         FrameLayout mSpinners = (FrameLayout) llFirst.getChildAt(0);
-        LogUtils.printLog("mSpinners2 " + mSpinners.getChildAt(1).getClass());
+        LogUtils.printLog("mSpinner.size() == " + mSpinners.getChildCount());
+//        LogUtils.printLog("mSpinners2 " + mSpinners.getChildAt(1).getClass());
         for (int i = 0; i < mSpinners.getChildCount(); i++) {
             if (mSpinners.getChildAt(i) instanceof NumberPicker) {
                 LogUtils.printLog("i" + i + "is numberpicker");
@@ -183,9 +185,23 @@ public class TimeRangePickerDialog extends Dialog {
                         break;
                     }
                 }
-            } else
-                LogUtils.printLog("i" + i + "is not numberpicker");
+            } else{
+                LogUtils.printLog("i" + i + "is not numberpicker is " +  mSpinners.getChildAt(i).getClass());
+                LinearLayout ll = (LinearLayout) mSpinners.getChildAt(i);
+                LogUtils.printLog("ll size = " + ll.getChildCount());
+                for (int t = 0;t < ll.getChildCount();t++) {
+                    LogUtils.printLog("t = " + t + " " + ll.getChildAt(t));
+                    if (ll.getChildAt(i) instanceof TextView)
+                        setTextSize((TextView)ll.getChildAt(t));
+                }
+            }
+
         }
+    }
+
+    private void setTextSize(TextView tv) {
+        LogUtils.printLog("setTextSize");
+        tv.setTextSize(12);
     }
 
     /**
