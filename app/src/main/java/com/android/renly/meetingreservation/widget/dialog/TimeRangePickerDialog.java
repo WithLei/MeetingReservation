@@ -186,12 +186,9 @@ public class TimeRangePickerDialog extends Dialog {
                     }
                 }
             } else{
-                LogUtils.printLog("i" + i + "is not numberpicker is " +  mSpinners.getChildAt(i).getClass());
                 LinearLayout ll = (LinearLayout) mSpinners.getChildAt(i);
-                LogUtils.printLog("ll size = " + ll.getChildCount());
                 for (int t = 0;t < ll.getChildCount();t++) {
-                    LogUtils.printLog("t = " + t + " " + ll.getChildAt(t));
-                    if (ll.getChildAt(i) instanceof TextView)
+                    if (ll.getChildAt(t) instanceof TextView)
                         setTextSize((TextView)ll.getChildAt(t));
                 }
             }
@@ -201,7 +198,8 @@ public class TimeRangePickerDialog extends Dialog {
 
     private void setTextSize(TextView tv) {
         LogUtils.printLog("setTextSize");
-        tv.setTextSize(12);
+        tv.setTextSize(32);
+        tv.setGravity(Gravity.CENTER);
     }
 
     /**

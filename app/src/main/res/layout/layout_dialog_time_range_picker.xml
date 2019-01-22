@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:background="@drawable/shape"
@@ -19,28 +19,27 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="230dp"
         android:layout_marginTop="10dp">
 
         <TimePicker
             android:id="@+id/timePickerStart"
-            android:layout_width="150dp"
-            android:layout_height="match_parent" />
+            android:layout_width="140dp"
+            android:layout_height="match_parent"/>
+
+        <TimePicker
+            android:id="@+id/timePickerEnd"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="至"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/holo_blue_light33"
             android:textSize="16sp" />
-
-        <TimePicker
-            android:id="@+id/timePickerEnd"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true" />
-
     </RelativeLayout>
 
 
