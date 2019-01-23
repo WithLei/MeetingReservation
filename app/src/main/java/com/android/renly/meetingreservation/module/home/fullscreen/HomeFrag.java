@@ -2,6 +2,7 @@ package com.android.renly.meetingreservation.module.home.fullscreen;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -30,6 +31,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class HomeFrag extends BaseFragment implements
         CalendarView.OnCalendarSelectListener,
+        CalendarView.OnCalendarLongClickListener,
         CalendarView.OnYearChangeListener{
     @BindView(R.id.btn01)
     LinearLayout btn01;
@@ -63,32 +65,34 @@ public class HomeFrag extends BaseFragment implements
 
     @Override
     protected void initData(Context content) {
+        initView();
+
         int year = mCalendarView.getCurYear();
         int month = mCalendarView.getCurMonth();
 
         Map<String, Calendar> map = new HashMap<>();
-        map.put(getSchemeCalendar(year, month, 3, 0xFF40db25, "20").toString(),
-                getSchemeCalendar(year, month, 3, 0xFF40db25, "20"));
-        map.put(getSchemeCalendar(year, month, 6, 0xFFe69138, "33").toString(),
-                getSchemeCalendar(year, month, 6, 0xFFe69138, "33"));
-        map.put(getSchemeCalendar(year, month, 9, 0xFFdf1356, "25").toString(),
-                getSchemeCalendar(year, month, 9, 0xFFdf1356, "25"));
-        map.put(getSchemeCalendar(year, month, 13, 0xFFedc56d, "50").toString(),
-                getSchemeCalendar(year, month, 13, 0xFFedc56d, "50"));
-        map.put(getSchemeCalendar(year, month, 14, 0xFFedc56d, "80").toString(),
-                getSchemeCalendar(year, month, 14, 0xFFedc56d, "80"));
-        map.put(getSchemeCalendar(year, month, 15, 0xFFaacc44, "20").toString(),
-                getSchemeCalendar(year, month, 15, 0xFFaacc44, "20"));
-        map.put(getSchemeCalendar(year, month, 18, 0xFFbc13f0, "70").toString(),
-                getSchemeCalendar(year, month, 18, 0xFFbc13f0, "70"));
-        map.put(getSchemeCalendar(year, month, 25, 0xFF13acf0, "36").toString(),
-                getSchemeCalendar(year, month, 25, 0xFF13acf0, "36"));
-        map.put(getSchemeCalendar(year, month, 27, 0xFF13acf0, "95").toString(),
-                getSchemeCalendar(year, month, 27, 0xFF13acf0, "95"));
+        map.put(getSchemeCalendar(year, month, 3, 0xFF40db25, "假").toString(),
+                getSchemeCalendar(year, month, 3, 0xFF40db25, "假"));
+        map.put(getSchemeCalendar(year, month, 6, 0xFFe69138, "事").toString(),
+                getSchemeCalendar(year, month, 6, 0xFFe69138, "事"));
+        map.put(getSchemeCalendar(year, month, 9, 0xFFdf1356, "议").toString(),
+                getSchemeCalendar(year, month, 9, 0xFFdf1356, "议"));
+        map.put(getSchemeCalendar(year, month, 13, 0xFFedc56d, "记").toString(),
+                getSchemeCalendar(year, month, 13, 0xFFedc56d, "记"));
+        map.put(getSchemeCalendar(year, month, 14, 0xFFedc56d, "记").toString(),
+                getSchemeCalendar(year, month, 14, 0xFFedc56d, "记"));
+        map.put(getSchemeCalendar(year, month, 15, 0xFFaacc44, "假").toString(),
+                getSchemeCalendar(year, month, 15, 0xFFaacc44, "假"));
+        map.put(getSchemeCalendar(year, month, 18, 0xFFbc13f0, "记").toString(),
+                getSchemeCalendar(year, month, 18, 0xFFbc13f0, "记"));
+        map.put(getSchemeCalendar(year, month, 25, 0xFF13acf0, "假").toString(),
+                getSchemeCalendar(year, month, 25, 0xFF13acf0, "假"));
+        map.put(getSchemeCalendar(year, month, 27, 0xFF13acf0, "多").toString(),
+                getSchemeCalendar(year, month, 27, 0xFF13acf0, "多"));
         //此方法在巨大的数据量上不影响遍历性能，推荐使用
         mCalendarView.setSchemeDate(map);
+        LogUtils.printLog("map is inside " + map.size());
 
-        initView();
         Observable.timer(2,TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(aLong -> mCalendarLayout.shrink(),
@@ -99,6 +103,7 @@ public class HomeFrag extends BaseFragment implements
     protected void initView() {
         mCalendarView.setOnCalendarSelectListener(this);
         mCalendarView.setOnYearChangeListener(this);
+        mCalendarView.setOnCalendarLongClickListener(this,false);
         mTvYear.setText(String.valueOf(mCalendarView.getCurYear()));
         mYear = mCalendarView.getCurYear();
         mTvMonthDay.setText(mCalendarView.getCurMonth() + "月"
@@ -169,5 +174,15 @@ public class HomeFrag extends BaseFragment implements
     @Override
     public void onYearChange(int year) {
         mTvMonthDay.setText(String.valueOf(year));
+    }
+
+    @Override
+    public void onCalendarLongClickOutOfRange(Calendar calendar) {
+
+    }
+
+    @Override
+    public void onCalendarLongClick(Calendar calendar) {
+        Log.e("onDateLongClick", "  -- " + calendar.getDay() + "  --  " + calendar.getMonth());
     }
 }

@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="至"
-            android:textColor="@android:color/holo_blue_light33"
+            android:textColor="@android:color/holo_blue_light"
             android:textSize="16sp" />
     </RelativeLayout>
 
