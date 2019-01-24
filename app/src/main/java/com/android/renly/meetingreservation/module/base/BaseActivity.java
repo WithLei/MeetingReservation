@@ -210,6 +210,11 @@ public abstract class BaseActivity extends FragmentActivity {
         overridePendingTransition(R.anim.translate_in, R.anim.translate_out);
     }
 
+    public void finishActivityZoom() {
+        finish();
+        overridePendingTransition(R.anim.zoomin, R.anim.zoomout);
+    }
+
     /**
      * 初始化滑动事件
      */

@@ -29,7 +29,8 @@ public class MyDialogView extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(view);
+        if (view != null)
+            setContentView(view);
         setCancelable(isCancelable);
         setCanceledOnTouchOutside(isBackCancelable);
         Window window = this.getWindow();
