@@ -84,9 +84,11 @@
                         android:gravity="center_vertical">
 
                         <TextView
+                            android:id="@+id/tv_area"
                             style="@style/text_16_thi"
-                            android:layout_width="wrap_content"
+                            android:layout_width="110dp"
                             android:layout_height="wrap_content"
+                            android:singleLine="true"
                             android:layout_marginStart="@dimen/dimen_16"
                             android:text="区域" />
 
@@ -113,9 +115,11 @@
                         android:gravity="center_vertical">
 
                         <TextView
+                            android:id="@+id/tv_type"
                             style="@style/text_16_thi"
-                            android:layout_width="wrap_content"
+                            android:layout_width="110dp"
                             android:layout_height="wrap_content"
+                            android:singleLine="true"
                             android:layout_marginStart="@dimen/dimen_16"
                             android:text="活动类型" />
 
@@ -150,8 +154,9 @@
                         <TextView
                             android:id="@+id/tv_date"
                             style="@style/text_16_thi"
-                            android:layout_width="wrap_content"
+                            android:layout_width="110dp"
                             android:layout_height="wrap_content"
+                            android:singleLine="true"
                             android:layout_marginStart="@dimen/dimen_16"
                             android:text="日期" />
 
@@ -180,8 +185,9 @@
                         <TextView
                             android:id="@+id/tv_time"
                             style="@style/text_16_thi"
-                            android:layout_width="wrap_content"
+                            android:layout_width="110dp"
                             android:layout_height="wrap_content"
+                            android:singleLine="true"
                             android:layout_marginStart="@dimen/dimen_16"
                             android:text="具体时间" />
 

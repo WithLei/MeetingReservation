@@ -6,21 +6,26 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.android.renly.meetingreservation.R;
+import com.android.renly.meetingreservation.utils.LogUtils;
 
 public class MyRadioDialogView extends MyDialogView
         implements View.OnClickListener {
     private View mView = null;
+    private onBtnListener listener = null;
+    private RadioGroup radioGroup;
 
     /**
      * 设置radio点击事件
      * 设置布局点击事件
      */
 
-    public MyRadioDialogView(Context context, boolean isCancelable, boolean isBackCancelable) {
+    public MyRadioDialogView(Context context, View view, boolean isCancelable, boolean isBackCancelable) {
         super(context, null, isCancelable, isBackCancelable);
-        mView = View.inflate(context, R.layout.layout_area_dialog, null);
+        mView = view;
         mView.findViewById(R.id.cancel).setOnClickListener(this);
         mView.findViewById(R.id.confirm).setOnClickListener(this);
     }
@@ -35,6 +40,10 @@ public class MyRadioDialogView extends MyDialogView
         params.width = WindowManager.LayoutParams.MATCH_PARENT;
         params.height = WindowManager.LayoutParams.WRAP_CONTENT;
         window.setAttributes(params);
+
+        radioGroup = findViewById(R.id.radioGroup);
+        radioGroup.check(radioGroup.getChildAt(10).getId());
+        radioGroup.scrollBy(10,10);
     }
 
     @Override
@@ -44,12 +53,18 @@ public class MyRadioDialogView extends MyDialogView
                 this.cancel();
                 break;
             case R.id.confirm:
+                String checkedText = ((RadioButton)findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString();
+                this.listener.onConfirmClick(checkedText);
                 this.cancel();
                 break;
         }
     }
 
     public interface onBtnListener {
-        public void onConfirmClick();
+        void onConfirmClick(String checkedText);
+    }
+
+    public void setOnBtnListener(onBtnListener listener) {
+        this.listener = listener;
     }
 }
