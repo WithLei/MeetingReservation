@@ -46,112 +46,78 @@
         android:layout_height="200dp">
 
         <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.v7.widget.AppCompatRadioButton
-                style="@style/text_16_sec"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/bg_primary"
-                android:gravity="center"
+            <RadioButton
+                style="@style/dialog_radio_item"
+                android:checked="true"
                 android:text="国际创意园-1幢" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorDivider" />
 
-            <android.support.v7.widget.AppCompatRadioButton
-                style="@style/text_16_sec"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/bg_primary"
-                android:gravity="center"
+            <RadioButton
+                style="@style/dialog_radio_item"
                 android:text="国际创意园-3B幢" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorDivider" />
 
-            <android.support.v7.widget.AppCompatRadioButton
-                style="@style/text_16_sec"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/bg_primary"
-                android:gravity="center"
+            <RadioButton
+                style="@style/dialog_radio_item"
                 android:text="电商产业园1号楼" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorDivider" />
 
-            <TextView
-                style="@style/text_16_sec"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/bg_primary"
-                android:gravity="center"
+            <RadioButton
+                style="@style/dialog_radio_item"
                 android:text="电商产业园2-1号楼" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorDivider" />
 
-            <TextView
-                style="@style/text_16_sec"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/bg_primary"
-                android:gravity="center"
+            <RadioButton
+                style="@style/dialog_radio_item"
                 android:text="电子科技技术大厦" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorDivider" />
 
-            <TextView
-                style="@style/text_16_sec"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/bg_primary"
-                android:gravity="center"
+            <RadioButton
+                style="@style/dialog_radio_item"
                 android:text="青年创业社区5号楼" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorDivider" />
 
-            <TextView
-                style="@style/text_16_sec"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/bg_primary"
-                android:gravity="center"
+            <RadioButton
+                style="@style/dialog_radio_item"
                 android:text="网络科技园主C楼" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorDivider" />
 
-            <TextView
-                style="@style/text_16_sec"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/bg_primary"
-                android:gravity="center"
+            <RadioButton
+                style="@style/dialog_radio_item"
                 android:text="商业产业园C3幢" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorDivider" />
 
-            <TextView
-                style="@style/text_16_sec"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/bg_primary"
-                android:gravity="center"
+            <RadioButton
+                style="@style/dialog_radio_item"
                 android:text="商业产业园2幢" />
 
         </RadioGroup>

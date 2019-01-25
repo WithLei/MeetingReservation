@@ -44,8 +44,12 @@ public class MyRadioDialogView extends MyDialogView
                 this.cancel();
                 break;
             case R.id.confirm:
-                this.dismiss();
+                this.cancel();
                 break;
         }
+    }
+
+    public interface onBtnListener {
+        public void onConfirmClick();
     }
 }
