@@ -1,7 +1,10 @@
 package com.android.renly.meetingreservation.module.mine;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -14,15 +17,22 @@ import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.injector.components.DaggerMineFragComponent;
 import com.android.renly.meetingreservation.injector.modules.MineFragModule;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
+import com.android.renly.meetingreservation.module.mine.attend.AttendActivity;
+import com.android.renly.meetingreservation.module.mine.collection.CollectionActivity;
+import com.android.renly.meetingreservation.module.mine.recentlyview.RecentlyViewActivity;
+import com.android.renly.meetingreservation.module.mine.reservation.ReservationActivity;
 import com.android.renly.meetingreservation.utils.toast.ToastUtils;
 import com.android.renly.meetingreservation.widget.CircleImageView;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 
 public class MineFrag extends BaseFragment
-        implements AdapterView.OnItemClickListener, MineFragView{
+        implements AdapterView.OnItemClickListener, MineFragView {
     @BindView(R.id.avatar)
     CircleImageView avatar;
     @BindView(R.id.name)
@@ -46,6 +56,7 @@ public class MineFrag extends BaseFragment
 
     @Inject
     protected MineFragPresenter mPresenter;
+    Unbinder unbinder;
 
     @Override
     protected void initInjector() {
@@ -99,5 +110,37 @@ public class MineFrag extends BaseFragment
     @Override
     public void loadInfo(String avatarSrc, String userName) {
 
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @OnClick({R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn01:
+                jumpToActivity(AttendActivity.class);
+                break;
+            case R.id.btn02:
+                jumpToActivity(ReservationActivity.class);
+                break;
+            case R.id.btn03:
+                jumpToActivity(CollectionActivity.class);
+                break;
+            case R.id.btn04:
+                jumpToActivity(RecentlyViewActivity.class);
+                break;
+        }
     }
 }
