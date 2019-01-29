@@ -7,24 +7,32 @@ import android.view.ViewGroup;
 
 import com.android.renly.meetingreservation.listener.ItemClickListener;
 
-public class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.BaseViewHolder>{
+public abstract class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.BaseViewHolder>{
     private ItemClickListener itemListener;
 
     @NonNull
     @Override
     public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        return getItemViewHolder(parent, viewType);
     }
+
+    protected abstract BaseViewHolder getItemViewHolder(ViewGroup parent, int viewType);
 
     @Override
     public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
-
+        holder.setData(position);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        int count = getDataCount();
+        if (count == 0) {
+            return 1;
+        }else
+            return getDataCount();
     }
+
+    protected abstract int getDataCount();
 
     abstract class BaseViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener{
