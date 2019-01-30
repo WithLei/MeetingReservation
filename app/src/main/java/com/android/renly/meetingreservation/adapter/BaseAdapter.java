@@ -16,23 +16,16 @@ public abstract class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.BaseV
         return getItemViewHolder(parent, viewType);
     }
 
-    protected abstract BaseViewHolder getItemViewHolder(ViewGroup parent, int viewType);
-
     @Override
     public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
         holder.setData(position);
     }
 
-    @Override
-    public int getItemCount() {
-        int count = getDataCount();
-        if (count == 0) {
-            return 1;
-        }else
-            return getDataCount();
-    }
+    protected abstract BaseViewHolder getItemViewHolder(ViewGroup parent, int viewType);
 
-    protected abstract int getDataCount();
+    public void setOnItemClickListener(ItemClickListener listener) {
+        this.itemListener = listener;
+    }
 
     abstract class BaseViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener{

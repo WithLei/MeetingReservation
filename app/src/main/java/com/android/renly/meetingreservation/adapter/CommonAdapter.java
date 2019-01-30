@@ -1,6 +1,7 @@
 package com.android.renly.meetingreservation.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.api.bean.Demand;
+import com.android.renly.meetingreservation.utils.LogUtils;
 
 import java.util.List;
 
@@ -27,12 +29,8 @@ public class CommonAdapter extends BaseAdapter {
     protected BaseViewHolder getItemViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_meeting, parent, false);
         NormalViewHolder viewHolder = new NormalViewHolder(view);
-        return null;
-    }
-
-    @Override
-    protected int getDataCount() {
-        return demandList.size();
+        LogUtils.printLog("getItemViewHolder!!!");
+        return viewHolder;
     }
 
     @Override

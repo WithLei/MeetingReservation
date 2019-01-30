@@ -39,6 +39,7 @@ public class AttendActivity extends BaseActivity {
 
     private void initAdapter() {
         adapter = new CommonAdapter(this, demandList);
+        printLog("setAdapter");
         recyclerView.setAdapter(adapter);
     }
 
