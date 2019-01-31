@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            tools:text="询价需求发布"/>
+            android:text="询价需求发布"/>
         <TextView
             android:id="@+id/updateTime"
             style="@style/text_14_sec"

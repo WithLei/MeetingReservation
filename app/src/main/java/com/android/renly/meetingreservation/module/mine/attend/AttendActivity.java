@@ -1,12 +1,16 @@
 package com.android.renly.meetingreservation.module.mine.attend;
 
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.adapter.CommonAdapter;
 import com.android.renly.meetingreservation.api.bean.Demand;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
+import com.android.renly.meetingreservation.widget.RecycleViewDivider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +41,24 @@ public class AttendActivity extends BaseActivity {
         initAdapter();
     }
 
+    /**
+     * 初始化recylerView的一些属性
+     */
+    protected RecyclerView.LayoutManager mLayoutManager;
+
+    private void initRecyclerView() {
+        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(mLayoutManager);
+
+        recyclerView.addItemDecoration(new RecycleViewDivider(
+                this, LinearLayoutManager.VERTICAL, 20, getResources().getColor(R.color.colorDivider)));
+        // 调整draw缓存,加速recyclerview加载
+        recyclerView.setItemViewCacheSize(20);
+        recyclerView.setDrawingCacheEnabled(true);
+        recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+
+    }
+
     private void initAdapter() {
         adapter = new CommonAdapter(this, demandList);
         printLog("setAdapter");
@@ -47,6 +69,8 @@ public class AttendActivity extends BaseActivity {
     protected void initView() {
         initToolBar(true, "我的参与");
         initSlidr();
+        initRecyclerView();
+
     }
 
     @Override
