@@ -33,7 +33,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_8"
+        android:layout_marginTop="@dimen/dimen_8"
+        android:layout_marginStart="@dimen/dimen_8"
+        android:layout_marginEnd="@dimen/dimen_8"
+        android:layout_marginBottom="@dimen/dimen_4"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -123,6 +126,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:layout_marginTop="@dimen/dimen_4"
+            android:layout_marginBottom="@dimen/dimen_4"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="wrap_content"
@@ -145,6 +149,33 @@
                 tools:text="￥500"/>
 
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDivider"/>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:layout_marginStart="@dimen/dimen_4"
+            android:layout_marginEnd="@dimen/dimen_4">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/text_14_sec"
+                android:layout_centerVertical="true"
+                android:textColor="@color/orange_light"
+                android:text="我们已收到您的需求，正在调度中"/>
+
+            <Button
+                android:id="@+id/btn"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_login_btn"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:text="催单"/>
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

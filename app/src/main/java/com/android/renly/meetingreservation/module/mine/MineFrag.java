@@ -17,10 +17,10 @@ import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.injector.components.DaggerMineFragComponent;
 import com.android.renly.meetingreservation.injector.modules.MineFragModule;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
-import com.android.renly.meetingreservation.module.mine.attend.AttendActivity;
-import com.android.renly.meetingreservation.module.mine.collection.CollectionActivity;
-import com.android.renly.meetingreservation.module.mine.recentlyview.RecentlyViewActivity;
-import com.android.renly.meetingreservation.module.mine.reservation.ReservationActivity;
+import com.android.renly.meetingreservation.module.mine.mydemand.MyDemandActivity;
+import com.android.renly.meetingreservation.module.mine.mycollection.MyCollectionActivity;
+import com.android.renly.meetingreservation.module.mine.myrecentlyview.MyRecentlyViewActivity;
+import com.android.renly.meetingreservation.module.mine.mymeeting.MyMeetingActivity;
 import com.android.renly.meetingreservation.utils.toast.ToastUtils;
 import com.android.renly.meetingreservation.widget.CircleImageView;
 
@@ -130,16 +130,16 @@ public class MineFrag extends BaseFragment
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn01:
-                jumpToActivity(AttendActivity.class);
+                jumpToActivity(MyDemandActivity.class);
                 break;
             case R.id.btn02:
-                jumpToActivity(ReservationActivity.class);
+                jumpToActivity(MyMeetingActivity.class);
                 break;
             case R.id.btn03:
-                jumpToActivity(CollectionActivity.class);
+                jumpToActivity(MyCollectionActivity.class);
                 break;
             case R.id.btn04:
-                jumpToActivity(RecentlyViewActivity.class);
+                jumpToActivity(MyRecentlyViewActivity.class);
                 break;
         }
     }

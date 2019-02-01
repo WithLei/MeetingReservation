@@ -86,7 +86,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="6dp"
                 android:gravity="center"
-                android:text="我的参与"
+                android:text="需求订单"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -111,7 +111,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="6dp"
                 android:gravity="center"
-                android:text="我的预定"
+                android:text="我的会议"
                 android:textStyle="bold" />
         </LinearLayout>
 

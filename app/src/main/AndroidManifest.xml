@@ -49,16 +49,16 @@
         <activity android:name=".module.booking.success.BookingSuccessActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".module.mine.attend.AttendActivity"
+        <activity android:name=".module.mine.mydemand.MyDemandActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".module.mine.reservation.ReservationActivity"
+        <activity android:name=".module.mine.mymeeting.MyMeetingActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".module.mine.collection.CollectionActivity"
+        <activity android:name=".module.mine.mycollection.MyCollectionActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".module.mine.recentlyview.RecentlyViewActivity"
+        <activity android:name=".module.mine.myrecentlyview.MyRecentlyViewActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
     </application>

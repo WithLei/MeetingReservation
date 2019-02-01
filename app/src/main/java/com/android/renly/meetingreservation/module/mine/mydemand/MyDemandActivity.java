@@ -1,7 +1,6 @@
-package com.android.renly.meetingreservation.module.mine.attend;
+package com.android.renly.meetingreservation.module.mine.mydemand;
 
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -18,7 +17,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AttendActivity extends BaseActivity {
+public class MyDemandActivity extends BaseActivity {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     private List<Demand> demandList;
@@ -67,7 +66,7 @@ public class AttendActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        initToolBar(true, "我的参与");
+        initToolBar(true, "需求订单");
         initSlidr();
         initRecyclerView();
 

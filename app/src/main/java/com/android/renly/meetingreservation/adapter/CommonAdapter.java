@@ -1,15 +1,16 @@
 package com.android.renly.meetingreservation.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.api.bean.Demand;
 import com.android.renly.meetingreservation.utils.LogUtils;
+import com.android.renly.meetingreservation.utils.toast.ToastUtils;
 
 import java.util.List;
 
@@ -17,25 +18,24 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CommonAdapter extends BaseAdapter {
-    private List<Demand> demandList;
+    private List<?> list;
     private Context context;
 
-    public CommonAdapter(Context context, List<Demand> demandList) {
+    public CommonAdapter(Context context, List<?> list) {
         this.context = context;
-        this.demandList = demandList;
+        this.list = list;
     }
 
     @Override
     protected BaseViewHolder getItemViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_meeting, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_demand, parent, false);
         NormalViewHolder viewHolder = new NormalViewHolder(view);
-        LogUtils.printLog("getItemViewHolder!!!");
         return viewHolder;
     }
 
     @Override
     public int getItemCount() {
-        return demandList.size();
+        return list.size();
     }
 
     @Override
@@ -54,6 +54,8 @@ public class CommonAdapter extends BaseAdapter {
         TextView people;
         @BindView(R.id.budget)
         TextView budget;
+        @BindView(R.id.btn)
+        Button btn;
 
         NormalViewHolder(View itemView) {
             super(itemView);
@@ -62,12 +64,22 @@ public class CommonAdapter extends BaseAdapter {
 
         @Override
         void setData(int pos) {
-            Demand demand = demandList.get(pos);
-            updateTime.setText(demand.getUpdateTime());
-            date.setText(demand.getDate());
-            time.setText(demand.getTime());
-            people.setText(demand.getPeople() + "人");
-            budget.setText("￥" + demand.getBudget());
+            // 需求列表
+            if (list.get(pos) instanceof Demand){
+                Demand demand = (Demand) list.get(pos);
+                updateTime.setText(demand.getUpdateTime());
+                date.setText(demand.getDate());
+                time.setText(demand.getTime());
+                people.setText(demand.getPeople() + "人");
+                budget.setText("￥" + demand.getBudget());
+                btn.setOnClickListener(view -> {
+                    btn.setEnabled(false);
+                    btn.setText("已催单");
+                    ToastUtils.ToastShort("已为您进行催单~");
+                });
+            }
+
+            //
         }
     }
 }

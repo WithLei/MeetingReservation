@@ -1,9 +1,9 @@
-package com.android.renly.meetingreservation.module.mine.collection;
+package com.android.renly.meetingreservation.module.mine.mycollection;
 
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
 
-public class CollectionActivity extends BaseActivity {
+public class MyCollectionActivity extends BaseActivity {
     @Override
     protected int getLayoutID() {
         return R.layout.activity_meetinglist;

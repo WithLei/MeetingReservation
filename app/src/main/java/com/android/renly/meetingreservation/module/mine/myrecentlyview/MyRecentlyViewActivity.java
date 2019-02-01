@@ -1,4 +1,4 @@
-package com.android.renly.meetingreservation.module.mine.recentlyview;
+package com.android.renly.meetingreservation.module.mine.myrecentlyview;
 
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.api.bean.Demand;
@@ -7,7 +7,7 @@ import com.android.renly.meetingreservation.module.base.BaseActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecentlyViewActivity extends BaseActivity {
+public class MyRecentlyViewActivity extends BaseActivity {
     private List<Demand>demandList;
     @Override
     protected int getLayoutID() {
