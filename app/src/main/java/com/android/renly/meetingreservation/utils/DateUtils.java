@@ -20,6 +20,11 @@ public class DateUtils {
         return format.format(date);
     }
 
+    public static String dateToStringShort(Date date){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        return format.format(date);
+    }
+
     public static Date stringToDate(String date) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return format.parse(date);

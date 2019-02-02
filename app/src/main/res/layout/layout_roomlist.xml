@@ -13,19 +13,10 @@
         android:layout_height="match_parent"
         android:scrollbars="none">
 
-        <LinearLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include layout="@layout/item_room" />
-
-            <include layout="@layout/item_room1" />
-
-            <include layout="@layout/item_room" />
-
-            <include layout="@layout/item_room1" />
-        </LinearLayout>
+            android:layout_height="wrap_content"/>
     </ScrollView>
 
     <com.scwang.smartrefresh.layout.footer.ClassicsFooter

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/bg_primary"
     android:orientation="vertical">
 
@@ -10,19 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_8">
+
         <TextView
             style="@style/text_16_pri"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:text="询价需求发布"/>
+            android:text="询价需求发布" />
+
         <TextView
             android:id="@+id/updateTime"
             style="@style/text_14_sec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            tools:text="1月11日 13:42"/>
+            tools:text="1月11日 13:42" />
     </RelativeLayout>
 
     <View
@@ -33,27 +35,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_8"
         android:layout_marginStart="@dimen/dimen_8"
+        android:layout_marginTop="@dimen/dimen_8"
         android:layout_marginEnd="@dimen/dimen_8"
         android:layout_marginBottom="@dimen/dimen_4"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_title_24dp"
-                android:tint="@color/text_color_thi"/>
+                android:tint="@color/text_color_thi" />
+
             <TextView
                 style="@style/text_14_sec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_8"
-                android:text="日期"/>
+                android:text="日期" />
 
             <TextView
                 android:id="@+id/date"
@@ -61,27 +66,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_16"
-                tools:text="2019年1月10日"/>
+                tools:text="2019年1月10日" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
             android:layout_marginTop="4dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_access_time_black_24dp"
-                android:tint="@color/text_color_thi"/>
+                android:tint="@color/text_color_thi" />
+
             <TextView
                 style="@style/text_14_sec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_8"
-                android:text="时间"/>
+                android:text="时间" />
 
             <TextView
                 android:id="@+id/time"
@@ -89,27 +96,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_16"
-                tools:text="09:30 - 11:30"/>
+                tools:text="09:30 - 11:30" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
             android:layout_marginTop="4dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_people_24dp"
-                android:tint="@color/text_color_thi"/>
+                android:tint="@color/text_color_thi" />
+
             <TextView
                 style="@style/text_14_sec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_8"
-                android:text="人数"/>
+                android:text="人数" />
 
             <TextView
                 android:id="@+id/people"
@@ -117,28 +126,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_16"
-                tools:text="230人"/>
+                tools:text="230人" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
             android:layout_marginTop="@dimen/dimen_4"
             android:layout_marginBottom="@dimen/dimen_4"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_budget"
-                android:tint="@color/text_color_thi"/>
+                android:tint="@color/text_color_thi" />
+
             <TextView
                 style="@style/text_14_sec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_8"
-                android:text="预算"/>
+                android:text="预算" />
 
             <TextView
                 android:id="@+id/budget"
@@ -146,36 +157,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_16"
-                tools:text="￥500"/>
+                tools:text="￥500" />
 
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/colorDivider"/>
+            android:background="@color/colorDivider" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_4"
             android:layout_marginStart="@dimen/dimen_4"
+            android:layout_marginTop="@dimen/dimen_4"
             android:layout_marginEnd="@dimen/dimen_4">
+
             <TextView
+                style="@style/text_14_sec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/text_14_sec"
                 android:layout_centerVertical="true"
-                android:textColor="@color/orange_light"
-                android:text="我们已收到您的需求，正在调度中"/>
+                android:text="我们已收到您的需求，正在调度中"
+                android:textColor="@color/orange_light" />
 
             <Button
                 android:id="@+id/btn"
-                android:layout_alignParentEnd="true"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_login_btn"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:text="催单"/>
+                android:layout_alignParentEnd="true"
+                android:text="催单"
+                android:textColor="@color/text_login_btn" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

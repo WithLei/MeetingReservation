@@ -55,12 +55,10 @@ public class MyDemandActivity extends BaseActivity {
         recyclerView.setItemViewCacheSize(20);
         recyclerView.setDrawingCacheEnabled(true);
         recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-
     }
 
     private void initAdapter() {
         adapter = new CommonAdapter(this, demandList);
-        printLog("setAdapter");
         recyclerView.setAdapter(adapter);
     }
 

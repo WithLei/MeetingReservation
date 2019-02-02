@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -12,6 +13,7 @@
         android:layout_height="170dp">
 
         <ImageView
+            android:id="@+id/bigImg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/bg_primary"
@@ -26,9 +28,9 @@
 
             <CheckBox
                 style="@style/evaluate_theme"
-                android:padding="@dimen/dimen_8"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_8" />
         </LinearLayout>
 
         <LinearLayout
@@ -40,18 +42,24 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/tip1"
                 style="@style/list_tip"
-                android:text="研讨会"/>
+                android:visibility="gone"
+                tools:text="研讨会" />
 
             <TextView
+                android:id="@+id/tip2"
                 style="@style/list_tip"
+                android:layout_marginStart="@dimen/dimen_8"
                 android:text="商务"
-                android:layout_marginStart="@dimen/dimen_8"/>
+                android:visibility="gone" />
 
             <TextView
+                android:id="@+id/tip3"
                 style="@style/list_tip"
+                android:layout_marginStart="@dimen/dimen_8"
                 android:text="推介会"
-                android:layout_marginStart="@dimen/dimen_8"/>
+                android:visibility="gone" />
 
         </LinearLayout>
     </RelativeLayout>
@@ -73,47 +81,47 @@
             android:paddingEnd="20dp">
 
             <TextView
+                android:id="@+id/area_and_name"
                 style="@style/text_16_pri"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="B2楼4037 · 多功能会议室" />
+                tools:text="B2楼4037 · 多功能会议室" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="bottom"
                 android:layout_marginTop="5dp"
+                android:gravity="bottom"
                 android:orientation="horizontal">
-            <TextView
-                style="@style/text_16_sec"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:text="4.5" />
-            <TextView
-                style="@style/text_14_sec"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="分"/>
+
+                <TextView
+                    android:id="@+id/score"
+                    style="@style/text_16_sec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:text="4.5" />
+
+                <TextView
+                    style="@style/text_14_sec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="分" />
+
                 <TextView
                     style="@style/text_16_sec"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_16"
-                    android:text="热度："/>
-                <ImageView
-                    android:layout_width="20dp"
+                    android:text="热度：" />
+
+                <LinearLayout
+                    android:id="@+id/ll_fire"
+                    android:layout_width="wrap_content"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_hot"/>
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_hot"/>
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_hot"/>
+                    android:orientation="horizontal" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -128,6 +136,7 @@
                     android:text="推荐时间:" />
 
                 <TextView
+                    android:id="@+id/recommondTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -139,8 +148,8 @@
                     android:layout_width="22dp"
                     android:layout_height="22dp"
                     android:layout_marginStart="5dp"
-                    android:tint="@color/orange_light"
-                    android:src="@drawable/ic_event_note_24dp" />
+                    android:src="@drawable/ic_event_note_24dp"
+                    android:tint="@color/orange_light" />
             </LinearLayout>
         </LinearLayout>
 
@@ -157,11 +166,13 @@
             android:padding="10dp">
 
             <ImageView
+                android:id="@+id/iv_needVerify"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/ic_review" />
 
             <TextView
+                android:id="@+id/tv_needVerify"
                 style="@style/text_14_sec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
