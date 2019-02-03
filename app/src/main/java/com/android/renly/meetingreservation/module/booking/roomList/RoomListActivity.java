@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,14 +29,17 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class RoomListActivity extends BaseActivity {
     @BindView(R.id.dropDownMenu)
     DropDownMenu mDropDownMenu;
+    @BindView(R.id.search)
+    LinearLayout search;
     RecyclerView recyclerView;
     SmartRefreshLayout refresh;
 
-    private List<Room>roomList;
+    private List<Room> roomList;
 
     private String headers[] = {"区域", "时段", "排序", "筛选"};
     private List<View> popupViews = new ArrayList<>();
@@ -64,9 +68,9 @@ public class RoomListActivity extends BaseActivity {
         roomList = new ArrayList<>();
         roomList.add(new Room("B2楼4037", "多功能会议室", 4.5f, 4, new Date().getTime(),
                 true, keyWords, "http://149.28.149.136:8080/image/room01.jpg"));
-        roomList.add(new Room("A3楼1003", "大型会议室", 3.5f, 3, new Date().getTime()-3000,
+        roomList.add(new Room("A3楼1003", "大型会议室", 3.5f, 3, new Date().getTime() - 3000,
                 false, keyWords, "http://149.28.149.136:8080/image/room02.jpg"));
-        roomList.add(new Room("B2楼4037", "多功能会议室", 4.5f, 5, new Date().getTime()-2000,
+        roomList.add(new Room("B2楼4037", "多功能会议室", 4.5f, 5, new Date().getTime() - 2000,
                 true, keyWords, "http://149.28.149.136:8080/image/room03.jpg"));
         roomList.add(new Room("B2楼4037", "多功能会议室", 4.5f, 4, new Date().getTime(),
                 true, keyWords, "http://149.28.149.136:8080/image/room04.jpg"));
@@ -178,5 +182,16 @@ public class RoomListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+    }
+
+    @OnClick({R.id.search, R.id.location})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.search:
+                finishActivity();
+                break;
+            case R.id.location:
+                break;
+        }
     }
 }

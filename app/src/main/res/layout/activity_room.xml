@@ -335,6 +335,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/selector_bookingbtn"
                 android:gravity="center"
+                android:textColor="@color/white"
                 android:text="立即预定" />
         </LinearLayout>
     </RelativeLayout>

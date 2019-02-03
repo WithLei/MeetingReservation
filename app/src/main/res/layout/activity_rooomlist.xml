@@ -41,13 +41,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_event_note_24dp"
-                    android:tint="?android:attr/colorPrimary" />
+                    android:tint="#1A9BF7" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="选日期"
-                    android:textColor="?android:attr/colorPrimary"
+                    android:textColor="#1A9BF7"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -58,7 +58,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="@dimen/dimen_8"
                 android:layout_marginBottom="5dp"
-                android:background="@color/colorDividerDark" />
+                android:background="@color/colorDivider" />
 
             <LinearLayout
                 android:id="@+id/search"

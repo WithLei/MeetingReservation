@@ -99,10 +99,10 @@ public class RoomAdapter extends BaseAdapter {
                     break;
                 ImageView fire = new ImageView(context);
                 fire.setImageResource(R.drawable.ic_hot);
-                ViewGroup.LayoutParams params = fire.getLayoutParams();
-                params.height = 20;
-                params.width = 20;
-                fire.setLayoutParams(params);
+//                ViewGroup.LayoutParams params = fire.getLayoutParams();
+//                params.height = 20;
+//                params.width = 20;
+//                fire.setLayoutParams(params);
                 llFire.addView(fire);
             }
             Date date = new Date(room.getRecommondTime());
