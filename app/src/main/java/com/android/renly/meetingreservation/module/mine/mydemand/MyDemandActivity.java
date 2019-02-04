@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.android.renly.meetingreservation.R;
-import com.android.renly.meetingreservation.adapter.CommonAdapter;
+import com.android.renly.meetingreservation.adapter.MeetingAdapter;
 import com.android.renly.meetingreservation.api.bean.Demand;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
 import com.android.renly.meetingreservation.widget.RecycleViewDivider;
@@ -21,7 +21,7 @@ public class MyDemandActivity extends BaseActivity {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     private List<Demand> demandList;
-    private CommonAdapter adapter;
+    private MeetingAdapter adapter;
 
     @Override
     protected int getLayoutID() {
@@ -58,7 +58,7 @@ public class MyDemandActivity extends BaseActivity {
     }
 
     private void initAdapter() {
-        adapter = new CommonAdapter(this, demandList);
+        adapter = new MeetingAdapter(this, demandList);
         recyclerView.setAdapter(adapter);
     }
 

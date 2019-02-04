@@ -92,12 +92,14 @@
                 android:tint="@color/colorDividerDark" />
 
             <EditText
+                android:id="@+id/search"
                 style="@style/text_16_sec"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_8"
                 android:layout_marginEnd="@dimen/dimen_8"
                 android:background="@null"
+                android:focusableInTouchMode="true"
                 android:hint="查找文件夹/文件" />
         </LinearLayout>
     </LinearLayout>
@@ -124,34 +126,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <include layout="@layout/item_folder" />
-
-                <include layout="@layout/item_folder" />
-
-                <include layout="@layout/item_folder" />
-
-                <include layout="@layout/item_folder" />
-
-                <include layout="@layout/item_folder" />
-
-                <include layout="@layout/item_folder" />
-
-                <include layout="@layout/item_folder" />
-
-                <include layout="@layout/item_folder" />
-
-                <include layout="@layout/item_folder" />
-
-                <include layout="@layout/item_folder" />
-
-                <include layout="@layout/item_folder" />
-
-            </LinearLayout>
+                android:layout_height="wrap_content"/>
         </ScrollView>
 
         <com.scwang.smartrefresh.layout.footer.ClassicsFooter

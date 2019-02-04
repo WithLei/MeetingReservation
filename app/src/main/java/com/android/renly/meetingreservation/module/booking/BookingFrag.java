@@ -177,4 +177,22 @@ public class BookingFrag extends BaseFragment {
             tvDate.setTextColor(getResources().getColor(R.color.text_color_pri));
         }
     };
+
+    public void loseFocus(){
+        people.setFocusable(false);
+        people.setFocusable(true);
+        people.setFocusableInTouchMode(true);
+        budget.setFocusable(false);
+        budget.setFocusable(true);
+        budget.setFocusableInTouchMode(true);
+        company.setFocusable(false);
+        company.setFocusable(true);
+        company.setFocusableInTouchMode(true);
+        phone.setFocusable(false);
+        phone.setFocusable(true);
+        phone.setFocusableInTouchMode(true);
+        demand.setFocusable(false);
+        demand.setFocusable(true);
+        demand.setFocusableInTouchMode(true);
+    }
 }

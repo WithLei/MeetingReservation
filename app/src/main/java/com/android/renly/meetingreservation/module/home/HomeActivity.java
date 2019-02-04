@@ -23,8 +23,11 @@ import com.android.renly.meetingreservation.widget.MyBottomTab;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
+import rx.Observable;
+import rx.functions.Action1;
 
 public class HomeActivity extends BaseActivity
         implements ViewPager.OnPageChangeListener {
@@ -133,6 +136,8 @@ public class HomeActivity extends BaseActivity
             @Override
             public void onSoftKeyboardClosed() {
                 showBottomBar();
+                bookingFrag.loseFocus();
+                folderFrag.loseFocus();
             }
         });
     }

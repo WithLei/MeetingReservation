@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/bg_primary"
     android:elevation="2dp"
     android:orientation="vertical">
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,6 +18,7 @@
         android:paddingEnd="20dp">
 
         <ImageView
+            android:id="@+id/img"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_folder_yellow" />
@@ -29,18 +30,20 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/name"
                 style="@style/text_16_pri"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:text="关于新产品的售价" />
+                tools:text="关于新产品的售价" />
 
             <TextView
+                android:id="@+id/time"
                 style="@style/text_14_sec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:text="2018-10-08 16:14" />
+                tools:text="2018-10-08 16:14" />
         </LinearLayout>
 
     </LinearLayout>
