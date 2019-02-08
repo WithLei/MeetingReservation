@@ -2,24 +2,34 @@ package com.android.renly.meetingreservation.module.home.fullscreen;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.acker.simplezxing.activity.CaptureActivity;
 import com.android.renly.meetingreservation.R;
+import com.android.renly.meetingreservation.adapter.LectureAdapter;
+import com.android.renly.meetingreservation.api.bean.Lecture;
+import com.android.renly.meetingreservation.listener.ItemClickListener;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
 import com.android.renly.meetingreservation.module.booking.roomList.RoomListActivity;
 import com.android.renly.meetingreservation.module.booking.search.SearchActivity;
 import com.android.renly.meetingreservation.utils.LogUtils;
+import com.android.renly.meetingreservation.widget.RecycleViewDivider;
 import com.haibin.calendarview.Calendar;
 import com.haibin.calendarview.CalendarLayout;
 import com.haibin.calendarview.CalendarView;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -32,7 +42,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 public class HomeFrag extends BaseFragment implements
         CalendarView.OnCalendarSelectListener,
         CalendarView.OnCalendarLongClickListener,
-        CalendarView.OnYearChangeListener{
+        CalendarView.OnYearChangeListener {
     @BindView(R.id.btn01)
     LinearLayout btn01;
     @BindView(R.id.tv_month_day)
@@ -49,9 +59,15 @@ public class HomeFrag extends BaseFragment implements
     CalendarView mCalendarView;
     @BindView(R.id.calendarLayout)
     CalendarLayout mCalendarLayout;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
+    @BindView(R.id.scrollView)
+    ScrollView scrollView;
     Unbinder unbinder;
 
     private int mYear;
+
+    private List<Lecture> lectureList;
 
     @Override
     protected void initInjector() {
@@ -65,7 +81,6 @@ public class HomeFrag extends BaseFragment implements
 
     @Override
     protected void initData(Context content) {
-        initView();
 
         int year = mCalendarView.getCurYear();
         int month = mCalendarView.getCurMonth();
@@ -91,30 +106,79 @@ public class HomeFrag extends BaseFragment implements
                 getSchemeCalendar(year, month, 27, 0xFF13acf0, "多"));
         //此方法在巨大的数据量上不影响遍历性能，推荐使用
         mCalendarView.setSchemeDate(map);
-        LogUtils.printLog("map is inside " + map.size());
 
-        Observable.timer(2,TimeUnit.SECONDS)
+        initLectureListData();
+
+        Observable.timer(2, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(aLong -> mCalendarLayout.shrink(),
                         throwable -> LogUtils.printLog(throwable.getMessage()));
+
+        initView();
+
+    }
+
+    private void initLectureListData() {
+        lectureList = new ArrayList<>();
+        lectureList.add(new Lecture("http://149.28.149.136:8080/image/speaker01.jpg",
+                "个人发展如何借助趋势的力量", "叶修，一个专门研究思维方法与学习策略的人，《深度思维》作者"
+                , new Date().getTime(), "5小时"));
+        lectureList.add(new Lecture("http://149.28.149.136:8080/image/speaker02.jpg",
+                "GDPR来了，你我应当注意什么", "王融，腾讯研究院资深专家。长期从事电信、互联网立法与监管政策研究"
+                , new Date().getTime(), "5小时"));
+        lectureList.add(new Lecture("http://149.28.149.136:8080/image/speaker01.jpg",
+                "如何选到适合自己的好专业", "叶修，一个专门研究思维方法与学习策略的人，《深度思维》作者"
+                , new Date().getTime(), "5小时"));
+        lectureList.add(new Lecture("http://149.28.149.136:8080/image/speaker02.jpg",
+                "GDPR来了，你我应当注意什么", "王融，腾讯研究院资深专家。长期从事电信、互联网立法与监管政策研究"
+                , new Date().getTime(), "5小时"));
+    }
+
+    protected RecyclerView.LayoutManager mLayoutManager;
+
+    private LectureAdapter adapter;
+    private void initAdapter() {
+        adapter = new LectureAdapter(getContext(), lectureList);
+        adapter.setOnItemClickListener(new ItemClickListener() {
+            @Override
+            public void onItemClick(View v, int pos) {
+//                jumpToActivity();
+            }
+        });
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void initRecyclerView() {
+        mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(mLayoutManager);
+
+        // 调整draw缓存,加速recyclerview加载
+        recyclerView.setItemViewCacheSize(20);
+        recyclerView.setDrawingCacheEnabled(true);
+        recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
     }
 
     @Override
     protected void initView() {
+        recyclerView.setFocusable(false);
         mCalendarView.setOnCalendarSelectListener(this);
         mCalendarView.setOnYearChangeListener(this);
-        mCalendarView.setOnCalendarLongClickListener(this,false);
+        mCalendarView.setOnCalendarLongClickListener(this, false);
         mTvYear.setText(String.valueOf(mCalendarView.getCurYear()));
         mYear = mCalendarView.getCurYear();
         mTvMonthDay.setText(mCalendarView.getCurMonth() + "月"
                 + mCalendarView.getCurDay() + "日");
         mTvLunar.setText("今日");
         mTvCurrentDay.setText(String.valueOf(mCalendarView.getCurDay()));
+
+
+        initAdapter();
+        initRecyclerView();
     }
 
     @Override
     public void ScrollToTop() {
-
+        scrollView.smoothScrollTo(0,0);
     }
 
     @OnClick({R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04, R.id.tv_month_day, R.id.fl_current})

@@ -56,7 +56,8 @@
 
                 <ImageView
                     style="@style/mine_btn_num"
-                    android:src="@drawable/ic_search_round" />
+                    android:src="@drawable/ic_search_round"
+                    android:tint="@color/green_light" />
 
                 <TextView
                     style="@style/text_14_sec"
@@ -123,7 +124,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@drawable/main_item"
+            android:background="@color/bg_primary"
             android:elevation="1dp"
             android:orientation="vertical">
 
@@ -174,10 +175,10 @@
                         style="@style/text_14_sec"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
+                        android:layout_marginBottom="@dimen/dimen_4"
                         android:drawableLeft="@drawable/ic_title_24dp"
                         android:drawableTint="@color/text_color_thi"
-                        android:layout_marginBottom="@dimen/dimen_4"
+                        android:gravity="center"
                         android:text=" 关于新产品的售价" />
 
                     <TextView
@@ -187,10 +188,10 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/meeting_title"
                         android:layout_marginTop="2dp"
-                        android:gravity="center"
+                        android:layout_marginBottom="@dimen/dimen_4"
                         android:drawableLeft="@drawable/ic_access_time_black_24dp"
                         android:drawableTint="@color/text_color_thi"
-                        android:layout_marginBottom="@dimen/dimen_4"
+                        android:gravity="center"
                         android:text=" 2019/01/08 09:30 - 11:30" />
 
                     <TextView
@@ -200,9 +201,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/meeting_time"
                         android:layout_marginTop="2dp"
-                        android:gravity="center"
                         android:drawableLeft="@drawable/ic_location_on_black_24dp"
                         android:drawableTint="@color/text_color_thi"
+                        android:gravity="center"
                         android:text=" B楼308会议室" />
 
                     <TextView
@@ -212,10 +213,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignBaseline="@id/meeting_address"
                         android:layout_alignParentEnd="true"
-                        android:gravity="center"
+                        android:layout_marginEnd="@dimen/dimen_4"
                         android:drawableLeft="@drawable/ic_person_black_24dp"
                         android:drawableTint="@color/text_color_thi"
-                        android:layout_marginEnd="@dimen/dimen_4"
+                        android:gravity="center"
                         android:text=" 市场部" />
                 </RelativeLayout>
             </LinearLayout>
@@ -225,7 +226,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@drawable/main_item"
+            android:background="@color/bg_primary"
             android:elevation="1dp"
             android:orientation="vertical">
 
@@ -276,10 +277,10 @@
                         style="@style/text_14_sec"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
+                        android:layout_marginBottom="@dimen/dimen_4"
                         android:drawableLeft="@drawable/ic_title_24dp"
                         android:drawableTint="@color/text_color_thi"
-                        android:layout_marginBottom="@dimen/dimen_4"
+                        android:gravity="center"
                         android:text=" 公司管理制度的优化和漏洞" />
 
                     <TextView
@@ -288,11 +289,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/mymeeting_title"
-                        android:gravity="center"
                         android:layout_marginTop="2dp"
+                        android:layout_marginBottom="@dimen/dimen_4"
                         android:drawableLeft="@drawable/ic_access_time_black_24dp"
                         android:drawableTint="@color/text_color_thi"
-                        android:layout_marginBottom="@dimen/dimen_4"
+                        android:gravity="center"
                         android:text=" 2019/01/23 09:30 - 11:30" />
 
                     <TextView
@@ -301,10 +302,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/mymeeting_time"
-                        android:gravity="center"
                         android:layout_marginTop="2dp"
                         android:drawableLeft="@drawable/ic_location_on_black_24dp"
                         android:drawableTint="@color/text_color_thi"
+                        android:gravity="center"
                         android:text=" A楼308会议室" />
 
                     <TextView
@@ -313,11 +314,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignBaseline="@id/mymeeting_address"
-                        android:gravity="center"
                         android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/dimen_4"
                         android:drawableLeft="@drawable/ic_person_black_24dp"
                         android:drawableTint="@color/text_color_thi"
-                        android:layout_marginEnd="@dimen/dimen_4"
+                        android:gravity="center"
                         android:text=" 外交部" />
                 </RelativeLayout>
             </LinearLayout>
@@ -328,7 +329,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="10dp">
 
             <TextView
                 style="@style/text_18_pri"
@@ -336,16 +337,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
+                android:layout_marginBottom="@dimen/dimen_8"
                 android:text="讲座推荐" />
 
 
-            <include layout="@layout/item_lecture_recommend" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <include layout="@layout/item_lecture_recommend" />
-
-            <include layout="@layout/item_lecture_recommend" />
-
-            <include layout="@layout/item_lecture_recommend" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" />
+            </LinearLayout>
 
 
         </LinearLayout>

@@ -17,11 +17,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MeetingAdapter extends BaseAdapter {
+public class DemandAdapter extends BaseAdapter {
     private List<?> list;
     private Context context;
 
-    public MeetingAdapter(Context context, List<?> list) {
+    public DemandAdapter(Context context, List<?> list) {
         this.context = context;
         this.list = list;
     }

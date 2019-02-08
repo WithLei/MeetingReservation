@@ -77,7 +77,7 @@
             android:padding="8dp">
 
             <TextView
-                android:text="25"
+                android:text="4"
                 style="@style/mine_btn_num"/>
 
             <TextView
@@ -102,7 +102,7 @@
             android:padding="8dp">
 
             <TextView
-                android:text="6"
+                android:text="25"
                 style="@style/mine_btn_num"/>
 
             <TextView
