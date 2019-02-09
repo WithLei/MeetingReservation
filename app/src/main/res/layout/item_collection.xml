@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_primary"
+    android:padding="@dimen/dimen_8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="94dp"
+            android:layout_height="94dp"
+            android:scaleType="fitXY"
+            tools:src="@mipmap/image_placeholder" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="94dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8"
+                android:layout_marginEnd="@dimen/dimen_8"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/name"
+                    style="@style/text_16_pri"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    tools:text="多功能会议室" />
+
+                <TextView
+                    android:id="@+id/capacity_and_people"
+                    style="@style/text_14_sec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_4"
+                    android:singleLine="true"
+                    tools:text="336平米 | 容纳255人" />
+
+                <TextView
+                    android:id="@+id/area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_4"
+                    android:singleLine="true"
+                    tools:text="国际创业园 B2楼4037" />
+
+                <LinearLayout
+                    android:id="@+id/hot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_4"
+                    android:orientation="horizontal" />
+            </LinearLayout>
+
+            <CheckBox
+                style="@style/evaluate_theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="@dimen/dimen_4"
+                android:layout_marginBottom="@dimen/dimen_4"
+                android:checked="true"
+                android:padding="@dimen/dimen_4" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

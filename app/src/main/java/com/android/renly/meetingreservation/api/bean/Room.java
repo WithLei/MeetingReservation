@@ -19,6 +19,10 @@ public class Room {
     private String[] keyWords;
     // 背景图
     private String img;
+    // 占地面积
+    private String capacity;
+    // 可容纳人数
+    private int people;
 
     public Room() {
         super();
@@ -33,6 +37,31 @@ public class Room {
         this.needVerify = needVerify;
         this.keyWords = keyWords;
         this.img = img;
+    }
+
+    public Room(String area, String name, int hot, String img, String capacity, int people) {
+        this.area = area;
+        this.name = name;
+        this.hot = hot;
+        this.img = img;
+        this.capacity = capacity;
+        this.people = people;
+    }
+
+    public String getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(String capacity) {
+        this.capacity = capacity;
+    }
+
+    public int getPeople() {
+        return people;
+    }
+
+    public void setPeople(int people) {
+        this.people = people;
     }
 
     public String getArea() {
@@ -99,3 +128,4 @@ public class Room {
         this.img = img;
     }
 }
+
