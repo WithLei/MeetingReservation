@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- 拍摄权限 -->
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
 
@@ -22,43 +22,56 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/meetinglogo_round"
         android:supportsRtl="true"
-        tools:replace="android:icon"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".module.home.HomeActivity"
-            android:theme="@style/AppTheme.normal"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:icon">
+        <activity
+            android:name=".module.home.HomeActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateUnspecified" >
+            android:theme="@style/AppTheme.normal"
+            android:windowSoftInputMode="stateUnspecified">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".module.booking.search.SearchActivity"
+        <activity
+            android:name=".module.booking.search.SearchActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
-        <activity android:name=".module.booking.roomList.RoomListActivity"
+        <activity
+            android:name=".module.booking.roomList.RoomListActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
-        <activity android:name=".module.booking.room.BookingRoomActivity"
+        <activity
+            android:name=".module.booking.room.BookingRoomActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".module.booking.success.BookingSuccessActivity"
+        <activity
+            android:name=".module.booking.success.BookingSuccessActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".module.mine.mydemand.MyDemandActivity"
+        <activity
+            android:name=".module.mine.mydemand.MyDemandActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".module.mine.mymeeting.MyMeetingActivity"
+        <activity
+            android:name=".module.mine.mymeeting.MyMeetingActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".module.mine.mycollection.MyCollectionActivity"
+        <activity
+            android:name=".module.mine.mycollection.MyCollectionActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".module.mine.myrecentlyview.MyRecentlyViewActivity"
+        <activity
+            android:name=".module.mine.myrecentlyview.MyRecentlyViewActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".module.user.login.LoginActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
     </application>

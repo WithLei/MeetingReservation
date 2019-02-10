@@ -144,6 +144,8 @@ public class RoomListActivity extends BaseActivity {
         View contentView = View.inflate(this, R.layout.layout_roomlist, null);
         recyclerView = contentView.findViewById(R.id.recyclerView);
         refresh = contentView.findViewById(R.id.refresh);
+        contentView.findViewById(R.id.empty_layout).setVisibility(View.GONE);
+        refresh.setVisibility(View.VISIBLE);
         mDropDownMenu.setDropDownMenu(Arrays.asList(headers), popupViews, contentView);
         initAdapter();
         initRecyclerView();

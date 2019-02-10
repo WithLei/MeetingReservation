@@ -20,6 +20,7 @@ import com.android.renly.meetingreservation.listener.ItemClickListener;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
 import com.android.renly.meetingreservation.module.booking.roomList.RoomListActivity;
 import com.android.renly.meetingreservation.module.booking.search.SearchActivity;
+import com.android.renly.meetingreservation.module.mine.mymeeting.MyMeetingActivity;
 import com.android.renly.meetingreservation.utils.LogUtils;
 import com.android.renly.meetingreservation.widget.RecycleViewDivider;
 import com.haibin.calendarview.Calendar;
@@ -191,6 +192,7 @@ public class HomeFrag extends BaseFragment implements
                 jumpToActivity(SearchActivity.class);
                 break;
             case R.id.btn03:
+                jumpToActivity(MyMeetingActivity.class);
                 break;
             case R.id.btn04:
                 break;

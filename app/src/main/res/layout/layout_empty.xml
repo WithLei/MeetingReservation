@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:id="@+id/empty_layout"
+    android:orientation="vertical"
+    android:background="@color/bg_secondary">
+    
+    <ImageView
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginBottom="@dimen/dimen_16"
+        android:src="@drawable/ic_noresult"/>
+
+    <TextView
+        android:textSize="16sp"
+        android:textColor="@color/text_color_sec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="这里被外星人占领啦，没有找到你想要的结果喔"/>
+</LinearLayout>

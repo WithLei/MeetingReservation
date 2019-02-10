@@ -51,7 +51,7 @@ public class FolderFrag extends BaseFragment {
         folderList.add(new Folder("关于新产品的售价", new Date().getTime()-10000,1));
         folderList.add(new Folder("关于新产品的售价", new Date().getTime()-10000,1));
 
-        LogUtils.printLog(new Date().getTime()+"");
+        LogUtils.printLog(new Date().getTime()+"initdata");
         initAdapter();
     }
 
@@ -73,7 +73,7 @@ public class FolderFrag extends BaseFragment {
     }
 
     private void initAdapter() {
-        adapter = new FolderAdapter(getContext(), folderList);
+        adapter = new FolderAdapter(getActivity(), folderList);
         recyclerView.setAdapter(adapter);
     }
 

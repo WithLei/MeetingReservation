@@ -14,17 +14,17 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
-        android:paddingTop="28dp"
-        android:paddingBottom="28dp"
         android:paddingStart="5dp"
-        android:paddingRight="5dp">
+        android:paddingTop="28dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="28dp">
 
         <com.android.renly.meetingreservation.widget.CircleImageView
             android:id="@+id/avatar"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="20dp"
             android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
             android:src="@mipmap/image_placeholder"
             app:civ_border_color="@android:color/white"
             app:civ_border_width="2dp" />
@@ -32,15 +32,15 @@
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="12dp"
             android:layout_toEndOf="@id/avatar"
-            android:layout_marginStart="30dp"
             android:lines="1"
+            android:text="点击头像登陆"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:text="测试账号"
-            tools:text="点击头像登陆"
             android:textStyle="bold" />
 
         <TextView
@@ -48,12 +48,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/name"
-            android:layout_toEndOf="@id/avatar"
             android:layout_marginStart="30dp"
             android:layout_marginTop="6dp"
-            android:text="12345678@qq.com"
+            android:layout_toEndOf="@id/avatar"
             android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            tools:text="12345678@qq.com" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_8"
+        android:background="@color/bg_primary"
+        android:elevation="1dp"
+        android:padding="@dimen/dimen_16">
+
+        <TextView
+            style="@style/text_16_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="想要快速加入会议？" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="加入会议"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:textColor="@color/text_login_btn" />
     </RelativeLayout>
 
     <LinearLayout
@@ -61,9 +87,9 @@
         android:layout_height="wrap_content"
         android:background="@color/bg_primary"
         android:baselineAligned="false"
-        android:visibility="visible"
         android:elevation="1dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="visible">
 
         <LinearLayout
             android:id="@+id/btn01"
@@ -77,8 +103,8 @@
             android:padding="8dp">
 
             <TextView
-                android:text="4"
-                style="@style/mine_btn_num"/>
+                style="@style/mine_btn_num"
+                android:text="4" />
 
             <TextView
                 style="@style/text_14_sec"
@@ -102,8 +128,8 @@
             android:padding="8dp">
 
             <TextView
-                android:text="25"
-                style="@style/mine_btn_num"/>
+                style="@style/mine_btn_num"
+                android:text="25" />
 
             <TextView
                 style="@style/text_14_sec"
@@ -127,8 +153,8 @@
             android:padding="8dp">
 
             <TextView
-                android:text="44"
-                style="@style/mine_btn_num"/>
+                style="@style/mine_btn_num"
+                android:text="44" />
 
             <TextView
                 style="@style/text_14_sec"
@@ -152,8 +178,8 @@
             android:padding="8dp">
 
             <TextView
-                android:text="63"
-                style="@style/mine_btn_num"/>
+                style="@style/mine_btn_num"
+                android:text="63" />
 
             <TextView
                 style="@style/text_14_sec"
