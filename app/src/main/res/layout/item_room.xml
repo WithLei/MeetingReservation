@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:background="@color/bg_primary"
             android:scaleType="fitXY"
-            android:src="@drawable/room04" />
+            tools:src="@drawable/room04" />
 
         <LinearLayout
             android:layout_width="50dp"

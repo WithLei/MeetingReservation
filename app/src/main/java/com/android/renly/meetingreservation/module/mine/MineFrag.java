@@ -17,6 +17,7 @@ import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.injector.components.DaggerMineFragComponent;
 import com.android.renly.meetingreservation.injector.modules.MineFragModule;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
+import com.android.renly.meetingreservation.module.mine.joinmeeting.JoinMeetingActivity;
 import com.android.renly.meetingreservation.module.mine.mydemand.MyDemandActivity;
 import com.android.renly.meetingreservation.module.mine.mycollection.MyCollectionActivity;
 import com.android.renly.meetingreservation.module.mine.myrecentlyview.MyRecentlyViewActivity;
@@ -127,7 +128,7 @@ public class MineFrag extends BaseFragment
         unbinder.unbind();
     }
 
-    @OnClick({R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04, R.id.avatar})
+    @OnClick({R.id.btn_join, R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04, R.id.avatar})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn01:
@@ -144,6 +145,9 @@ public class MineFrag extends BaseFragment
                 break;
             case R.id.avatar:
                 jumpToActivity(LoginActivity.class);
+                break;
+            case R.id.btn_join:
+                jumpToActivity(JoinMeetingActivity.class);
                 break;
         }
     }

@@ -70,9 +70,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:text="想要快速加入会议？" />
+            android:text="有邀请码，想要快速加入会议？" />
 
         <Button
+            android:id="@+id/btn_join"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

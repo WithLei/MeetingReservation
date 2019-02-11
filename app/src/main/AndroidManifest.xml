@@ -74,6 +74,10 @@
             android:name=".module.user.login.LoginActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".module.mine.joinmeeting.JoinMeetingActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>
