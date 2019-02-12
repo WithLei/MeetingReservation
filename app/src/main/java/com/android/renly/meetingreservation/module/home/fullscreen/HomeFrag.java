@@ -20,6 +20,7 @@ import com.android.renly.meetingreservation.listener.ItemClickListener;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
 import com.android.renly.meetingreservation.module.booking.roomList.RoomListActivity;
 import com.android.renly.meetingreservation.module.booking.search.SearchActivity;
+import com.android.renly.meetingreservation.module.meeting.MeetingActivity;
 import com.android.renly.meetingreservation.module.mine.mymeeting.MyMeetingActivity;
 import com.android.renly.meetingreservation.utils.LogUtils;
 import com.android.renly.meetingreservation.widget.RecycleViewDivider;
@@ -182,7 +183,7 @@ public class HomeFrag extends BaseFragment implements
         scrollView.smoothScrollTo(0,0);
     }
 
-    @OnClick({R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04, R.id.tv_month_day, R.id.fl_current})
+    @OnClick({R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04, R.id.tv_month_day, R.id.fl_current, R.id.active_activity})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn01:
@@ -208,6 +209,9 @@ public class HomeFrag extends BaseFragment implements
                 break;
             case R.id.fl_current:
                 mCalendarView.scrollToCurrent();
+                break;
+            case R.id.active_activity:
+                jumpToActivity(MeetingActivity.class);
                 break;
         }
     }

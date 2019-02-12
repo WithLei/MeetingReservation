@@ -35,9 +35,9 @@
                           <map>
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="height" value="128" />
-                            <entry key="outputName" value="ic_noresult" />
+                            <entry key="outputName" value="ic_user_placeholder" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\Users\asus\Downloads\无结果.svg" />
+                            <entry key="sourceFile" value="C:\Users\asus\Downloads\用户.svg" />
                             <entry key="width" value="128" />
                           </map>
                         </option>

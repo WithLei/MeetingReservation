@@ -121,10 +121,12 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/active_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/bg_primary"
+            android:clickable="true"
             android:elevation="1dp"
             android:orientation="vertical">
 
@@ -132,7 +134,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
                 android:orientation="vertical"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
