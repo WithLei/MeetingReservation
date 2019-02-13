@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_primary">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:background="?android:selectableItemBackground"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dimen_8"
+        android:paddingBottom="@dimen/dimen_8">
+
+        <ImageView
+            android:id="@+id/folder_img"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_folder_yellow" />
+
+        <TextView
+            android:id="@+id/folder_name"
+            style="@style/text_14_sec"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_4"
+            android:layout_toRightOf="@id/folder_img"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="关于新产品的售价.pdf" />
+
+        <TextView
+            style="@style/text_14_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="2018/12/31 12:33:28" />
+    </RelativeLayout>
+</LinearLayout>

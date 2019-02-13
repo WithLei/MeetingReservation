@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary"
+    android:orientation="vertical">
+    <include layout="@layout/my_toolbar" />
+
+    <LinearLayout
+        android:id="@+id/fl_searchview"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#FFFFFFFF"
+        android:layout_below="@id/toolbar"
+        android:padding="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F5F5F5"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:src="@drawable/ic_search_white_24dp"
+                android:tint="@color/colorDividerDark" />
+
+            <EditText
+                android:id="@+id/search"
+                style="@style/text_16_sec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8"
+                android:layout_marginEnd="@dimen/dimen_8"
+                android:background="@null"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
+                android:hint="查找成员" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="5"/>
+</LinearLayout>
