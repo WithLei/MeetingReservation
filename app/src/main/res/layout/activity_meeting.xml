@@ -17,7 +17,7 @@
     <LinearLayout
         android:id="@+id/edit"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="42dp"
         android:layout_alignParentBottom="true"
         android:background="@color/orange_light"
         android:elevation="1dp"
@@ -55,14 +55,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_8"
-                android:layout_marginBottom="@dimen/dimen_8"
                 android:background="@color/bg_primary"
                 android:elevation="1dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/title"
-                    style="@style/text_16_pri"
+                    style="@style/text_16_sec"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_16"

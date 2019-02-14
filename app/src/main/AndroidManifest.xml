@@ -86,6 +86,10 @@
             android:name=".module.meeting.peopleList.PeopleListActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".module.folder.fileList.FileListActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>

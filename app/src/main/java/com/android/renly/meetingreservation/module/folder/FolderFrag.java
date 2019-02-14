@@ -1,6 +1,7 @@
 package com.android.renly.meetingreservation.module.folder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,7 +10,9 @@ import android.widget.EditText;
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.adapter.FolderAdapter;
 import com.android.renly.meetingreservation.api.bean.Folder;
+import com.android.renly.meetingreservation.listener.ItemClickListener;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
+import com.android.renly.meetingreservation.module.folder.fileList.FileListActivity;
 import com.android.renly.meetingreservation.utils.LogUtils;
 import com.android.renly.meetingreservation.widget.RecycleViewDivider;
 
@@ -42,16 +45,24 @@ public class FolderFrag extends BaseFragment {
     protected void initData(Context content) {
         folderList = new ArrayList<>();
         folderList.add(new Folder("关于新产品的售价", new Date().getTime()-10000,1));
-        folderList.add(new Folder("关于新产品的售价", new Date().getTime()-10000,1));
-        folderList.add(new Folder("关于新产品的售价", new Date().getTime()-10000,1));
-        folderList.add(new Folder("关于新产品的售价", new Date().getTime()-10000,1));
-        folderList.add(new Folder("关于新产品的售价", new Date().getTime()-10000,1));
-        folderList.add(new Folder("关于新产品的售价", new Date().getTime()-10000,1));
-        folderList.add(new Folder("关于新产品的售价", new Date().getTime()-10000,1));
-        folderList.add(new Folder("关于新产品的售价", new Date().getTime()-10000,1));
-        folderList.add(new Folder("关于新产品的售价", new Date().getTime()-10000,1));
+        folderList.add(new Folder("关于新产品的售价.pdf", new Date().getTime()-10000,2));
+        folderList.add(new Folder("关于新产品的售价.png", new Date().getTime()-10000,2));
+        folderList.add(new Folder("关于新产品的售价.psd", new Date().getTime()-10000,2));
+        folderList.add(new Folder("关于新产品的售价.txt", new Date().getTime()-10000,2));
+        folderList.add(new Folder("关于新产品的售价.ppt", new Date().getTime()-10000,2));
+        folderList.add(new Folder("关于新产品的售价.upload", new Date().getTime()-10000,2));
+        folderList.add(new Folder("关于新产品的售价.video", new Date().getTime()-10000,2));
+        folderList.add(new Folder("关于新产品的售价.zip", new Date().getTime()-10000,2));
+        folderList.add(new Folder("关于新产品的售价.word", new Date().getTime()-10000,2));
+        folderList.add(new Folder("关于新产品的售价.html", new Date().getTime()-10000,2));
+        folderList.add(new Folder("关于新产品的售价.jpg", new Date().getTime()-10000,2));
+        folderList.add(new Folder("关于新产品的售价.mp3", new Date().getTime()-10000,2));
+        folderList.add(new Folder("关于新产品的售价.excel", new Date().getTime()-10000,2));
+        folderList.add(new Folder("关于新产品的售价.gif", new Date().getTime()-10000,2));
+        folderList.add(new Folder("关于新产品的售价.download", new Date().getTime()-10000,2));
+        folderList.add(new Folder("关于新产品的售价.ai", new Date().getTime()-10000,2));
+        folderList.add(new Folder("关于新产品的售价.other", new Date().getTime()-10000,2));
 
-        LogUtils.printLog(new Date().getTime()+"initdata");
         initAdapter();
     }
 
@@ -74,6 +85,14 @@ public class FolderFrag extends BaseFragment {
 
     private void initAdapter() {
         adapter = new FolderAdapter(getActivity(), folderList);
+        adapter.setOnItemClickListener(new ItemClickListener() {
+            @Override
+            public void onItemClick(View v, int pos) {
+                Intent intent = new Intent(getContext(), FileListActivity.class);
+                intent.putExtra("title", folderList.get(pos).getName());
+                startActivity(intent);
+            }
+        });
         recyclerView.setAdapter(adapter);
     }
 
