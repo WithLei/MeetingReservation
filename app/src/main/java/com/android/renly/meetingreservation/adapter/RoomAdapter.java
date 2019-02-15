@@ -1,6 +1,7 @@
 package com.android.renly.meetingreservation.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.api.bean.Room;
+import com.android.renly.meetingreservation.module.booking.roomArrangement.RoomArrangement;
 import com.android.renly.meetingreservation.utils.DateUtils;
 import com.squareup.picasso.Picasso;
 
@@ -66,6 +68,8 @@ public class RoomAdapter extends BaseAdapter {
         ImageView ivNeedVerify;
         @BindView(R.id.tv_needVerify)
         TextView tvNeedVerify;
+        @BindView(R.id.recommond)
+        LinearLayout recommond;
 
         NormalViewHolder(View itemView) {
             super(itemView);
@@ -94,7 +98,7 @@ public class RoomAdapter extends BaseAdapter {
             areaAndName.setText(room.getArea() + " · " + room.getName());
             score.setText(room.getScore() + "");
 //            fire.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_hot));
-            for (int i = 0;i < room.getHot();i++) {
+            for (int i = 0; i < room.getHot(); i++) {
                 if (i > 5)
                     break;
                 ImageView fire = new ImageView(context);
@@ -114,6 +118,12 @@ public class RoomAdapter extends BaseAdapter {
                 ivNeedVerify.setImageResource(R.drawable.ic_quick);
                 tvNeedVerify.setText("无需审核，闪电预定");
             }
+            recommond.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    context.startActivity(new Intent(context, RoomArrangement.class));
+                }
+            });
         }
     }
 }

@@ -285,6 +285,7 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/recommond"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"

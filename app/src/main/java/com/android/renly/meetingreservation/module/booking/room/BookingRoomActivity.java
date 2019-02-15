@@ -1,8 +1,12 @@
 package com.android.renly.meetingreservation.module.booking.room;
 
+import android.view.View;
+import android.widget.TextView;
+
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.listener.GlideImageLoader;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
+import com.android.renly.meetingreservation.module.booking.roomArrangement.RoomArrangement;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -15,6 +19,8 @@ import butterknife.BindView;
 public class BookingRoomActivity extends BaseActivity {
     @BindView(R.id.banner)
     Banner banner;
+    @BindView(R.id.recommond)
+    TextView recommond;
 
     private List<Integer> images = new ArrayList<>();
 
@@ -41,6 +47,7 @@ public class BookingRoomActivity extends BaseActivity {
         initBanner();
         initToolBar(true,"");
         initSlidr();
+        recommond.setOnClickListener(view -> jumpToActivity(RoomArrangement.class));
     }
 
     private void initBanner() {

@@ -90,6 +90,10 @@
             android:name=".module.folder.fileList.FileListActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".module.booking.roomArrangement.RoomArrangement"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>
