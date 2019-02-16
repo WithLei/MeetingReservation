@@ -20,7 +20,6 @@
         android:layout_height="42dp"
         android:layout_alignParentBottom="true"
         android:background="@color/orange_light"
-        android:elevation="1dp"
         android:gravity="center">
 
         <TextView
@@ -36,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/top"
-        android:layout_marginBottom="48dp">
+        android:layout_marginBottom="42dp">
 
         <LinearLayout
             android:layout_width="match_parent"
