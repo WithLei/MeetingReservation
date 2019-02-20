@@ -1,12 +1,8 @@
 package com.android.renly.meetingreservation.module.home;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.adapter.MainPageAdapter;
@@ -17,22 +13,17 @@ import com.android.renly.meetingreservation.module.folder.FolderFrag;
 import com.android.renly.meetingreservation.module.home.fullscreen.HomeFrag;
 import com.android.renly.meetingreservation.module.mine.MineFrag;
 import com.android.renly.meetingreservation.utils.SoftKeyboardStateHelper;
-import com.android.renly.meetingreservation.utils.toast.MyToast;
-import com.android.renly.meetingreservation.utils.toast.ToastUtils;
 import com.android.renly.meetingreservation.widget.MyBottomTab;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
-import rx.Observable;
-import rx.functions.Action1;
 
 public class HomeActivity extends BaseActivity
         implements ViewPager.OnPageChangeListener {
     @BindView(R.id.root)
-    LinearLayout root;
+    RelativeLayout root;
     @BindView(R.id.bottom_bar)
     MyBottomTab bottomBar;
     private ViewPager viewPager;
@@ -53,6 +44,7 @@ public class HomeActivity extends BaseActivity
     @Override
     protected void initView() {
         bottomBar.setOnTabChangeListener((v, position, isChange) -> setSelect(position, isChange));
+        bottomBar.setMessage(true);
         setKeyBoardListener();
     }
 

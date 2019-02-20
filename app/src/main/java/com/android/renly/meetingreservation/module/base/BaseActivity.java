@@ -23,6 +23,7 @@ import com.android.renly.meetingreservation.utils.toast.MyToast;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrConfig;
 import com.r0adkll.slidr.model.SlidrPosition;
+import com.umeng.message.PushAgent;
 
 import java.io.File;
 import java.io.RandomAccessFile;
@@ -42,6 +43,7 @@ public abstract class BaseActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         doBeforeSetContent();
         setContentView(getLayoutID());
+        PushAgent.getInstance(this).onAppStart();
         unbinder = ButterKnife.bind(this);
         // 初始化状态栏
 //        initWindowTitle();

@@ -68,4 +68,14 @@ dependencies {
     implementation 'com.github.dongjunkun:DropDownMenu:1.0.4'
     // 下拉刷新样式
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-18'
+
+    // 推送
+    //PushSDK必须依赖基础组件库，所以需要加入对应依赖
+    implementation 'com.umeng.umsdk:common:1.5.4'
+    //PushSDK必须依赖utdid库，所以需要加入对应依赖
+    implementation 'com.umeng.umsdk:utdid:1.1.5.3'
+    //PushSDK
+    implementation 'com.umeng.umsdk:push:5.0.2'
+    // shortcut
+    implementation "me.leolin:ShortcutBadger:1.1.22@aar"
 }

@@ -192,8 +192,10 @@ public class MyBottomTab extends LinearLayout implements OnClickListener {
 
         if (ishaveMessage) {
             int len = getWidth();
-            int end = len / 4 * 3;
-            int start = len / 2;
+//            int end = len / 4 * 3;
+//            int start = len / 2;
+            int end = len / 4;
+            int start = 0;
             int center = (end - start) / 2 + start;
             int centx = center + SIZE_2 * 6;
             int centy = SIZE_2 * 5;
@@ -206,7 +208,7 @@ public class MyBottomTab extends LinearLayout implements OnClickListener {
         void tabClicked(View v, int position, boolean isChange);
     }
 
-    public void setOnTabChangeListener(OnTabChangeListener linstener) {
-        this.listener = linstener;
+    public void setOnTabChangeListener(OnTabChangeListener listener) {
+        this.listener = listener;
     }
 }

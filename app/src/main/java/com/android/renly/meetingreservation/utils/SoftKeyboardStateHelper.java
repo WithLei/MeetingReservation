@@ -35,10 +35,10 @@ public class SoftKeyboardStateHelper implements ViewTreeObserver.OnGlobalLayoutL
         activityRootView.getWindowVisibleDisplayFrame(r);
 
         final int heightDiff = activityRootView.getRootView().getHeight() - (r.bottom - r.top);
-        if (!isSoftKeyboardOpened && heightDiff > 100) { // if more than 100 pixels, its probably a keyboard...
+        if (!isSoftKeyboardOpened && heightDiff > 250) { // if more than 100 pixels, its probably a keyboard...
             isSoftKeyboardOpened = true;
             notifyOnSoftKeyboardOpened(heightDiff);
-        } else if (isSoftKeyboardOpened && heightDiff < 100) {
+        } else if (isSoftKeyboardOpened && heightDiff < 250) {
             isSoftKeyboardOpened = false;
             notifyOnSoftKeyboardClosed();
         }
