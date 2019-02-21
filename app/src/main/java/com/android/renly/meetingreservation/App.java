@@ -10,6 +10,7 @@ import com.android.renly.meetingreservation.injector.components.DaggerApplicatio
 import com.android.renly.meetingreservation.injector.modules.ApplicationModule;
 import com.android.renly.meetingreservation.utils.LogUtils;
 import com.android.renly.meetingreservation.utils.toast.ToastUtils;
+import com.squareup.picasso.Picasso;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
@@ -101,12 +102,28 @@ public class App extends Application {
      * 初始化注射器
      */
     private void initInjector() {
-//         这里不做注入操作，只提供一些全局单例数据
+    //这里不做注入操作，只提供一些全局单例数据
         mAppComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .build();
     }
 
+    /**
+     * 低内存的时候执行
+     */
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+    }
+
+    /**
+     * HOME键退出应用程序
+     * 程序在内存清理的时候执行
+     */
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+    }
 
     private void clearBadge() {
         int badgeCount = 0;
