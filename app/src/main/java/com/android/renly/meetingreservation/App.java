@@ -3,12 +3,14 @@ package com.android.renly.meetingreservation;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.multidex.MultiDexApplication;
 import android.text.TextUtils;
 
 import com.android.renly.meetingreservation.injector.components.ApplicationComponent;
 import com.android.renly.meetingreservation.injector.components.DaggerApplicationComponent;
 import com.android.renly.meetingreservation.injector.modules.ApplicationModule;
 import com.android.renly.meetingreservation.utils.LogUtils;
+import com.android.renly.meetingreservation.utils.sHA1Utils;
 import com.android.renly.meetingreservation.utils.toast.ToastUtils;
 import com.squareup.picasso.Picasso;
 import com.umeng.commonsdk.UMConfigure;
@@ -20,7 +22,7 @@ import com.umeng.message.entity.UMessage;
 
 import me.leolin.shortcutbadger.ShortcutBadger;
 
-public class App extends Application {
+public class App extends MultiDexApplication {
     private static Context context;
     private static ApplicationComponent mAppComponent;
 
@@ -52,6 +54,7 @@ public class App extends Application {
         initInjector();
         initConfig();
         initPush();
+//        LogUtils.printLog("sHA1 = " + sHA1Utils.sHA1(this));
     }
 
     private void initPush() {

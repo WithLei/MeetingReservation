@@ -11,6 +11,7 @@ android {
         targetSdkVersion targetSdk
         versionCode VERSIONCODE
         versionName VERSIONNAME
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -32,6 +33,8 @@ dependencies {
     implementation "com.android.support:design:${rootProject.ext.support}"
     implementation "com.android.support:support-v4:${rootProject.ext.support}"
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    // 方法超过65535
+    implementation 'com.android.support:multidex:1.0.3'
     // picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
     // okhttp
@@ -78,4 +81,10 @@ dependencies {
     implementation 'com.umeng.umsdk:push:5.0.2'
     // shortcut
     implementation "me.leolin:ShortcutBadger:1.1.22@aar"
+
+    // 高德地图
+    // 2D地图
+    implementation 'com.amap.api:map2d:latest.integration'
+    // 定位
+    implementation 'com.amap.api:location:latest.integration'
 }
