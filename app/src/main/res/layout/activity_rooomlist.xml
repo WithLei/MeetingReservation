@@ -31,6 +31,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_8"
@@ -74,6 +75,7 @@
                     android:tint="@color/colorDividerDark" />
 
                 <TextView
+                    android:id="@+id/search_hint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="用途/地标/名称等"

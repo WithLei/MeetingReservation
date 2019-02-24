@@ -37,13 +37,6 @@ public class SearchActivity extends BaseActivity {
         btn.setEnabled(true);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
-
     @OnClick({R.id.search, R.id.btn_confirm})
     public void onViewClicked(View view) {
         switch (view.getId()) {

@@ -1,9 +1,11 @@
 package com.android.renly.meetingreservation.module.booking.roomList;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -18,12 +20,14 @@ import com.android.renly.meetingreservation.api.bean.Room;
 import com.android.renly.meetingreservation.listener.ItemClickListener;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
 import com.android.renly.meetingreservation.module.booking.room.BookingRoomActivity;
+import com.android.renly.meetingreservation.module.map.MapActivity;
 import com.android.renly.meetingreservation.widget.RecycleViewDivider;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.yyydjk.library.DropDownMenu;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +40,8 @@ public class RoomListActivity extends BaseActivity {
     DropDownMenu mDropDownMenu;
     @BindView(R.id.search)
     LinearLayout search;
+    @BindView(R.id.search_hint)
+    TextView search_hint;
     RecyclerView recyclerView;
     SmartRefreshLayout refresh;
 
@@ -56,6 +62,10 @@ public class RoomListActivity extends BaseActivity {
 
     private String keyWords[] = {"研讨会", "商务", "推介会"};
 
+    private int mYear;
+    private int mMonth;
+    private int mDay;
+
     private int constellationPosition = 0;
 
     @Override
@@ -74,6 +84,11 @@ public class RoomListActivity extends BaseActivity {
                 true, keyWords, "http://149.28.149.136:8080/image/room03.jpg"));
         roomList.add(new Room("B2楼4037", "多功能会议室", 4.5f, 4, new Date().getTime(),
                 true, keyWords, "http://149.28.149.136:8080/image/room04.jpg"));
+
+        Calendar calendar = Calendar.getInstance();
+        mYear = calendar.get(Calendar.YEAR);
+        mMonth = calendar.get(Calendar.MONTH);
+        mDay = calendar.get(Calendar.DAY_OF_MONTH);
     }
 
     @Override
@@ -179,20 +194,45 @@ public class RoomListActivity extends BaseActivity {
         recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+    private DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+            mYear = year;
+            mMonth = month;
+            mDay = day;
+            String days;
+            if (mMonth + 1 < 10) {
+                if (mDay < 10) {
+                    days = new StringBuffer().append(mYear).append("/").append("0").append(mMonth + 1)
+                            .append("/").append("0").append(mDay).toString();
+                } else {
+                    days = new StringBuffer().append(mYear).append("/").append("0").append(mMonth + 1)
+                            .append("/").append(mDay).toString();
+                }
+            } else {
+                if (mDay < 10) {
+                    days = new StringBuffer().append(mYear).append("/").append(mMonth + 1)
+                            .append("/").append("0").append(mDay).toString();
+                } else {
+                    days = new StringBuffer().append(mYear).append("/").append(mMonth + 1)
+                            .append("/").append(mDay).toString();
+                }
+            }
+            search_hint.setText(days);
+        }
+    };
 
-    @OnClick({R.id.search, R.id.location})
+    @OnClick({R.id.search, R.id.location, R.id.date})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.search:
                 finishActivity();
                 break;
             case R.id.location:
+                jumpToActivity(MapActivity.class);
+                break;
+            case R.id.date:
+                new DatePickerDialog(this, onDateSetListener, mYear, mMonth, mDay).show();
                 break;
         }
     }

@@ -74,6 +74,8 @@
                     android:background="@color/colorDivider" />
 
                 <RelativeLayout
+                    android:clickable="true"
+                    android:background="?android:selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -114,9 +116,10 @@
                     android:background="@color/colorDivider" />
 
                 <RelativeLayout
+                    android:id="@+id/location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/bg_primary"
+                    android:background="?android:selectableItemBackground"
                     android:elevation="1dp"
                     android:paddingStart="@dimen/dimen_16"
                     android:paddingTop="@dimen/dimen_8"
