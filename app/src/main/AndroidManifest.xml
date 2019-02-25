@@ -119,6 +119,10 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <service android:name="com.amap.api.location.APSService" />
+        <activity
+            android:name=".module.folder.upload.UploadActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>

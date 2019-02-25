@@ -57,6 +57,9 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:2.19'
     // gson
     implementation 'com.google.code.gson:gson:2.8.5'
+    // 网络日志拦截
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+
 
     // lots of UI
     // 左滑样式

@@ -2,10 +2,14 @@ package com.android.renly.meetingreservation.module.folder;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.adapter.FolderAdapter;
@@ -13,23 +17,28 @@ import com.android.renly.meetingreservation.api.bean.Folder;
 import com.android.renly.meetingreservation.listener.ItemClickListener;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
 import com.android.renly.meetingreservation.module.folder.fileList.FileListActivity;
-import com.android.renly.meetingreservation.utils.LogUtils;
-import com.android.renly.meetingreservation.widget.RecycleViewDivider;
+import com.android.renly.meetingreservation.module.folder.upload.UploadActivity;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 
 public class FolderFrag extends BaseFragment {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.search)
     EditText search;
+    @BindView(R.id.upload)
+    LinearLayout upload;
+    Unbinder unbinder;
 
     private FolderAdapter adapter;
-    private List<Folder>folderList;
+    private List<Folder> folderList;
 
     @Override
     protected void initInjector() {
@@ -44,24 +53,24 @@ public class FolderFrag extends BaseFragment {
     @Override
     protected void initData(Context content) {
         folderList = new ArrayList<>();
-        folderList.add(new Folder("关于新产品的售价", new Date().getTime()-10000,1));
-        folderList.add(new Folder("关于新产品的售价.pdf", new Date().getTime()-10000,2));
-        folderList.add(new Folder("关于新产品的售价.png", new Date().getTime()-10000,2));
-        folderList.add(new Folder("关于新产品的售价.psd", new Date().getTime()-10000,2));
-        folderList.add(new Folder("关于新产品的售价.txt", new Date().getTime()-10000,2));
-        folderList.add(new Folder("关于新产品的售价.ppt", new Date().getTime()-10000,2));
-        folderList.add(new Folder("关于新产品的售价.upload", new Date().getTime()-10000,2));
-        folderList.add(new Folder("关于新产品的售价.video", new Date().getTime()-10000,2));
-        folderList.add(new Folder("关于新产品的售价.zip", new Date().getTime()-10000,2));
-        folderList.add(new Folder("关于新产品的售价.word", new Date().getTime()-10000,2));
-        folderList.add(new Folder("关于新产品的售价.html", new Date().getTime()-10000,2));
-        folderList.add(new Folder("关于新产品的售价.jpg", new Date().getTime()-10000,2));
-        folderList.add(new Folder("关于新产品的售价.mp3", new Date().getTime()-10000,2));
-        folderList.add(new Folder("关于新产品的售价.excel", new Date().getTime()-10000,2));
-        folderList.add(new Folder("关于新产品的售价.gif", new Date().getTime()-10000,2));
-        folderList.add(new Folder("关于新产品的售价.download", new Date().getTime()-10000,2));
-        folderList.add(new Folder("关于新产品的售价.ai", new Date().getTime()-10000,2));
-        folderList.add(new Folder("关于新产品的售价.other", new Date().getTime()-10000,2));
+        folderList.add(new Folder("关于新产品的售价", new Date().getTime() - 10000, 1));
+        folderList.add(new Folder("关于新产品的售价.pdf", new Date().getTime() - 10000, 2));
+        folderList.add(new Folder("关于新产品的售价.png", new Date().getTime() - 10000, 2));
+        folderList.add(new Folder("关于新产品的售价.psd", new Date().getTime() - 10000, 2));
+        folderList.add(new Folder("关于新产品的售价.txt", new Date().getTime() - 10000, 2));
+        folderList.add(new Folder("关于新产品的售价.ppt", new Date().getTime() - 10000, 2));
+        folderList.add(new Folder("关于新产品的售价.upload", new Date().getTime() - 10000, 2));
+        folderList.add(new Folder("关于新产品的售价.video", new Date().getTime() - 10000, 2));
+        folderList.add(new Folder("关于新产品的售价.zip", new Date().getTime() - 10000, 2));
+        folderList.add(new Folder("关于新产品的售价.word", new Date().getTime() - 10000, 2));
+        folderList.add(new Folder("关于新产品的售价.html", new Date().getTime() - 10000, 2));
+        folderList.add(new Folder("关于新产品的售价.jpg", new Date().getTime() - 10000, 2));
+        folderList.add(new Folder("关于新产品的售价.mp3", new Date().getTime() - 10000, 2));
+        folderList.add(new Folder("关于新产品的售价.excel", new Date().getTime() - 10000, 2));
+        folderList.add(new Folder("关于新产品的售价.gif", new Date().getTime() - 10000, 2));
+        folderList.add(new Folder("关于新产品的售价.download", new Date().getTime() - 10000, 2));
+        folderList.add(new Folder("关于新产品的售价.ai", new Date().getTime() - 10000, 2));
+        folderList.add(new Folder("关于新产品的售价.other", new Date().getTime() - 10000, 2));
 
         initAdapter();
     }
@@ -106,9 +115,20 @@ public class FolderFrag extends BaseFragment {
 
     }
 
-    public void loseFocus(){
+    public void loseFocus() {
         search.setFocusable(false);
         search.setFocusable(true);
         search.setFocusableInTouchMode(true);
+    }
+
+    @OnClick({R.id.upload, R.id.search})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.upload:
+                jumpToActivity(UploadActivity.class);
+                break;
+            case R.id.search:
+                break;
+        }
     }
 }

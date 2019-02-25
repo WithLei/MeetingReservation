@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.support.multidex.MultiDexApplication;
 import android.text.TextUtils;
 
+import com.android.renly.meetingreservation.api.RetrofitService;
 import com.android.renly.meetingreservation.injector.components.ApplicationComponent;
 import com.android.renly.meetingreservation.injector.components.DaggerApplicationComponent;
 import com.android.renly.meetingreservation.injector.modules.ApplicationModule;
@@ -99,6 +100,7 @@ public class App extends MultiDexApplication {
 
     private void initConfig() {
         ToastUtils.init(getContext());
+        RetrofitService.init();
     }
 
     /**

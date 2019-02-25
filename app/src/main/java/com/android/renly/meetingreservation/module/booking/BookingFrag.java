@@ -15,6 +15,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.android.renly.meetingreservation.R;
+import com.android.renly.meetingreservation.listener.MyOnDateSetListener;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
 import com.android.renly.meetingreservation.module.booking.success.BookingSuccessActivity;
 import com.android.renly.meetingreservation.utils.toast.ToastUtils;
@@ -52,10 +53,6 @@ public class BookingFrag extends BaseFragment {
     @BindView(R.id.tv_type)
     TextView tvType;
 
-    private int mYear;
-    private int mMonth;
-    private int mDay;
-
     @Override
     protected void initInjector() {
 
@@ -68,10 +65,6 @@ public class BookingFrag extends BaseFragment {
 
     @Override
     protected void initData(Context content) {
-        Calendar calendar = Calendar.getInstance();
-        mYear = calendar.get(Calendar.YEAR);
-        mMonth = calendar.get(Calendar.MONTH);
-        mDay = calendar.get(Calendar.DAY_OF_MONTH);
     }
 
     @Override
@@ -82,20 +75,6 @@ public class BookingFrag extends BaseFragment {
     @Override
     public void ScrollToTop() {
 
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
     }
 
     @OnClick({R.id.contact, R.id.area, R.id.type, R.id.date, R.id.time, R.id.isRescheduled, R.id.people, R.id.budget, R.id.company, R.id.phone, R.id.demand, R.id.btn})
@@ -126,7 +105,19 @@ public class BookingFrag extends BaseFragment {
                 myRadioDialogView.show();
                 break;
             case R.id.date:
-                new DatePickerDialog(getContext(), onDateSetListener, mYear, mMonth, mDay).show();
+                Calendar calendar = Calendar.getInstance();
+                MyOnDateSetListener myOnDateSetListener = new MyOnDateSetListener() {
+                    @Override
+                    public void afterSetDate(String days) {
+                        tvDate.setText(days);
+                        tvDate.setTextColor(getResources().getColor(R.color.text_color_pri));
+                    }
+                };
+                new DatePickerDialog(getContext(),
+                        myOnDateSetListener,
+                        calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)).show();
                 break;
             case R.id.time:
                 TimeRangePickerDialog dialog = new TimeRangePickerDialog(getContext(), "13:00 - 17:00", new TimeRangePickerDialog.ConfirmAction() {
@@ -148,35 +139,6 @@ public class BookingFrag extends BaseFragment {
                 break;
         }
     }
-
-    private DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-            mYear = year;
-            mMonth = month;
-            mDay = day;
-            String days;
-            if (mMonth + 1 < 10) {
-                if (mDay < 10) {
-                    days = new StringBuffer().append(mYear).append("/").append("0").append(mMonth + 1)
-                            .append("/").append("0").append(mDay).toString();
-                } else {
-                    days = new StringBuffer().append(mYear).append("/").append("0").append(mMonth + 1)
-                            .append("/").append(mDay).toString();
-                }
-            } else {
-                if (mDay < 10) {
-                    days = new StringBuffer().append(mYear).append("/").append(mMonth + 1)
-                            .append("/").append("0").append(mDay).toString();
-                } else {
-                    days = new StringBuffer().append(mYear).append("/").append(mMonth + 1)
-                            .append("/").append(mDay).toString();
-                }
-            }
-            tvDate.setText(days);
-            tvDate.setTextColor(getResources().getColor(R.color.text_color_pri));
-        }
-    };
 
     public void loseFocus(){
         people.setFocusable(false);

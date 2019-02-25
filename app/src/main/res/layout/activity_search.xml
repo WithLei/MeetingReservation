@@ -19,13 +19,16 @@
             android:layout_weight="1">
 
             <EditText
-                android:id="@+id/start_time"
+                android:id="@+id/date"
                 style="@style/text_16_sec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dimen_16"
                 android:background="@null"
-                android:hint="开始时间" />
+                android:inputType="date"
+                android:hint="选择日期" />
 
             <View
                 android:layout_width="match_parent"
@@ -35,40 +38,13 @@
                 android:background="@color/colorDivider" />
         </RelativeLayout>
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_lefttoright"
-            android:tint="@color/colorDividerDark" />
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <EditText
-                android:id="@+id/end_time"
-                style="@style/text_16_sec"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:background="@null"
-                android:hint="结束时间" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="@dimen/dimen_16"
-                android:background="@color/colorDivider" />
-        </RelativeLayout>
-
         <LinearLayout
             android:id="@+id/calendar"
             android:layout_width="55dp"
             android:layout_height="match_parent"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:clickable="true"
+            android:layout_marginEnd="@dimen/dimen_16"
             android:gravity="center">
 
             <ImageView
@@ -103,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/dimen_16"
+            android:layout_marginEnd="36dp"
             android:background="@null"
             android:text="人"
             android:textAlignment="viewEnd" />
@@ -240,13 +216,30 @@
         android:background="@color/bg_primary"
         android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <TextView
             style="@style/text_14_sec"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="@dimen/dimen_16"
             android:gravity="center_vertical"
+            android:layout_alignParentStart="true"
             android:text="搜索历史" />
+
+            <TextView
+                android:textColor="@color/text_color_thi"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:drawableEnd="@drawable/ic_clear_24dp"
+                android:drawableTint="@color/text_color_thi"
+                android:text="历史清除"/>
+        </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
