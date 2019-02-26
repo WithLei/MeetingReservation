@@ -7,6 +7,8 @@
 
     <include layout="@layout/my_toolbar" />
 
+    <include layout="@layout/item_upload" />
+
     <TextView
         android:id="@+id/progress"
         style="@style/text_16_pri"
@@ -14,5 +16,10 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="0%"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

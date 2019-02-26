@@ -14,11 +14,17 @@ import okio.Sink;
 
 public class UploadFileRequestBody extends RequestBody {
 
+    /**
+     * 实际请求体
+     */
     private RequestBody mRequestBody;
+    /**
+     * 上传回调接口
+     */
     private FileUploadObserver<ResponseBody>fileUploadObserver;
 
     public UploadFileRequestBody(File file, FileUploadObserver<ResponseBody>fileUploadObserver) {
-        this.mRequestBody = RequestBody.create(MediaType.parse("application/octet-stream"), file);
+        this.mRequestBody = RequestBody.create(null, file);
         this.fileUploadObserver = fileUploadObserver;
     }
 
@@ -43,7 +49,7 @@ public class UploadFileRequestBody extends RequestBody {
         bufferedSink.flush();
     }
 
-    protected final class CountingSink extends ForwardingSink {
+    private final class CountingSink extends ForwardingSink {
         private long bytesWritten = 0;
 
         public CountingSink(Sink delegate) {

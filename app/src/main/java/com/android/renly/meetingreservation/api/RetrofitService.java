@@ -5,6 +5,7 @@ import com.android.renly.meetingreservation.api.api.MeetingApi;
 import com.android.renly.meetingreservation.api.api.MeetingRoomApi;
 import com.android.renly.meetingreservation.api.api.ServiceApi;
 import com.android.renly.meetingreservation.api.api.TagApi;
+import com.android.renly.meetingreservation.api.api.UploadApi;
 import com.android.renly.meetingreservation.api.api.UserApi;
 import com.android.renly.meetingreservation.api.bean.AskMeeting;
 import com.android.renly.meetingreservation.api.bean.AskMeetingRoom;
@@ -12,6 +13,8 @@ import com.android.renly.meetingreservation.api.bean.AskService;
 import com.android.renly.meetingreservation.api.bean.AskTag;
 import com.android.renly.meetingreservation.api.bean.AskUser;
 import com.android.renly.meetingreservation.utils.network.NetConfig;
+import com.android.renly.meetingreservation.utils.upload.FileUploadObserver;
+import com.android.renly.meetingreservation.utils.upload.UploadFileRequestBody;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -20,6 +23,7 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.Cache;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
@@ -35,6 +39,7 @@ public class RetrofitService {
     private static MeetingApi meetingApi;
     private static MeetingRoomApi meetingRoomApi;
     private static TagApi tagApi;
+    private static UploadApi uploadApi;
 
     private RetrofitService(){
         throw new AssertionError();
@@ -91,6 +96,14 @@ public class RetrofitService {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         tagApi = retrofit.create(TagApi.class);
+
+        retrofit = new Retrofit.Builder()
+                .client(client)
+                .baseUrl(NetConfig.BASE_UPLOAD)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+        uploadApi = retrofit.create(UploadApi.class);
     }
 
     /**************************************             API             **************************************/
@@ -244,6 +257,28 @@ public class RetrofitService {
      */
     public static Observable<ResponseBody> getTagById (int id) {
         return tagApi.getTag(new AskTag(id))
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    /**
+     * 上传文件的封装
+     */
+    public static void uploadAvatar(File file, FileUploadObserver<ResponseBody>fileUploadObserver) {
+        UploadFileRequestBody uploadFileRequestBody = new UploadFileRequestBody(file, fileUploadObserver);
+        MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), uploadFileRequestBody);
+        uploadApi.uploadAvatar(part,26)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(fileUploadObserver);
+    }
+
+    public static Observable<ResponseBody> uploadFile(File file, FileUploadObserver<ResponseBody> fileUploadObserver) {
+        UploadFileRequestBody uploadFileRequestBody = new UploadFileRequestBody(file, fileUploadObserver);
+        MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), uploadFileRequestBody);
+        return uploadApi.uploadAvatar(part, 26)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());

@@ -36,6 +36,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="2018/12/31 12:33:28" />
+            android:text="1.78MB" />
     </RelativeLayout>
 </LinearLayout>

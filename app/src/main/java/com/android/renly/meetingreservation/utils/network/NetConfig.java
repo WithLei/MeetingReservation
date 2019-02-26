@@ -12,4 +12,6 @@ public class NetConfig {
     public static final String BASE_MEETINGROOM_URL = BASE_URL + "meetingRoom/";
 
     public static final String BASE_TAG_URL = BASE_URL + "tag/";
+
+    public static final String BASE_UPLOAD = BASE_URL + "user/";
 }

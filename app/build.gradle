@@ -74,6 +74,8 @@ dependencies {
     implementation 'com.github.dongjunkun:DropDownMenu:1.0.4'
     // 下拉刷新样式
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-18'
+    // 进度条
+    implementation 'com.daimajia.numberprogressbar:library:1.4@aar'
 
     // 推送
     //PushSDK必须依赖基础组件库，所以需要加入对应依赖

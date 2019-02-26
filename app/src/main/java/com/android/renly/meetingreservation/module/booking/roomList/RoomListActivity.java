@@ -1,11 +1,9 @@
 package com.android.renly.meetingreservation.module.booking.roomList;
 
 import android.app.DatePickerDialog;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -109,7 +107,7 @@ public class RoomListActivity extends BaseActivity {
         sortView.setAdapter(sortAdapter);
 
         //init constellation
-        final View constellationView = getLayoutInflater().inflate(R.layout.custom_layout, null);
+        final View constellationView = getLayoutInflater().inflate(R.layout.layout_custom, null);
         GridView constellation = ButterKnife.findById(constellationView, R.id.constellation);
         constellationAdapter = new ConstellationAdapter(this, Arrays.asList(constellations));
         constellation.setAdapter(constellationAdapter);
