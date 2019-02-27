@@ -11,11 +11,17 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_8">
 
+        <View
+            android:layout_width="6dp"
+            android:layout_height="24dp"
+            android:background="@color/green_dark" />
+
         <TextView
             style="@style/text_16_pri"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/dimen_16"
             android:text="询价需求发布" />
 
         <TextView

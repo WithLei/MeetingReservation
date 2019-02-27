@@ -2,6 +2,7 @@ package com.android.renly.meetingreservation.module.booking;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.view.LayoutInflater;
@@ -135,9 +136,37 @@ public class BookingFrag extends BaseFragment {
                 dialog.show();
                 break;
             case R.id.btn:
-                jumpToActivity(BookingSuccessActivity.class);
+                if (!checkInput())
+                    break;
+                Intent intent = new Intent(getContext(), BookingSuccessActivity.class);
+                intent.putExtra("area",tvArea.getText());
+                intent.putExtra("type",tvType.getText());
+                intent.putExtra("date",tvDate.getText());
+                intent.putExtra("time",tvTime.getText());
+                intent.putExtra("isRescheduled",isRescheduled.isChecked());
+                intent.putExtra("people",people.getText());
+                intent.putExtra("budget",budget.getText() == null ? "" : budget.getText());
+                intent.putExtra("company",company.getText());
+                intent.putExtra("phone",phone.getText());
+
+                tvArea.setText("区域");
+                tvType.setText("活动类型");
+                tvDate.setText("日期");
+                tvTime.setText("具体时间");
+                isRescheduled.setChecked(false);
+                people.setText("");
+                budget.setText("");
+                company.setText("");
+                phone.setText("");
+
+                startActivity(intent);
                 break;
         }
+    }
+
+    private boolean checkInput() {
+        return tvArea.getText() != null && tvType.getText() != null && tvDate.getText() != null &&
+                tvTime.getText() != null && people.getText() != null && company.getText() != null && phone.getText() != null;
     }
 
     public void loseFocus(){

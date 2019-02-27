@@ -3,6 +3,7 @@ package com.android.renly.meetingreservation.module.home.fullscreen;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -28,6 +29,9 @@ import com.android.renly.meetingreservation.widget.RecycleViewDivider;
 import com.haibin.calendarview.Calendar;
 import com.haibin.calendarview.CalendarLayout;
 import com.haibin.calendarview.CalendarView;
+import com.wang.avi.AVLoadingIndicatorView;
+
+import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -66,7 +70,20 @@ public class HomeFrag extends BaseFragment implements
     RecyclerView recyclerView;
     @BindView(R.id.scrollView)
     ScrollView scrollView;
-    Unbinder unbinder;
+    @BindView(R.id.avi)
+    AVLoadingIndicatorView avi;
+    @BindView(R.id.expandable_layout_day_content)
+    ExpandableLayout dayContent;
+    @BindView(R.id.expandable_layout_day_content_empty)
+    ExpandableLayout dayContentEmpty;
+    @BindView(R.id.mymeeting_time)
+    TextView mymeetingTime;
+    @BindView(R.id.mymeeting_address)
+    TextView mymeetingAddress;
+    @BindView(R.id.mymeeting_title)
+    TextView mymeetingTitle;
+    @BindView(R.id.mymeeting_worker)
+    TextView mymeetingWorker;
 
     private int mYear;
 
@@ -140,6 +157,7 @@ public class HomeFrag extends BaseFragment implements
     protected RecyclerView.LayoutManager mLayoutManager;
 
     private LectureAdapter adapter;
+
     private void initAdapter() {
         adapter = new LectureAdapter(getContext(), lectureList);
         adapter.setOnItemClickListener(new ItemClickListener() {
@@ -174,6 +192,7 @@ public class HomeFrag extends BaseFragment implements
         mTvLunar.setText("今日");
         mTvCurrentDay.setText(String.valueOf(mCalendarView.getCurDay()));
 
+        avi.show();
 
         initAdapter();
         initRecyclerView();
@@ -181,7 +200,7 @@ public class HomeFrag extends BaseFragment implements
 
     @Override
     public void ScrollToTop() {
-        scrollView.smoothScrollTo(0,0);
+        scrollView.smoothScrollTo(0, 0);
     }
 
     @OnClick({R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04, R.id.tv_month_day, R.id.fl_current, R.id.active_activity})
@@ -197,6 +216,12 @@ public class HomeFrag extends BaseFragment implements
                 jumpToActivity(MyMeetingActivity.class);
                 break;
             case R.id.btn04:
+                View mView = View.inflate(getContext(), R.layout.layout_service, null);
+                new AlertDialog.Builder(getContext())
+                        .setView(mView)
+                        .setCancelable(true)
+                        .create()
+                        .show();
                 break;
             case R.id.tv_month_day:
                 if (!mCalendarLayout.isExpand()) {
@@ -217,6 +242,24 @@ public class HomeFrag extends BaseFragment implements
         }
     }
 
+    /**
+     * 显示该日的所有会议消息
+     */
+    private void showDayMeeting(boolean hasMeeting) {
+        if (hasMeeting) {
+            dayContentEmpty.collapse();
+            dayContent.expand();
+
+            mymeetingTitle.setText("人脸签到的使用流程介绍");
+            mymeetingAddress.setText("C2楼1208会议室");
+            mymeetingTime.setText("2019/02/08 13:00 - 15:30");
+            mymeetingWorker.setText("北京市第三区交通委");
+        }else {
+            dayContent.collapse();
+            dayContentEmpty.expand();
+        }
+    }
+
     private Calendar getSchemeCalendar(int year, int month, int day, int color, String text) {
         Calendar calendar = new Calendar();
         calendar.setYear(year);
@@ -232,6 +275,7 @@ public class HomeFrag extends BaseFragment implements
 
     }
 
+    private boolean flag = false;
     @Override
     public void onCalendarSelect(Calendar calendar, boolean isClick) {
         mTvLunar.setVisibility(View.VISIBLE);
@@ -240,6 +284,11 @@ public class HomeFrag extends BaseFragment implements
         mTvYear.setText(String.valueOf(calendar.getYear()));
         mTvLunar.setText(calendar.getLunar());
         mYear = calendar.getYear();
+
+        if (flag)
+            showDayMeeting(calendar.getScheme().trim().isEmpty() ? false : true);
+        else
+            flag = true;
     }
 
     @Override

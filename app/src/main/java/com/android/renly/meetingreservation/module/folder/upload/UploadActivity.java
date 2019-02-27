@@ -17,12 +17,16 @@ import com.android.renly.meetingreservation.utils.upload.FileUploadObserver;
 import com.android.renly.meetingreservation.utils.upload.PathUtils;
 import com.daimajia.numberprogressbar.NumberProgressBar;
 
+import net.cachapa.expandablelayout.ExpandableLayout;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.BindView;
+import butterknife.OnClick;
+import butterknife.OnItemClick;
 import io.reactivex.functions.Consumer;
 import okhttp3.ResponseBody;
 
@@ -31,6 +35,11 @@ public class UploadActivity extends BaseActivity {
     TextView progress;
     @BindView(R.id.progressbar)
     NumberProgressBar progressBar;
+    @BindView(R.id.expandable_layout0)
+    ExpandableLayout layout0;
+    @BindView(R.id.expandable_layout1)
+    ExpandableLayout layout1;
+
 
     @Override
     protected int getLayoutID() {
@@ -68,19 +77,19 @@ public class UploadActivity extends BaseActivity {
                             }
                         });
                     }
-                },1000,100);
+                }, 1000, 100);
     }
 
     private void doUpload() {
         LogUtils.printLog(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "meetingReservation" + File.separator + "speaker01.jpg");
-        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "meetingReservation" , "speaker01.jpg");
+        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "meetingReservation", "speaker01.jpg");
         RetrofitService.uploadAvatar(file, new FileUploadObserver<ResponseBody>() {
             @Override
             public void onProgress(int percent) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        progress.setText(percent+" ");
+                        progress.setText(percent + " ");
                     }
                 });
             }
@@ -109,6 +118,7 @@ public class UploadActivity extends BaseActivity {
     }
 
     String path;
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
@@ -130,6 +140,23 @@ public class UploadActivity extends BaseActivity {
                 progress.setText(path);
                 ToastUtils.ToastShort("3.0: " + path);
             }
+        }
+    }
+
+    @OnClick({R.id.expandable_layout0, R.id.expandable_layout1,R.id.progress})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.expandable_layout1:
+            break;
+            case R.id.progress:
+                if (layout1.isExpanded()) {
+                    layout0.collapse();
+                    layout1.collapse();
+                } else if (layout0.isExpanded()){
+                    layout1.expand();
+                }else
+                    layout0.expand();
+            break;
         }
     }
 }

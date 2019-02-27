@@ -8,15 +8,16 @@
     android:background="@color/bg_secondary">
     
     <ImageView
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="86dp"
+        android:layout_height="86dp"
         android:layout_marginBottom="@dimen/dimen_16"
         android:src="@drawable/ic_noresult"/>
 
     <TextView
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:textColor="@color/text_color_sec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="这里被外星人占领啦，没有找到你想要的结果喔"/>
+        android:textAlignment="center"
+        android:text="这里被外星人占领啦，没有找到你想要的喔~"/>
 </LinearLayout>

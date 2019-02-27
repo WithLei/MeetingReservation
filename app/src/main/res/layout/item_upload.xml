@@ -26,9 +26,9 @@
             android:id="@+id/info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/img"
-            android:layout_marginStart="20dp"
             android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/img"
             android:orientation="vertical">
 
             <TextView
@@ -53,25 +53,51 @@
             style="@style/text_14_sec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:singleLine="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/dimen_8"
-            android:text="1.78MB"/>
+            android:singleLine="true"
+            android:text="1.78MB" />
 
     </RelativeLayout>
 
-    <com.daimajia.numberprogressbar.NumberProgressBar
-        android:id="@+id/progressbar"
-        style="@style/NumberProgressBar_Default"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_16"
-        android:layout_marginEnd="@dimen/dimen_16" />
+        android:layout_marginEnd="@dimen/dimen_16"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:src="@drawable/ic_pause_circle_outline_24dp"
+            android:tint="@color/colorPrimary" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackgroundBorderless"
+            android:layout_marginStart="@dimen/dimen_4"
+            android:clickable="true"
+            android:src="@drawable/ic_stop"
+            android:tint="@color/colorPrimary" />
+
+        <com.daimajia.numberprogressbar.NumberProgressBar
+            android:id="@+id/progressbar"
+            style="@style/MyNumberProgressBar"
+            android:layout_marginStart="@dimen/dimen_8" />
+
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="@dimen/dimen_8"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="@dimen/dimen_8"
         android:layout_marginEnd="10dp"
         android:background="@color/bg_secondary" />
 

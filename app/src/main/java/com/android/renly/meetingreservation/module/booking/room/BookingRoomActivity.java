@@ -7,6 +7,7 @@ import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.listener.GlideImageLoader;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
 import com.android.renly.meetingreservation.module.booking.roomArrangement.RoomArrangement;
+import com.android.renly.meetingreservation.module.map.MapActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class BookingRoomActivity extends BaseActivity {
     @BindView(R.id.banner)
@@ -67,5 +69,14 @@ public class BookingRoomActivity extends BaseActivity {
         banner.setIndicatorGravity(BannerConfig.CENTER);
         //banner设置方法全部调用完毕时最后调用
         banner.start();
+    }
+
+    @OnClick({R.id.location})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.location:
+                jumpToActivity(MapActivity.class);
+                break;
+        }
     }
 }

@@ -73,8 +73,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content">
 
                     <RelativeLayout
                         android:id="@+id/area"
@@ -88,8 +87,8 @@
                             style="@style/text_16_thi"
                             android:layout_width="110dp"
                             android:layout_height="wrap_content"
-                            android:singleLine="true"
                             android:layout_marginStart="@dimen/dimen_16"
+                            android:singleLine="true"
                             android:text="区域" />
 
                         <ImageView
@@ -119,8 +118,8 @@
                             style="@style/text_16_thi"
                             android:layout_width="110dp"
                             android:layout_height="wrap_content"
-                            android:singleLine="true"
                             android:layout_marginStart="@dimen/dimen_16"
+                            android:singleLine="true"
                             android:text="活动类型" />
 
                         <ImageView
@@ -156,8 +155,8 @@
                             style="@style/text_16_thi"
                             android:layout_width="110dp"
                             android:layout_height="wrap_content"
-                            android:singleLine="true"
                             android:layout_marginStart="@dimen/dimen_16"
+                            android:singleLine="true"
                             android:text="日期" />
 
                         <ImageView

@@ -270,11 +270,23 @@
                     android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/text_16_pri"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="详情" />
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="6dp"
+                            android:layout_height="24dp"
+                            android:background="@color/colorPrimary" />
+
+                        <TextView
+                            style="@style/text_16_pri"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_8"
+                            android:text="详情" />
+                    </LinearLayout>
 
                     <TextView
                         style="@style/text_14_sec"
@@ -288,10 +300,130 @@
                     android:id="@+id/recommond"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="@dimen/dimen_8"
+                    android:text="查看此会室的安排档期"
                     android:textColor="@color/green_light"
-                    android:text="查看此会室的安排档期"/>
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="6dp"
+                            android:layout_height="24dp"
+                            android:background="@color/colorPrimary" />
+
+                        <TextView
+                            style="@style/text_16_pri"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_8"
+                            android:text="位置" />
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/text_14_sec"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="@dimen/dimen_16"
+                        android:text="国际创业园-C楼4015间 多功能会议室" />
+
+                    <ImageView
+                        android:id="@+id/location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:scaleType="center"
+                        android:src="@drawable/staticmap" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="6dp"
+                            android:layout_height="24dp"
+                            android:background="@color/colorPrimary" />
+
+                        <TextView
+                            style="@style/text_16_pri"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_8"
+                            android:text="须知" />
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/text_14_pri"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_16"
+                        android:text="基本要求" />
+
+                    <TextView
+                        style="@style/text_14_sec"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_4"
+                        android:text="禁止吸烟·不允许携带宠物·不允许举办派对" />
+
+                    <TextView
+                        style="@style/text_14_pri"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_8"
+                        android:text="取消预约" />
+
+                    <TextView
+                        style="@style/text_14_sec"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_4"
+                        android:text="严格·会议前2小时内免责退订" />
+
+                    <TextView
+                        style="@style/text_14_pri"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_8"
+                        android:text="交易提示" />
+
+                    <TextView
+                        style="@style/text_14_sec"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_4"
+                        android:text="我们采用记账式结算规则付款，为了保证您的账户隐私及付款安全，请勿妄信第三方预订代理提供的折扣或礼金券，也不要在该应用外汇款或交流。" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -307,6 +439,7 @@
             android:layout_height="1dp"
             android:layout_alignParentTop="true"
             android:background="@color/colorDivider" />
+
         <TextView
             style="@style/text_14_pri"
             android:layout_width="wrap_content"
@@ -336,8 +469,8 @@
                 android:layout_height="40dp"
                 android:background="@drawable/selector_bookingbtn"
                 android:gravity="center"
-                android:textColor="@color/white"
-                android:text="立即预定" />
+                android:text="立即预定"
+                android:textColor="@color/white" />
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

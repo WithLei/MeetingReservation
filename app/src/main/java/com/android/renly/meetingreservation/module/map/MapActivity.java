@@ -4,6 +4,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -59,6 +62,16 @@ public class MapActivity extends BaseActivity
     @Override
     protected void initView() {
         initToolBar(true, "地图");
+        TextView confirm = new TextView(this);
+        confirm.setText("确认");
+        confirm.setTextColor(getResources().getColor(R.color.white));
+        confirm.setTextSize(16);
+        confirm.setGravity(Gravity.CENTER_VERTICAL);
+        confirm.setOnClickListener(view -> {
+            ToastUtils.ToastShort("选定了xx");
+            finishActivity();
+        });
+        addToolbarView(confirm);
         initSlidr();
     }
 

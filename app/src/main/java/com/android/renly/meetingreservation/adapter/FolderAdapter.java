@@ -51,6 +51,8 @@ public class FolderAdapter extends BaseAdapter {
         TextView time;
         @BindView(R.id.img)
         ImageView img;
+        @BindView(R.id.size)
+        TextView size;
 
         NormalViewHolder(View itemView) {
             super(itemView);
@@ -64,8 +66,10 @@ public class FolderAdapter extends BaseAdapter {
             time.setText(DateUtils.dateToString(new Date(folder.getCreate_time())));
             if (folder.getType() == 1)
                 img.setImageResource(R.drawable.ic_folder_yellow);
-            else
+            else {
                 img.setImageResource(FileUtils.getFileImgId(folder.getName()));
+                size.setText(folder.getSize() == null ? "" : folder.getSize());
+            }
         }
     }
 }

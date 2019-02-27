@@ -2,12 +2,47 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bg_primary"
     android:orientation="vertical">
 
     <include layout="@layout/my_toolbar" />
 
     <include layout="@layout/item_upload" />
+
+    <net.cachapa.expandablelayout.ExpandableLayout
+    android:id="@+id/expandable_layout0"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:el_duration="1000"
+    app:el_expanded="true"
+    app:el_parallax="0.5">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@color/main_color_5"
+        android:text="Fixed height" />
+
+</net.cachapa.expandablelayout.ExpandableLayout>
+
+    <net.cachapa.expandablelayout.ExpandableLayout
+        android:id="@+id/expandable_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:el_duration="1000"
+        app:el_expanded="false"
+        app:el_parallax="0.5">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="@color/main_color_6"
+            android:text="Fixed height" />
+
+    </net.cachapa.expandablelayout.ExpandableLayout>
 
     <TextView
         android:id="@+id/progress"

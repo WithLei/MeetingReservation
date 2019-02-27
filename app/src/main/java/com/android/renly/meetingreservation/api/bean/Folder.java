@@ -10,9 +10,9 @@ public class Folder {
      */
     private int type;
     /**
-     * 文档格式
+     * 文件大小
      */
-    private String format;
+    private String size;
 
     public Folder(String name, long create_time, int type) {
         this.name = name;
@@ -20,11 +20,11 @@ public class Folder {
         this.type = type;
     }
 
-    public Folder(String name, long create_time, int type, String format) {
+    public Folder(String name, long create_time, int type, String size) {
         this.name = name;
         this.create_time = create_time;
         this.type = type;
-        this.format = format;
+        this.size = size;
     }
 
     public String getName() {
@@ -51,11 +51,11 @@ public class Folder {
         this.type = type;
     }
 
-    public String getFormat() {
-        return format;
+    public String getSize() {
+        return size;
     }
 
-    public void setFormat(String format) {
-        this.format = format;
+    public void setSize(String size) {
+        this.size = size;
     }
 }
