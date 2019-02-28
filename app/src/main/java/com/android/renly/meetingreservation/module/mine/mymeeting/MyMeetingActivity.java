@@ -46,11 +46,6 @@ public class MyMeetingActivity extends BaseActivity {
         initToolBar(true, "我的会议");
         initSlidr();
 
-        if (tabLayout == null)
-            LogUtils.printLog("tablayout == null");
-        else
-            LogUtils.printLog("tablayout != null");
-
         fragments = new ArrayList<>();
         fragments.add(new NotStartFrag());
         fragments.add(new OverFrag());

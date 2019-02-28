@@ -81,7 +81,6 @@ public class UploadActivity extends BaseActivity {
     }
 
     private void doUpload() {
-        LogUtils.printLog(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "meetingReservation" + File.separator + "speaker01.jpg");
         File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "meetingReservation", "speaker01.jpg");
         RetrofitService.uploadAvatar(file, new FileUploadObserver<ResponseBody>() {
             @Override

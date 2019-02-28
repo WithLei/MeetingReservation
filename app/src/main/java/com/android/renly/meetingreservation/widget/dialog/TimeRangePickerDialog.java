@@ -162,11 +162,8 @@ public class TimeRangePickerDialog extends Dialog {
     private void setTimePickerDividerColor(TimePicker timePicker) {
         LinearLayout llFirst = (LinearLayout) timePicker.getChildAt(0);
         FrameLayout mSpinners = (FrameLayout) llFirst.getChildAt(0);
-        LogUtils.printLog("mSpinner.size() == " + mSpinners.getChildCount());
-//        LogUtils.printLog("mSpinners2 " + mSpinners.getChildAt(1).getClass());
         for (int i = 0; i < mSpinners.getChildCount(); i++) {
             if (mSpinners.getChildAt(i) instanceof NumberPicker) {
-                LogUtils.printLog("i" + i + "is numberpicker");
                 Field[] pickerFields = NumberPicker.class.getDeclaredFields();
                 setPickerMargin((NumberPicker) mSpinners.getChildAt(i));
                 setNumberPickerTextSize((NumberPicker) mSpinners.getChildAt(i));
@@ -197,7 +194,6 @@ public class TimeRangePickerDialog extends Dialog {
     }
 
     private void setTextSize(TextView tv) {
-        LogUtils.printLog("setTextSize");
         tv.setTextSize(32);
         tv.setGravity(Gravity.CENTER);
     }
@@ -206,12 +202,10 @@ public class TimeRangePickerDialog extends Dialog {
      * 设置picker的字体大小
      */
     private void setNumberPickerTextSize(NumberPicker np) {
-        LogUtils.printLog("setNumPicker");
         EditText et = findEditText(np);
         et.setFocusable(false);
         et.setGravity(Gravity.CENTER);
         et.setTextSize(10);
-        LogUtils.printLog("设置picker");
     }
 
     private EditText findEditText(NumberPicker np) {

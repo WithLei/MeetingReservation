@@ -67,7 +67,7 @@
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name=".module.booking.room.BookingRoomActivity"
+            android:name=".module.booking.room.RoomActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
@@ -121,6 +121,10 @@
         <service android:name="com.amap.api.location.APSService" />
         <activity
             android:name=".module.folder.upload.UploadActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".module.booking.bookingroom.BookingRoomActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
     </application>

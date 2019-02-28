@@ -464,6 +464,7 @@
             android:layout_marginEnd="@dimen/dimen_16">
 
             <Button
+                android:id="@+id/booking"
                 style="@style/text_16_thi"
                 android:layout_width="130dp"
                 android:layout_height="40dp"

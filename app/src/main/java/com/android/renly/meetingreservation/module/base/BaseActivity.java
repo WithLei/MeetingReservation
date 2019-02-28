@@ -145,6 +145,11 @@ public abstract class BaseActivity extends FragmentActivity {
         overridePendingTransition(R.anim.translate_in, R.anim.translate_out);
     }
 
+    public void jumpToActivityBottom(Class<?> targetActivity) {
+        startActivity(new Intent(this, targetActivity));
+        overridePendingTransition(R.anim.bottomin, R.anim.bottomout);
+    }
+
     /**
      * 初始化标题栏
      *
@@ -215,6 +220,11 @@ public abstract class BaseActivity extends FragmentActivity {
     public void finishActivityZoom() {
         finish();
         overridePendingTransition(R.anim.zoomin, R.anim.zoomout);
+    }
+
+    public void finishActivityBottom() {
+        finish();
+        overridePendingTransition(R.anim.bottomin, R.anim.bottomout);
     }
 
     /**

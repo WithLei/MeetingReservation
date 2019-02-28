@@ -180,6 +180,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dimen_8"
                 android:text="联系方式： 17812345678" />
+
+            <TextView
+                android:id="@+id/demand"
+                style="@style/text_14_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_8"
+                android:text="其他需求： " />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

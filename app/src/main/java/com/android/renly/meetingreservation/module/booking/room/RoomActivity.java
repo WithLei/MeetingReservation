@@ -6,6 +6,7 @@ import android.widget.TextView;
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.listener.GlideImageLoader;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
+import com.android.renly.meetingreservation.module.booking.bookingroom.BookingRoomActivity;
 import com.android.renly.meetingreservation.module.booking.roomArrangement.RoomArrangement;
 import com.android.renly.meetingreservation.module.map.MapActivity;
 import com.youth.banner.Banner;
@@ -18,7 +19,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class BookingRoomActivity extends BaseActivity {
+public class RoomActivity extends BaseActivity {
     @BindView(R.id.banner)
     Banner banner;
     @BindView(R.id.recommond)
@@ -47,7 +48,7 @@ public class BookingRoomActivity extends BaseActivity {
     @Override
     protected void initView() {
         initBanner();
-        initToolBar(true,"");
+        initToolBar(true, "");
         initSlidr();
         recommond.setOnClickListener(view -> jumpToActivity(RoomArrangement.class));
     }
@@ -71,11 +72,14 @@ public class BookingRoomActivity extends BaseActivity {
         banner.start();
     }
 
-    @OnClick({R.id.location})
+    @OnClick({R.id.location, R.id.booking})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.location:
                 jumpToActivity(MapActivity.class);
+                break;
+            case R.id.booking:
+                jumpToActivityBottom(BookingRoomActivity.class);
                 break;
         }
     }

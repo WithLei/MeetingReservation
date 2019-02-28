@@ -11,6 +11,7 @@ import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.api.bean.Folder;
 import com.android.renly.meetingreservation.utils.DateUtils;
 import com.android.renly.meetingreservation.utils.FileUtils;
+import com.android.renly.meetingreservation.utils.LogUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -64,8 +65,10 @@ public class FolderAdapter extends BaseAdapter {
             Folder folder = list.get(pos);
             name.setText(folder.getName());
             time.setText(DateUtils.dateToString(new Date(folder.getCreate_time())));
-            if (folder.getType() == 1)
+            if (folder.getType() == 1) {
                 img.setImageResource(R.drawable.ic_folder_yellow);
+                LogUtils.printLog("pos == " + pos);
+            }
             else {
                 img.setImageResource(FileUtils.getFileImgId(folder.getName()));
                 size.setText(folder.getSize() == null ? "" : folder.getSize());

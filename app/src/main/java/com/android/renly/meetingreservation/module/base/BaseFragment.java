@@ -21,6 +21,7 @@ public abstract class BaseFragment extends Fragment {
     protected Unbinder unbinder;
     //缓存Fragment View
     private View mRootView;
+    private boolean isViewInited = false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,7 +56,8 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser && isVisible() && mRootView != null){
+        if (isVisibleToUser && isVisible() && mRootView != null && !isViewInited){
+            isViewInited = true;
             initView();
         }
     }

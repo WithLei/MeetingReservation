@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.listener.MyOnDateSetListener;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
 import com.android.renly.meetingreservation.module.booking.success.BookingSuccessActivity;
+import com.android.renly.meetingreservation.utils.LogUtils;
 import com.android.renly.meetingreservation.utils.toast.ToastUtils;
 import com.android.renly.meetingreservation.widget.dialog.MyDialogView;
 import com.android.renly.meetingreservation.widget.dialog.MyRadioDialogView;
@@ -53,7 +55,6 @@ public class BookingFrag extends BaseFragment {
     TextView tvArea;
     @BindView(R.id.tv_type)
     TextView tvType;
-
     @Override
     protected void initInjector() {
 
@@ -144,29 +145,51 @@ public class BookingFrag extends BaseFragment {
                 intent.putExtra("date",tvDate.getText());
                 intent.putExtra("time",tvTime.getText());
                 intent.putExtra("isRescheduled",isRescheduled.isChecked());
-                intent.putExtra("people",people.getText());
-                intent.putExtra("budget",budget.getText() == null ? "" : budget.getText());
-                intent.putExtra("company",company.getText());
-                intent.putExtra("phone",phone.getText());
-
-                tvArea.setText("区域");
-                tvType.setText("活动类型");
-                tvDate.setText("日期");
-                tvTime.setText("具体时间");
-                isRescheduled.setChecked(false);
-                people.setText("");
-                budget.setText("");
-                company.setText("");
-                phone.setText("");
+                intent.putExtra("people",people.getText().toString().trim());
+                intent.putExtra("budget",TextUtils.isEmpty(budget.getText().toString().trim()) ? "" : budget.getText().toString());
+                intent.putExtra("company",company.getText().toString().trim());
+                intent.putExtra("phone",phone.getText().toString().trim());
+                intent.putExtra("demand",demand.getText().toString().trim());
 
                 startActivity(intent);
+                recoveryForm();
                 break;
         }
     }
 
+    /**
+     * 提交后复原整个表单
+     */
+    private void recoveryForm() {
+        tvArea.setText("区域");
+        tvArea.setTextColor(getResources().getColor(R.color.text_color_thi));
+        tvType.setText("活动类型");
+        tvType.setTextColor(getResources().getColor(R.color.text_color_thi));
+        tvDate.setText("日期");
+        tvDate.setTextColor(getResources().getColor(R.color.text_color_thi));
+        tvTime.setText("具体时间");
+        tvTime.setTextColor(getResources().getColor(R.color.text_color_thi));
+        isRescheduled.setChecked(false);
+        people.setText("");
+        budget.setText("");
+        company.setText("");
+        phone.setText("");
+        demand.setText("");
+    }
+
     private boolean checkInput() {
-        return tvArea.getText() != null && tvType.getText() != null && tvDate.getText() != null &&
-                tvTime.getText() != null && people.getText() != null && company.getText() != null && phone.getText() != null;
+        if (TextUtils.isEmpty(people.getText().toString().trim())) {
+            people.setError("请输入人数");
+            return false;
+        } else if (TextUtils.isEmpty(company.getText().toString().trim())) {
+            company.setError("请输入联系人/公司");
+            return false;
+        } else if (TextUtils.isEmpty(phone.getText().toString().trim())) {
+            phone.setError("请输入联系方式");
+            return false;
+        }
+        return tvArea.getText() != null && tvType.getText() != null &&
+                tvDate.getText() != null && tvTime.getText() != null;
     }
 
     public void loseFocus(){

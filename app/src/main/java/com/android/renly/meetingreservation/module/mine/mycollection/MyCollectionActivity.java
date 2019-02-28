@@ -9,7 +9,7 @@ import com.android.renly.meetingreservation.adapter.CollectionAdapter;
 import com.android.renly.meetingreservation.api.bean.Room;
 import com.android.renly.meetingreservation.listener.ItemClickListener;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
-import com.android.renly.meetingreservation.module.booking.room.BookingRoomActivity;
+import com.android.renly.meetingreservation.module.booking.room.RoomActivity;
 import com.android.renly.meetingreservation.widget.RecycleViewDivider;
 
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public class MyCollectionActivity extends BaseActivity {
         adapter.setOnItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(View v, int pos) {
-                jumpToActivity(BookingRoomActivity.class);
+                jumpToActivity(RoomActivity.class);
             }
         });
         recyclerView.setAdapter(adapter);

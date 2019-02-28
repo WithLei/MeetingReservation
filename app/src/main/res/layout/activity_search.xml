@@ -160,7 +160,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
-        android:enabled="false"
+        android:enabled="true"
         android:text="搜  索"
         android:textColor="@color/text_btn" />
 

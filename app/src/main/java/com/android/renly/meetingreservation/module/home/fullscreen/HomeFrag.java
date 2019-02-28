@@ -132,7 +132,7 @@ public class HomeFrag extends BaseFragment implements
         Observable.timer(2, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(aLong -> mCalendarLayout.shrink(),
-                        throwable -> LogUtils.printLog(throwable.getMessage()));
+                        throwable -> LogUtils.printError("HomeFrag initdata() timer " + throwable.getMessage()));
 
         initView();
 

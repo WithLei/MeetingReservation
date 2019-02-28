@@ -3,6 +3,7 @@ package com.android.renly.meetingreservation.module.folder;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,7 +19,9 @@ import com.android.renly.meetingreservation.listener.ItemClickListener;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
 import com.android.renly.meetingreservation.module.folder.fileList.FileListActivity;
 import com.android.renly.meetingreservation.module.folder.upload.UploadActivity;
+import com.android.renly.meetingreservation.utils.FileUtils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,7 +38,6 @@ public class FolderFrag extends BaseFragment {
     EditText search;
     @BindView(R.id.upload)
     LinearLayout upload;
-    Unbinder unbinder;
 
     private FolderAdapter adapter;
     private List<Folder> folderList;
@@ -97,9 +99,22 @@ public class FolderFrag extends BaseFragment {
         adapter.setOnItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(View v, int pos) {
-                Intent intent = new Intent(getContext(), FileListActivity.class);
-                intent.putExtra("title", folderList.get(pos).getName());
-                startActivity(intent);
+                if (folderList.get(pos).getType() == 1) {
+                    // 文件夹
+                    Intent intent = new Intent(getContext(), FileListActivity.class);
+                    intent.putExtra("title", folderList.get(pos).getName());
+                    startActivity(intent);
+                }else {
+                    // 打开文件
+                    String fileDirec = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "meetingReservation" + File.separator;
+//                    fileDirec += "speaker01.jpg";
+//                    fileDirec += "【還願】插曲码头姑娘合唱版（巩莉芳&杜美心） [AV 44136941, From JIJIDOWN.COM].mp4";
+//                    fileDirec += "PPT学习范本.pptx";
+//                    fileDirec += "Oracle实验.docx";
+                    fileDirec += "html笔记.txt";
+//                    fileDirec += "HeadPhoto.png";
+                    FileUtils.openFile(getContext(), fileDirec);
+                }
             }
         });
         recyclerView.setAdapter(adapter);

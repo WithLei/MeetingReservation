@@ -1,6 +1,7 @@
 package com.android.renly.meetingreservation.module.booking.success;
 
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -24,6 +25,8 @@ public class BookingSuccessActivity extends BaseActivity {
     TextView tvCompany;
     @BindView(R.id.phone)
     TextView tvPhone;
+    @BindView(R.id.demand)
+    TextView tvDemand;
 
     private String area;
     private String type;
@@ -34,6 +37,7 @@ public class BookingSuccessActivity extends BaseActivity {
     private String budget;
     private String company;
     private String phone;
+    private String demand;
 
     @Override
     protected int getLayoutID() {
@@ -52,6 +56,7 @@ public class BookingSuccessActivity extends BaseActivity {
         budget = intent.getStringExtra("budget");
         company = intent.getStringExtra("company");
         phone = intent.getStringExtra("phone");
+        demand = intent.getStringExtra("demand");
     }
 
     @Override
@@ -62,10 +67,19 @@ public class BookingSuccessActivity extends BaseActivity {
 
         tvArea.setText("区域： " + area);
         tvType.setText("活动类型： " + type);
-        tvTime.setText("时间： " + time);
-        tvPeople.setText("活动人数： " + people);
-        tvBudget.setText("活动预算： " + budget);
+        tvTime.setText("时间： " + date + " " + time);
+        tvPeople.setText("活动人数： " + people + "人");
+        if (TextUtils.isEmpty(budget.trim())) {
+            tvBudget.setVisibility(View.GONE);
+        } else {
+            tvBudget.setText("活动预算： " + tvBudget + "元");
+        }
         tvCompany.setText("联系人/公司： " + company);
         tvPhone.setText("联系方式： " + phone);
+        if (TextUtils.isEmpty(demand.trim())) {
+            tvDemand.setVisibility(View.GONE);
+        } else {
+            tvDemand.setText("其他需求： " + demand);
+        }
     }
 }

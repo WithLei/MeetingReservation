@@ -18,7 +18,7 @@ import com.android.renly.meetingreservation.api.bean.Room;
 import com.android.renly.meetingreservation.listener.ItemClickListener;
 import com.android.renly.meetingreservation.listener.MyOnDateSetListener;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
-import com.android.renly.meetingreservation.module.booking.room.BookingRoomActivity;
+import com.android.renly.meetingreservation.module.booking.room.RoomActivity;
 import com.android.renly.meetingreservation.module.map.MapActivity;
 import com.android.renly.meetingreservation.widget.RecycleViewDivider;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -166,7 +166,7 @@ public class RoomListActivity extends BaseActivity {
         adapter.setOnItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(View v, int pos) {
-                jumpToActivity(BookingRoomActivity.class);
+                jumpToActivity(RoomActivity.class);
             }
         });
         recyclerView.setAdapter(adapter);
