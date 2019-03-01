@@ -10,10 +10,13 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -74,7 +77,6 @@ public class TimeRangePickerDialog extends Dialog {
 
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         screenWidth = metrics.widthPixels - getDensityValue(80, context);
-
     }
 
     @Override
@@ -107,8 +109,8 @@ public class TimeRangePickerDialog extends Dialog {
         timePickerStart.setDescendantFocusability(TimePicker.FOCUS_BLOCK_DESCENDANTS);
         timePickerEnd.setDescendantFocusability(TimePicker.FOCUS_BLOCK_DESCENDANTS);
 
-        setTimePickerDividerColor(timePickerStart);
-        setTimePickerDividerColor(timePickerEnd);
+//        setTimePickerDividerColor(timePickerStart);
+//        setTimePickerDividerColor(timePickerEnd);
 
         if (!CommonUtils.isNull(startTime) && !CommonUtils.isNull(endTime)) {
 
@@ -129,7 +131,6 @@ public class TimeRangePickerDialog extends Dialog {
         }
 
         timePickerStart.setOnTimeChangedListener((timePicker, hourOfDay, minute) -> {
-
             String h = hourOfDay < 10 ? "0" + hourOfDay : "" + hourOfDay;
             String m = minute < 10 ? "0" + minute : "" + minute;
             startTime = h + ":" + m;
@@ -161,9 +162,17 @@ public class TimeRangePickerDialog extends Dialog {
 
     private void setTimePickerDividerColor(TimePicker timePicker) {
         LinearLayout llFirst = (LinearLayout) timePicker.getChildAt(0);
-        FrameLayout mSpinners = (FrameLayout) llFirst.getChildAt(0);
+        ViewGroup mSpinners = null;
+        for (int i=0;i<llFirst.getChildCount();i++)
+            LogUtils.printLog(i + " " + llFirst.getChildAt(i));
+        if (llFirst.getChildAt(0) instanceof FrameLayout)
+            mSpinners = (FrameLayout) llFirst.getChildAt(0);
+        else if (llFirst.getChildAt(0) instanceof RelativeLayout)
+            mSpinners = (RelativeLayout) llFirst.getChildAt(0);
+        if (mSpinners != null)
         for (int i = 0; i < mSpinners.getChildCount(); i++) {
             if (mSpinners.getChildAt(i) instanceof NumberPicker) {
+                LogUtils.printLog("if " + i + mSpinners.getChildAt(i).getClass().getName());
                 Field[] pickerFields = NumberPicker.class.getDeclaredFields();
                 setPickerMargin((NumberPicker) mSpinners.getChildAt(i));
                 setNumberPickerTextSize((NumberPicker) mSpinners.getChildAt(i));
@@ -182,15 +191,28 @@ public class TimeRangePickerDialog extends Dialog {
                         break;
                     }
                 }
-            } else{
+            } else if (mSpinners.getChildAt(i) instanceof LinearLayout){
+                LogUtils.printLog("else if " + i + mSpinners.getChildAt(i).getClass().getName());
                 LinearLayout ll = (LinearLayout) mSpinners.getChildAt(i);
                 for (int t = 0;t < ll.getChildCount();t++) {
+                    LogUtils.printLog("see here " + t + " " + ll.getChildCount() + " " + ll.getChildAt(t).getClass().getName());
                     if (ll.getChildAt(t) instanceof TextView)
                         setTextSize((TextView)ll.getChildAt(t));
+//                    if (ll.getChildAt(t) instanceof RadioButton)
+//                        setRadioBtnSize((RadioButton)ll.getChildAt(t));
                 }
+            } else{
+                LogUtils.printLog("else " + i + mSpinners.getChildAt(i).getClass().getName());
+                if (mSpinners.getChildAt(i) instanceof TextView)
+                    setTextSize((TextView)mSpinners.getChildAt(i));
             }
 
         }
+    }
+
+    private void setRadioBtnSize(RadioButton btn) {
+        btn.setTextSize(10);
+        btn.setGravity(Gravity.CENTER);
     }
 
     private void setTextSize(TextView tv) {

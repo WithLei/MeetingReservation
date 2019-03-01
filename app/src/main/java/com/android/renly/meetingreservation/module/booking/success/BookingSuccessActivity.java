@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
+import com.android.renly.meetingreservation.utils.LogUtils;
 
 import butterknife.BindView;
 
@@ -57,26 +58,37 @@ public class BookingSuccessActivity extends BaseActivity {
         company = intent.getStringExtra("company");
         phone = intent.getStringExtra("phone");
         demand = intent.getStringExtra("demand");
+
+        LogUtils.printLog("budget " + budget);
+        LogUtils.printLog("people " + people);
     }
 
     @Override
     protected void initView() {
         initToolBar(false, "需求订单详情");
-        findViewById(R.id.menu).setOnClickListener(view -> finishActivityZoom());
+        findViewById(R.id.menu).setOnClickListener(view -> finishActivityBottom());
         initSlidr();
 
-        tvArea.setText("区域： " + area);
-        tvType.setText("活动类型： " + type);
+        if (area == null || TextUtils.isEmpty(area)) {
+            tvArea.setVisibility(View.GONE);
+        } else {
+            tvArea.setText("区域： " + area);
+        }
+        if (type == null || TextUtils.isEmpty(type)) {
+            tvType.setVisibility(View.GONE);
+        } else {
+            tvType.setText("活动类型： " + type);
+        }
         tvTime.setText("时间： " + date + " " + time);
         tvPeople.setText("活动人数： " + people + "人");
-        if (TextUtils.isEmpty(budget.trim())) {
+        if (budget == null || TextUtils.isEmpty(budget.trim())) {
             tvBudget.setVisibility(View.GONE);
         } else {
             tvBudget.setText("活动预算： " + tvBudget + "元");
         }
         tvCompany.setText("联系人/公司： " + company);
         tvPhone.setText("联系方式： " + phone);
-        if (TextUtils.isEmpty(demand.trim())) {
+        if (demand == null || TextUtils.isEmpty(demand.trim())) {
             tvDemand.setVisibility(View.GONE);
         } else {
             tvDemand.setText("其他需求： " + demand);

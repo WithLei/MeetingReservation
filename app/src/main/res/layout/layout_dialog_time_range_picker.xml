@@ -24,13 +24,15 @@
 
         <TimePicker
             android:id="@+id/timePickerStart"
+            android:timePickerMode="spinner"
             android:layout_width="140dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content"/>
 
         <TimePicker
             android:id="@+id/timePickerEnd"
+            android:timePickerMode="spinner"
             android:layout_width="140dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"/>
 
         <TextView

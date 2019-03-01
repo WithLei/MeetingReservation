@@ -44,7 +44,7 @@
             android:clickable="true"
             android:focusable="true"
             android:padding="13dp"
-            android:text="返回首页"
+            android:text="返回"
             android:textColor="@color/white"
             android:textSize="14sp" />
     </FrameLayout>

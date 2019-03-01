@@ -133,7 +133,6 @@ public class BookingFrag extends BaseFragment {
                         tvTime.setTextColor(getResources().getColor(R.color.text_color_pri));
                     }
                 });
-
                 dialog.show();
                 break;
             case R.id.btn:
