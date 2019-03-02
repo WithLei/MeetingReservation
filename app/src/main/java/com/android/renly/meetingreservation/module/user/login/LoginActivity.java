@@ -73,18 +73,17 @@ public class LoginActivity extends BaseActivity {
 
     private void initText() {
         if (App.isRemeberPwdUser()) {
-            name.setText(App.getEmail());
+            name.setText(App.getUserPhone());
             password.setText(App.getPwd());
             cbRemUser.setChecked(true);
         } else{
-            name.setText(App.getEmail());
+            name.setText(App.getUserPhone());
             cbRemUser.setChecked(false);
         }
         name.setSelection(name.getText().length());
         password.setSelection(password.getText().length());
 
         name.addTextChangedListener(textWatcher);
-
         password.addTextChangedListener(textWatcher);
     }
 
@@ -123,67 +122,64 @@ public class LoginActivity extends BaseActivity {
     }
 
     @SuppressLint("CheckResult")
-    private void doLogin(String email, String pwd) {
+    private void doLogin(String phone, String pwd) {
+        RetrofitService.doLogin("phone", phone, pwd)
+                .subscribe(responseBody -> {
+                    JSONObject obj = null;
+                    try {
+                        obj = JSON.parseObject(responseBody.string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
-//        RetrofitService.doLogin(email, pwd)
-//                .subscribe(responseBody -> {
-//                    JSONObject obj = null;
-//                    try {
-//                        obj = JSON.parseObject(responseBody.string());
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                    int statusCode = obj.getInteger("code");
-//                    String token = obj.getString("result");
-//                    printLog("code:" + statusCode + " result:" + token);
-//
-//                    if (statusCode == 20000){
-//                        afterLoginSuccess(email, pwd, token);
-//                    }else{
-//                        afterLoginFail();
-//                    }
-//                });
+                    int statusCode = obj.getInteger("code");
+                    String result = obj.getString("msg");
+                    if (statusCode == 0){
+                        afterLoginSuccess(phone, pwd);
+                        getUserInfo(obj.getJSONObject("data"));
+                    }
+                    else {
+                        afterLoginFail(result);
+                    }
+                });
     }
 
-    private void afterLoginFail() {
-        MyToast.showText(getApplicationContext(),"账号或密码错误", Toast.LENGTH_SHORT,false);
+    private void afterLoginFail(String result) {
+        MyToast.showText(getApplicationContext(), result, Toast.LENGTH_SHORT,false);
     }
 
-    private void afterLoginSuccess(String email, String pwd, String token) {
+    private void afterLoginSuccess(String phone, String pwd) {
         SharedPreferences sp = getSharedPreferences(App.MY_SP_NAME,MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        editor.putString(App.USER_EMAIL_KEY, email);
+        editor.putString(App.USER_PHONE_KEY, phone);
         editor.putString(App.USER_PWD_KEY, pwd);
         editor.putBoolean(App.IS_REMEBER_PWD_USER,cbRemUser.isChecked());
         editor.putBoolean(App.IS_LOGIN, true);
         editor.apply();
         MyToast.showText(getApplicationContext(),"登录成功", Toast.LENGTH_SHORT,true);
         printLog("登录成功");
-
-        getUserInfo();
     }
 
     /**
      * 登陆成功后获取用户信息
      */
-    @SuppressLint("CheckResult")
-    private void getUserInfo() {
-//        RetrofitService.getUserDetails()
-//                .subscribe(responseBody -> {
-//                    JSONObject jsonObject = JSON.parseObject(responseBody.string());
-//                    if (jsonObject.getInteger("code") != 20000){
-//                        ToastShort("服务器出状况惹，再试试( • ̀ω•́ )✧");
-//                    }else{
-//                        afterGetUserInfo(jsonObject.getString("result"));
-//                    }
-//                });
-    }
+    private void getUserInfo(JSONObject obj) {
+        int id = obj.getInteger("id");
+        String name = obj.getString("name");
+        String phone = obj.getString("phone");
+        String email = obj.getString("email");
+        String avatar = obj.getString("avatar");
+        int role = obj.getInteger("role");
+        String company = obj.getString("company");
 
-    private void afterGetUserInfo(String jsonObj){
-        JSONObject obj = JSON.parseObject(jsonObj);
+        printLog("id=" + id + " name=" + name + " phone=" + phone + "email=" + email + " avatar=" + avatar +
+        " role=" + role + " company=" +company);
+
         SharedPreferences sp = getSharedPreferences(App.MY_SP_NAME,MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        editor.putLong(App.USER_UID_KEY, obj.getLong("id"));
+        editor.putLong(App.USER_UID_KEY, obj.getInteger("id"));
+        editor.putString(App.USER_NAME_KEY, obj.getString("name"));
+        editor.putString(App.USER_EMAIL_KEY, obj.getString("email"));
         editor.apply();
 
         setResult(RESULT_OK);

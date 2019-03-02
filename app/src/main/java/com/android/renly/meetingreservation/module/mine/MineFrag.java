@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.renly.meetingreservation.App;
 import com.android.renly.meetingreservation.R;
@@ -23,8 +24,10 @@ import com.android.renly.meetingreservation.module.mine.mycollection.MyCollectio
 import com.android.renly.meetingreservation.module.mine.myrecentlyview.MyRecentlyViewActivity;
 import com.android.renly.meetingreservation.module.mine.mymeeting.MyMeetingActivity;
 import com.android.renly.meetingreservation.module.user.login.LoginActivity;
+import com.android.renly.meetingreservation.utils.toast.MyToast;
 import com.android.renly.meetingreservation.utils.toast.ToastUtils;
 import com.android.renly.meetingreservation.widget.CircleImageView;
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
@@ -58,7 +61,6 @@ public class MineFrag extends BaseFragment
 
     @Inject
     protected MineFragPresenter mPresenter;
-    Unbinder unbinder;
 
     @Override
     protected void initInjector() {
@@ -85,7 +87,7 @@ public class MineFrag extends BaseFragment
 
     @Override
     protected void initView() {
-
+        doRefresh();
     }
 
     @Override
@@ -104,7 +106,13 @@ public class MineFrag extends BaseFragment
                 ToastUtils.ToastShort("分享客户端");
                 break;
             case 2:
-                ToastUtils.ToastShort("关于本程序");
+                if (App.iSLOGIN()) {
+                    App.setIsLogout();
+                    MyToast.showText(App.getContext(),"退出登录成功", Toast.LENGTH_SHORT,true);
+                    doRefresh();
+                }
+                else
+                    ToastUtils.ToastShort("关于本程序");
                 break;
         }
     }
@@ -112,20 +120,6 @@ public class MineFrag extends BaseFragment
     @Override
     public void loadInfo(String avatarSrc, String userName) {
 
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
     }
 
     @OnClick({R.id.btn_join, R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04, R.id.avatar})
@@ -149,6 +143,23 @@ public class MineFrag extends BaseFragment
             case R.id.btn_join:
                 jumpToActivity(JoinMeetingActivity.class);
                 break;
+        }
+    }
+
+    public void doRefresh() {
+        if (App.iSLOGIN()) {
+            Picasso.get()
+                    .load("http://149.28.149.136:8080/image/user9.jpg")
+                    .into(avatar);
+            name.setText(App.getUserName());
+            email.setText(App.getUserEmail());
+            email.setVisibility(View.VISIBLE);
+            avatar.setEnabled(false);
+        } else {
+            avatar.setImageResource(R.drawable.ic_user_placeholder);
+            name.setText("点击头像登录");
+            email.setVisibility(View.GONE);
+            email.setText("");
         }
     }
 }

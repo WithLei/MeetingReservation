@@ -20,7 +20,7 @@
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="电子邮箱"
+            android:hint="手机号"
             android:inputType="text"
             android:maxLines="1"
             android:textSize="16sp" />
@@ -76,6 +76,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="@dimen/dimen_4"
             android:background="?android:selectableItemBackgroundBorderless"
+            android:visibility="gone"
             android:text="注册账号" />
 
         <TextView

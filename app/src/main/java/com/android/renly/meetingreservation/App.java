@@ -157,12 +157,36 @@ public class App extends MultiDexApplication {
         editor.apply();
     }
 
-    public static String getEmail() {
+    public static String getUserPhone() {
+        SharedPreferences sp = context.getSharedPreferences(MY_SP_NAME, MODE_PRIVATE);
+        return sp.getString(USER_PHONE_KEY, "");
+    }
+
+    public static void setUserPhone(String phone) {
+        SharedPreferences sp = context.getSharedPreferences(MY_SP_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString(USER_PHONE_KEY, phone);
+        editor.apply();
+    }
+
+    public static String getUserName() {
+        SharedPreferences sp = context.getSharedPreferences(MY_SP_NAME, MODE_PRIVATE);
+        return sp.getString(USER_NAME_KEY, "");
+    }
+
+    public static void setUserName(String name) {
+        SharedPreferences sp = context.getSharedPreferences(MY_SP_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString(USER_NAME_KEY, name);
+        editor.apply();
+    }
+
+    public static String getUserEmail() {
         SharedPreferences sp = context.getSharedPreferences(MY_SP_NAME, MODE_PRIVATE);
         return sp.getString(USER_EMAIL_KEY, "");
     }
 
-    public static void setEmail(String email) {
+    public static void setUserEmail(String email) {
         SharedPreferences sp = context.getSharedPreferences(MY_SP_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString(USER_EMAIL_KEY, email);
@@ -193,6 +217,16 @@ public class App extends MultiDexApplication {
         return sp.getInt(BADGE_COUNT, 0);
     }
 
+    public static void setIsLogout(){
+        SharedPreferences sp = context.getSharedPreferences(MY_SP_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean(IS_LOGIN, false);
+        editor.remove(USER_UID_KEY);
+        editor.remove(USER_NAME_KEY);
+        editor.remove(USER_EMAIL_KEY);
+        editor.apply();
+    }
+
     public static Context getContext() {
         return context;
     }
@@ -200,8 +234,10 @@ public class App extends MultiDexApplication {
     public static final String MY_SP_NAME = "MeetingReservation";
     public static final String USER_UID_KEY = "user_uid";
     public static final String IS_LOGIN = "is_login";
-    public static final String USER_EMAIL_KEY = "user_email";
+    public static final String USER_PHONE_KEY = "user_phone";
     public static final String USER_PWD_KEY = "user_pwd";
+    public static final String USER_NAME_KEY = "user_name";
+    public static final String USER_EMAIL_KEY = "user_email";
     public static final String IS_REMEBER_PWD_USER = "is_remember_pwd_user";
     public static final String BADGE_COUNT = "badgeCount";
 }

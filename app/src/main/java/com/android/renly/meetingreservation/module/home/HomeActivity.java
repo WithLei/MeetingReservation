@@ -1,5 +1,6 @@
 package com.android.renly.meetingreservation.module.home;
 
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -12,6 +13,7 @@ import com.android.renly.meetingreservation.module.booking.BookingFrag;
 import com.android.renly.meetingreservation.module.folder.FolderFrag;
 import com.android.renly.meetingreservation.module.home.fullscreen.HomeFrag;
 import com.android.renly.meetingreservation.module.mine.MineFrag;
+import com.android.renly.meetingreservation.module.user.login.LoginActivity;
 import com.android.renly.meetingreservation.utils.SoftKeyboardStateHelper;
 import com.android.renly.meetingreservation.widget.MyBottomTab;
 
@@ -78,6 +80,7 @@ public class HomeActivity extends BaseActivity
     private BookingFrag bookingFrag;
     private FolderFrag folderFrag;
     private MineFrag mineFrag;
+
     private void initViewpager() {
         viewPager = findViewById(R.id.view_pager);
         viewPager.setOffscreenPageLimit(4);
@@ -108,11 +111,11 @@ public class HomeActivity extends BaseActivity
         }
     }
 
-    public void hideBottomBar(){
+    public void hideBottomBar() {
         bottomBar.setVisibility(View.GONE);
     }
 
-    public void showBottomBar(){
+    public void showBottomBar() {
         bottomBar.setVisibility(View.VISIBLE);
     }
 
@@ -137,5 +140,21 @@ public class HomeActivity extends BaseActivity
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case LoginActivity.requestCode: //64
+                    doRefresh();
+                    printLog("onActivityResult LoginActivity");
+                    break;
+            }
+        }
+    }
+
+    private void doRefresh() {
+        mineFrag.doRefresh();
     }
 }
