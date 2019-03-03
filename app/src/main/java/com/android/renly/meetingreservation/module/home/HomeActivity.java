@@ -1,8 +1,11 @@
 package com.android.renly.meetingreservation.module.home;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.android.renly.meetingreservation.R;
@@ -14,6 +17,7 @@ import com.android.renly.meetingreservation.module.folder.FolderFrag;
 import com.android.renly.meetingreservation.module.home.fullscreen.HomeFrag;
 import com.android.renly.meetingreservation.module.mine.MineFrag;
 import com.android.renly.meetingreservation.module.user.login.LoginActivity;
+import com.android.renly.meetingreservation.utils.LogUtils;
 import com.android.renly.meetingreservation.utils.SoftKeyboardStateHelper;
 import com.android.renly.meetingreservation.widget.MyBottomTab;
 
@@ -25,7 +29,7 @@ import butterknife.BindView;
 public class HomeActivity extends BaseActivity
         implements ViewPager.OnPageChangeListener {
     @BindView(R.id.root)
-    RelativeLayout root;
+    LinearLayout root;
     @BindView(R.id.bottom_bar)
     MyBottomTab bottomBar;
     private ViewPager viewPager;
@@ -40,7 +44,7 @@ public class HomeActivity extends BaseActivity
     @Override
     protected void initData() {
         initViewpager();
-
+        new MyAsyncTask().execute("test");
     }
 
     @Override
@@ -144,6 +148,7 @@ public class HomeActivity extends BaseActivity
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case LoginActivity.requestCode: //64
@@ -156,5 +161,27 @@ public class HomeActivity extends BaseActivity
 
     private void doRefresh() {
         mineFrag.doRefresh();
+    }
+
+    class MyAsyncTask extends AsyncTask<String, Void, Bitmap> {
+
+        // 异步处理前的操作
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        // 在doInBackground方法中进行异步任务的处理
+        @Override
+        protected Bitmap doInBackground(String... strings) {
+            return null;
+        }
+
+        // 用于UI的更新，此方法的参数为doInBackgroud方法返回的值
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            super.onPostExecute(bitmap);
+        }
     }
 }

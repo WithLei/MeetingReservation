@@ -1,6 +1,7 @@
 package com.android.renly.meetingreservation.module.mine;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.injector.components.DaggerMineFragComponent;
 import com.android.renly.meetingreservation.injector.modules.MineFragModule;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
+import com.android.renly.meetingreservation.module.home.HomeActivity;
 import com.android.renly.meetingreservation.module.mine.joinmeeting.JoinMeetingActivity;
 import com.android.renly.meetingreservation.module.mine.mydemand.MyDemandActivity;
 import com.android.renly.meetingreservation.module.mine.mycollection.MyCollectionActivity;
@@ -35,6 +37,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+
+import static android.app.Activity.RESULT_OK;
 
 public class MineFrag extends BaseFragment
         implements AdapterView.OnItemClickListener, MineFragView {
@@ -58,6 +62,8 @@ public class MineFrag extends BaseFragment
     ListView lvMineFunctionList;
     @BindView(R.id.root)
     LinearLayout root;
+    @BindView(R.id.tabLayout)
+    LinearLayout tabLayout;
 
     @Inject
     protected MineFragPresenter mPresenter;
@@ -138,7 +144,8 @@ public class MineFrag extends BaseFragment
                 jumpToActivity(MyRecentlyViewActivity.class);
                 break;
             case R.id.avatar:
-                jumpToActivity(LoginActivity.class);
+                Intent intent = new Intent(mActivity, LoginActivity.class);
+                mActivity.startActivityForResult(intent, LoginActivity.requestCode);
                 break;
             case R.id.btn_join:
                 jumpToActivity(JoinMeetingActivity.class);
@@ -155,11 +162,22 @@ public class MineFrag extends BaseFragment
             email.setText(App.getUserEmail());
             email.setVisibility(View.VISIBLE);
             avatar.setEnabled(false);
+            tabLayout.setVisibility(View.VISIBLE);
         } else {
-            avatar.setImageResource(R.drawable.ic_user_placeholder);
+            avatar.setImageResource(R.mipmap.image_placeholder);
+            avatar.setEnabled(true);
             name.setText("点击头像登录");
             email.setVisibility(View.GONE);
             email.setText("");
+            tabLayout.setVisibility(View.GONE);
         }
+    }
+
+    private HomeActivity mActivity;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mActivity = (HomeActivity) context;
     }
 }

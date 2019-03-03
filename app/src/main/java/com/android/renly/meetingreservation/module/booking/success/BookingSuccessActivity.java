@@ -84,7 +84,7 @@ public class BookingSuccessActivity extends BaseActivity {
         if (budget == null || TextUtils.isEmpty(budget.trim())) {
             tvBudget.setVisibility(View.GONE);
         } else {
-            tvBudget.setText("活动预算： " + tvBudget + "元");
+            tvBudget.setText("活动预算： " + budget + "元");
         }
         tvCompany.setText("联系人/公司： " + company);
         tvPhone.setText("联系方式： " + phone);

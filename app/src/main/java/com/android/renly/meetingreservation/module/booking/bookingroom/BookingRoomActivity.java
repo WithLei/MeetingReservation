@@ -93,7 +93,7 @@ public class BookingRoomActivity extends BaseActivity {
                 Intent intent = new Intent(this, BookingSuccessActivity.class);
                 intent.putExtra("date", date.getText());
                 intent.putExtra("time", time.getText());
-                intent.putExtra("people", people.getText());
+                intent.putExtra("people", people.getText()+"");
                 intent.putExtra("budget",budget.getText().toString());
                 intent.putExtra("company",company.getText().toString());
                 intent.putExtra("phone",phone.getText().toString());
@@ -113,8 +113,8 @@ public class BookingRoomActivity extends BaseActivity {
             people.setError("请输入联系方式");
             return false;
         }
-        return !date.getText().equals("选择日期") || !TextUtils.isEmpty(date.getText()) ||
-                !time.getText().equals("选择日期") || !TextUtils.isEmpty(time.getText()) ||
+        return !date.getText().equals("请选择日期") || !TextUtils.isEmpty(date.getText()) ||
+                !time.getText().equals("请选择具体时间") || !TextUtils.isEmpty(time.getText()) ||
                 people.getText() != null || !TextUtils.isEmpty(people.getText());
     }
 }

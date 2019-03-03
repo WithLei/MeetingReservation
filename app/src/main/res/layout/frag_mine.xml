@@ -84,13 +84,14 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bg_primary"
         android:baselineAligned="false"
         android:elevation="1dp"
         android:orientation="horizontal"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <LinearLayout
             android:id="@+id/btn01"
