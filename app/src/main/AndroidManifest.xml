@@ -111,7 +111,7 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".module.booking.roomArrangement.RoomArrangement"
+            android:name=".module.booking.roomArrangement.RoomArrangementActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
@@ -125,6 +125,7 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".module.booking.bookingroom.BookingRoomActivity"
+            android:launchMode="singleTask"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
     </application>

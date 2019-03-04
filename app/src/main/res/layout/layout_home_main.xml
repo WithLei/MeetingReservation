@@ -398,7 +398,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/dimen_4"
-                                android:text="公司管理制度的优化和漏洞" />
+                                android:text="人脸签到的使用流程介绍" />
 
                         </LinearLayout>
 

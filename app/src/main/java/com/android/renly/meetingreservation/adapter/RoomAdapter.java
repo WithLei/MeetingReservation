@@ -11,7 +11,8 @@ import android.widget.TextView;
 
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.api.bean.Room;
-import com.android.renly.meetingreservation.module.booking.roomArrangement.RoomArrangement;
+import com.android.renly.meetingreservation.module.base.BaseActivity;
+import com.android.renly.meetingreservation.module.booking.roomArrangement.RoomArrangementActivity;
 import com.android.renly.meetingreservation.utils.DateUtils;
 import com.squareup.picasso.Picasso;
 
@@ -121,7 +122,8 @@ public class RoomAdapter extends BaseAdapter {
             recommond.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    context.startActivity(new Intent(context, RoomArrangement.class));
+                    context.startActivity(new Intent(context, RoomArrangementActivity.class));
+                    ((BaseActivity)context).overridePendingTransition(R.anim.bottomin, R.anim.bottomout);
                 }
             });
         }

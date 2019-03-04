@@ -1,26 +1,32 @@
 package com.android.renly.meetingreservation.module.booking.roomArrangement;
 
+import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
+import com.android.renly.meetingreservation.module.booking.bookingroom.BookingRoomActivity;
 import com.android.renly.meetingreservation.utils.toast.ToastUtils;
 import com.haibin.calendarview.Calendar;
 import com.haibin.calendarview.CalendarLayout;
 import com.haibin.calendarview.CalendarView;
 
+import net.cachapa.expandablelayout.ExpandableLayout;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
-public class RoomArrangement extends BaseActivity implements
+public class RoomArrangementActivity extends BaseActivity implements
         CalendarView.OnCalendarSelectListener,
         CalendarView.OnYearChangeListener,
-        CalendarView.OnCalendarInterceptListener,
-        View.OnClickListener {
+        CalendarView.OnCalendarInterceptListener{
     @BindView(R.id.tv_month_day)
     TextView mTextMonthDay;
     @BindView(R.id.tv_year)
@@ -33,8 +39,18 @@ public class RoomArrangement extends BaseActivity implements
     CalendarView mCalendarView;
     @BindView(R.id.calendarLayout)
     CalendarLayout mCalendarLayout;
+    @BindView(R.id.empty_layout)
+    ExpandableLayout emptyLayout;
+    @BindView(R.id.active_activity)
+    ExpandableLayout active1;
+    @BindView(R.id.active_activity2)
+    ExpandableLayout active2;
+    @BindView(R.id.booking)
+    Button booking;
 
     private int mYear;
+    private int mMonth;
+    private int mDay;
 
     @Override
     protected int getLayoutID() {
@@ -107,11 +123,6 @@ public class RoomArrangement extends BaseActivity implements
         mTextCurrentDay.setText(String.valueOf(mCalendarView.getCurDay()));
     }
 
-    @Override
-    public void onClick(View view) {
-
-    }
-
     private Calendar getSchemeCalendar(int year, int month, int day, int color, String text) {
         Calendar calendar = new Calendar();
         calendar.setYear(year);
@@ -152,23 +163,63 @@ public class RoomArrangement extends BaseActivity implements
     public void onCalendarSelect(Calendar calendar, boolean isClick) {
         mTextLunar.setVisibility(View.VISIBLE);
         mTextYear.setVisibility(View.VISIBLE);
-        mTextMonthDay.setText(calendar.getMonth() + "月" + calendar.getDay() + "日");
-        mTextYear.setText(String.valueOf(calendar.getYear()));
-        mTextLunar.setText(calendar.getLunar());
         mYear = calendar.getYear();
-//        Log.e("onDateSelected", "  -- " + calendar.getYear() +
-//                "  --  " + calendar.getMonth() +
-//                "  -- " + calendar.getDay() +
-//                "  --  " + isClick);
+        mMonth = calendar.getMonth();
+        mDay = calendar.getDay();
+        mTextMonthDay.setText(mMonth + "月" + mDay + "日");
+        mTextYear.setText(String.valueOf(mYear));
+        mTextLunar.setText(calendar.getLunar());
         if (!calendar.isAvailable()) {
             mTextLunar.setText("");
             mTextYear.setText("");
             mTextMonthDay.setText("无效日期");
+            active1.setVisibility(View.GONE);
+            active2.setVisibility(View.GONE);
+            emptyLayout.setVisibility(View.VISIBLE);
+            booking.setEnabled(false);
+        } else {
+            booking.setEnabled(true);
+            switch (calendar.getDay() % 4) {
+                case 0:
+                    emptyLayout.collapse();
+                    active1.expand();
+                    active2.collapse();
+                    break;
+                case 1:
+                    emptyLayout.collapse();
+                    active1.collapse();
+                    active2.expand();
+                    break;
+                case 2:
+                    emptyLayout.collapse();
+                    active1.expand();
+                    active2.expand();
+                    break;
+                case 3:
+                    active1.collapse();
+                    active2.collapse();
+                    emptyLayout.expand();
+                    break;
+            }
         }
     }
 
     @Override
     public void onYearChange(int year) {
         mTextMonthDay.setText(String.valueOf(year));
+    }
+
+    @OnClick({R.id.booking})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.booking:
+                String date = mYear + "/" + mMonth + "/" + mDay;
+                Intent intent = new Intent(this, BookingRoomActivity.class);
+                intent.putExtra("date", date);
+                startActivity(intent);
+                overridePendingTransition(R.anim.bottomin, R.anim.bottomout);
+                finishActivityBottom();
+                break;
+        }
     }
 }

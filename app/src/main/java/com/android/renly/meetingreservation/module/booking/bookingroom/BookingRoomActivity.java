@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.listener.MyOnDateSetListener;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
+import com.android.renly.meetingreservation.module.booking.roomArrangement.RoomArrangementActivity;
 import com.android.renly.meetingreservation.module.booking.success.BookingSuccessActivity;
 import com.android.renly.meetingreservation.utils.LogUtils;
 import com.android.renly.meetingreservation.widget.dialog.TimeRangePickerDialog;
@@ -34,6 +35,8 @@ public class BookingRoomActivity extends BaseActivity {
     @BindView(R.id.phone)
     TextInputEditText phone;
 
+    private String date_str;
+
     @Override
     protected int getLayoutID() {
         return R.layout.activity_booking_rooom;
@@ -41,12 +44,11 @@ public class BookingRoomActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
     }
 
     @Override
     protected void initView() {
-
+        updateSelectDate(getIntent());
     }
 
     @OnClick({R.id.exit, R.id.date, R.id.time, R.id.btn_confirm})
@@ -56,19 +58,20 @@ public class BookingRoomActivity extends BaseActivity {
                 finishActivityBottom();
                 break;
             case R.id.date:
-                Calendar calendar = Calendar.getInstance();
-                MyOnDateSetListener myOnDateSetListener = new MyOnDateSetListener() {
-                    @Override
-                    public void afterSetDate(String days) {
-                        date.setText(days);
-                    }
-                };
-                new DatePickerDialog(this,
-                        myOnDateSetListener,
-                        calendar.get(Calendar.YEAR),
-                        calendar.get(Calendar.MONTH),
-                        calendar.get(Calendar.DAY_OF_MONTH))
-                        .show();
+//                Calendar calendar = Calendar.getInstance();
+//                MyOnDateSetListener myOnDateSetListener = new MyOnDateSetListener() {
+//                    @Override
+//                    public void afterSetDate(String days) {
+//                        date.setText(days);
+//                    }
+//                };
+//                new DatePickerDialog(this,
+//                        myOnDateSetListener,
+//                        calendar.get(Calendar.YEAR),
+//                        calendar.get(Calendar.MONTH),
+//                        calendar.get(Calendar.DAY_OF_MONTH))
+//                        .show();
+                jumpToActivityBottom(RoomArrangementActivity.class);
                 break;
             case R.id.time:
                 TimeRangePickerDialog dialog = new TimeRangePickerDialog(this,
@@ -116,5 +119,22 @@ public class BookingRoomActivity extends BaseActivity {
         return !date.getText().equals("请选择日期") || !TextUtils.isEmpty(date.getText()) ||
                 !time.getText().equals("请选择具体时间") || !TextUtils.isEmpty(time.getText()) ||
                 people.getText() != null || !TextUtils.isEmpty(people.getText());
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        updateSelectDate(intent);
+    }
+
+    /**
+     * 当接受到新的intent时更新date
+     */
+    private void updateSelectDate(Intent intent) {
+        date_str = intent.getStringExtra("date");
+        LogUtils.printLog("onResume " + date_str);
+        if (date_str != null && !TextUtils.isEmpty(date_str.trim())) {
+            date.setText(date_str);
+        }
     }
 }

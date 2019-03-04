@@ -250,7 +250,7 @@ public class HomeFrag extends BaseFragment implements
             dayContentEmpty.collapse();
             dayContent.expand();
 
-            mymeetingTitle.setText("人脸签到的使用流程介绍");
+            mymeetingTitle.setText("交通管理制度的优化和漏洞");
             mymeetingAddress.setText("C2楼1208会议室");
             mymeetingTime.setText("2019/02/08 13:00 - 15:30");
             mymeetingWorker.setText("北京市第三区交通委");

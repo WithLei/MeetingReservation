@@ -7,7 +7,7 @@ import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.listener.GlideImageLoader;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
 import com.android.renly.meetingreservation.module.booking.bookingroom.BookingRoomActivity;
-import com.android.renly.meetingreservation.module.booking.roomArrangement.RoomArrangement;
+import com.android.renly.meetingreservation.module.booking.roomArrangement.RoomArrangementActivity;
 import com.android.renly.meetingreservation.module.map.MapActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -50,7 +50,7 @@ public class RoomActivity extends BaseActivity {
         initBanner();
         initToolBar(true, "");
         initSlidr();
-        recommond.setOnClickListener(view -> jumpToActivity(RoomArrangement.class));
+        recommond.setOnClickListener(view -> jumpToActivity(RoomArrangementActivity.class));
     }
 
     private void initBanner() {
