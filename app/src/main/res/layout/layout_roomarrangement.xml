@@ -52,7 +52,7 @@
             android:id="@+id/booking"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="130dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:text="立即预定"
             android:enabled="false"

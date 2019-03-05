@@ -103,7 +103,7 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".module.meeting.peopleList.PeopleListActivity"
+            android:name=".module.meeting.addPeople.PeopleListActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
@@ -126,6 +126,18 @@
         <activity
             android:name=".module.booking.bookingroom.BookingRoomActivity"
             android:launchMode="singleTask"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".module.meeting.edit.EditMeetingActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".module.meeting.peopleList.AddPeopleActivity"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
     </application>

@@ -15,6 +15,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.acker.simplezxing.activity.CaptureActivity;
+import com.android.renly.meetingreservation.App;
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.adapter.LectureAdapter;
 import com.android.renly.meetingreservation.api.bean.Lecture;
@@ -22,8 +23,10 @@ import com.android.renly.meetingreservation.listener.ItemClickListener;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
 import com.android.renly.meetingreservation.module.booking.roomList.RoomListActivity;
 import com.android.renly.meetingreservation.module.booking.search.SearchActivity;
+import com.android.renly.meetingreservation.module.home.HomeActivity;
 import com.android.renly.meetingreservation.module.meeting.MeetingActivity;
 import com.android.renly.meetingreservation.module.mine.mymeeting.MyMeetingActivity;
+import com.android.renly.meetingreservation.module.user.login.LoginActivity;
 import com.android.renly.meetingreservation.utils.LogUtils;
 import com.android.renly.meetingreservation.widget.RecycleViewDivider;
 import com.haibin.calendarview.Calendar;
@@ -84,6 +87,12 @@ public class HomeFrag extends BaseFragment implements
     TextView mymeetingTitle;
     @BindView(R.id.mymeeting_worker)
     TextView mymeetingWorker;
+    @BindView(R.id.rl_logintip)
+    RelativeLayout tipLayout;
+    @BindView(R.id.active_activity)
+    LinearLayout activeLayout;
+    @BindView(R.id.day_activity)
+    LinearLayout dayLayout;
 
     private int mYear;
 
@@ -196,6 +205,7 @@ public class HomeFrag extends BaseFragment implements
 
         initAdapter();
         initRecyclerView();
+        doRefresh();
     }
 
     @Override
@@ -203,7 +213,7 @@ public class HomeFrag extends BaseFragment implements
         scrollView.smoothScrollTo(0, 0);
     }
 
-    @OnClick({R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04, R.id.tv_month_day, R.id.fl_current, R.id.active_activity})
+    @OnClick({R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04, R.id.tv_month_day, R.id.fl_current, R.id.active_activity, R.id.tip_login})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn01:
@@ -238,6 +248,10 @@ public class HomeFrag extends BaseFragment implements
                 break;
             case R.id.active_activity:
                 jumpToActivity(MeetingActivity.class);
+                break;
+            case R.id.tip_login:
+                Intent intent = new Intent(mActivity, LoginActivity.class);
+                mActivity.startActivityForResult(intent, LoginActivity.requestCode);
                 break;
         }
     }
@@ -304,5 +318,25 @@ public class HomeFrag extends BaseFragment implements
     @Override
     public void onCalendarLongClick(Calendar calendar) {
         Log.e("onDateLongClick", "  -- " + calendar.getDay() + "  --  " + calendar.getMonth());
+    }
+
+    public void doRefresh() {
+        if (App.iSLOGIN()) {
+            tipLayout.setVisibility(View.GONE);
+            activeLayout.setVisibility(View.VISIBLE);
+            dayLayout.setVisibility(View.VISIBLE);
+        } else {
+            activeLayout.setVisibility(View.GONE);
+            dayLayout.setVisibility(View.GONE);
+            tipLayout.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private HomeActivity mActivity;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mActivity = (HomeActivity) context;
     }
 }

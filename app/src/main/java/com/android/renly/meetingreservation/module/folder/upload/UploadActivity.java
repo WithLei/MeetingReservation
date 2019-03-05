@@ -40,6 +40,8 @@ public class UploadActivity extends BaseActivity {
     @BindView(R.id.expandable_layout1)
     ExpandableLayout layout1;
 
+    private Timer timer;
+
 
     @Override
     protected int getLayoutID() {
@@ -66,7 +68,8 @@ public class UploadActivity extends BaseActivity {
                     startActivityForResult(intent, 201);
                 });
         initSlidr();
-        new Timer()
+        timer = new Timer();
+        timer
                 .schedule(new TimerTask() {
                     @Override
                     public void run() {
@@ -157,5 +160,11 @@ public class UploadActivity extends BaseActivity {
                     layout0.expand();
             break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        timer.cancel();
     }
 }

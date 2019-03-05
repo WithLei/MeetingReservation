@@ -1,6 +1,8 @@
 package com.android.renly.meetingreservation.module.booking.roomArrangement;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -83,6 +85,15 @@ public class RoomArrangementActivity extends BaseActivity implements
                 getSchemeCalendar(year, month, 27, 0xFF13acf0, "多"));
         //此方法在巨大的数据量上不影响遍历性能，推荐使用
         mCalendarView.setSchemeDate(map);
+
+        new Thread(){
+            @Override
+            public void run() {
+                Looper.prepare();
+                Handler handler = new Handler();
+                Looper.loop();
+            }
+        }.start();
     }
 
     @Override

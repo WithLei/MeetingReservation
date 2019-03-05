@@ -160,6 +160,7 @@ public class HomeActivity extends BaseActivity
     }
 
     private void doRefresh() {
+        homeFrag.doRefresh();
         mineFrag.doRefresh();
     }
 

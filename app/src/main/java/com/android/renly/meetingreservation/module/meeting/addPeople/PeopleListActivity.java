@@ -1,11 +1,14 @@
-package com.android.renly.meetingreservation.module.meeting.peopleList;
+package com.android.renly.meetingreservation.module.meeting.addPeople;
 
+import android.view.Gravity;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.adapter.UserAdapter;
 import com.android.renly.meetingreservation.api.bean.SimpleUser;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
+import com.android.renly.meetingreservation.module.meeting.peopleList.AddPeopleActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +42,21 @@ public class PeopleListActivity extends BaseActivity {
     @Override
     protected void initView() {
         initToolBar(true, "成员管理");
+        addToolbarView(getAddPeopleView());
         initSlidr();
         initAdapter();
+    }
+
+    private TextView getAddPeopleView() {
+        TextView addPeople = new TextView(this);
+        addPeople.setText("添加");
+        addPeople.setTextSize(16);
+        addPeople.setTextColor(getResources().getColor(R.color.white));
+        addPeople.setGravity(Gravity.CENTER);
+        addPeople.setOnClickListener(view -> {
+            jumpToActivity(AddPeopleActivity.class);
+        });
+        return addPeople;
     }
 
     private void initAdapter() {

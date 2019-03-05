@@ -129,6 +129,7 @@
             android:background="@color/bg_primary"
             android:clickable="true"
             android:elevation="1dp"
+            android:visibility="gone"
             android:orientation="vertical">
 
             <LinearLayout
@@ -292,6 +293,7 @@
             android:layout_margin="10dp"
             android:background="@color/bg_primary"
             android:clickable="true"
+            android:visibility="gone"
             android:elevation="1dp"
             android:orientation="vertical">
 
@@ -485,6 +487,47 @@
                 </net.cachapa.expandablelayout.ExpandableLayout>
             </LinearLayout>
         </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_logintip"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@mipmap/bg03"
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/tip_tt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Chicken Dineer"
+                android:textColor="@color/bg_secondary"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tip_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tip_tt"
+                android:layout_marginTop="15dp"
+                android:text="加入我们，让开会更便捷"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/tip_login"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@id/tip_content"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/tv_tip"
+                android:text="立即登录"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

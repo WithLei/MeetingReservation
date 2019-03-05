@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bg_secondary"
     android:orientation="vertical">
 
@@ -59,7 +59,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="@dimen/dimen_8"
                 android:layout_marginBottom="5dp"
-                android:background="@color/colorDivider" />
+                android:background="@color/colorDividerDark" />
 
             <LinearLayout
                 android:id="@+id/search"
@@ -101,16 +101,16 @@
         android:id="@+id/dropDownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:ddmenuTextSize="14sp"
-        app:ddtextUnselectedColor="@color/drop_down_unselected"
-        app:ddtextSelectedColor="@color/drop_down_selected"
         app:dddividerColor="@color/colorDivider"
-        app:ddunderlineColor="@color/colorDivider"
-        app:ddmenuSelectedIcon="@drawable/ic_keyboard_arrow_up_24dp"
-        app:ddmenuUnselectedIcon="@drawable/ic_keyboard_arrow_down_24dp"
         app:ddmaskColor="@color/mask_color"
         app:ddmenuBackgroundColor="@color/bg_primary"
-        app:ddmenuMenuHeightPercent="0.5"/>
+        app:ddmenuMenuHeightPercent="0.5"
+        app:ddmenuSelectedIcon="@drawable/ic_keyboard_arrow_up_24dp"
+        app:ddmenuTextSize="14sp"
+        app:ddmenuUnselectedIcon="@drawable/ic_keyboard_arrow_down_24dp"
+        app:ddtextSelectedColor="@color/drop_down_selected"
+        app:ddtextUnselectedColor="@color/drop_down_unselected"
+        app:ddunderlineColor="@color/colorDivider" />
 
 
 </LinearLayout>

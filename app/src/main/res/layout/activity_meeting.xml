@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/bg_secondary">
 
     <LinearLayout
@@ -23,10 +23,11 @@
         android:gravity="center">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?android:selectableItemBackground"
             android:gravity="center"
-            android:text="编辑资料"
+            android:text="编辑信息"
             android:textColor="@color/white"
             android:textSize="16sp" />
     </LinearLayout>
@@ -59,7 +60,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/meeting_title"
                     style="@style/text_16_sec"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -106,8 +107,7 @@
                         android:layout_marginTop="@dimen/dimen_8"
                         android:layout_marginEnd="@dimen/dimen_16"
                         android:layout_marginBottom="@dimen/dimen_8"
-                        android:src="@drawable/ic_user_placeholder"
-                        android:tint="@color/colorDivider" />
+                        android:src="@drawable/ic_user_placeholder" />
                 </RelativeLayout>
 
                 <View
@@ -148,6 +148,48 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:src="@drawable/ic_location_on_black_24dp" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider" />
+
+                <RelativeLayout
+                    android:id="@+id/share"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackground"
+                    android:elevation="1dp"
+                    android:paddingStart="@dimen/dimen_16"
+                    android:paddingTop="@dimen/dimen_8"
+                    android:paddingEnd="@dimen/dimen_16"
+                    android:paddingBottom="@dimen/dimen_8">
+
+                    <TextView
+                        style="@style/text_16_pri"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="分享该会议" />
+
+                    <TextView
+                        android:id="@+id/tv_share"
+                        style="@style/text_16_sec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dimen_8"
+                        android:layout_toStartOf="@+id/iv_share"
+                        android:text="" />
+
+                    <ImageView
+                        android:id="@+id/iv_share"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:tint="@color/colorDividerDark"
+                        android:src="@drawable/ic_chevron_right_black_24dp" />
 
                 </RelativeLayout>
 
@@ -195,34 +237,39 @@
                     android:orientation="horizontal">
 
                     <com.android.renly.meetingreservation.widget.CircleImageView
+                        android:id="@+id/avatar1"
                         android:layout_width="52dp"
                         android:layout_height="52dp"
-                        android:src="@drawable/ic_user_placeholder" />
+                        tools:src="@drawable/ic_user_placeholder" />
 
                     <com.android.renly.meetingreservation.widget.CircleImageView
+                        android:id="@+id/avatar2"
                         android:layout_width="52dp"
                         android:layout_height="52dp"
                         android:layout_marginStart="@dimen/dimen_8"
-                        android:src="@drawable/ic_user_placeholder" />
+                        tools:src="@drawable/ic_user_placeholder" />
 
 
                     <com.android.renly.meetingreservation.widget.CircleImageView
+                        android:id="@+id/avatar3"
                         android:layout_width="52dp"
                         android:layout_height="52dp"
                         android:layout_marginStart="@dimen/dimen_8"
-                        android:src="@drawable/ic_user_placeholder" />
+                        tools:src="@drawable/ic_user_placeholder" />
 
                     <com.android.renly.meetingreservation.widget.CircleImageView
+                        android:id="@+id/avatar4"
                         android:layout_width="52dp"
                         android:layout_height="52dp"
                         android:layout_marginStart="@dimen/dimen_8"
-                        android:src="@drawable/ic_user_placeholder" />
+                        tools:src="@drawable/ic_user_placeholder" />
 
                     <com.android.renly.meetingreservation.widget.CircleImageView
+                        android:id="@+id/avatar5"
                         android:layout_width="52dp"
                         android:layout_height="52dp"
                         android:layout_marginStart="@dimen/dimen_8"
-                        android:src="@drawable/ic_user_placeholder" />
+                        tools:src="@drawable/ic_user_placeholder" />
 
                     <ImageView
                         android:layout_width="32dp"
@@ -277,11 +324,25 @@
                 android:paddingEnd="@dimen/dimen_16"
                 android:paddingBottom="@dimen/dimen_8">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <TextView
                     style="@style/text_16_pri"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
                     android:text="会议文件" />
+
+                    <TextView
+                        android:id="@+id/upload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:textSize="14sp"
+                        android:textColor="@color/main_color_6"
+                        android:text="上传文件" />
+                </RelativeLayout>
 
                 <View
                     android:layout_width="match_parent"
