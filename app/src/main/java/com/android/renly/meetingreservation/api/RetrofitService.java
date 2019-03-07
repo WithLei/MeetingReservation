@@ -172,8 +172,8 @@ public class RetrofitService {
     /**
      * 请求服务
      */
-    public static Observable<ResponseBody> addService(int applyId, int workerId, String content) {
-        return serviceApi.addService(new AskService(applyId, workerId, content))
+    public static Observable<ResponseBody> addService(int workerId, String content) {
+        return serviceApi.addService(new AskService(workerId, content))
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());

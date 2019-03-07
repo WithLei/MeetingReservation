@@ -8,8 +8,7 @@ public class AskService {
     // 内容
     private String content;
 
-    public AskService(int applyId, int workerId, String content) {
-        this.applyId = applyId;
+    public AskService(int workerId, String content) {
         this.workerId = workerId;
         this.content = content;
     }

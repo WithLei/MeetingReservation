@@ -18,16 +18,19 @@ import com.acker.simplezxing.activity.CaptureActivity;
 import com.android.renly.meetingreservation.App;
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.adapter.LectureAdapter;
+import com.android.renly.meetingreservation.api.RetrofitService;
 import com.android.renly.meetingreservation.api.bean.Lecture;
 import com.android.renly.meetingreservation.listener.ItemClickListener;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
 import com.android.renly.meetingreservation.module.booking.roomList.RoomListActivity;
 import com.android.renly.meetingreservation.module.booking.search.SearchActivity;
+import com.android.renly.meetingreservation.module.face.facerecognize.FaceRecognizeActivity;
 import com.android.renly.meetingreservation.module.home.HomeActivity;
 import com.android.renly.meetingreservation.module.meeting.MeetingActivity;
 import com.android.renly.meetingreservation.module.mine.mymeeting.MyMeetingActivity;
 import com.android.renly.meetingreservation.module.user.login.LoginActivity;
 import com.android.renly.meetingreservation.utils.LogUtils;
+import com.android.renly.meetingreservation.utils.toast.ToastUtils;
 import com.android.renly.meetingreservation.widget.RecycleViewDivider;
 import com.haibin.calendarview.Calendar;
 import com.haibin.calendarview.CalendarLayout;
@@ -48,11 +51,14 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import okhttp3.ResponseBody;
 
 public class HomeFrag extends BaseFragment implements
         CalendarView.OnCalendarSelectListener,
         CalendarView.OnCalendarLongClickListener,
-        CalendarView.OnYearChangeListener {
+        CalendarView.OnYearChangeListener,
+        View.OnClickListener{
     @BindView(R.id.btn01)
     LinearLayout btn01;
     @BindView(R.id.tv_month_day)
@@ -93,6 +99,8 @@ public class HomeFrag extends BaseFragment implements
     LinearLayout activeLayout;
     @BindView(R.id.day_activity)
     LinearLayout dayLayout;
+    @BindView(R.id.layout_pushtip)
+    LinearLayout layoutPushtip;
 
     private int mYear;
 
@@ -168,7 +176,7 @@ public class HomeFrag extends BaseFragment implements
     private LectureAdapter adapter;
 
     private void initAdapter() {
-        adapter = new LectureAdapter(getContext(), lectureList);
+        adapter = new LectureAdapter(mActivity, lectureList);
         adapter.setOnItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(View v, int pos) {
@@ -179,7 +187,7 @@ public class HomeFrag extends BaseFragment implements
     }
 
     private void initRecyclerView() {
-        mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        mLayoutManager = new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
 
         // 调整draw缓存,加速recyclerview加载
@@ -213,7 +221,9 @@ public class HomeFrag extends BaseFragment implements
         scrollView.smoothScrollTo(0, 0);
     }
 
-    @OnClick({R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04, R.id.tv_month_day, R.id.fl_current, R.id.active_activity, R.id.tip_login})
+    private AlertDialog dialog;
+
+    @OnClick({R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04, R.id.tv_month_day, R.id.fl_current, R.id.active_activity, R.id.tip_login, R.id.layout_pushtip})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn01:
@@ -226,12 +236,16 @@ public class HomeFrag extends BaseFragment implements
                 jumpToActivity(MyMeetingActivity.class);
                 break;
             case R.id.btn04:
-                View mView = View.inflate(getContext(), R.layout.layout_service, null);
-                new AlertDialog.Builder(getContext())
+                View mView = View.inflate(mActivity, R.layout.layout_service, null);
+                mView.findViewById(R.id.water).setOnClickListener(this);
+                mView.findViewById(R.id.clean).setOnClickListener(this);
+                mView.findViewById(R.id.sign).setOnClickListener(this);
+                mView.findViewById(R.id.other).setOnClickListener(this);
+                dialog = new AlertDialog.Builder(mActivity)
                         .setView(mView)
                         .setCancelable(true)
-                        .create()
-                        .show();
+                        .create();
+                dialog.show();
                 break;
             case R.id.tv_month_day:
                 if (!mCalendarLayout.isExpand()) {
@@ -252,6 +266,11 @@ public class HomeFrag extends BaseFragment implements
             case R.id.tip_login:
                 Intent intent = new Intent(mActivity, LoginActivity.class);
                 mActivity.startActivityForResult(intent, LoginActivity.requestCode);
+                break;
+            case R.id.layout_pushtip:
+                jumpToActivity(MeetingActivity.class);
+                layoutPushtip.setVisibility(View.GONE);
+                App.clearBadge();
                 break;
         }
     }
@@ -329,7 +348,13 @@ public class HomeFrag extends BaseFragment implements
             activeLayout.setVisibility(View.GONE);
             dayLayout.setVisibility(View.GONE);
             tipLayout.setVisibility(View.VISIBLE);
+            layoutPushtip.setVisibility(View.GONE);
         }
+    }
+
+    public void showPushtip() {
+        if (App.iSLOGIN())
+            layoutPushtip.setVisibility(View.VISIBLE);
     }
 
     private HomeActivity mActivity;
@@ -338,5 +363,35 @@ public class HomeFrag extends BaseFragment implements
     public void onAttach(Context context) {
         super.onAttach(context);
         mActivity = (HomeActivity) context;
+    }
+
+    // 处理service弹出框的点击事件
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.clean:
+            case R.id.water:
+            case R.id.other:
+                String content = "";
+                if (view.getId() == R.id.clean)
+                    content = "打扫卫生";
+                else if (view.getId() == R.id.water)
+                    content = "倒水";
+                else {
+                    content = "未知服务";
+                }
+                dialog.cancel();
+                RetrofitService
+                        .addService((int)App.getUserUidKey(), content)
+                        .subscribe(responseBody -> {
+                            LogUtils.printLog(responseBody.string());
+                            ToastUtils.ToastShort("已经将服务通知后台");
+                        }, throwable -> LogUtils.printError("send service err " + throwable));
+                break;
+            case R.id.sign:
+                dialog.cancel();
+                jumpToActivity(FaceRecognizeActivity.class);
+            break;
+        }
     }
 }

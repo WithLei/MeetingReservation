@@ -115,7 +115,7 @@ public class MineFrag extends BaseFragment
                 if (App.iSLOGIN()) {
                     App.setIsLogout();
                     MyToast.showText(App.getContext(),"退出登录成功", Toast.LENGTH_SHORT,true);
-                    doRefresh();
+                    mActivity.doRefresh();
                 }
                 else
                     ToastUtils.ToastShort("关于本程序");

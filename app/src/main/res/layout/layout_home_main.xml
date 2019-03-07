@@ -121,6 +121,8 @@
             </LinearLayout>
         </LinearLayout>
 
+        <include layout="@layout/layout_pushtip" />
+
         <LinearLayout
             android:id="@+id/active_activity"
             android:layout_width="match_parent"

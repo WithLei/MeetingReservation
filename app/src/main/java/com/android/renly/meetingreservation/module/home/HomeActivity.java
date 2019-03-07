@@ -1,5 +1,6 @@
 package com.android.renly.meetingreservation.module.home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.android.renly.meetingreservation.App;
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.adapter.MainPageAdapter;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
@@ -20,11 +22,18 @@ import com.android.renly.meetingreservation.module.user.login.LoginActivity;
 import com.android.renly.meetingreservation.utils.LogUtils;
 import com.android.renly.meetingreservation.utils.SoftKeyboardStateHelper;
 import com.android.renly.meetingreservation.widget.MyBottomTab;
+import com.umeng.message.IUmengCallback;
+import com.umeng.message.PushAgent;
+import com.umeng.message.UHandler;
+import com.umeng.message.UmengAdHandler;
+import com.umeng.message.UmengMessageHandler;
+import com.umeng.message.entity.UMessage;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import me.leolin.shortcutbadger.ShortcutBadger;
 
 public class HomeActivity extends BaseActivity
         implements ViewPager.OnPageChangeListener {
@@ -36,6 +45,8 @@ public class HomeActivity extends BaseActivity
     private List<BaseFragment> fragments = new ArrayList<>();
     private long mExitTime;
 
+    private PushAgent pushAgent;
+
     @Override
     protected int getLayoutID() {
         return R.layout.activity_home;
@@ -45,6 +56,15 @@ public class HomeActivity extends BaseActivity
     protected void initData() {
         initViewpager();
         new MyAsyncTask().execute("test");
+        pushAgent = PushAgent.getInstance(this);
+        pushAgent.setMessageHandler(new UmengMessageHandler(){
+            @Override
+            public int getNotificationDefaults(Context context, UMessage uMessage) {
+                App.addBadge();
+                homeFrag.showPushtip();
+                return super.getNotificationDefaults(context, uMessage);
+            }
+        });
     }
 
     @Override
@@ -159,7 +179,7 @@ public class HomeActivity extends BaseActivity
         }
     }
 
-    private void doRefresh() {
+    public void doRefresh() {
         homeFrag.doRefresh();
         mineFrag.doRefresh();
     }

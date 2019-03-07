@@ -18,6 +18,7 @@
             android:layout_weight="1">
 
             <LinearLayout
+                android:id="@+id/water"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -51,6 +52,7 @@
             android:layout_weight="1">
 
             <LinearLayout
+                android:id="@+id/clean"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -91,6 +93,7 @@
             android:layout_weight="1">
 
             <LinearLayout
+                android:id="@+id/sign"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -125,6 +128,7 @@
             android:layout_weight="1">
 
             <LinearLayout
+                android:id="@+id/other"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -152,6 +156,7 @@
         android:background="@color/colorDivider" />
 
     <EditText
+        android:id="@+id/et_other"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="@null"

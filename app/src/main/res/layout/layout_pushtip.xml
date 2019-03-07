@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_pushtip"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/main_color_2"
+    android:paddingStart="@dimen/dimen_8"
+    android:paddingTop="@dimen/dimen_4"
+    android:paddingBottom="@dimen/dimen_4"
+    android:gravity="center_vertical"
+    android:visibility="gone"
+    android:orientation="horizontal">
+
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:indicatorName="BallScaleMultipleIndicator"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_marginStart="@dimen/dimen_8"
+        android:layout_marginEnd="@dimen/dimen_16"
+        android:textSize="14sp"
+        android:text="您有一场新的会议需求通过了审核，点击进行确认编辑该场会议信息。"/>
+
+</LinearLayout>

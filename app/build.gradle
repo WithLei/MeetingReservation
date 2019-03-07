@@ -27,73 +27,98 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:appcompat-v7:${rootProject.ext.support}"
     implementation "com.android.support:recyclerview-v7:${rootProject.ext.support}"
     implementation "com.android.support:design:${rootProject.ext.support}"
     implementation "com.android.support:support-v4:${rootProject.ext.support}"
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
     // 方法超过65535
     implementation 'com.android.support:multidex:1.0.3'
+
     // picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+
     // okhttp
     implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+
     // butterknife
     implementation 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
     // json
     implementation 'com.alibaba:fastjson:1.2.49'
+
     // rxjava
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.3'
+
     // retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+
     //dagger2
     implementation 'com.google.dagger:dagger:2.19'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.19'
+
     // gson
     implementation 'com.google.code.gson:gson:2.8.5'
+
     // 网络日志拦截
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
 
-
     // lots of UI
+
     // 左滑样式
     implementation 'com.r0adkll:slidableactivity:2.0.6'
+
     // 轮播图
     implementation 'com.youth.banner:banner:1.4.10'
+
     // 二维码识别简单实现
     implementation 'com.acker:simplezxing:1.5'
+
     // 日历样式
     implementation 'com.haibin:calendarview:3.4.8'
+
     // 筛选框样式
     implementation 'com.github.dongjunkun:DropDownMenu:1.0.4'
+
     // 下拉刷新样式
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-18'
+
     // 进度条
     implementation 'com.daimajia.numberprogressbar:library:1.4@aar'
+
     // 压缩样式
     implementation 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
+
     // 动画样式
     implementation 'com.wang.avi:library:2.1.3'
 
     // 推送
+
     //PushSDK必须依赖基础组件库，所以需要加入对应依赖
     implementation 'com.umeng.umsdk:common:1.5.4'
+
     //PushSDK必须依赖utdid库，所以需要加入对应依赖
     implementation 'com.umeng.umsdk:utdid:1.1.5.3'
+
     //PushSDK
     implementation 'com.umeng.umsdk:push:5.0.2'
+
     // shortcut
-    implementation "me.leolin:ShortcutBadger:1.1.22@aar"
+    implementation 'me.leolin:ShortcutBadger:1.1.22@aar'
 
     // 高德地图
+
     // 2D地图
     implementation 'com.amap.api:map2d:latest.integration'
+
     // 定位
     implementation 'com.amap.api:location:latest.integration'
+    implementation files('libs/arcsoft_face.jar')
 }
