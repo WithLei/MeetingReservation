@@ -142,4 +142,7 @@ public class FaceRecognizeActivity extends BaseActivity
             initCamera();
         }
     }
+
+    private void initCamera() {
+    }
 }
