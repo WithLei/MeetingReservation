@@ -1,6 +1,7 @@
 package com.android.renly.meetingreservation.api;
 
 import com.android.renly.meetingreservation.App;
+import com.android.renly.meetingreservation.api.api.FaceApi;
 import com.android.renly.meetingreservation.api.api.MeetingApi;
 import com.android.renly.meetingreservation.api.api.MeetingRoomApi;
 import com.android.renly.meetingreservation.api.api.ServiceApi;
@@ -40,6 +41,7 @@ public class RetrofitService {
     private static MeetingRoomApi meetingRoomApi;
     private static TagApi tagApi;
     private static UploadApi uploadApi;
+    private static FaceApi faceApi;
 
     private RetrofitService(){
         throw new AssertionError();
@@ -104,9 +106,27 @@ public class RetrofitService {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         uploadApi = retrofit.create(UploadApi.class);
+
+        retrofit = new Retrofit.Builder()
+                .client(client)
+                .baseUrl(NetConfig.GET_EIGENVALUES + "/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+        faceApi = retrofit.create(FaceApi.class);
     }
 
     /**************************************             API             **************************************/
+
+    /**
+     * 获取特征值
+     */
+    public static Observable<ResponseBody> getEigenValues() {
+        return faceApi.getEigenvalues(NetConfig.GET_EIGENVALUES)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 
     /**
      * 获取用户对象

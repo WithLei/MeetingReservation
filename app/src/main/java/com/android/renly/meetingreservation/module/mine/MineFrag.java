@@ -1,8 +1,10 @@
 package com.android.renly.meetingreservation.module.mine;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +16,13 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.android.renly.meetingreservation.App;
 import com.android.renly.meetingreservation.R;
+import com.android.renly.meetingreservation.api.RetrofitService;
+import com.android.renly.meetingreservation.faceserver.FaceServer;
 import com.android.renly.meetingreservation.injector.components.DaggerMineFragComponent;
 import com.android.renly.meetingreservation.injector.modules.MineFragModule;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
@@ -26,10 +33,13 @@ import com.android.renly.meetingreservation.module.mine.mycollection.MyCollectio
 import com.android.renly.meetingreservation.module.mine.myrecentlyview.MyRecentlyViewActivity;
 import com.android.renly.meetingreservation.module.mine.mymeeting.MyMeetingActivity;
 import com.android.renly.meetingreservation.module.user.login.LoginActivity;
+import com.android.renly.meetingreservation.utils.LogUtils;
 import com.android.renly.meetingreservation.utils.toast.MyToast;
 import com.android.renly.meetingreservation.utils.toast.ToastUtils;
 import com.android.renly.meetingreservation.widget.CircleImageView;
 import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
 
 import javax.inject.Inject;
 
@@ -37,6 +47,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import io.reactivex.functions.Consumer;
+import okhttp3.ResponseBody;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -84,6 +96,8 @@ public class MineFrag extends BaseFragment
 
     @Override
     protected void initData(Context content) {
+        FaceServer.getInstance().init(content);
+
         mPresenter.getData(false);
         lvMineFunctionList.setAdapter(new SimpleAdapter(mContent, mPresenter.getMenuList(),
                 R.layout.item_function, new String[]{"icon", "title"},
@@ -106,10 +120,25 @@ public class MineFrag extends BaseFragment
         switch (position) {
             case 0:
                 // 设置
-                ToastUtils.ToastShort("设置界面");
+                ToastUtils.ToastShort("获取特征值");
+                RetrofitService.getEigenValues()
+                        .subscribe(responseBody -> {
+                            JSONObject obj = null;
+                            try {
+                                obj = JSON.parseObject(responseBody.string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            int statusCode = obj.getInteger("code");
+                            String result = obj.getString("msg");
+
+                            if (statusCode == 0 && result.equals("成功")) {
+                                doRegisterFace(obj.getJSONArray("data"));
+                            }
+                        }, throwable -> LogUtils.printError("获取特征值失败" + throwable));
                 break;
             case 1:
-                ToastUtils.ToastShort("分享客户端");
+                clearFaces(null);
                 break;
             case 2:
                 if (App.iSLOGIN()) {
@@ -120,6 +149,41 @@ public class MineFrag extends BaseFragment
                 else
                     ToastUtils.ToastShort("关于本程序");
                 break;
+        }
+    }
+
+    private void doRegisterFace(JSONArray data) {
+        LogUtils.printLog("data=" + data.toJSONString());
+        for (int i = 0;i < data.size();i++) {
+            JSONObject jsonObject = data.getJSONObject(i);
+            boolean flag = FaceServer.getInstance()
+                    .doMyRegister(jsonObject.getBytes("face"),jsonObject.getString("name"));
+            if (flag) {
+                LogUtils.printLog(i+1 + "/" + data.size() + " " + jsonObject.getString("name") + " 获取成功");
+            } else{
+                LogUtils.printLog(i+1 + "/" + data.size() + " " + jsonObject.getString("name") + " 获取失败");
+            }
+        }
+    }
+
+    public void clearFaces(View view) {
+        int faceNum = FaceServer.getInstance().getFaceNumber(mActivity);
+        if (faceNum == 0){
+            ToastUtils.ToastShort("没有记录需要删除");
+        }else {
+            AlertDialog dialog = new AlertDialog.Builder(mActivity)
+                    .setTitle("提示")
+                    .setMessage("确认删除这" + faceNum + "张图片及人脸特征？")
+                    .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            int deleteCount = FaceServer.getInstance().clearAllFaces(mActivity);
+                            ToastUtils.ToastShort(deleteCount + "条记录删除成功");
+                        }
+                    })
+                    .setNegativeButton("取消",null)
+                    .create();
+            dialog.show();
         }
     }
 

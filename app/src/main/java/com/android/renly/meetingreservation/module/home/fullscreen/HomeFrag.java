@@ -390,7 +390,7 @@ public class HomeFrag extends BaseFragment implements
                 break;
             case R.id.sign:
                 dialog.cancel();
-                jumpToActivity(FaceRecognizeActivity.class);
+                jumpToActivityBottom(FaceRecognizeActivity.class);
             break;
         }
     }

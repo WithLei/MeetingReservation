@@ -79,6 +79,11 @@ public abstract class BaseFragment extends Fragment {
 
     }
 
+    public void jumpToActivityBottom(Class<?> targetActivity) {
+        startActivity(new Intent(getActivity(), targetActivity));
+        getActivity().overridePendingTransition(R.anim.bottomin, R.anim.bottomout);
+    }
+
     public abstract void ScrollToTop();
 
     @Override
