@@ -73,13 +73,13 @@ public class RoomListActivity extends BaseActivity {
     protected void initData() {
         roomList = new ArrayList<>();
         roomList.add(new Room("B2楼4037", "多功能会议室", 4.5f, 4, new Date().getTime(),
-                true, keyWords, "http://149.28.149.136:8080/image/room01.jpg"));
+                true, keyWords, "http://149.28.149.136:8080/image/room01.jpg", 163));
         roomList.add(new Room("A3楼1003", "大型会议室", 3.5f, 3, new Date().getTime() - 3000,
-                false, keyWords, "http://149.28.149.136:8080/image/room02.jpg"));
+                false, keyWords, "http://149.28.149.136:8080/image/room02.jpg", 128));
         roomList.add(new Room("B2楼4037", "多功能会议室", 4.5f, 5, new Date().getTime() - 2000,
-                true, keyWords, "http://149.28.149.136:8080/image/room03.jpg"));
+                true, keyWords, "http://149.28.149.136:8080/image/room03.jpg", 99));
         roomList.add(new Room("B2楼4037", "多功能会议室", 4.5f, 4, new Date().getTime(),
-                true, keyWords, "http://149.28.149.136:8080/image/room04.jpg"));
+                true, keyWords, "http://149.28.149.136:8080/image/room04.jpg", 58));
 
 
     }

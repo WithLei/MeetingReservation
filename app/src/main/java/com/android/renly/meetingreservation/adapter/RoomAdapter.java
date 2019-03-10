@@ -71,6 +71,8 @@ public class RoomAdapter extends BaseAdapter {
         TextView tvNeedVerify;
         @BindView(R.id.recommond)
         LinearLayout recommond;
+        @BindView(R.id.price)
+        TextView tvPrice;
 
         NormalViewHolder(View itemView) {
             super(itemView);
@@ -98,6 +100,7 @@ public class RoomAdapter extends BaseAdapter {
             }
             areaAndName.setText(room.getArea() + " · " + room.getName());
             score.setText(room.getScore() + "");
+            tvPrice.setText("￥" + room.getPrice());
 //            fire.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_hot));
             for (int i = 0; i < room.getHot(); i++) {
                 if (i > 5)
@@ -123,7 +126,7 @@ public class RoomAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View view) {
                     context.startActivity(new Intent(context, RoomArrangementActivity.class));
-                    ((BaseActivity)context).overridePendingTransition(R.anim.bottomin, R.anim.bottomout);
+                    ((BaseActivity) context).overridePendingTransition(R.anim.bottomin, R.anim.bottomout);
                 }
             });
         }

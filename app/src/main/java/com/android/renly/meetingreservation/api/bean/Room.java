@@ -23,12 +23,15 @@ public class Room {
     private String capacity;
     // 可容纳人数
     private int people;
+    // 每小时价格
+    private int price;
 
     public Room() {
         super();
     }
 
-    public Room(String area, String name, float score, int hot, long recommondTime, boolean needVerify, String[] keyWords, String img) {
+    public Room(String area, String name, float score, int hot, long recommondTime,
+                boolean needVerify, String[] keyWords, String img, int price) {
         this.area = area;
         this.name = name;
         this.score = score;
@@ -37,6 +40,7 @@ public class Room {
         this.needVerify = needVerify;
         this.keyWords = keyWords;
         this.img = img;
+        this.price = price;
     }
 
     public Room(String area, String name, int hot, String img, String capacity, int people) {
@@ -126,6 +130,14 @@ public class Room {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }
 

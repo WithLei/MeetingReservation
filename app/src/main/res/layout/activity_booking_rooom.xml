@@ -42,11 +42,25 @@
                     android:layout_height="wrap_content"
                     android:text="多功能会议室" />
 
-                <TextView
-                    style="@style/text_16_pri"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="预计计费 总计¥216" />
+                    android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_16_sec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="总计" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_4"
+                        android:textSize="18sp"
+                        android:textColor="@color/red_light"
+                        android:text="¥216" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -377,6 +391,12 @@
                 android:layout_marginStart="@dimen/dimen_8"
                 android:text="费用明细" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8"
+            android:orientation="vertical"></LinearLayout>
 
     </LinearLayout>
 
