@@ -396,8 +396,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_8"
-            android:orientation="vertical"></LinearLayout>
-
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/releaseDemandConditionHeight"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+            <TextView
+                style="@style/text_16_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥"/>
+            <TextView
+                style="@style/text_16_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="78"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
