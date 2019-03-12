@@ -3,6 +3,7 @@ package com.android.renly.meetingreservation.module.booking.roomArrangement;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
 import com.android.renly.meetingreservation.module.booking.bookingroom.BookingRoomActivity;
+import com.android.renly.meetingreservation.utils.LogUtils;
 import com.android.renly.meetingreservation.utils.toast.ToastUtils;
 import com.haibin.calendarview.Calendar;
 import com.haibin.calendarview.CalendarLayout;
@@ -21,14 +23,17 @@ import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class RoomArrangementActivity extends BaseActivity implements
         CalendarView.OnCalendarSelectListener,
         CalendarView.OnYearChangeListener,
-        CalendarView.OnCalendarInterceptListener{
+        CalendarView.OnCalendarInterceptListener {
     @BindView(R.id.tv_month_day)
     TextView mTextMonthDay;
     @BindView(R.id.tv_year)
@@ -65,12 +70,12 @@ public class RoomArrangementActivity extends BaseActivity implements
         int month = mCalendarView.getCurMonth();
 
         Map<String, Calendar> map = new HashMap<>();
-        map.put(getSchemeCalendar(year, month, 3, 0xFF40db25, "假").toString(),
-                getSchemeCalendar(year, month, 3, 0xFF40db25, "假"));
-        map.put(getSchemeCalendar(year, month, 6, 0xFFe69138, "事").toString(),
-                getSchemeCalendar(year, month, 6, 0xFFe69138, "事"));
-        map.put(getSchemeCalendar(year, month, 9, 0xFFdf1356, "议").toString(),
-                getSchemeCalendar(year, month, 9, 0xFFdf1356, "议"));
+        map.put(getSchemeCalendar(year, month, 23, 0xFF40db25, "假").toString(),
+                getSchemeCalendar(year, month, 23, 0xFF40db25, "假"));
+        map.put(getSchemeCalendar(year, month, 26, 0xFFe69138, "事").toString(),
+                getSchemeCalendar(year, month, 26, 0xFFe69138, "事"));
+        map.put(getSchemeCalendar(year, month, 29, 0xFFdf1356, "议").toString(),
+                getSchemeCalendar(year, month, 29, 0xFFdf1356, "议"));
         map.put(getSchemeCalendar(year, month, 13, 0xFFedc56d, "记").toString(),
                 getSchemeCalendar(year, month, 13, 0xFFedc56d, "记"));
         map.put(getSchemeCalendar(year, month, 14, 0xFFedc56d, "记").toString(),
@@ -86,7 +91,7 @@ public class RoomArrangementActivity extends BaseActivity implements
         //此方法在巨大的数据量上不影响遍历性能，推荐使用
         mCalendarView.setSchemeDate(map);
 
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
                 Looper.prepare();
@@ -132,6 +137,11 @@ public class RoomArrangementActivity extends BaseActivity implements
         mTextMonthDay.setText(mCalendarView.getCurMonth() + "月" + mCalendarView.getCurDay() + "日");
         mTextLunar.setText("今日");
         mTextCurrentDay.setText(String.valueOf(mCalendarView.getCurDay()));
+
+        Observable.timer(2, TimeUnit.SECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(aLong -> mCalendarLayout.shrink(),
+                        throwable -> LogUtils.printError("RoomArrangementActivity initView() timer " + throwable.getMessage()));
     }
 
     private Calendar getSchemeCalendar(int year, int month, int day, int color, String text) {
@@ -153,16 +163,14 @@ public class RoomArrangementActivity extends BaseActivity implements
      */
     @Override
     public boolean onCalendarIntercept(Calendar calendar) {
-        //Log.e("onCalendarIntercept", calendar.toString());
-        int day = calendar.getDay();
-        return day == 1 || day == 3 || day == 6 || day == 11 ||
-                day == 12 || day == 15 || day == 20 || day == 26 ||
-                day == mCalendarView.getCurDay();
+        return calendar.getYear() <= mCalendarView.getCurYear() &&
+                calendar.getMonth() <= mCalendarView.getCurMonth() &&
+                calendar.getDay() < mCalendarView.getCurDay();
     }
 
     @Override
     public void onCalendarInterceptClick(Calendar calendar, boolean isClick) {
-        ToastUtils.ToastShort(isClick ? "该日预约已满" : "拦截滚动到无效日期");
+//        ToastUtils.ToastShort(isClick ? "该日不可预约" : "拦截滚动到无效日期");
     }
 
     @Override
@@ -190,27 +198,28 @@ public class RoomArrangementActivity extends BaseActivity implements
             booking.setEnabled(false);
         } else {
             booking.setEnabled(true);
-            switch (calendar.getDay() % 4) {
-                case 0:
-                    emptyLayout.collapse();
-                    active1.expand();
-                    active2.collapse();
-                    break;
-                case 1:
-                    emptyLayout.collapse();
-                    active1.collapse();
-                    active2.expand();
-                    break;
-                case 2:
-                    emptyLayout.collapse();
-                    active1.expand();
-                    active2.expand();
-                    break;
-                case 3:
-                    active1.collapse();
-                    active2.collapse();
-                    emptyLayout.expand();
-                    break;
+            if (!TextUtils.isEmpty(calendar.getScheme())) {
+                emptyLayout.expand();
+                active1.collapse();
+                active2.collapse();
+            } else {
+                switch (calendar.getDay() % 3) {
+                    case 0:
+                        emptyLayout.collapse();
+                        active1.expand();
+                        active2.collapse();
+                        break;
+                    case 1:
+                        emptyLayout.collapse();
+                        active1.collapse();
+                        active2.expand();
+                        break;
+                    case 2:
+                        emptyLayout.collapse();
+                        active1.expand();
+                        active2.expand();
+                        break;
+                }
             }
         }
     }

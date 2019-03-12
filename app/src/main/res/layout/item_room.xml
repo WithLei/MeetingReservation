@@ -157,34 +157,34 @@
                         android:src="@drawable/ic_event_note_24dp"
                         android:tint="@color/main_color_6" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginEnd="@dimen/dimen_8"
-                    android:layout_alignParentEnd="true">
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:text="约"
                         android:textColor="@color/text_color_sec"
-                        android:text="约"/>
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
+                        android:text="￥162"
                         android:textColor="@color/red_light"
-                        android:text="￥162"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:text="/每小时"
                         android:textColor="@color/red_light"
-                        android:text="/每小时"/>
+                        android:textSize="14sp" />
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>

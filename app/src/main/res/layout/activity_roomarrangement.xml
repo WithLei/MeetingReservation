@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_primary"
@@ -135,7 +135,7 @@
             <ScrollView
                 android:id="@+id/scrollView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/bg_secondary">
 
                 <include layout="@layout/layout_roomarrangement" />
@@ -144,4 +144,32 @@
 
     </LinearLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/bottom_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bg_primary"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDivider" />
+
+        <Button
+            android:id="@+id/booking"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="@dimen/dimen_8"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="@dimen/dimen_8"
+            android:enabled="true"
+            android:text="选择该日"
+            android:textColor="@color/text_btn" />
+    </LinearLayout>
+
+</RelativeLayout>

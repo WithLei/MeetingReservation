@@ -44,6 +44,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -118,7 +119,18 @@ public class HomeFrag extends BaseFragment implements
 
     @Override
     protected void initData(Context content) {
+        if (App.iSLOGIN())
+            initCalendarEvent();
+        initLectureListData();
+        Observable.timer(2, TimeUnit.SECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(aLong -> mCalendarLayout.shrink(),
+                        throwable -> LogUtils.printError("HomeFrag initdata() timer " + throwable.getMessage()));
 
+        initView();
+    }
+
+    private void initCalendarEvent() {
         int year = mCalendarView.getCurYear();
         int month = mCalendarView.getCurMonth();
 
@@ -143,16 +155,6 @@ public class HomeFrag extends BaseFragment implements
                 getSchemeCalendar(year, month, 27, 0xFF13acf0, "多"));
         //此方法在巨大的数据量上不影响遍历性能，推荐使用
         mCalendarView.setSchemeDate(map);
-
-        initLectureListData();
-
-        Observable.timer(2, TimeUnit.SECONDS)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(aLong -> mCalendarLayout.shrink(),
-                        throwable -> LogUtils.printError("HomeFrag initdata() timer " + throwable.getMessage()));
-
-        initView();
-
     }
 
     private void initLectureListData() {
@@ -223,11 +225,12 @@ public class HomeFrag extends BaseFragment implements
 
     private AlertDialog dialog;
 
-    @OnClick({R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04, R.id.tv_month_day, R.id.fl_current, R.id.active_activity, R.id.tip_login, R.id.layout_pushtip})
+    @OnClick({R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04, R.id.tv_month_day,
+            R.id.fl_current, R.id.active_activity, R.id.tip_login, R.id.layout_pushtip})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn01:
-                startActivityForResult(new Intent(mContent, CaptureActivity.class), CaptureActivity.REQ_CODE);
+                Objects.requireNonNull(getActivity()).startActivityForResult(new Intent(mContent, CaptureActivity.class), CaptureActivity.REQ_CODE);
                 break;
             case R.id.btn02:
                 jumpToActivity(SearchActivity.class);
@@ -344,11 +347,20 @@ public class HomeFrag extends BaseFragment implements
             tipLayout.setVisibility(View.GONE);
             activeLayout.setVisibility(View.VISIBLE);
             dayLayout.setVisibility(View.VISIBLE);
+            initCalendarEvent();
+            if (mCalendarView.getSelectedCalendar().getScheme().trim().isEmpty() ? false : true) {
+                dayContentEmpty.collapse();
+                dayContent.expand();
+            } else {
+                dayContentEmpty.expand();
+                dayContent.collapse();
+            }
         } else {
             activeLayout.setVisibility(View.GONE);
             dayLayout.setVisibility(View.GONE);
             tipLayout.setVisibility(View.VISIBLE);
             layoutPushtip.setVisibility(View.GONE);
+            mCalendarView.setSchemeDate(null);
         }
     }
 
@@ -385,7 +397,7 @@ public class HomeFrag extends BaseFragment implements
                         .addService((int)App.getUserUidKey(), content)
                         .subscribe(responseBody -> {
                             LogUtils.printLog(responseBody.string());
-                            ToastUtils.ToastShort("已经将服务通知后台");
+                            ToastUtils.ToastLong("已经为您将服务通知给后台");
                         }, throwable -> LogUtils.printError("send service err " + throwable));
                 break;
             case R.id.sign:

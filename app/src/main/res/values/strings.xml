@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MeetingReservation</string>
+    <string name="app_name">智能会议室</string>
 
     <string name="meeting_intro">中国物理学会2014年秋季学术会议由哈尔滨工业大学物理系承办。与会专家将围绕粒子物理、场论与宇宙学，核物理与加速器物理等17个专题，以大会特邀报告、分会邀请报告、口头报告和张贴报告等形式交流探讨。会议期间，还将举行中国物理学会教学委员会扩大会议、女物理学家圆桌座谈会等专题会议，以及科教设备书刊展览会。</string>
 </resources>

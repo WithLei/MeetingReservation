@@ -194,17 +194,17 @@
 
             <TextView
                 style="@style/booking_tip"
-                android:text="朝阳区" />
+                android:text="创意园" />
 
             <TextView
                 style="@style/booking_tip"
                 android:layout_marginStart="@dimen/dimen_8"
-                android:text="朝阳区" />
+                android:text="推介会" />
 
             <TextView
                 style="@style/booking_tip"
                 android:layout_marginStart="@dimen/dimen_8"
-                android:text="朝阳区" />
+                android:text="多功能会议室" />
         </LinearLayout>
 
     </LinearLayout>
@@ -228,17 +228,26 @@
             android:layout_alignParentStart="true"
             android:text="搜索历史" />
 
-            <TextView
-                android:textColor="@color/text_color_thi"
-                android:textSize="14sp"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="@dimen/dimen_16"
-                android:drawableEnd="@drawable/ic_clear_24dp"
-                android:drawableTint="@color/text_color_thi"
+                android:orientation="horizontal">
+            <TextView
+                android:textColor="@color/text_color_thi"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="历史清除"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_clear_24dp"
+                    android:tint="@color/text_color_thi"/>
+            </LinearLayout>
         </RelativeLayout>
 
         <View
@@ -261,7 +270,7 @@
                 android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 android:gravity="center_vertical"
-                android:text="朝阳区" />
+                android:text="研讨会议" />
 
             <View
                 android:layout_width="match_parent"
@@ -275,7 +284,7 @@
                 android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 android:gravity="center_vertical"
-                android:text="朝阳区" />
+                android:text="大型会议室" />
 
             <View
                 android:layout_width="match_parent"
@@ -289,7 +298,7 @@
                 android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 android:gravity="center_vertical"
-                android:text="朝阳区" />
+                android:text="国际创意园" />
 
             <View
                 android:layout_width="match_parent"

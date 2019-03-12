@@ -9,12 +9,14 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.acker.simplezxing.activity.CaptureActivity;
 import com.android.renly.meetingreservation.App;
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.adapter.MainPageAdapter;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
 import com.android.renly.meetingreservation.module.booking.BookingFrag;
+import com.android.renly.meetingreservation.module.booking.room.RoomActivity;
 import com.android.renly.meetingreservation.module.folder.FolderFrag;
 import com.android.renly.meetingreservation.module.home.fullscreen.HomeFrag;
 import com.android.renly.meetingreservation.module.mine.MineFrag;
@@ -174,6 +176,11 @@ public class HomeActivity extends BaseActivity
                 case LoginActivity.requestCode: //64
                     doRefresh();
                     printLog("onActivityResult LoginActivity");
+                    break;
+                case CaptureActivity.REQ_CODE:
+                    String result = data.getStringExtra(CaptureActivity.EXTRA_SCAN_RESULT);
+                    printLog(result);
+                    jumpToActivity(RoomActivity.class);
                     break;
             }
         }

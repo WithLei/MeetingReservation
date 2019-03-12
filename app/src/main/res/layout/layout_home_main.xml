@@ -514,7 +514,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tip_tt"
                 android:layout_marginTop="15dp"
-                android:text="加入我们，让开会更便捷"
+                android:text="智能会议室移动平台\n加入我们，让开会更便捷"
                 android:textColor="@color/white"
                 android:textSize="22sp" />
 

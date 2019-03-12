@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.renly.meetingreservation.R;
@@ -70,7 +71,7 @@ public class RoomAdapter extends BaseAdapter {
         @BindView(R.id.tv_needVerify)
         TextView tvNeedVerify;
         @BindView(R.id.recommond)
-        LinearLayout recommond;
+        RelativeLayout recommond;
         @BindView(R.id.price)
         TextView tvPrice;
 

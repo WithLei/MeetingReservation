@@ -44,18 +44,25 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="c21bbd3c21b21551332b72edb57485e4" />
+
         <activity
             android:name=".module.home.HomeActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.normal"
-            android:windowSoftInputMode="stateUnspecified">
+            android:windowSoftInputMode="stateUnspecified" />
+
+        <activity
+            android:name=".module.home.LaunchActivity"
+            android:theme="@style/AppTheme.normal"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".module.booking.search.SearchActivity"
             android:theme="@style/AppTheme"
@@ -118,7 +125,9 @@
             android:name=".module.map.MapActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
+
         <service android:name="com.amap.api.location.APSService" />
+
         <activity
             android:name=".module.folder.upload.UploadActivity"
             android:theme="@style/AppTheme"

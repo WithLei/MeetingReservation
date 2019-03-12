@@ -1,12 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bg_secondary">
+
+    <com.android.renly.meetingreservation.widget.CircleImageView
+        android:id="@+id/logo"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="100dp"
+        android:src="@mipmap/logo"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="2dp" />
+
     <TextView
+        android:id="@+id/tv_launch_up"
+        style="@style/text_16_sec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="启动界面"
-        android:textSize="20sp"
-        android:layout_centerInParent="true"/>
+        android:layout_below="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="让开会更便捷，让找会室更轻松" />
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/copyright"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="6dp"
+        android:text="智能会议室移动平台"
+        android:textColor="?attr/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/copyright"
+        style="@style/text_12_sec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:alpha="0.6"
+        android:text="©2018-2019 Chicken Dinner" />
 
 </RelativeLayout>

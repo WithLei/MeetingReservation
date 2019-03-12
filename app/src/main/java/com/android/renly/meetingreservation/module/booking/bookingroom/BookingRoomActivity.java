@@ -6,6 +6,7 @@ import android.support.design.widget.TextInputEditText;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.renly.meetingreservation.R;
@@ -28,12 +29,26 @@ public class BookingRoomActivity extends BaseActivity {
     TextView time;
     @BindView(R.id.people)
     EditText people;
-    @BindView(R.id.budget)
-    TextInputEditText budget;
     @BindView(R.id.company)
     TextInputEditText company;
     @BindView(R.id.phone)
     TextInputEditText phone;
+    @BindView(R.id.fee_content)
+    LinearLayout feeContent;
+    @BindView(R.id.fee_pay_hour)
+    TextView feePayHour;
+    @BindView(R.id.fee_hour)
+    TextView feeHour;
+    @BindView(R.id.fee_pay)
+    TextView feePay;
+    @BindView(R.id.translation)
+    TextView translation;
+    @BindView(R.id.fee_translation)
+    TextView feeTranslation;
+    @BindView(R.id.fee_total)
+    TextView feeTotal;
+    @BindView(R.id.pay)
+    TextView payTotal;
 
     private String date_str;
 
@@ -58,19 +73,6 @@ public class BookingRoomActivity extends BaseActivity {
                 finishActivityBottom();
                 break;
             case R.id.date:
-//                Calendar calendar = Calendar.getInstance();
-//                MyOnDateSetListener myOnDateSetListener = new MyOnDateSetListener() {
-//                    @Override
-//                    public void afterSetDate(String days) {
-//                        date.setText(days);
-//                    }
-//                };
-//                new DatePickerDialog(this,
-//                        myOnDateSetListener,
-//                        calendar.get(Calendar.YEAR),
-//                        calendar.get(Calendar.MONTH),
-//                        calendar.get(Calendar.DAY_OF_MONTH))
-//                        .show();
                 jumpToActivityBottom(RoomArrangementActivity.class);
                 break;
             case R.id.time:
@@ -84,6 +86,9 @@ public class BookingRoomActivity extends BaseActivity {
                             @Override
                             public void onRightClick(String startAndEndTime) {
                                 time.setText(startAndEndTime);
+
+                                feeContent.setVisibility(View.VISIBLE);
+                                payTotal.setVisibility(View.VISIBLE);
                             }
                         });
                         dialog.show();
@@ -91,13 +96,10 @@ public class BookingRoomActivity extends BaseActivity {
             case R.id.btn_confirm:
                 if (!checkInput())
                     break;
-                LogUtils.printLog("budget " + budget.getText().toString());
-                LogUtils.printLog("people " + people.getText());
                 Intent intent = new Intent(this, BookingSuccessActivity.class);
                 intent.putExtra("date", date.getText());
                 intent.putExtra("time", time.getText());
                 intent.putExtra("people", people.getText()+"");
-                intent.putExtra("budget",budget.getText().toString());
                 intent.putExtra("company",company.getText().toString());
                 intent.putExtra("phone",phone.getText().toString());
                 startActivity(intent);
