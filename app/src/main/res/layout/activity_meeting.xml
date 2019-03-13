@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/bg_secondary">
 
     <LinearLayout
@@ -20,6 +20,7 @@
         android:layout_height="42dp"
         android:layout_alignParentBottom="true"
         android:background="@color/orange_light"
+        android:visibility="gone"
         android:gravity="center">
 
         <TextView
@@ -36,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/top"
-        android:layout_marginBottom="42dp">
+        android:layout_above="@id/edit">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,8 +47,8 @@
             <ImageView
                 android:id="@+id/bigImg"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:background="@color/bg_primary"
+                android:layout_height="220dp"
+                android:src="@mipmap/image_default"
                 android:elevation="1dp"
                 android:scaleType="fitXY" />
 
@@ -67,7 +68,7 @@
                     android:layout_marginStart="@dimen/dimen_16"
                     android:layout_marginTop="@dimen/dimen_8"
                     android:layout_marginBottom="@dimen/dimen_8"
-                    android:text="关于新产品的售价" />
+                    tools:text="关于新产品的售价" />
 
                 <View
                     android:layout_width="match_parent"
@@ -75,10 +76,10 @@
                     android:background="@color/colorDivider" />
 
                 <RelativeLayout
-                    android:clickable="true"
-                    android:background="?android:selectableItemBackground"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackground"
+                    android:clickable="true">
 
                     <TextView
                         style="@style/text_16_pri"
@@ -86,7 +87,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/dimen_16"
-                        android:text="创建人" />
+                        android:text="发起人" />
 
                     <TextView
                         android:id="@+id/user_name"
@@ -97,7 +98,7 @@
                         android:layout_marginTop="@dimen/dimen_8"
                         android:layout_marginEnd="@dimen/dimen_16"
                         android:layout_toStartOf="@+id/user_avatar"
-                        android:text="市场部" />
+                        tools:text="市场部" />
 
                     <com.android.renly.meetingreservation.widget.CircleImageView
                         android:id="@+id/user_avatar"
@@ -107,7 +108,7 @@
                         android:layout_marginTop="@dimen/dimen_8"
                         android:layout_marginEnd="@dimen/dimen_16"
                         android:layout_marginBottom="@dimen/dimen_8"
-                        android:src="@drawable/ic_user_placeholder" />
+                        android:src="@mipmap/user_placeholder" />
                 </RelativeLayout>
 
                 <View
@@ -140,7 +141,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/dimen_8"
                         android:layout_toStartOf="@+id/iv_location"
-                        android:text="国际创意园-1幢" />
+                        tools:text="国际创意园-1幢" />
 
                     <ImageView
                         android:id="@+id/iv_location"
@@ -188,8 +189,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:tint="@color/colorDividerDark"
-                        android:src="@drawable/ic_chevron_right_black_24dp" />
+                        android:src="@drawable/ic_chevron_right_black_24dp"
+                        android:tint="@color/colorDividerDark" />
 
                 </RelativeLayout>
 
@@ -224,60 +225,72 @@
                         style="@style/text_16_pri"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="(16)" />
+                        tools:text="(16)" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/ll_people"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_16"
-                    android:background="?android:selectableItemBackground"
-                    android:clickable="true"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="@dimen/dimen_16">
 
-                    <com.android.renly.meetingreservation.widget.CircleImageView
-                        android:id="@+id/avatar1"
-                        android:layout_width="52dp"
+                    <LinearLayout
+                        android:id="@+id/ll_people"
+                        android:layout_width="match_parent"
                         android:layout_height="52dp"
-                        tools:src="@drawable/ic_user_placeholder" />
+                        android:layout_alignParentStart="true"
+                        android:background="?android:selectableItemBackground"
+                        android:clickable="true"
+                        android:orientation="horizontal">
 
-                    <com.android.renly.meetingreservation.widget.CircleImageView
-                        android:id="@+id/avatar2"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
-                        android:layout_marginStart="@dimen/dimen_8"
-                        tools:src="@drawable/ic_user_placeholder" />
+                        <com.android.renly.meetingreservation.widget.CircleImageView
+                            android:id="@+id/avatar1"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            tools:src="@mipmap/user_placeholder" />
+
+                        <com.android.renly.meetingreservation.widget.CircleImageView
+                            android:id="@+id/avatar2"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:layout_marginStart="@dimen/dimen_8"
+                            android:visibility="gone"
+                            tools:src="@mipmap/user_placeholder" />
 
 
-                    <com.android.renly.meetingreservation.widget.CircleImageView
-                        android:id="@+id/avatar3"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
-                        android:layout_marginStart="@dimen/dimen_8"
-                        tools:src="@drawable/ic_user_placeholder" />
+                        <com.android.renly.meetingreservation.widget.CircleImageView
+                            android:id="@+id/avatar3"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:layout_marginStart="@dimen/dimen_8"
+                            android:visibility="gone"
+                            tools:src="@mipmap/user_placeholder" />
 
-                    <com.android.renly.meetingreservation.widget.CircleImageView
-                        android:id="@+id/avatar4"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
-                        android:layout_marginStart="@dimen/dimen_8"
-                        tools:src="@drawable/ic_user_placeholder" />
+                        <com.android.renly.meetingreservation.widget.CircleImageView
+                            android:id="@+id/avatar4"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:layout_marginStart="@dimen/dimen_8"
+                            android:visibility="gone"
+                            tools:src="@mipmap/user_placeholder" />
 
-                    <com.android.renly.meetingreservation.widget.CircleImageView
-                        android:id="@+id/avatar5"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
-                        android:layout_marginStart="@dimen/dimen_8"
-                        tools:src="@drawable/ic_user_placeholder" />
+                        <com.android.renly.meetingreservation.widget.CircleImageView
+                            android:id="@+id/avatar5"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:layout_marginStart="@dimen/dimen_8"
+                            android:visibility="gone"
+                            tools:src="@mipmap/user_placeholder" />
+
+                    </LinearLayout>
 
                     <ImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:layout_gravity="center_vertical|end"
-                        android:layout_marginStart="@dimen/dimen_4"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/dimen_8"
                         android:src="@drawable/ic_chevron_right_black_24dp" />
-                </LinearLayout>
+                </RelativeLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -306,10 +319,11 @@
                     android:background="@color/colorDivider" />
 
                 <TextView
+                    android:id="@+id/intro"
                     style="@style/text_14_sec"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/meeting_intro" />
+                    tools:text="@string/meeting_intro" />
             </LinearLayout>
 
             <LinearLayout
@@ -327,21 +341,22 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                <TextView
-                    style="@style/text_16_pri"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:text="会议文件" />
+
+                    <TextView
+                        style="@style/text_16_pri"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="会议文件" />
 
                     <TextView
                         android:id="@+id/upload"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:textSize="14sp"
+                        android:text="上传文件"
                         android:textColor="@color/main_color_6"
-                        android:text="上传文件" />
+                        android:textSize="14sp" />
                 </RelativeLayout>
 
                 <View
@@ -350,14 +365,10 @@
                     android:layout_marginTop="@dimen/dimen_8"
                     android:background="@color/colorDivider" />
 
-                <include layout="@layout/item_folder_s" />
-
-                <include layout="@layout/item_folder_s" />
-
-                <include layout="@layout/item_folder_s" />
-
-                <include layout="@layout/item_folder_s" />
-
+                <ListView
+                    android:id="@+id/listView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

@@ -220,7 +220,7 @@ public class MineFrag extends BaseFragment
     public void doRefresh() {
         if (App.iSLOGIN()) {
             Picasso.get()
-                    .load("http://149.28.149.136:8080/image/user9.jpg")
+                    .load("http://149.28.149.136:8080/image/user1.jpg")
                     .into(avatar);
             name.setText(App.getUserName());
             email.setText(App.getUserEmail());

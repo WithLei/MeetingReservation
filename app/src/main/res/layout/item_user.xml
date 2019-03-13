@@ -11,7 +11,7 @@
         android:layout_height="56dp"
         android:layout_margin="@dimen/dimen_4"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/ic_user_placeholder" />
+        android:src="@mipmap/user_placeholder" />
 
     <TextView
         android:id="@+id/user_name"

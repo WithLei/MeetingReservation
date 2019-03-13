@@ -32,6 +32,7 @@
             android:text="关于新产品的售价.pdf" />
 
         <TextView
+            android:id="@+id/folder_size"
             style="@style/text_14_sec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

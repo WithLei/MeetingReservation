@@ -132,6 +132,7 @@ public class LoginActivity extends BaseActivity {
                         e.printStackTrace();
                     }
 
+                    assert obj != null;
                     int statusCode = obj.getInteger("code");
                     String result = obj.getString("msg");
                     if (statusCode == 0){

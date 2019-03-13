@@ -13,7 +13,7 @@ public class NetConfig {
 
     public static final String BASE_TAG_URL = BASE_URL + "tag/";
 
-    public static final String BASE_UPLOAD = BASE_URL + "user/";
+    public static final String BASE_UPLOAD = BASE_URL + "file/";
 
     public static final String GET_EIGENVALUES = BASE_URL + "face/listUserFace";
 }

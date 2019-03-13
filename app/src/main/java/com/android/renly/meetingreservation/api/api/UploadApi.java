@@ -14,4 +14,10 @@ public interface UploadApi {
     @Multipart
     @POST("uploadHeadImage")
     Observable<ResponseBody> uploadAvatar(@Part MultipartBody.Part file, @Query("id")int id);
+
+    @Multipart
+    @POST("uploadFileToApply")
+    Observable<ResponseBody> uploadFileToApply(@Part MultipartBody.Part file,
+                                               @Query("meetingApplyId")int meetingApplyId,
+                                               @Query("uploadUserId")int uploadUserId);
 }

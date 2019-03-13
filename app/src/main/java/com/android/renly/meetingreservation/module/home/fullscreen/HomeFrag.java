@@ -264,7 +264,10 @@ public class HomeFrag extends BaseFragment implements
                 mCalendarView.scrollToCurrent();
                 break;
             case R.id.active_activity:
-                jumpToActivity(MeetingActivity.class);
+                Intent mIntent = new Intent(mActivity, MeetingActivity.class);
+                mIntent.putExtra("doEdit", true);
+                startActivity(mIntent);
+                mActivity.overridePendingTransition(R.anim.translate_in, R.anim.translate_out);
                 break;
             case R.id.tip_login:
                 Intent intent = new Intent(mActivity, LoginActivity.class);
@@ -322,7 +325,7 @@ public class HomeFrag extends BaseFragment implements
         mYear = calendar.getYear();
 
         if (flag)
-            showDayMeeting(calendar.getScheme().trim().isEmpty() ? false : true);
+            showDayMeeting(!calendar.getScheme().trim().isEmpty());
         else
             flag = true;
     }
@@ -348,7 +351,10 @@ public class HomeFrag extends BaseFragment implements
             activeLayout.setVisibility(View.VISIBLE);
             dayLayout.setVisibility(View.VISIBLE);
             initCalendarEvent();
-            if (mCalendarView.getSelectedCalendar().getScheme().trim().isEmpty() ? false : true) {
+//            LogUtils.printLog("getSelect = " + mCalendarView.getSelectedCalendar().getYear() +
+//                    mCalendarView.getSelectedCalendar().getMonth() + mCalendarView.getSelectedCalendar().getDay());
+            // TODO:Here is a bug,getScheme() not working[get nothing..]
+            if (!mCalendarView.getSelectedCalendar().getScheme().trim().isEmpty()) {
                 dayContentEmpty.collapse();
                 dayContent.expand();
             } else {

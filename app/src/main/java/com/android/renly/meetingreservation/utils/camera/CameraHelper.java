@@ -381,7 +381,7 @@ public class CameraHelper implements Camera.PreviewCallback {
 
         public CameraHelper build() {
             if (previewViewSize == null) {
-                Log.e(TAG, "previewViewSize is null, now use default previewSize");
+                Log.e(TAG, "previewViewSize is null, now use image_default previewSize");
             }
             if (cameraListener == null) {
                 Log.e(TAG, "cameraListener is null, callback will not be called");

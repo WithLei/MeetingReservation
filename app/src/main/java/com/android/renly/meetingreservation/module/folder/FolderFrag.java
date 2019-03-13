@@ -56,23 +56,28 @@ public class FolderFrag extends BaseFragment {
     protected void initData(Context content) {
         folderList = new ArrayList<>();
         folderList.add(new Folder("关于新产品的售价", new Date().getTime() - 10000, 1));
-        folderList.add(new Folder("关于新产品的售价.pdf", new Date().getTime() - 10000, 2, "1.28MB"));
-        folderList.add(new Folder("关于新产品的售价.png", new Date().getTime() - 10000, 2, "1.28MB"));
-        folderList.add(new Folder("关于新产品的售价.psd", new Date().getTime() - 10000, 2, "1.28MB"));
-        folderList.add(new Folder("关于新产品的售价.txt", new Date().getTime() - 10000, 2, "1.28MB"));
-        folderList.add(new Folder("关于新产品的售价.ppt", new Date().getTime() - 10000, 2, "1.28MB"));
-        folderList.add(new Folder("关于新产品的售价.upload", new Date().getTime() - 10000, 2, "1.28MB"));
-        folderList.add(new Folder("关于新产品的售价.video", new Date().getTime() - 10000, 2, "1.28MB"));
-        folderList.add(new Folder("关于新产品的售价.zip", new Date().getTime() - 10000, 2, "1.28MB"));
-        folderList.add(new Folder("关于新产品的售价.word", new Date().getTime() - 10000, 2, "1.28MB"));
-        folderList.add(new Folder("关于新产品的售价.html", new Date().getTime() - 10000, 2, "1.28MB"));
-        folderList.add(new Folder("关于新产品的售价.jpg", new Date().getTime() - 10000, 2, "1.28MB"));
-        folderList.add(new Folder("关于新产品的售价.mp3", new Date().getTime() - 10000, 2, "1.28MB"));
-        folderList.add(new Folder("关于新产品的售价.excel", new Date().getTime() - 10000, 2, "1.28MB"));
-        folderList.add(new Folder("关于新产品的售价.gif", new Date().getTime() - 10000, 2, "1.28MB"));
-        folderList.add(new Folder("关于新产品的售价.download", new Date().getTime() - 10000, 2, "1.28MB"));
-        folderList.add(new Folder("关于新产品的售价.ai", new Date().getTime() - 10000, 2, "1.28MB"));
-        folderList.add(new Folder("关于新产品的售价.other", new Date().getTime() - 10000, 2, "1.28MB"));
+        folderList.add(new Folder("交通管理制度的优化和漏洞", new Date().getTime() - 10000, 1));
+        folderList.add(new Folder("产品讨论测试", new Date().getTime() - 10000, 1));
+        folderList.add(new Folder("市场工作总结", new Date().getTime() - 10000, 1));
+        folderList.add(new Folder("小组工作沟通", new Date().getTime() - 10000, 1));
+
+//        folderList.add(new Folder("关于新产品的售价.pdf", new Date().getTime() - 10000, 2, "1.28MB"));
+//        folderList.add(new Folder("关于新产品的售价.png", new Date().getTime() - 10000, 2, "1.28MB"));
+//        folderList.add(new Folder("关于新产品的售价.psd", new Date().getTime() - 10000, 2, "1.28MB"));
+//        folderList.add(new Folder("关于新产品的售价.txt", new Date().getTime() - 10000, 2, "1.28MB"));
+//        folderList.add(new Folder("关于新产品的售价.ppt", new Date().getTime() - 10000, 2, "1.28MB"));
+//        folderList.add(new Folder("关于新产品的售价.upload", new Date().getTime() - 10000, 2, "1.28MB"));
+//        folderList.add(new Folder("关于新产品的售价.video", new Date().getTime() - 10000, 2, "1.28MB"));
+//        folderList.add(new Folder("关于新产品的售价.zip", new Date().getTime() - 10000, 2, "1.28MB"));
+//        folderList.add(new Folder("关于新产品的售价.word", new Date().getTime() - 10000, 2, "1.28MB"));
+//        folderList.add(new Folder("关于新产品的售价.html", new Date().getTime() - 10000, 2, "1.28MB"));
+//        folderList.add(new Folder("关于新产品的售价.jpg", new Date().getTime() - 10000, 2, "1.28MB"));
+//        folderList.add(new Folder("关于新产品的售价.mp3", new Date().getTime() - 10000, 2, "1.28MB"));
+//        folderList.add(new Folder("关于新产品的售价.excel", new Date().getTime() - 10000, 2, "1.28MB"));
+//        folderList.add(new Folder("关于新产品的售价.gif", new Date().getTime() - 10000, 2, "1.28MB"));
+//        folderList.add(new Folder("关于新产品的售价.download", new Date().getTime() - 10000, 2, "1.28MB"));
+//        folderList.add(new Folder("关于新产品的售价.ai", new Date().getTime() - 10000, 2, "1.28MB"));
+//        folderList.add(new Folder("关于新产品的售价.other", new Date().getTime() - 10000, 2, "1.28MB"));
 
         initAdapter();
     }

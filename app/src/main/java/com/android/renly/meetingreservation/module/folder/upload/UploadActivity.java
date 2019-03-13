@@ -8,6 +8,7 @@ import android.os.Environment;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.renly.meetingreservation.App;
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.api.RetrofitService;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
@@ -35,13 +36,10 @@ public class UploadActivity extends BaseActivity {
     TextView progress;
     @BindView(R.id.progressbar)
     NumberProgressBar progressBar;
-    @BindView(R.id.expandable_layout0)
-    ExpandableLayout layout0;
-    @BindView(R.id.expandable_layout1)
-    ExpandableLayout layout1;
 
     private Timer timer;
 
+    public static final int requestCode = 1024;
 
     @Override
     protected int getLayoutID() {
@@ -50,7 +48,6 @@ public class UploadActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-//        doUpload();
     }
 
     @Override
@@ -68,30 +65,30 @@ public class UploadActivity extends BaseActivity {
                     startActivityForResult(intent, 201);
                 });
         initSlidr();
-        timer = new Timer();
-        timer
-                .schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                progressBar.incrementProgressBy(1);
-                            }
-                        });
-                    }
-                }, 1000, 100);
+//        timer.schedule(new TimerTask() {
+//                    @Override
+//                    public void run() {
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                progressBar.incrementProgressBy(1);
+//                            }
+//                        });
+//                    }
+//                }, 1000, 100);
     }
 
-    private void doUpload() {
-        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "meetingReservation", "speaker01.jpg");
-        RetrofitService.uploadAvatar(file, new FileUploadObserver<ResponseBody>() {
+    private void doUpload(String path) {
+        File file = new File(path);
+        RetrofitService.uploadFile(file, 2, (int)App.getUserUidKey(),
+                new FileUploadObserver<ResponseBody>() {
             @Override
             public void onProgress(int percent) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         progress.setText(percent + " ");
+                        LogUtils.printLog("percent = " + percent + "%");
                     }
                 });
             }
@@ -119,52 +116,41 @@ public class UploadActivity extends BaseActivity {
         });
     }
 
-    String path;
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        String path;
         if (resultCode == Activity.RESULT_OK) {
             Uri uri = data.getData();
             if ("file".equalsIgnoreCase(uri.getScheme())) {
                 // 用第三方应用打开
                 path = uri.getPath();
-                progress.setText(path);
-                ToastUtils.ToastShort("1.0: " + path);
+                doUpload(path);
+//                ToastUtils.ToastShort("1.0: " + path);
+                return;
             }
             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
                 // 4.4之后
                 path = PathUtils.getPath(uri);
-                progress.setText(path);
-                ToastUtils.ToastShort("2.0: " + path);
+//                ToastUtils.ToastShort("2.0: " + path);
             } else {
                 // 4.4以下版本调用
                 path = PathUtils.getRealPathFromURI(uri);
-                progress.setText(path);
-                ToastUtils.ToastShort("3.0: " + path);
+//                ToastUtils.ToastShort("3.0: " + path);
             }
+            doUpload(path);
         }
     }
 
-    @OnClick({R.id.expandable_layout0, R.id.expandable_layout1,R.id.progress})
+    @OnClick({R.id.progress})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.expandable_layout1:
-            break;
             case R.id.progress:
-                if (layout1.isExpanded()) {
-                    layout0.collapse();
-                    layout1.collapse();
-                } else if (layout0.isExpanded()){
-                    layout1.expand();
-                }else
-                    layout0.expand();
-            break;
+                break;
         }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        timer.cancel();
     }
 }

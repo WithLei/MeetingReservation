@@ -271,7 +271,6 @@ public class RetrofitService {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
-
     /**
      * 根据会议室ID查询标签
      */
@@ -283,7 +282,7 @@ public class RetrofitService {
     }
 
     /**
-     * 上传文件的封装
+     * 上传头像的封装
      */
     public static void uploadAvatar(File file, FileUploadObserver<ResponseBody>fileUploadObserver) {
         UploadFileRequestBody uploadFileRequestBody = new UploadFileRequestBody(file, fileUploadObserver);
@@ -295,12 +294,17 @@ public class RetrofitService {
                 .subscribe(fileUploadObserver);
     }
 
-    public static Observable<ResponseBody> uploadFile(File file, FileUploadObserver<ResponseBody> fileUploadObserver) {
+    /**
+     * 上传文件的封装
+     */
+    public static void uploadFile(File file, int meetingApplyId, int uploadUserId,
+                                                      FileUploadObserver<ResponseBody> fileUploadObserver) {
         UploadFileRequestBody uploadFileRequestBody = new UploadFileRequestBody(file, fileUploadObserver);
         MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), uploadFileRequestBody);
-        return uploadApi.uploadAvatar(part, 26)
+        uploadApi.uploadFileToApply(part, meetingApplyId, uploadUserId)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(fileUploadObserver);
     }
 }

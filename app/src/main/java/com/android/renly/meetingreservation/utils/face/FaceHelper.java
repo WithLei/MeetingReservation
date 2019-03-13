@@ -54,7 +54,7 @@ public class FaceHelper {
             frThreadNum = builder.frThreadNum;
             faceRecognizeRunnables = new LinkedBlockingQueue<FaceRecognizeRunnable>(frThreadNum);
         } else {
-            Log.e(TAG, "frThread num must > 0,now using default value:" + frThreadNum);
+            Log.e(TAG, "frThread num must > 0,now using image_default value:" + frThreadNum);
         }
         if (previewSize == null) {
             throw new RuntimeException("previewSize must be specified!");
