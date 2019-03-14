@@ -3,11 +3,8 @@ package com.android.renly.meetingreservation.module.mine;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -22,7 +19,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.android.renly.meetingreservation.App;
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.api.RetrofitService;
-import com.android.renly.meetingreservation.faceserver.FaceServer;
+import com.android.renly.meetingreservation.local.faceserver.FaceServer;
 import com.android.renly.meetingreservation.injector.components.DaggerMineFragComponent;
 import com.android.renly.meetingreservation.injector.modules.MineFragModule;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
@@ -44,13 +41,7 @@ import java.io.IOException;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
-import io.reactivex.functions.Consumer;
-import okhttp3.ResponseBody;
-
-import static android.app.Activity.RESULT_OK;
 
 public class MineFrag extends BaseFragment
         implements AdapterView.OnItemClickListener, MineFragView {

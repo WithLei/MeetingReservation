@@ -1,10 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_secondary"
-    android:orientation="vertical">
+    android:background="@color/bg_secondary">
 
-    <include layout="@layout/my_toolbar" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_bar"
+        android:layout_alignParentStart="true"
+        android:background="@color/bg_secondary"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <FrameLayout
+            android:id="@+id/myToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbarHeight"
+            android:background="?android:attr/colorPrimary"
+            android:elevation="4dp">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="13dp"
+                android:src="@drawable/ic_arraw_back_white" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:maxEms="10"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/check"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/dimen_8"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="选择"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ListView
+                android:id="@+id/country_lvcountry"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:divider="@null" />
+
+            <LinearLayout
+                android:id="@+id/top_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_secondary">
+
+                <TextView
+                    android:id="@+id/top_char"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="A"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/dialog"
+                android:layout_width="80.0dip"
+                android:layout_height="80.0dip"
+                android:layout_gravity="center"
+                android:background="@drawable/toast_show"
+                android:gravity="center"
+                android:textColor="#ff5f5f5f"
+                android:textSize="30dp"
+                android:visibility="invisible" />
+
+            <com.android.renly.meetingreservation.widget.SideBar
+                android:id="@+id/sidrbar"
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end|center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bg_primary">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorDivider" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_16_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已选择" />
+
+            <TextView
+                style="@style/text_16_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_4"
+                android:layout_marginEnd="@dimen/dimen_4"
+                android:text="0" />
+
+            <TextView
+                style="@style/text_16_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="人" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/confirm"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:enabled="true"
+            android:text="确认"
+            android:textColor="@color/text_btn" />
+    </RelativeLayout>
+</RelativeLayout>

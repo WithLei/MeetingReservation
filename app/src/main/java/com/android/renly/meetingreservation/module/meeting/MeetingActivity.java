@@ -233,7 +233,12 @@ public class MeetingActivity extends BaseActivity
                 overridePendingTransition(R.anim.bottomin, R.anim.bottomout);
                 break;
             case R.id.ll_people:
-                jumpToActivity(PeopleListActivity.class);
+                if (isAnnouncer) {
+                    intent = new Intent(this, PeopleListActivity.class);
+                    intent.putExtra("isAnnouncer", true);
+                    startActivity(intent);
+                } else
+                    jumpToActivity(PeopleListActivity.class);
                 break;
             case R.id.location:
                 jumpToActivity(MapActivity.class);
@@ -291,10 +296,10 @@ public class MeetingActivity extends BaseActivity
         dialog = null;
         if (result.equals("二维码签到")) { //弹出二维码
             new AlertDialog.Builder(this)
-                    .setView(View.inflate(this,R.layout.dialog_qr,null))
+                    .setView(View.inflate(this, R.layout.dialog_qr, null))
                     .setCancelable(true)
                     .create()
-            .show();
+                    .show();
         }
 
     }

@@ -1,9 +1,11 @@
 package com.android.renly.meetingreservation.module.meeting.addPeople;
 
+import android.content.Intent;
 import android.view.Gravity;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import com.android.renly.meetingreservation.App;
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.adapter.UserAdapter;
 import com.android.renly.meetingreservation.api.bean.SimpleUser;
@@ -22,6 +24,8 @@ public class PeopleListActivity extends BaseActivity {
     private List<SimpleUser>list;
     private UserAdapter adapter;
 
+    private boolean isAnnouncer = false;
+
     @Override
     protected int getLayoutID() {
         return R.layout.activity_peoplelist;
@@ -29,14 +33,18 @@ public class PeopleListActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        isAnnouncer = getIntent().getBooleanExtra("isAnnouncer", false);
         initList();
     }
 
     private void initList() {
         list = new ArrayList<>();
-        for (int i = 1;i < 10;i++)
-            list.add(new SimpleUser("user" + i, "http://149.28.149.136:8080/image/user" + i + ".jpg"));
-//        list.add(new SimpleUser("添加成员", ""));
+        if (isAnnouncer)
+            list.add(new SimpleUser(App.getUserName(), "http://149.28.149.136:8080/image/user1.jpg"));
+        else {
+            for (int i = 1;i < 10;i++)
+                list.add(new SimpleUser("user" + i, "http://149.28.149.136:8080/image/user" + i + ".jpg"));
+        }
     }
 
     @Override
@@ -54,7 +62,8 @@ public class PeopleListActivity extends BaseActivity {
         addPeople.setTextColor(getResources().getColor(R.color.white));
         addPeople.setGravity(Gravity.CENTER);
         addPeople.setOnClickListener(view -> {
-            jumpToActivity(AddPeopleActivity.class);
+            Intent intent = new Intent(this, AddPeopleActivity.class);
+            startActivityForResult(intent, AddPeopleActivity.requestCode);
         });
         return addPeople;
     }
@@ -63,5 +72,17 @@ public class PeopleListActivity extends BaseActivity {
         adapter = new UserAdapter(this, list);
         gridView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK){
+            switch (requestCode) {
+                case AddPeopleActivity.requestCode:
+                    break;
+            }
+
+        }
     }
 }

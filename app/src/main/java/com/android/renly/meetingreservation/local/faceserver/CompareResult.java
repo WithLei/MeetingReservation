@@ -1,4 +1,4 @@
-package com.android.renly.meetingreservation.faceserver;
+package com.android.renly.meetingreservation.local.faceserver;
 
 
 

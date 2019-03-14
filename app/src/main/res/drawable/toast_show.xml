@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- 一个圆形 优点弧度  描边的颜色为灰色 -->
+    <corners android:radius="0.5dp" />
+
+    <solid android:color="#88f5f5f5" />
+
+</shape>
