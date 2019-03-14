@@ -10,12 +10,12 @@
     <include layout="@layout/item_upload" />
 
     <TextView
-        android:id="@+id/progress"
+        android:id="@+id/tip"
         style="@style/text_16_pri"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="0%"/>
+        android:text="点击右上角按钮上传文件"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
