@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="32dp"
+    android:background="@color/bg_primary">
+
+    <ImageView
+        android:id="@+id/qrimg"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@mipmap/qr_img"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        style="@style/text_14_sec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/qrimg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="扫一扫上面的二维码图案,进行签到"/>
+
+</RelativeLayout>

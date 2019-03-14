@@ -228,15 +228,20 @@ public class HomeFrag extends BaseFragment implements
     @OnClick({R.id.btn01, R.id.btn02, R.id.btn03, R.id.btn04, R.id.tv_month_day,
             R.id.fl_current, R.id.active_activity, R.id.tip_login, R.id.layout_pushtip})
     public void onViewClicked(View view) {
+        Intent intent;
         switch (view.getId()) {
             case R.id.btn01:
-                Objects.requireNonNull(getActivity()).startActivityForResult(new Intent(mContent, CaptureActivity.class), CaptureActivity.REQ_CODE);
+                Objects.requireNonNull(getActivity()).startActivityForResult(
+                        new Intent(mContent, CaptureActivity.class), CaptureActivity.REQ_CODE);
                 break;
             case R.id.btn02:
                 jumpToActivity(SearchActivity.class);
                 break;
             case R.id.btn03:
-                jumpToActivity(MyMeetingActivity.class);
+                intent = new Intent(mActivity, MeetingActivity.class);
+                intent.putExtra("isAnnouncer", true);
+                startActivity(intent);
+                mActivity.overridePendingTransition(R.anim.translate_in, R.anim.translate_out);
                 break;
             case R.id.btn04:
                 View mView = View.inflate(mActivity, R.layout.layout_service, null);
@@ -264,17 +269,20 @@ public class HomeFrag extends BaseFragment implements
                 mCalendarView.scrollToCurrent();
                 break;
             case R.id.active_activity:
-                Intent mIntent = new Intent(mActivity, MeetingActivity.class);
-                mIntent.putExtra("doEdit", true);
-                startActivity(mIntent);
+                intent = new Intent(mActivity, MeetingActivity.class);
+                intent.putExtra("isAnnouncer", false);
+                startActivity(intent);
                 mActivity.overridePendingTransition(R.anim.translate_in, R.anim.translate_out);
                 break;
             case R.id.tip_login:
-                Intent intent = new Intent(mActivity, LoginActivity.class);
+                intent = new Intent(mActivity, LoginActivity.class);
                 mActivity.startActivityForResult(intent, LoginActivity.requestCode);
                 break;
             case R.id.layout_pushtip:
-                jumpToActivity(MeetingActivity.class);
+                intent = new Intent(mActivity, MeetingActivity.class);
+                intent.putExtra("isAnnouncer", true);
+                startActivity(intent);
+                mActivity.overridePendingTransition(R.anim.translate_in, R.anim.translate_out);
                 layoutPushtip.setVisibility(View.GONE);
                 App.clearBadge();
                 break;

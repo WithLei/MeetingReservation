@@ -64,7 +64,8 @@
                     android:id="@+id/meeting_title"
                     style="@style/text_16_sec"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="28dp"
+                    android:gravity="center_vertical"
                     android:layout_marginStart="@dimen/dimen_16"
                     android:layout_marginTop="@dimen/dimen_8"
                     android:layout_marginBottom="@dimen/dimen_8"
@@ -77,7 +78,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:background="?android:selectableItemBackground"
                     android:clickable="true">
 
@@ -119,7 +120,8 @@
                 <RelativeLayout
                     android:id="@+id/location"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="44dp"
+                    android:gravity="center_vertical"
                     android:background="?android:selectableItemBackground"
                     android:elevation="1dp"
                     android:paddingStart="@dimen/dimen_16"
@@ -158,9 +160,43 @@
                     android:background="@color/colorDivider" />
 
                 <RelativeLayout
+                    android:id="@+id/sign"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="?android:selectableItemBackground"
+                    android:elevation="1dp"
+                    android:paddingStart="@dimen/dimen_16"
+                    android:paddingTop="@dimen/dimen_8"
+                    android:paddingEnd="@dimen/dimen_16"
+                    android:paddingBottom="@dimen/dimen_8">
+
+                    <TextView
+                        style="@style/text_16_pri"
+                        android:id="@+id/tv_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="发布签到" />
+
+                    <ImageView
+                        android:id="@+id/iv_sign"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_push"
+                        android:tint="@color/colorDividerDark" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider" />
+
+                <RelativeLayout
                     android:id="@+id/share"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="44dp"
                     android:background="?android:selectableItemBackground"
                     android:elevation="1dp"
                     android:paddingStart="@dimen/dimen_16"

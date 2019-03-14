@@ -2,6 +2,7 @@ package com.android.renly.meetingreservation.module.meeting;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,9 +15,11 @@ import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.acker.simplezxing.activity.CaptureActivity;
 import com.android.renly.meetingreservation.App;
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
+import com.android.renly.meetingreservation.module.face.facerecognize.FaceRecognizeActivity;
 import com.android.renly.meetingreservation.module.folder.upload.UploadActivity;
 import com.android.renly.meetingreservation.module.map.MapActivity;
 import com.android.renly.meetingreservation.module.meeting.addPeople.PeopleListActivity;
@@ -24,6 +27,7 @@ import com.android.renly.meetingreservation.module.meeting.edit.EditMeetingActiv
 import com.android.renly.meetingreservation.utils.IntentUtils;
 import com.android.renly.meetingreservation.utils.LogUtils;
 import com.android.renly.meetingreservation.utils.network.NetConfig;
+import com.android.renly.meetingreservation.utils.toast.ToastUtils;
 import com.android.renly.meetingreservation.widget.CircleImageView;
 import com.squareup.picasso.Picasso;
 
@@ -31,12 +35,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MeetingActivity extends BaseActivity {
+public class MeetingActivity extends BaseActivity
+        implements View.OnClickListener {
     @BindView(R.id.bigImg)
     ImageView img;
     @BindView(R.id.share)
@@ -69,16 +75,24 @@ public class MeetingActivity extends BaseActivity {
     ListView listView;
     @BindView(R.id.edit)
     LinearLayout editLayout;
+    @BindView(R.id.sign)
+    RelativeLayout signLayout;
+    @BindView(R.id.tv_sign)
+    TextView tvSign;
+    @BindView(R.id.iv_sign)
+    ImageView ivSign;
 
-    private boolean isEmpty = false;
+    private boolean isAnnouncer = false;
 
     // Simple Adapter param
-    private String[] from = new String[] {
-            "name","size"
+    private String[] from = new String[]{
+            "name", "size"
     };
-    private int[] to = new int[] {
+    private int[] to = new int[]{
             R.id.folder_name, R.id.folder_size
     };
+
+    private AlertDialog dialog;
 
     @Override
     protected int getLayoutID() {
@@ -87,17 +101,17 @@ public class MeetingActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        isEmpty = getIntent().getBooleanExtra("doEdit", false);
+        isAnnouncer = getIntent().getBooleanExtra("isAnnouncer", false);
     }
 
     @Override
     protected void initView() {
         initToolBar(true, "会议信息");
         initSlidr();
-        if (isEmpty) //如果不是从编辑会议进入
-            initNormalData();
-        else
+        if (isAnnouncer) //发布人会议
             initEmptyData();
+        else
+            initNormalData();
     }
 
     private void initEmptyData() {
@@ -113,6 +127,8 @@ public class MeetingActivity extends BaseActivity {
                 .into(avatar1);
         intro.setText("会议简介信息空空如也~");
         editLayout.setVisibility(View.VISIBLE);
+        tvSign.setText("发布签到");
+        ivSign.setImageResource(R.drawable.ic_push);
     }
 
     private void initNormalData() {
@@ -123,15 +139,15 @@ public class MeetingActivity extends BaseActivity {
         Picasso.get()
                 .load("http://149.28.149.136:8080/image/room01.jpg")
                 .into(img);
-        CircleImageView[] avatarList = {avatar1,avatar2,avatar3,avatar4,avatar5};
-        for (int i = 1;i <= 5;i++) {
+        CircleImageView[] avatarList = {avatar1, avatar2, avatar3, avatar4, avatar5};
+        for (int i = 1; i <= 5; i++) {
             Picasso.get()
                     .load("http://149.28.149.136:8080/image/user" + i + ".jpg")
-                    .into(avatarList[i-1]);
-            avatarList[i-1].setVisibility(View.VISIBLE);
+                    .into(avatarList[i - 1]);
+            avatarList[i - 1].setVisibility(View.VISIBLE);
         }
         intro.setText(getResources().getString(R.string.meeting_intro));
-        List<Map<String, String>>list = new ArrayList<>();
+        List<Map<String, String>> list = new ArrayList<>();
         list.add(getFolderMap("关于新产品售价.pdf", "1.79MB"));
         list.add(getFolderMap("露露饿狼号地块.word", "1.64MB"));
         list.add(getFolderMap("回不来科技离开.pdf", "78MB"));
@@ -140,13 +156,15 @@ public class MeetingActivity extends BaseActivity {
         list.add(getFolderMap("是固定个.pdf", "12MB"));
         list.add(getFolderMap("东莞市大反攻昆.pdf", "25.44MB"));
         LogUtils.printLog("list.size() = " + list.size());
-        listView.setAdapter(new SimpleAdapter(this,list,R.layout.item_folder_s, from, to));
+        listView.setAdapter(new SimpleAdapter(this, list, R.layout.item_folder_s, from, to));
         setListViewHeightBasedOnChildren(listView);
         editLayout.setVisibility(View.GONE);
+        tvSign.setText("二维码签到");
+        ivSign.setImageResource(R.drawable.ic_sign);
     }
 
     private static void setListViewHeightBasedOnChildren(ListView listView) {
-        try{
+        try {
             // 获取ListView对应的Adapter
             ListAdapter listAdapter = listView.getAdapter();
             if (listAdapter == null) {
@@ -163,17 +181,17 @@ public class MeetingActivity extends BaseActivity {
                 totalHeight += listItem.getMeasuredHeight();
             }
             ViewGroup.LayoutParams params = listView.getLayoutParams();
-            params.height = totalHeight+ (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+            params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
             // listView.getDividerHeight()获取子项间分隔符占用的高度
             // params.height最后得到整个ListView完整显示需要的高度
             listView.setLayoutParams(params);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     private Map<String, String> getFolderMap(String name, String size) {
-        Map<String,String>map = new HashMap<>();
+        Map<String, String> map = new HashMap<>();
         map.put("name", name);
         map.put("size", size);
         return map;
@@ -188,6 +206,11 @@ public class MeetingActivity extends BaseActivity {
                     title.setText(data.getStringExtra("title"));
                     intro.setText(data.getStringExtra("intro"));
                     break;
+                case CaptureActivity.REQ_CODE:
+                    String result = data.getStringExtra(CaptureActivity.EXTRA_SCAN_RESULT);
+                    ToastUtils.ToastLong("签到完成！");
+                    ivSign.setImageResource(R.drawable.ic_check_24dp);
+                    break;
             }
         }
     }
@@ -198,7 +221,7 @@ public class MeetingActivity extends BaseActivity {
         hideKeyBoard();
     }
 
-    @OnClick({R.id.edit, R.id.ll_people, R.id.location, R.id.share, R.id.upload})
+    @OnClick({R.id.edit, R.id.ll_people, R.id.location, R.id.share, R.id.upload, R.id.sign})
     public void onViewClicked(View view) {
         Intent intent;
         switch (view.getId()) {
@@ -224,6 +247,56 @@ public class MeetingActivity extends BaseActivity {
                 startActivityForResult(intent, UploadActivity.requestCode);
                 overridePendingTransition(R.anim.translate_in, R.anim.translate_out);
                 break;
+            case R.id.sign:
+                View mView;
+                if (isAnnouncer) { //发布者界面
+                    mView = View.inflate(this, R.layout.layout_pushsign, null);
+                    mView.findViewById(R.id.face).setOnClickListener(this);
+                    mView.findViewById(R.id.qr).setOnClickListener(this);
+                    mView.findViewById(R.id.num).setOnClickListener(this);
+                    dialog = new AlertDialog.Builder(this)
+                            .setView(mView)
+                            .setCancelable(true)
+                            .create();
+                    dialog.show();
+                } else { //与会人界面
+                    // 人脸签到
+//                    jumpToActivityBottom(FaceRecognizeActivity.class);
+                    // 二维码签到
+                    startActivityForResult(new Intent(this, CaptureActivity.class),
+                            CaptureActivity.REQ_CODE);
+
+                }
+                break;
         }
     }
+
+    @Override
+    public void onClick(View view) {
+        String result = "";
+        switch (view.getId()) {
+            case R.id.face:
+                result = "人脸签到";
+                break;
+            case R.id.qr:
+                result = "二维码签到";
+                break;
+            case R.id.num:
+                result = "随机数签到";
+                break;
+        }
+        tvSign.setText(result);
+        ToastUtils.ToastLong("已为本场会议添加" + result + "，会前15分钟内有效。");
+        dialog.cancel();
+        dialog = null;
+        if (result.equals("二维码签到")) { //弹出二维码
+            new AlertDialog.Builder(this)
+                    .setView(View.inflate(this,R.layout.dialog_qr,null))
+                    .setCancelable(true)
+                    .create()
+            .show();
+        }
+
+    }
+
 }
