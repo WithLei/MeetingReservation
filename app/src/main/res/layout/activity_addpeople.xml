@@ -132,6 +132,7 @@
                 android:text="已选择" />
 
             <TextView
+                android:id="@+id/num"
                 style="@style/text_16_sec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

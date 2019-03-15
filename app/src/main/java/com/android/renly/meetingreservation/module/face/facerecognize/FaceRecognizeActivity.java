@@ -308,8 +308,10 @@ public class FaceRecognizeActivity extends AppCompatActivity implements ViewTree
                                         overridePendingTransition(R.anim.bottomin, R.anim.bottomout);
                                     });
                         }
+//                        drawInfoList.add(new DrawInfo(facePreviewInfoList.get(i).getFaceInfo().getRect(), GenderInfo.UNKNOWN, AgeInfo.UNKNOWN_AGE, LivenessInfo.UNKNOWN,
+//                                name == null ? String.valueOf(facePreviewInfoList.get(i).getTrackId()) : name));
                         drawInfoList.add(new DrawInfo(facePreviewInfoList.get(i).getFaceInfo().getRect(), GenderInfo.UNKNOWN, AgeInfo.UNKNOWN_AGE, LivenessInfo.UNKNOWN,
-                                name == null ? String.valueOf(facePreviewInfoList.get(i).getTrackId()) : name));
+                                name == null ? "" : name));
                     }
                     drawHelper.draw(faceRectView, drawInfoList);
                 }
@@ -321,7 +323,7 @@ public class FaceRecognizeActivity extends AppCompatActivity implements ViewTree
                             boolean success = FaceServer.getInstance()
                                     .register(FaceRecognizeActivity.this, nv21.clone(),
                                             previewSize.width, previewSize.height,
-                                            "又特么获取到用户 " + faceHelper.getCurrentTrackId());
+                                            "获取到用户 " + faceHelper.getCurrentTrackId());
                             emitter.onNext(success);
                         }
                     })

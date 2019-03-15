@@ -3,6 +3,8 @@ package com.android.renly.meetingreservation.module.mine;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.AdapterView;
@@ -31,6 +33,7 @@ import com.android.renly.meetingreservation.module.mine.myrecentlyview.MyRecentl
 import com.android.renly.meetingreservation.module.mine.mymeeting.MyMeetingActivity;
 import com.android.renly.meetingreservation.module.user.login.LoginActivity;
 import com.android.renly.meetingreservation.utils.LogUtils;
+import com.android.renly.meetingreservation.utils.face.ImageUtil;
 import com.android.renly.meetingreservation.utils.toast.MyToast;
 import com.android.renly.meetingreservation.utils.toast.ToastUtils;
 import com.android.renly.meetingreservation.widget.CircleImageView;
@@ -42,6 +45,9 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+import okhttp3.ResponseBody;
 
 public class MineFrag extends BaseFragment
         implements AdapterView.OnItemClickListener, MineFragView {
@@ -87,8 +93,7 @@ public class MineFrag extends BaseFragment
 
     @Override
     protected void initData(Context content) {
-        FaceServer.getInstance().init(content);
-
+        FaceServer.getInstance().init(mActivity);
         mPresenter.getData(false);
         lvMineFunctionList.setAdapter(new SimpleAdapter(mContent, mPresenter.getMenuList(),
                 R.layout.item_function, new String[]{"icon", "title"},
@@ -111,22 +116,70 @@ public class MineFrag extends BaseFragment
         switch (position) {
             case 0:
                 // 设置
-                ToastUtils.ToastShort("获取特征值");
-                RetrofitService.getEigenValues()
-                        .subscribe(responseBody -> {
-                            JSONObject obj = null;
-                            try {
-                                obj = JSON.parseObject(responseBody.string());
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                RetrofitService.getFaceImg()
+                        .subscribe(new Consumer<ResponseBody>() {
+                            @Override
+                            public void accept(ResponseBody responseBody) throws Exception {
+                                byte[] bys = new byte[0];
+                                Bitmap bitmap = null;
+                                try {
+                                    bys = responseBody.bytes();
+                                    bitmap = BitmapFactory.decodeByteArray(bys, 0, bys.length);
+                                } catch(IOException e) {
+                                    e.printStackTrace();
+                                }
+                                int width = bitmap.getWidth();
+                                int height = bitmap.getHeight();
+                                boolean flag = FaceServer
+                                        .getInstance()
+                                        .register(mActivity, ImageUtil.bitmapToNv21(bitmap, width, height),
+                                                width, height, "WithLei");
+                                if (flag)
+                                    ToastUtils.ToastShort("获取特征值成功");
+                                else
+                                    ToastUtils.ToastShort("获取特征值失败");
                             }
-                            int statusCode = obj.getInteger("code");
-                            String result = obj.getString("msg");
-
-                            if (statusCode == 0 && result.equals("成功")) {
-                                doRegisterFace(obj.getJSONArray("data"));
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                LogUtils.printError("获取特征值失败" + throwable);
                             }
-                        }, throwable -> LogUtils.printError("获取特征值失败" + throwable));
+                        });
+//                        .subscribe(new Consumer<Bitmap>() {
+//                            @Override
+//                            public void accept(Bitmap bitmap) throws Exception {
+//                                int width = bitmap.getWidth();
+//                                int height = bitmap.getHeight();
+//                                boolean flag = FaceServer
+//                                        .getInstance()
+//                                        .register(mActivity, ImageUtil.bitmapToNv21(bitmap, width, height),
+//                                                width, height, "WithLei");
+//                                if (flag)
+//                                    ToastUtils.ToastShort("获取特征值成功");
+//                                else
+//                                    ToastUtils.ToastShort("获取特征值失败");
+//                            }
+//                        }, new Consumer<Throwable>() {
+//                            @Override
+//                            public void accept(Throwable throwable) throws Exception {
+//                                LogUtils.printError("获取特征值失败" + throwable);
+//                            }
+//                        });
+//                RetrofitService.getEigenValues()
+//                        .subscribe(responseBody -> {
+//                            JSONObject obj = null;
+//                            try {
+//                                obj = JSON.parseObject(responseBody.string());
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+//                            int statusCode = obj.getInteger("code");
+//                            String result = obj.getString("msg");
+//
+//                            if (statusCode == 0 && result.equals("成功")) {
+//                                doRegisterFace(obj.getJSONArray("data"));
+//                            }
+//                        }, throwable -> LogUtils.printError("获取特征值失败" + throwable));
                 break;
             case 1:
                 clearFaces(null);

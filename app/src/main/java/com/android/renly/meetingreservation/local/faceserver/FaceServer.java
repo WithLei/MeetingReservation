@@ -225,7 +225,6 @@ public class FaceServer {
                 dirExists = featureDir.mkdirs();
             }
             if (!dirExists) {
-                LogUtils.printLog("222");
                 return false;
             }
             //图片存储的文件夹
@@ -234,7 +233,6 @@ public class FaceServer {
                 dirExists = imgDir.mkdirs();
             }
             if (!dirExists) {
-                LogUtils.printLog("333");
                 return false;
             }
             //1.人脸检测

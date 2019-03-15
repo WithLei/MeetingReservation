@@ -40,6 +40,8 @@ public class AddPeopleActivity extends BaseActivity {
     TextView dialog;
     @BindView(R.id.country_lvcountry)
     ListView sortListView;
+    @BindView(R.id.num)
+    TextView peopleNum;
 
     public static final int requestCode = 2048;
 
@@ -51,6 +53,8 @@ public class AddPeopleActivity extends BaseActivity {
     private PinyinComparator pinyinComparator;
     private int lastFirstVisibleItem = -1;
     private boolean isNeedChecked; // 是否需要出现选择的按钮
+
+    private int selectedNum = 0;
 
     @Override
     protected int getLayoutID() {
@@ -92,8 +96,13 @@ public class AddPeopleActivity extends BaseActivity {
                         ((SortModel) adapter.getItem(position)).getName(),
                         Toast.LENGTH_SHORT).show();
             } else {
-                SourceDateList.get(position).setChecked(
-                        !SourceDateList.get(position).isChecked());
+                if (SourceDateList.get(position).isChecked()) {
+                    SourceDateList.get(position).setChecked(false);
+                    updateSelectedNum(--selectedNum);
+                } else {
+                    SourceDateList.get(position).setChecked(true);
+                    updateSelectedNum(++selectedNum);
+                }
                 adapter.notifyDataSetChanged(); // 这样写效率很低， 以后可以改成
                 // RecycleView 直接notify
                 // item的状态
@@ -152,6 +161,13 @@ public class AddPeopleActivity extends BaseActivity {
                 lastFirstVisibleItem = firstVisibleItem;
             }
         });
+    }
+
+    /**
+     * 更新选择人数
+     */
+    private void updateSelectedNum(int num) {
+        peopleNum.setText(num + "");
     }
 
     /**

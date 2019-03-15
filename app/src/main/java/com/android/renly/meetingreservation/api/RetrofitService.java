@@ -1,5 +1,7 @@
 package com.android.renly.meetingreservation.api;
 
+import android.graphics.Bitmap;
+
 import com.android.renly.meetingreservation.App;
 import com.android.renly.meetingreservation.api.api.FaceApi;
 import com.android.renly.meetingreservation.api.api.MeetingApi;
@@ -55,8 +57,8 @@ public class RetrofitService {
                 1024 * 1024 * 100);
         OkHttpClient client = new OkHttpClient().newBuilder().cache(cache)
                 .retryOnConnectionFailure(true)
-                .connectTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(10, TimeUnit.SECONDS)
+                .connectTimeout(15, TimeUnit.SECONDS)
+                .readTimeout(15, TimeUnit.SECONDS)
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -109,7 +111,7 @@ public class RetrofitService {
 
         retrofit = new Retrofit.Builder()
                 .client(client)
-                .baseUrl(NetConfig.GET_EIGENVALUES + "/")
+                .baseUrl(NetConfig.GET_FACE_URL + "/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
@@ -117,6 +119,16 @@ public class RetrofitService {
     }
 
     /**************************************             API             **************************************/
+
+    /**
+     * 获取人脸
+     */
+    public static Observable<ResponseBody> getFaceImg() {
+        return faceApi.getFaceImg(NetConfig.GET_FACE_URL)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 
     /**
      * 获取特征值

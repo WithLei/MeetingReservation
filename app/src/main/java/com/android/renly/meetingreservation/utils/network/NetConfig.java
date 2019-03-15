@@ -16,4 +16,6 @@ public class NetConfig {
     public static final String BASE_UPLOAD = BASE_URL + "file/";
 
     public static final String GET_EIGENVALUES = BASE_URL + "face/listUserFace";
+
+    public static final String GET_FACE_URL = "http://149.28.149.136:8080/image/face.jpg";
 }

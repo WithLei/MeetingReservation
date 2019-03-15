@@ -177,6 +177,18 @@ public class App extends MultiDexApplication {
         editor.apply();
     }
 
+    public static String getUserFaceKey() {
+        SharedPreferences sp = context.getSharedPreferences(MY_SP_NAME, MODE_PRIVATE);
+        return sp.getString(USER_FACE_KEY, "");
+    }
+
+    public static void setUserFaceKey(String faceURL) {
+        SharedPreferences sp = context.getSharedPreferences(MY_SP_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString(USER_FACE_KEY, faceURL);
+        editor.apply();
+    }
+
     public static String getPwd() {
         SharedPreferences sp = context.getSharedPreferences(MY_SP_NAME, MODE_PRIVATE);
         return sp.getString(USER_PWD_KEY, "");
@@ -222,6 +234,7 @@ public class App extends MultiDexApplication {
     public static final String USER_PWD_KEY = "user_pwd";
     public static final String USER_NAME_KEY = "user_name";
     public static final String USER_EMAIL_KEY = "user_email";
+    public static final String USER_FACE_KEY = "user_face";
     public static final String IS_REMEBER_PWD_USER = "is_remember_pwd_user";
     public static final String BADGE_COUNT = "badgeCount";
 }
