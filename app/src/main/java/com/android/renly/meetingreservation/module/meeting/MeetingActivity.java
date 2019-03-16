@@ -1,10 +1,7 @@
 package com.android.renly.meetingreservation.module.meeting;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -19,10 +16,9 @@ import com.acker.simplezxing.activity.CaptureActivity;
 import com.android.renly.meetingreservation.App;
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
-import com.android.renly.meetingreservation.module.face.facerecognize.FaceRecognizeActivity;
 import com.android.renly.meetingreservation.module.folder.upload.UploadActivity;
 import com.android.renly.meetingreservation.module.map.MapActivity;
-import com.android.renly.meetingreservation.module.meeting.addPeople.PeopleListActivity;
+import com.android.renly.meetingreservation.module.meeting.peopleList.PeopleListActivity;
 import com.android.renly.meetingreservation.module.meeting.edit.EditMeetingActivity;
 import com.android.renly.meetingreservation.utils.IntentUtils;
 import com.android.renly.meetingreservation.utils.LogUtils;
@@ -35,10 +31,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MeetingActivity extends BaseActivity

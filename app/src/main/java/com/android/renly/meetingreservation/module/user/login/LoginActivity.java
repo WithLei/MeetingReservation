@@ -19,6 +19,7 @@ import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.api.RetrofitService;
 import com.android.renly.meetingreservation.listener.MyTextWatcher;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
+import com.android.renly.meetingreservation.utils.LogUtils;
 import com.android.renly.meetingreservation.utils.toast.MyToast;
 
 import java.io.IOException;
@@ -165,6 +166,7 @@ public class LoginActivity extends BaseActivity {
      * 登陆成功后获取用户信息
      */
     private void getUserInfo(JSONObject obj) {
+        LogUtils.printLog(obj.toString());
         int id = obj.getInteger("id");
         String name = obj.getString("name");
         String phone = obj.getString("phone");
@@ -172,15 +174,14 @@ public class LoginActivity extends BaseActivity {
         String avatar = obj.getString("avatar");
         int role = obj.getInteger("role");
         String company = obj.getString("company");
-
-        printLog("id=" + id + " name=" + name + " phone=" + phone + "email=" + email + " avatar=" + avatar +
-        " role=" + role + " company=" +company);
+        String faceUrl = obj.getString("faceUrl");
 
         SharedPreferences sp = getSharedPreferences(App.MY_SP_NAME,MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        editor.putLong(App.USER_UID_KEY, obj.getInteger("id"));
-        editor.putString(App.USER_NAME_KEY, obj.getString("name"));
-        editor.putString(App.USER_EMAIL_KEY, obj.getString("email"));
+        editor.putLong(App.USER_UID_KEY, id);
+        editor.putString(App.USER_NAME_KEY, name);
+        editor.putString(App.USER_EMAIL_KEY, email);
+        editor.putString(App.USER_FACE_KEY, faceUrl);
         editor.apply();
 
         setResult(RESULT_OK);

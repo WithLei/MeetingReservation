@@ -220,6 +220,7 @@ public class App extends MultiDexApplication {
         editor.remove(USER_UID_KEY);
         editor.remove(USER_NAME_KEY);
         editor.remove(USER_EMAIL_KEY);
+        editor.remove(USER_FACE_KEY);
         editor.apply();
     }
 

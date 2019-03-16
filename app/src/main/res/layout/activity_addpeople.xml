@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bg_secondary">
 
     <LinearLayout
@@ -56,54 +57,53 @@
                 android:textStyle="bold" />
         </FrameLayout>
 
-        <FrameLayout
+        <LinearLayout
+            android:id="@+id/fl_searchview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ListView
-                android:id="@+id/country_lvcountry"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:divider="@null" />
+            android:layout_height="40dp"
+            android:background="#FFFFFFFF"
+            android:padding="4dp">
 
             <LinearLayout
-                android:id="@+id/top_layout"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/bg_secondary">
-
-                <TextView
-                    android:id="@+id/top_char"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:text="A"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/dialog"
-                android:layout_width="80.0dip"
-                android:layout_height="80.0dip"
-                android:layout_gravity="center"
-                android:background="@drawable/toast_show"
-                android:gravity="center"
-                android:textColor="#ff5f5f5f"
-                android:textSize="30dp"
-                android:visibility="invisible" />
-
-            <com.android.renly.meetingreservation.widget.SideBar
-                android:id="@+id/sidrbar"
-                android:layout_width="25dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="end|center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
-        </FrameLayout>
+                android:background="#F5F5F5"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:src="@drawable/ic_search_white_24dp"
+                    android:tint="@color/colorDividerDark" />
+
+                <EditText
+                    android:id="@+id/search"
+                    style="@style/text_16_sec"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_8"
+                    android:layout_marginEnd="@dimen/dimen_8"
+                    android:background="@null"
+                    android:focusableInTouchMode="true"
+                    android:hint="搜索人员" />
+            </LinearLayout>
+        </LinearLayout>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabMoce="fixed"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_secondary"/>
+
     </LinearLayout>
+
 
     <RelativeLayout
         android:id="@+id/bottom_bar"

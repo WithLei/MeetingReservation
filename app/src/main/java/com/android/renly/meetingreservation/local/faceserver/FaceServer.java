@@ -204,14 +204,6 @@ public class FaceServer {
         synchronized (this) {
             LogUtils.printLog("length=" + nv21.length + " width=" + width + " height=" + height);
             if (faceEngine == null || context == null || nv21 == null || width % 4 != 0 || nv21.length != width * height * 3 / 2) {
-                if (faceEngine == null)
-                    LogUtils.printLog("faceEngine == null");
-                else if (context == null)
-                    LogUtils.printLog("context == null");
-                else if (nv21 == null)
-                    LogUtils.printLog("nv21 == null");
-                else
-                    LogUtils.printLog("I dont know");
                 return false;
             }
 
@@ -304,11 +296,6 @@ public class FaceServer {
                     e.printStackTrace();
                 }
             }
-            if (code != ErrorInfo.MOK)
-                LogUtils.printLog("code != ErrorInfo.MOK");
-            if (faceInfoList.size() <= 0)
-                LogUtils.printLog("faceInfoList.size() <= 0");
-            LogUtils.printLog("555");
             return false;
         }
 

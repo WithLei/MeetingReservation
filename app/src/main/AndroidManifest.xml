@@ -109,7 +109,7 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".module.meeting.addPeople.PeopleListActivity"
+            android:name=".module.meeting.peopleList.PeopleListActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
@@ -144,7 +144,7 @@
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name=".module.meeting.peopleList.AddPeopleActivity"
+            android:name=".module.meeting.addPeople.AddPeopleActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />

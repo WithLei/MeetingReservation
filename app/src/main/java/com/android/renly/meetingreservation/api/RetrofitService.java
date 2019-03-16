@@ -111,7 +111,7 @@ public class RetrofitService {
 
         retrofit = new Retrofit.Builder()
                 .client(client)
-                .baseUrl(NetConfig.GET_FACE_URL + "/")
+                .baseUrl(NetConfig.GET_FACE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
@@ -123,8 +123,8 @@ public class RetrofitService {
     /**
      * 获取人脸
      */
-    public static Observable<ResponseBody> getFaceImg() {
-        return faceApi.getFaceImg(NetConfig.GET_FACE_URL)
+    public static Observable<ResponseBody> getFaceImg(String url) {
+        return faceApi.getFaceImg(url)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());

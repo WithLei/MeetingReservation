@@ -46,9 +46,16 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.ObservableSource;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
+import rx.functions.Action1;
 
 public class MineFrag extends BaseFragment
         implements AdapterView.OnItemClickListener, MineFragView {
@@ -117,10 +124,17 @@ public class MineFrag extends BaseFragment
         switch (position) {
             case 0:
                 // 设置
-                RetrofitService.getFaceImg()
-                        .subscribe(new Consumer<ResponseBody>() {
+                if (!App.iSLOGIN()){
+                    ToastUtils.ToastShort("设置");
+                    LogUtils.printLog("设置");
+                    return;
+                }
+                RetrofitService.getFaceImg(App.getUserFaceKey())
+                        .observeOn(Schedulers.io())
+                        .map(new Function<ResponseBody, Bitmap>() {
                             @Override
-                            public void accept(ResponseBody responseBody) throws Exception {
+                            public Bitmap apply(ResponseBody responseBody) throws Exception {
+                                LogUtils.printLog("THREAD:" + Thread.currentThread().getName());
                                 byte[] bys = new byte[0];
                                 Bitmap bitmap = null;
                                 try {
@@ -130,12 +144,21 @@ public class MineFrag extends BaseFragment
                                     e.printStackTrace();
                                 }
                                 bitmap = ImageUtil.alignBitmapForNv21(bitmap);
+                                return bitmap;
+                            }
+                        })
+                        .unsubscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Consumer<Bitmap>() {
+                            @Override
+                            public void accept(Bitmap bitmap) throws Exception {
                                 int width = bitmap.getWidth();
                                 int height = bitmap.getHeight();
                                 boolean flag = FaceServer
                                         .getInstance()
                                         .register(mActivity, ImageUtil.bitmapToNv21(bitmap, width, height),
-                                                width, height, "WithLei");
+                                                width, height, App.getUserName());
+                                LogUtils.printLog("getFaceImg444");
                                 if (flag)
                                     ToastUtils.ToastShort("获取特征值成功");
                                 else
@@ -147,41 +170,6 @@ public class MineFrag extends BaseFragment
                                 LogUtils.printError("获取特征值失败" + throwable);
                             }
                         });
-//                        .subscribe(new Consumer<Bitmap>() {
-//                            @Override
-//                            public void accept(Bitmap bitmap) throws Exception {
-//                                int width = bitmap.getWidth();
-//                                int height = bitmap.getHeight();
-//                                boolean flag = FaceServer
-//                                        .getInstance()
-//                                        .register(mActivity, ImageUtil.bitmapToNv21(bitmap, width, height),
-//                                                width, height, "WithLei");
-//                                if (flag)
-//                                    ToastUtils.ToastShort("获取特征值成功");
-//                                else
-//                                    ToastUtils.ToastShort("获取特征值失败");
-//                            }
-//                        }, new Consumer<Throwable>() {
-//                            @Override
-//                            public void accept(Throwable throwable) throws Exception {
-//                                LogUtils.printError("获取特征值失败" + throwable);
-//                            }
-//                        });
-//                RetrofitService.getEigenValues()
-//                        .subscribe(responseBody -> {
-//                            JSONObject obj = null;
-//                            try {
-//                                obj = JSON.parseObject(responseBody.string());
-//                            } catch (IOException e) {
-//                                e.printStackTrace();
-//                            }
-//                            int statusCode = obj.getInteger("code");
-//                            String result = obj.getString("msg");
-//
-//                            if (statusCode == 0 && result.equals("成功")) {
-//                                doRegisterFace(obj.getJSONArray("data"));
-//                            }
-//                        }, throwable -> LogUtils.printError("获取特征值失败" + throwable));
                 break;
             case 1:
                 clearFaces(null);

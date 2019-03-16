@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_margin="20dp"
+        android:visibility="gone"
         android:text="活体检测" />
 
     <Button
@@ -34,6 +35,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"
         android:onClick="register"
+        android:visibility="gone"
         android:text="注册" />
 
     <android.support.v7.widget.RecyclerView

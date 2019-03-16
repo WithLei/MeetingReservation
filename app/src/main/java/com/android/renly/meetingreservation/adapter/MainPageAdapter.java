@@ -1,5 +1,6 @@
 package com.android.renly.meetingreservation.adapter;
 
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -15,6 +16,7 @@ import java.util.List;
 public class MainPageAdapter extends FragmentStatePagerAdapter {
 
     private List<BaseFragment> fragments;
+    private static final String[] mTitles = {"部门排序", "拼音排序"};
 
     public MainPageAdapter(FragmentManager fm, List<BaseFragment> fragments) {
         super(fm);
@@ -29,5 +31,11 @@ public class MainPageAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return fragments.size();
+    }
+
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return mTitles[position];
     }
 }

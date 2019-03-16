@@ -1,4 +1,4 @@
-package com.android.renly.meetingreservation.module.meeting.addPeople;
+package com.android.renly.meetingreservation.module.meeting.peopleList;
 
 import android.content.Intent;
 import android.view.Gravity;
@@ -10,7 +10,7 @@ import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.adapter.UserAdapter;
 import com.android.renly.meetingreservation.api.bean.SimpleUser;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
-import com.android.renly.meetingreservation.module.meeting.peopleList.AddPeopleActivity;
+import com.android.renly.meetingreservation.module.meeting.addPeople.AddPeopleActivity;
 
 import java.util.ArrayList;
 import java.util.List;

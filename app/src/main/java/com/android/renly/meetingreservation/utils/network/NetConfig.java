@@ -17,5 +17,5 @@ public class NetConfig {
 
     public static final String GET_EIGENVALUES = BASE_URL + "face/listUserFace";
 
-    public static final String GET_FACE_URL = "http://149.28.149.136:8080/image/face.jpg";
+    public static final String GET_FACE_URL = "http://ajinfile.oss-cn-hangzhou.aliyuncs.com/FACE/";
 }
