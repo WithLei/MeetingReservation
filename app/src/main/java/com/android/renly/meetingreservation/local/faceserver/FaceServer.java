@@ -202,8 +202,8 @@ public class FaceServer {
      */
     public boolean register(Context context, byte[] nv21, int width, int height, String name) {
         synchronized (this) {
-            LogUtils.printLog("length=" + nv21.length + " width*height=" + width * height * 3 / 2);
-            if (faceEngine == null || context == null || nv21 == null || width % 4 != 0) {
+            LogUtils.printLog("length=" + nv21.length + " width=" + width + " height=" + height);
+            if (faceEngine == null || context == null || nv21 == null || width % 4 != 0 || nv21.length != width * height * 3 / 2) {
                 if (faceEngine == null)
                     LogUtils.printLog("faceEngine == null");
                 else if (context == null)

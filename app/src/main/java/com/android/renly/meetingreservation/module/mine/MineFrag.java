@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -128,6 +129,7 @@ public class MineFrag extends BaseFragment
                                 } catch(IOException e) {
                                     e.printStackTrace();
                                 }
+                                bitmap = ImageUtil.alignBitmapForNv21(bitmap);
                                 int width = bitmap.getWidth();
                                 int height = bitmap.getHeight();
                                 boolean flag = FaceServer

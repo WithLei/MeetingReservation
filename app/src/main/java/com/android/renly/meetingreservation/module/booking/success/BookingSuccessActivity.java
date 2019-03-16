@@ -58,9 +58,6 @@ public class BookingSuccessActivity extends BaseActivity {
         company = intent.getStringExtra("company");
         phone = intent.getStringExtra("phone");
         demand = intent.getStringExtra("demand");
-
-        LogUtils.printLog("budget " + budget);
-        LogUtils.printLog("people " + people);
     }
 
     @Override

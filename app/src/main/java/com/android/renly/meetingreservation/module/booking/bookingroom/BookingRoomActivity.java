@@ -134,7 +134,6 @@ public class BookingRoomActivity extends BaseActivity {
      */
     private void updateSelectDate(Intent intent) {
         date_str = intent.getStringExtra("date");
-        LogUtils.printLog("onResume " + date_str);
         if (date_str != null && !TextUtils.isEmpty(date_str.trim())) {
             date.setText(date_str);
         }

@@ -67,7 +67,6 @@ public class FolderAdapter extends BaseAdapter {
             time.setText(DateUtils.dateToString(new Date(folder.getCreate_time())));
             if (folder.getType() == 1) {
                 img.setImageResource(R.drawable.ic_folder_yellow);
-                LogUtils.printLog("pos == " + pos);
             }
             else {
                 img.setImageResource(FileUtils.getFileImgId(folder.getName()));
