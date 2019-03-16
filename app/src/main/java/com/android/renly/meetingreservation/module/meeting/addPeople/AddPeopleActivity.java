@@ -69,8 +69,8 @@ public class AddPeopleActivity extends BaseActivity {
         fragments = new ArrayList<>();
         nameFrag = new NameFrag();
         departmentFrag = new DepartmentFrag();
-        fragments.add(nameFrag);
         fragments.add(departmentFrag);
+        fragments.add(nameFrag);
         viewPager.setOffscreenPageLimit(2);
         mainPageAdapter = new MainPageAdapter(getSupportFragmentManager(), fragments);
         viewPager.setAdapter(mainPageAdapter);
