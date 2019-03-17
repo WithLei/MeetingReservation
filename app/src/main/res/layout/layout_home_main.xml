@@ -229,7 +229,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dimen_4"
-                            android:text="2019/01/08 09:30 - 11:30" />
+                            android:text="2019/03/17 13:30 - 17:30" />
 
                     </LinearLayout>
 
@@ -255,7 +255,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dimen_4"
-                            android:text="B楼308会议室" />
+                            android:text="18B楼212 高级会议室4" />
 
                     </LinearLayout>
 
@@ -281,7 +281,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dimen_4"
-                            android:text="市场部" />
+                            android:text="张小龙" />
 
                     </LinearLayout>
                 </RelativeLayout>
@@ -360,7 +360,7 @@
                             style="@style/text_16_sec"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="改日暂时没有会议哦~" />
+                            android:text="改日暂时没有其他会议哦~" />
                     </RelativeLayout>
                 </net.cachapa.expandablelayout.ExpandableLayout>
 

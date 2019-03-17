@@ -58,7 +58,7 @@ public class NameFrag extends BaseFragment {
 
     @Override
     protected void initData(Context content) {
-
+        initView();
     }
 
     @Override
@@ -85,11 +85,7 @@ public class NameFrag extends BaseFragment {
 
         sortListView.setOnItemClickListener((parent, view, position, id) -> {
 
-            if (!mActivity.isNeedChecked) {
-//                Toast.makeText(getApplication(),
-//                        ((SortModel) adapter.getItem(position)).getName(),
-//                        Toast.LENGTH_SHORT).show();
-            } else {
+            if (mActivity.isNeedChecked) {
                 if (SourceDateList.get(position).isChecked()) {
                     SourceDateList.get(position).setChecked(false);
                     mActivity.updateSelectedNum(-1);

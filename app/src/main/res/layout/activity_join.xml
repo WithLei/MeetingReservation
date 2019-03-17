@@ -52,7 +52,7 @@
             android:text="如果无密码，可不输入密码"/>
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/join"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

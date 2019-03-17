@@ -1,10 +1,12 @@
 package com.android.renly.meetingreservation.module.meeting.addPeople.department;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.ExpandableListView;
 
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.adapter.MyExAdapter;
+import com.android.renly.meetingreservation.api.bean.SortModel;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
 import com.android.renly.meetingreservation.module.meeting.addPeople.AddPeopleActivity;
 
@@ -17,8 +19,8 @@ public class DepartmentFrag extends BaseFragment {
     @BindView(R.id.expandableListView)
     ExpandableListView expandableListView;
 
-    List<String>groupList; //部门列表
-    List<List<String>>childList; //人员列表
+    List<SortModel>groupList; //部门列表
+    List<List<SortModel>>childList; //人员列表
     MyExAdapter adapter;
 
     @Override
@@ -40,7 +42,33 @@ public class DepartmentFrag extends BaseFragment {
     @Override
     protected void initView() {
         adapter = new MyExAdapter(mActivity,groupList, childList);
+        adapter.setOnRefresh(new MyExAdapter.onRefresh() {
+            @Override
+            public void doGroupCheck(boolean check, int group) {
+                groupList.get(group).setChecked(check);
+                int num = 0;
+                for (int i = 0; i < childList.get(group).size(); i++) {
+                    if (childList.get(group).get(i).isChecked() != check) {
+                        childList.get(group).get(i).setChecked(check);
+                        num += check ? 1 : -1;
+                    }
+                }
+                notifyDataSetChanged();
+                mActivity.updateSelectedNum(num);
+            }
+
+            @Override
+            public void doChildCheck(boolean check, int group, int child) {
+                if (childList.get(group).get(child).isChecked() != check) {
+                    childList.get(group).get(child).setChecked(check);
+                }
+                notifyDataSetChanged();
+                mActivity.updateSelectedNum(check ? 1 : -1);
+            }
+        });
         expandableListView.setAdapter(adapter);
+
+        expandableListView.expandGroup(1);
     }
 
     @Override
@@ -52,30 +80,30 @@ public class DepartmentFrag extends BaseFragment {
         groupList = new ArrayList<>();
         childList = new ArrayList<>();
 
-        groupList.add("销售部");
-        groupList.add("技术部");
-        groupList.add("事业部");
-        groupList.add("人事部");
+        groupList.add(new SortModel("销售部"));
+        groupList.add(new SortModel("技术部"));
+        groupList.add(new SortModel("事业部"));
+        groupList.add(new SortModel("人事部"));
 
-        List<String> firstGroup = new ArrayList<>();
-        firstGroup.add("陈奕迅");
-        firstGroup.add("阿信");
-        firstGroup.add("吴青峰");
+        List<SortModel> firstGroup = new ArrayList<>();
+        firstGroup.add(new SortModel("陈奕迅"));
+        firstGroup.add(new SortModel("阿信"));
+        firstGroup.add(new SortModel("吴青峰"));
 
-        List<String> secondGroup = new ArrayList<>();
-        secondGroup.add("Steve");
-        secondGroup.add("Allen Zhang");
-        secondGroup.add("Jack Ma");
-        secondGroup.add("Bill Gates");
-        secondGroup.add("Buffett");
+        List<SortModel> secondGroup = new ArrayList<>();
+        secondGroup.add(new SortModel("Steve"));
+        secondGroup.add(new SortModel("Allen Zhang"));
+        secondGroup.add(new SortModel("Jack Ma"));
+        secondGroup.add(new SortModel("Bill Gates"));
+        secondGroup.add(new SortModel("Buffett"));
 
-        List<String> thirdGroup = new ArrayList<>();
-        thirdGroup.add("灰太狼");
+        List<SortModel> thirdGroup = new ArrayList<>();
+        thirdGroup.add(new SortModel("灰太狼"));
 
-        List<String> fourthGroup = new ArrayList<>();
-        fourthGroup.add("喜羊羊");
-        fourthGroup.add("美羊羊");
-        fourthGroup.add("懒羊羊");
+        List<SortModel> fourthGroup = new ArrayList<>();
+        fourthGroup.add(new SortModel("喜羊羊"));
+        fourthGroup.add(new SortModel("美羊羊"));
+        fourthGroup.add(new SortModel("懒羊羊"));
 
         childList.add(firstGroup);
         childList.add(secondGroup);
@@ -88,5 +116,18 @@ public class DepartmentFrag extends BaseFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         mActivity = (AddPeopleActivity) context;
+    }
+
+    public void setNeedCheck(boolean flag) {
+        adapter.setNeedCheck(flag);
+    }
+
+    public void notifyDataSetChanged() {
+        if (adapter == null || expandableListView == null)
+            return;
+        for (int i = 0;i < groupList.size();i++) {
+            expandableListView.collapseGroup(i);
+            expandableListView.expandGroup(i);
+        }
     }
 }

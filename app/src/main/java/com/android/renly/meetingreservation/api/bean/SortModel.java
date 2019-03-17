@@ -25,6 +25,12 @@ public class SortModel implements Serializable {
 		super();
 	}
 
+	public SortModel(String name) {
+		super();
+		this.name = name;
+		this.isChecked = false;
+	}
+
 	public boolean isChecked() {
 		return isChecked;
 	}

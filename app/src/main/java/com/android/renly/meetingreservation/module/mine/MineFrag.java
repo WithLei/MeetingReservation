@@ -101,7 +101,6 @@ public class MineFrag extends BaseFragment
 
     @Override
     protected void initData(Context content) {
-        FaceServer.getInstance().init(mActivity);
         mPresenter.getData(false);
         lvMineFunctionList.setAdapter(new SimpleAdapter(mContent, mPresenter.getMenuList(),
                 R.layout.item_function, new String[]{"icon", "title"},
@@ -129,6 +128,7 @@ public class MineFrag extends BaseFragment
                     LogUtils.printLog("设置");
                     return;
                 }
+                FaceServer.getInstance().init(mActivity);
                 RetrofitService.getFaceImg(App.getUserFaceKey())
                         .observeOn(Schedulers.io())
                         .map(new Function<ResponseBody, Bitmap>() {

@@ -80,6 +80,14 @@ public class PeopleListActivity extends BaseActivity {
         if (resultCode == RESULT_OK){
             switch (requestCode) {
                 case AddPeopleActivity.requestCode:
+                    if (data.getIntExtra("people",0) != 0) {
+                        list.add(new SimpleUser("Steve", null));
+                        list.add(new SimpleUser("Allen Zhang", null));
+                        list.add(new SimpleUser("Jack Ma", null));
+                        list.add(new SimpleUser("Bill Gates", null));
+                        list.add(new SimpleUser("Buffett", null));
+                        adapter.notifyDataSetChanged();
+                    }
                     break;
             }
 

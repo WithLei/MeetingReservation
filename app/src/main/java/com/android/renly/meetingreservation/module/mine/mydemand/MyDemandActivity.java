@@ -31,11 +31,11 @@ public class MyDemandActivity extends BaseActivity {
     @Override
     protected void initData() {
         demandList = new ArrayList<>();
-        demandList.add(new Demand("1月11日 13:32", "2019年1月10日", "09:30 - 11:30", 250, 450));
-        demandList.add(new Demand("1月23日 13:32", "2019年1月17日", "09:30 - 11:30", 250, 450));
-        demandList.add(new Demand("1月1日 13:32", "2019年1月12日", "09:30 - 11:30", 250, 450));
-        demandList.add(new Demand("1月3日 13:32", "2019年1月11日", "09:30 - 11:30", 250, 450));
-        demandList.add(new Demand("1月7日 13:32", "2019年1月8日", "09:30 - 11:30", 250, 450));
+        demandList.add(new Demand("3月23日 13:32", "2019年3月25日", "09:30 - 11:30", 45, 450));
+        demandList.add(new Demand("3月21日 09:17", "2019年4月7日", "13:30 - 17:30", 88, 1000));
+        demandList.add(new Demand("3月15日 13:32", "2019年4月12日", "13:00 - 11:30", 25, 320));
+        demandList.add(new Demand("3月3日 13:32", "2019年1月11日", "09:30 - 11:30", 250, 450));
+        demandList.add(new Demand("3月7日 13:32", "2019年1月8日", "09:30 - 11:30", 250, 450));
 
         initAdapter();
     }

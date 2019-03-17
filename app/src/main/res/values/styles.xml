@@ -180,7 +180,7 @@
         <item name="tabPaddingStart">12dp</item>
         <item name="tabPaddingEnd">12dp</item>
         <item name="tabIndicatorColor">@color/colorPrimary</item>
-        <item name="tabIndicatorHeight">4dp</item>
+        <item name="tabIndicatorHeight">2dp</item>
         <item name="tabTextAppearance">@style/CustomTabTextAppearance</item>
         <item name="tabBackground">@color/white</item>
         <item name="tabSelectedTextColor">@color/colorPrimary</item>

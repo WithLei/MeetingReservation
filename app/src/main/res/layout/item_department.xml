@@ -2,18 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@color/bg_secondary">
+    android:background="@color/bg_secondary"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/department"
-        style="@style/text_16_pri"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_16"
-        android:layout_marginTop="@dimen/dimen_16"
-        android:layout_marginBottom="@dimen/dimen_16"
-        android:text="市场部（2）" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/department"
+            style="@style/text_16_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:layout_marginBottom="@dimen/dimen_16"
+            android:layout_centerVertical="true"
+            android:text="市场部（2）" />
+
+        <ImageView
+            android:id="@+id/department_check"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:src="@drawable/ic_round_unchecked" />
+
+    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"

@@ -127,8 +127,8 @@ public class MeetingActivity extends BaseActivity
 
     private void initNormalData() {
         title.setText("关于新产品的售价");
-        userName.setText("市场部");
-        tvLocation.setText("国际创意园-1楼");
+        userName.setText("张小龙");
+        tvLocation.setText("18B楼212 高级会议室4");
         people.setText("（9）");
         Picasso.get()
                 .load("http://149.28.149.136:8080/image/room01.jpg")
@@ -142,14 +142,12 @@ public class MeetingActivity extends BaseActivity
         }
         intro.setText(getResources().getString(R.string.meeting_intro));
         List<Map<String, String>> list = new ArrayList<>();
-        list.add(getFolderMap("关于新产品售价.pdf", "1.79MB"));
-        list.add(getFolderMap("露露饿狼号地块.word", "1.64MB"));
-        list.add(getFolderMap("回不来科技离开.pdf", "78MB"));
-        list.add(getFolderMap("等各环节.pdf", "3.4MB"));
-        list.add(getFolderMap("的个是个梵蒂冈.pdf", "12.45MB"));
-        list.add(getFolderMap("是固定个.pdf", "12MB"));
-        list.add(getFolderMap("东莞市大反攻昆.pdf", "25.44MB"));
-        LogUtils.printLog("list.size() = " + list.size());
+        list.add(getFolderMap("产品样例.pdf", "17.28MB"));
+        list.add(getFolderMap("产品A实体图.png", "3.45MB"));
+        list.add(getFolderMap("产品A渲染图.pdf", "7.18MB"));
+        list.add(getFolderMap("关于新产品的售价.word", "14.68MB"));
+        list.add(getFolderMap("新产品介绍.ppt", "12.89MB"));
+        list.add(getFolderMap("新产品介绍.mp4", "25.32MB"));
         listView.setAdapter(new SimpleAdapter(this, list, R.layout.item_folder_s, from, to));
         setListViewHeightBasedOnChildren(listView);
         editLayout.setVisibility(View.GONE);

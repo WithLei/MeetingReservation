@@ -87,6 +87,7 @@
                     android:layout_marginEnd="@dimen/dimen_8"
                     android:background="@null"
                     android:focusableInTouchMode="true"
+                    android:focusable="false"
                     android:hint="搜索人员" />
             </LinearLayout>
         </LinearLayout>

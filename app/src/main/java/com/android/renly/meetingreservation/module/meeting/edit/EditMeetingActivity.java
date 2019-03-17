@@ -60,8 +60,8 @@ public class EditMeetingActivity extends BaseActivity {
         confrim.setGravity(Gravity.CENTER);
         confrim.setOnClickListener(view -> {
             Intent intent = new Intent(this, MeetingActivity.class);
-            intent.putExtra("title", meetingTitle.getText());
-            intent.putExtra("intro", meetingIntro.getText());
+            intent.putExtra("title", meetingTitle.getText().toString());
+            intent.putExtra("intro", meetingIntro.getText().toString());
             setResult(RESULT_OK, intent);
             finishActivityBottom();
         });

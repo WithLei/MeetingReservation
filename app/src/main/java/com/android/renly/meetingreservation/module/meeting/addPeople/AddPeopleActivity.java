@@ -91,18 +91,21 @@ public class AddPeopleActivity extends BaseActivity {
             case R.id.check:
                 if (isNeedChecked) {
                     nameFrag.setNeedCheck(false);
+                    departmentFrag.setNeedCheck(false);
                     check.setText("选择");
                     isNeedChecked = false;
                 } else {
                     nameFrag.setNeedCheck(true);
+                    departmentFrag.setNeedCheck(true);
                     check.setText("取消");
                     isNeedChecked = true;
                 }
                 nameFrag.notifyDataSetChanged();
+                departmentFrag.notifyDataSetChanged();
                 break;
             case R.id.confirm:
                 Intent intent = new Intent(this, PeopleListActivity.class);
-                intent.putExtra("people",9);
+                intent.putExtra("people",5);
                 setResult(RESULT_OK, intent);
                 finishActivity();
                 break;

@@ -99,7 +99,7 @@
                         android:layout_marginTop="@dimen/dimen_8"
                         android:layout_marginEnd="@dimen/dimen_16"
                         android:layout_toStartOf="@+id/user_avatar"
-                        tools:text="市场部" />
+                        tools:text="张小龙" />
 
                     <com.android.renly.meetingreservation.widget.CircleImageView
                         android:id="@+id/user_avatar"

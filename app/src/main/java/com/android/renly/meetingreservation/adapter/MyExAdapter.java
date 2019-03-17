@@ -2,25 +2,52 @@ package com.android.renly.meetingreservation.adapter;
 
 import android.content.Context;
 import android.database.DataSetObserver;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.renly.meetingreservation.R;
+import com.android.renly.meetingreservation.api.bean.SortModel;
+import com.android.renly.meetingreservation.utils.LogUtils;
 
 import java.util.List;
 
 public class MyExAdapter implements ExpandableListAdapter {
-    List<String> groupList; //父级列表数据
-    List<List<String>> childrenList; //子级列表数据
+    List<SortModel> groupList; //父级列表数据
+    List<List<SortModel>> childrenList; //子级列表数据
     Context mContext;
 
-    public MyExAdapter(Context context, List<String> groupList, List<List<String>> childrenList) {
+    private boolean isNeedCheck;
+    private onRefresh onRefresh;
+
+    public interface onRefresh {
+        void doGroupCheck(boolean check, int group);
+
+        void doChildCheck(boolean check, int group, int child);
+    }
+
+    public void setOnRefresh(onRefresh onRefresh) {
+        this.onRefresh = onRefresh;
+    }
+
+    public MyExAdapter(Context context, List<SortModel> groupList, List<List<SortModel>> childrenList) {
         this.mContext = context;
         this.groupList = groupList;
         this.childrenList = childrenList;
+    }
+
+    public boolean isNeedCheck() {
+        return isNeedCheck;
+    }
+
+    public void setNeedCheck(boolean isNeedCheck) {
+        this.isNeedCheck = isNeedCheck;
     }
 
     @Override
@@ -79,9 +106,34 @@ public class MyExAdapter implements ExpandableListAdapter {
             //如果convert不为空，说明有缓存，直接把缓存布局赋值给view
             view = convertView;
         }
+        SortModel groupModel = groupList.get(pos);
         //加载部门数据
         ((TextView) view.findViewById(R.id.department))
-                .setText(groupList.get(pos) + "（" + childrenList.get(pos).size() + "）");
+                .setText(groupModel.getName() + "（" + childrenList.get(pos).size() + "）");
+        ImageView departmentCheck = view.findViewById(R.id.department_check);
+        departmentCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LogUtils.printLog("Group " + groupModel.isChecked());
+                if (groupModel.isChecked()) {
+                    departmentCheck.setImageResource(R.drawable.ic_round_unchecked);
+                    onRefresh.doGroupCheck(false, pos);
+                } else {
+                    departmentCheck.setImageResource(R.drawable.ic_round_checked);
+                    onRefresh.doGroupCheck(true, pos);
+                }
+            }
+        });
+
+        if (isNeedCheck) {
+            departmentCheck.setVisibility(View.VISIBLE);
+            if (groupModel.isChecked())
+                departmentCheck.setImageResource(R.drawable.ic_round_checked);
+            else
+                departmentCheck.setImageResource(R.drawable.ic_round_unchecked);
+        } else {
+            departmentCheck.setVisibility(View.GONE);
+        }
 
         return view;
     }
@@ -95,10 +147,35 @@ public class MyExAdapter implements ExpandableListAdapter {
         } else {
             view = convertView;
         }
+        SortModel childrenModel = childrenList.get(groupPos).get(childrenPos);
         ((TextView) view
                 .findViewById(R.id.name))
-                .setText(childrenList.get(groupPos)
-                        .get(childrenPos));
+                .setText(childrenModel.getName());
+
+        ImageView childrenCheck = view.findViewById(R.id.check);
+        childrenCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LogUtils.printLog("children " + childrenModel.isChecked());
+                if (childrenModel.isChecked()) {
+                    childrenCheck.setImageResource(R.drawable.ic_round_unchecked);
+                    onRefresh.doChildCheck(false, groupPos, childrenPos);
+                } else {
+                    childrenCheck.setImageResource(R.drawable.ic_round_checked);
+                    onRefresh.doChildCheck(true, groupPos, childrenPos);
+                }
+            }
+        });
+
+        if (isNeedCheck) {
+            childrenCheck.setVisibility(View.VISIBLE);
+            if (childrenModel.isChecked())
+                childrenCheck.setImageResource(R.drawable.ic_round_checked);
+            else
+                childrenCheck.setImageResource(R.drawable.ic_round_unchecked);
+        } else {
+            childrenCheck.setVisibility(View.GONE);
+        }
         return view;
     }
 

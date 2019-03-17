@@ -55,6 +55,7 @@ public class UserAdapter extends BaseAdapter {
         SimpleUser user = list.get(i);
         Picasso.get()
                 .load(user.getAvatar())
+                .placeholder(R.mipmap.user_placeholder)
                 .into(holder.userAvatar);
         holder.userName.setText(user.getName());
         return view;
