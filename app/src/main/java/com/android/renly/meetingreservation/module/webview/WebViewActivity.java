@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.module.base.BaseActivity;
@@ -41,6 +42,15 @@ public class WebViewActivity extends BaseActivity {
 
     @SuppressLint("JavascriptInterface")
     private void initWebView() {
+        webView.setWebViewClient(new WebViewClient() {
+            //覆盖shouldOverrideUrlLoading 方法
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+        });
+
         webView.addJavascriptInterface(this,"android");//添加js监听 这样html就能调用客户端
 
         WebSettings webSettings=webView.getSettings();
