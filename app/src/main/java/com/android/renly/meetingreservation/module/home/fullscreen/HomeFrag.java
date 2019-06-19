@@ -20,6 +20,9 @@ import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.adapter.LectureAdapter;
 import com.android.renly.meetingreservation.api.RetrofitService;
 import com.android.renly.meetingreservation.api.bean.Lecture;
+import com.android.renly.meetingreservation.api.bean.TestB;
+import com.android.renly.meetingreservation.api.bean.TestBean;
+import com.android.renly.meetingreservation.injector.components.DaggerHomeFragComponent;
 import com.android.renly.meetingreservation.listener.ItemClickListener;
 import com.android.renly.meetingreservation.module.base.BaseFragment;
 import com.android.renly.meetingreservation.module.booking.roomList.RoomListActivity;
@@ -46,6 +49,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -107,9 +112,18 @@ public class HomeFrag extends BaseFragment implements
 
     private List<Lecture> lectureList;
 
+    @Inject
+    TestB testB;
+
+    @Inject
+    TestB testB1;
+
     @Override
     protected void initInjector() {
-
+        DaggerHomeFragComponent.builder()
+                .build()
+                .inject(this);
+        LogUtils.printLog("hashCode=="+testB.hashCode()+" hashCode2="+testB1.hashCode());
     }
 
     @Override
@@ -159,16 +173,16 @@ public class HomeFrag extends BaseFragment implements
 
     private void initLectureListData() {
         lectureList = new ArrayList<>();
-        lectureList.add(new Lecture("http://149.28.149.136:8080/image/speaker01.jpg",
+        lectureList.add(new Lecture("http://blog.graydove.cn/upload/2019/6/speaker01-10c39b762fc24f0192acc4c2cc0fb2c9.jpg",
                 "个人发展如何借助趋势的力量", "叶修，一个专门研究思维方法与学习策略的人，《深度思维》作者"
                 , new Date().getTime(), "5小时"));
-        lectureList.add(new Lecture("http://149.28.149.136:8080/image/speaker02.jpg",
+        lectureList.add(new Lecture("http://blog.graydove.cn/upload/2019/6/speaker02-a08b66e6299a4476921b64ec4032e0f2.jpg",
                 "GDPR来了，你我应当注意什么", "王融，腾讯研究院资深专家。长期从事电信、互联网立法与监管政策研究"
                 , new Date().getTime(), "5小时"));
-        lectureList.add(new Lecture("http://149.28.149.136:8080/image/speaker01.jpg",
+        lectureList.add(new Lecture("http://blog.graydove.cn/upload/2019/6/speaker01-10c39b762fc24f0192acc4c2cc0fb2c9.jpg",
                 "如何选到适合自己的好专业", "叶修，一个专门研究思维方法与学习策略的人，《深度思维》作者"
                 , new Date().getTime(), "5小时"));
-        lectureList.add(new Lecture("http://149.28.149.136:8080/image/speaker02.jpg",
+        lectureList.add(new Lecture("http://blog.graydove.cn/upload/2019/6/speaker02-a08b66e6299a4476921b64ec4032e0f2.jpg",
                 "GDPR来了，你我应当注意什么", "王融，腾讯研究院资深专家。长期从事电信、互联网立法与监管政策研究"
                 , new Date().getTime(), "5小时"));
     }
@@ -292,15 +306,28 @@ public class HomeFrag extends BaseFragment implements
     /**
      * 显示该日的所有会议消息
      */
-    private void showDayMeeting(boolean hasMeeting) {
+    private void showDayMeeting(boolean hasMeeting,int day) {
         if (hasMeeting) {
             dayContentEmpty.collapse();
             dayContent.expand();
 
-            mymeetingTitle.setText("交通管理制度的优化和漏洞");
-            mymeetingAddress.setText("C2楼1208会议室");
-            mymeetingTime.setText("2019/03/08 13:00 - 15:30");
-            mymeetingWorker.setText("北京市第三区交通委");
+            if (day%3==0){
+                mymeetingTitle.setText("关于产品的优化");
+                mymeetingAddress.setText("C2楼1208会议室");
+                mymeetingTime.setText("2019/06/"+day+" 13:00 - 15:30");
+                mymeetingWorker.setText("行政部");
+            } else if (day%3==1){
+                mymeetingTitle.setText("交通管理制度的优化和漏洞");
+                mymeetingAddress.setText("B2楼402会议室");
+                mymeetingTime.setText("2019/06/"+day+" 08:30 - 11:30");
+                mymeetingWorker.setText("北京市第三区交通委");
+            }else{
+                mymeetingTitle.setText("产品的进一步市场拓展");
+                mymeetingAddress.setText("A1楼711会议室");
+                mymeetingTime.setText("2019/06/"+day+" 13:00 - 15:30");
+                mymeetingWorker.setText("销售部");
+            }
+
         }else {
             dayContent.collapse();
             dayContentEmpty.expand();
@@ -333,7 +360,7 @@ public class HomeFrag extends BaseFragment implements
         mYear = calendar.getYear();
 
         if (flag)
-            showDayMeeting(!calendar.getScheme().trim().isEmpty());
+            showDayMeeting(!calendar.getScheme().trim().isEmpty(),calendar.getDay());
         else
             flag = true;
     }

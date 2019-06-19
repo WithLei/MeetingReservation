@@ -15,7 +15,7 @@ import com.android.renly.meetingreservation.api.bean.SortModel;
 import java.util.List;
 
 /**
- * @author J 适配器
+ * @author Renly 适配器
  */
 public class SortAdapter extends BaseAdapter implements SectionIndexer {
 	private List<SortModel> list = null;

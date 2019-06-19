@@ -44,7 +44,7 @@ public class JoinMeetingActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.join:
                 Intent intent = new Intent(this, WebViewActivity.class);
-                intent.putExtra("url","https://www.baidu.com");
+                intent.putExtra("url","http://blog.graydove.cn/other/");
                 intent.putExtra("title", "会议内容");
                 startActivity(intent);
                 break;

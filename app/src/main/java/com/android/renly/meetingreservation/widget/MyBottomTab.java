@@ -18,6 +18,8 @@ import android.widget.TextView;
 import com.android.renly.meetingreservation.R;
 import com.android.renly.meetingreservation.utils.DimmenUtils;
 
+import java.util.ArrayList;
+
 
 /**
  * 首页4个页面底部tab 带消息小圆点

@@ -229,7 +229,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dimen_4"
-                            android:text="2019/03/17 13:30 - 17:30" />
+                            android:text="2019/06/16 13:30 - 17:30" />
 
                     </LinearLayout>
 

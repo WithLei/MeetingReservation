@@ -3,7 +3,7 @@ package com.android.renly.meetingreservation.api.bean;
 import java.io.Serializable;
 
 /**
- * @author J
+ * @author Renly
  *
  */
 public class SortModel implements Serializable {
