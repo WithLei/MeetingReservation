@@ -1,4 +1,4 @@
-# MeetingReservation-会议室管理系统Android端
+# MeetingReservation-智能会议室管理系统Android端
 [![GitHub stars](https://img.shields.io/github/stars/WithLei/MeetingReservation.svg)](https://github.com/WithLei/MeetingReservation/stargazers)
 [![GitHub Release](https://img.shields.io/github/release/WithLei/MeetingReservation/all.svg)](https://github.com/WithLei/MeetingReservation/releases)
 
