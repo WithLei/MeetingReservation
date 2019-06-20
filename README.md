@@ -14,6 +14,27 @@
 
 使用OkHttp+Retrofit+Dagger2+RxJava+MVP架构
 
+### 项目背景
+会议是企业进行决策、协商的重要组织形式，是办公流程中不可缺少的重要环节。提高会议效率、规范会议文档流程、合理利用会议相关资源，避免人力物力财力浪费、降低办公成本、达成人力资源效率化，是企业关注的一个重要课题，所以需要一套高效的会议管理系统。我们采用当前先进的信息化技术，通过会议系统与办公自动化系统的融合以及人脸识别相关技术，实现会前、会中、会后的信息管理和智能化控制。
+
+### 系统架构
+整体架构设计采用B/S架构，将复杂的人脸计算提交给性能强大的后端服务器，并实现服务的弹性扩容，使用Redis数据库来存储人脸特征值，使得人脸能快速比对。前端和移动端的开发，使用户预定、查看会议室等功能的使用更便捷。
+
+### 设计思路
+<img src="https://github.com/WithLei/MeetingReservation/blob/master/screenshots/design.jpg" width="80" hegiht="80" align=left />
+
+### 预定规则
+<img src="https://github.com/WithLei/MeetingReservation/blob/master/screenshots/order01.png" width="250" hegiht="500" align=left />
+<img src="https://github.com/WithLei/MeetingReservation/blob/master/screenshots/order02.png" width="250" hegiht="500" align=center /> 
+
+## 团队成绩
+中国服务外包创新创业竞赛 三等奖  
+浙江省服务外包创新创业竞赛 二等奖  
+校服务外包创新创业竞赛 一等奖
+
+## 团队成员
+[啊磊](https://github.com/WithLei) [阿金](https://github.com/InTheBloodHorse) [明志](https://github.com/GeekEmpire) [辉辉](https://github.com/graydovee) [欢欢](https://github.com/hmh0403)
+
 ## 项目展示
 <img src="https://github.com/WithLei/MeetingReservation/blob/master/screenshots/01.jpg" width="250" hegiht="500" align=left />
 <img src="https://github.com/WithLei/MeetingReservation/blob/master/screenshots/02.jpg" width="250" hegiht="500" align=center /> 
@@ -266,7 +287,7 @@ Apache License
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright [yyyy] [name of copyright owner]
+   Copyright [2019] [WithLei]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
